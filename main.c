@@ -115,7 +115,7 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     dst->w = TAILLE_SPRITE;
     dst->h = TAILLE_SPRITE;
 
-    // On affiche les sprites :
+    // On affiche les sprites  :
     SDL_RenderClear(rendu);
     SDL_RenderCopy(rendu, texSprite, src, dst);
     SDL_RenderPresent(rendu);
