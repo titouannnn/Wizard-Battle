@@ -8,13 +8,22 @@ SDL_INC_DIR=${SDL_DIR}/include
 
 LIBS=-L${SDL_LIB_DIR} -lSDL2 -lSDL2_image -lSDL2_ttf
 INCS=-I${SDL_INC_DIR}
-PROG=main
+PROG=jeu
 
-all: sdl_text
-sdl_text: main.c
-	${CC} -o ${PROG} main.c ${LIBS} ${INCS} ${FLAGS}
-	./main
-	
+all: jeu
+jeu: main.o fonctions.o
+	${CC} main.o fonctions.o -o ${PROG} ${LIBS} ${INCS} ${FLAGS}
+	./jeu
+	make clean
+
+main.o: main.c src/fonctions.h
+	${CC} -c main.c
+
+fonctions.o: src/fonctions.c
+	${CC} -c src/fonctions.c
+
 clean:
-	rm -f ${PROG}
 	rm -f *.o
+
+msproper: clean
+	rm -i ${PROG}
