@@ -7,19 +7,22 @@
 SDL_Renderer *rendu;
 SDL_Window *fenetre;
 
-SDL_Rect pers_source, pers_destination;
+SDL_Rect pers_source, pers_destination, cameraRect;
 
 int main() {
     int isRunning = 1;
     initialisation(&fenetre, &rendu);
     chargerTextures(rendu);
 
-    pers_destination.y = WINDOWS_WIDTH/ 2 - TAILLE_SPRITE_PLAYER / 2;
-    pers_destination.x = WINDOWS_HEIGHT/ 2 - TAILLE_SPRITE_PLAYER / 2;
+    pers_destination.y = WINDOWS_HEIGHT/ 2 - TAILLE_SPRITE_PLAYER / 2;
+    pers_destination.x = WINDOWS_WIDTH / 2 - TAILLE_SPRITE_PLAYER / 2;
 
     // Gestion des événements SDL
     SDL_Event event;
     int frame = 0;
+    Uint32 temps_ancien = SDL_GetTicks();
+    Uint32 temps_actuel;
+    int delta_temps;
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
             // Pour fermer la fenêtre 
@@ -27,12 +30,30 @@ int main() {
                 isRunning = 0; 
             } 
         }
-        //récupération de l'état du clavier : 
-        const Uint8 *clavier = SDL_GetKeyboardState(NULL);
-        frame = (frame + 1) % 6;
         
-        action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
 
+        //calcul du temps
+        temps_actuel = SDL_GetTicks();
+        delta_temps += temps_actuel - temps_ancien;
+        temps_ancien = temps_actuel;
+
+        if(delta_temps >= 100){ // ms entre les images du sprite
+            delta_temps = 0;
+            frame = (frame + 1) % 6;
+        }
+
+
+        // Récupération de l'état du clavier : 
+        const Uint8 *clavier = SDL_GetKeyboardState(NULL);
+        
+        
+        SDL_RenderClear(rendu);
+        updateCamera(&pers_destination,rendu, &cameraRect);
+        action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
+        
+        SDL_RenderPresent(rendu);
+
+        printf("delta : %d \n",delta_temps);
         SDL_Delay(DELAI);
     }
     return fin(fenetre, rendu);
