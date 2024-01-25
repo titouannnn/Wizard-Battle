@@ -3,8 +3,8 @@ FLAGS=-Wall -g
 
 SRC_DIR=lib
 SDL_DIR=${PWD}/${SRC_DIR}
-SDL_LIB_DIR=${SDL_DIR}/lib
-SDL_INC_DIR=${SDL_DIR}/include
+SDL_LIB_DIR=${SDL_DIR}/
+SDL_INC_DIR=${SDL_DIR}/
 
 LIBS=-L${SDL_LIB_DIR} -lSDL2 -lSDL2_image -lSDL2_ttf
 INCS=-I${SDL_INC_DIR}
