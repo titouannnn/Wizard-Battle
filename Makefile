@@ -1,10 +1,9 @@
 CC=gcc
 FLAGS=-Wall -g
 
-SRC_DIR=lib
-SDL_DIR=${PWD}/${SRC_DIR}
-SDL_LIB_DIR=${SDL_DIR}/
-SDL_INC_DIR=${SDL_DIR}/
+PROJECT_DIR=${PWD}
+SDL_LIB_DIR=${PROJECT_DIR}/lib
+SDL_INC_DIR=${PROJECT_DIR}/include
 
 LIBS=-L${SDL_LIB_DIR} -lSDL2 -lSDL2_image -lSDL2_ttf
 INCS=-I${SDL_INC_DIR}
@@ -12,8 +11,8 @@ PROG=jeu
 
 all: jeu
 jeu: main.o fonctions.o
-	${CC} main.o fonctions.o -o ${PROG} ${LIBS} ${INCS} ${FLAGS}
-	./jeu
+	${CC} main.o fonctions.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
+	./bin/jeu
 	make clean
 
 main.o: main.c src/fonctions.h
