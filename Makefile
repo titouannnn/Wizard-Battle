@@ -25,4 +25,4 @@ clean:
 	rm -f *.o
 
 msproper: clean
-	rm -i ${PROG}
+	rm -i bin/${PROG}
