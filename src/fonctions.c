@@ -155,3 +155,26 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     SDL_RenderCopy(rendu, fond_tex, cameraRect, NULL);
 }
 
+SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
+    SDL_Surface *barSurface = SDL_CreateRGBSurface(0, HEALTH_BAR_WIDTH, HEALTH_BAR_HEIGHT, 32, 0, 0, 0, 0);
+    SDL_FillRect(barSurface, NULL, SDL_MapRGB(barSurface->format, couleur.red, couleur.green, couleur.blue));
+    SDL_Texture *barTexture = SDL_CreateTextureFromSurface(rendu, barSurface);
+    SDL_FreeSurface(barSurface);
+    return barTexture;
+
+
+}
+
+// Initialise la barre de vie du joueur au max
+void initHealthBar(HealthBar *healthBar, int x, int y, int maxWidth) {
+    healthBar -> x = x;
+    healthBar -> y = y;
+    healthBar -> width = maxWidth;
+    healthBar -> maxWidth = maxWidth;
+}
+
+// Met à jour la barre de vie du joueur (currentHealth prend un pourcentage)
+void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth) {
+    healthBarRect->w = (currentHealth * healthBar->maxWidth) / 100;
+}
+
