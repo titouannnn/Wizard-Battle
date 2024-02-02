@@ -17,5 +17,9 @@ Voici le lien de notre [matrice GANTT](https://docs.google.com/spreadsheets/d/1M
 1. Semaine 4
    - [x] Caméra par Titouan
    - [x] Barre de vie par Léo 
+   - [x] Finalisation de la matrice GANTT par Nassim
 1. Semaine 5 
    - [ ] Sprites du personnage principal et animations dans le jeu 
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
