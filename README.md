@@ -6,7 +6,8 @@ Pour lier les librairies il suffit d'exectuer le script "install.sh"
 sudo chmod +x install.sh
 ./install.sh
 ```
-
+> [!NOTE]
+> Le projet n'est actuellement disponible que sur Linux.
 
 ## Matrice GANTT et planification du travail
 
@@ -21,5 +22,3 @@ Voici le lien de notre [matrice GANTT](https://docs.google.com/spreadsheets/d/1M
 1. Semaine 5 
    - [ ] Sprites du personnage principal et animations dans le jeu 
 
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
