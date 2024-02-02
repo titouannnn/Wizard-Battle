@@ -15,3 +15,7 @@ sudo chmod +x install.sh
 ./install.sh
 ```
 
+
+> [!NOTE]
+> Le projet n'est actuellement disponible que sur Linux.
+
