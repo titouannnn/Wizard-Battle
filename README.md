@@ -21,4 +21,5 @@ Voici le lien de notre [matrice GANTT](https://docs.google.com/spreadsheets/d/1M
    - [x] Finalisation de la matrice GANTT par Nassim
 1. Semaine 5 
    - [ ] Sprites du personnage principal et animations dans le jeu 
+   - [ ] Régler les problèmes de compilation sur Ubuntu
 
