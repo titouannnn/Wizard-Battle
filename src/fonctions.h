@@ -1,8 +1,10 @@
 #ifndef FONCTIONS_H
 #define FONCTIONS_H
 
-#define WINDOWS_WIDTH 1200
-#define WINDOWS_HEIGHT 800
+#include "carte.h"
+
+#define WINDOWS_WIDTH 1440
+#define WINDOWS_HEIGHT 900
 
 #define HEALTH_BAR_WIDTH 300
 #define HEALTH_BAR_HEIGHT 20
@@ -11,15 +13,18 @@
 #define DIM_SPRITE_PLAYER 160
 #define FPS 60
 #define DELAI 1000 / FPS
-#define VITESSE_JOUEUR 3.5
+#define VITESSE_JOUEUR 7
 
 #define HAUT 0
 #define BAS 1
 #define DROITE 2
 #define GAUCHE 3
 
-#define LARGEUR_FOND 2560
-#define HAUTEUR_FOND 1440
+#define LARGEUR_FOND NB_TILE_WIDTH*TILE_WIDTH / 2
+#define HAUTEUR_FOND NB_TILE_HEIGHT*TILE_HEIGT / 2
+
+#define CAMERA_WIDTH 960
+#define CAMERA_HEIGHT 600
 
 typedef struct {
     int x;
@@ -49,7 +54,6 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu);
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect * cameraRect);
-
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH]);
 
 #endif

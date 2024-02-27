@@ -14,6 +14,7 @@ SDL_Texture *run_right_tex;
 SDL_Texture *run_left_tex;
 
 SDL_Texture *fond_tex;
+SDL_Texture *tile_verte_tex;
 
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
@@ -76,6 +77,15 @@ void chargerTextures(SDL_Renderer *rendu) {
         printf("Erreur de chargement du fond: %s\n", SDL_GetError());
     }
     else printf("Chargement du fond réussi\n");
+
+    temp_surface = IMG_Load("images/tile1.png");
+    tile_verte_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(fond_tex == NULL){
+        printf("Erreur de chargement de la tile verte: %s\n", SDL_GetError());
+    }
+    else printf("Chargement de la tile verte réussi\n");
+
 }
 
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
@@ -115,15 +125,16 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
         pers_destination->y -= VITESSE_JOUEUR;
         direction = 1;
     }
-    if (clavier[SDL_SCANCODE_S] && pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE) {
+    if (clavier[SDL_SCANCODE_S] && pers_destination->y < HAUTEUR_FOND - DIM_SPRITE) {
         pers_destination->y += VITESSE_JOUEUR;
         direction = 0;
     }
+    
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0) {
         pers_destination->x -= VITESSE_JOUEUR;
         direction = 3;
     }
-    if (clavier[SDL_SCANCODE_D] && pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE) {
+    if (clavier[SDL_SCANCODE_D] && pers_destination->x < LARGEUR_FOND - DIM_SPRITE) {
         pers_destination->x += VITESSE_JOUEUR;
         direction = 2;
     }
@@ -132,27 +143,39 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     
 }
 
-void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect) {
-    SDL_RenderCopy(rendu, fond_tex, cameraRect, NULL);
-}
 
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect) {
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
     // Facteur d'interpolation
-    float interpolationFactor = 0.3;
+    float interpolationFactor = 1;  //à baisser pour un déplacement plus smooth
 
-    // Calcul de la nouvelle position en utilisant l'interpolation linéaire
-    cameraRect->x = (1.0 - interpolationFactor) * cameraRect->x + interpolationFactor * pers_destination->x;
-    cameraRect->y = (1.0 - interpolationFactor) * cameraRect->y + interpolationFactor * pers_destination->y;
+    cameraRect->x = (1.0 - interpolationFactor) * cameraRect->x + interpolationFactor * pers_destination->x*2;
+    cameraRect->y = (1.0 - interpolationFactor) * cameraRect->y + interpolationFactor * pers_destination->y*2;
 
-    cameraRect->w = WINDOWS_WIDTH;
-    cameraRect->h = WINDOWS_HEIGHT;
+    
+    // limites de la caméra
+    if (cameraRect->x < 0) {
+        cameraRect->x = 0;
+    } 
+    else if (cameraRect->x > LARGEUR_FOND ) {
+        cameraRect->x = LARGEUR_FOND ;
+    }
+    if (cameraRect->y < 0) {
+        cameraRect->y = 0;
+    }
+    else if (cameraRect->y > HAUTEUR_FOND + CAMERA_HEIGHT  ) {
+        cameraRect->y = HAUTEUR_FOND + CAMERA_HEIGHT ; 
+    }
+
+    
 
     // Debug
-    //printf("Position sprite -> x: %d, y: %d \n", pers_destination->x, pers_destination->y);
-    //printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y);
+    printf("Position sprite -> x: %d, y: %d \n", pers_destination->x, pers_destination->y);
+    printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y);
 
     // Rendu du fond
-    SDL_RenderCopy(rendu, fond_tex, cameraRect, NULL);
+    //SDL_RenderCopy(rendu,fond_tex,cameraRect,NULL);
+    afficherCarte(tab, rendu, tile_verte_tex, cameraRect);
+    //SDL_RenderCopy(rendu, NULL, cameraRect , cameraRect); Cette ligne ne sert à rien en fait 
 }
 
 SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
