@@ -10,8 +10,8 @@ INCS=-I${SDL_INC_DIR}
 PROG=jeu
 
 all: jeu
-jeu: main.o fonctions.o
-	${CC} main.o fonctions.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
+jeu: main.o fonctions.o carte.o
+	${CC} main.o fonctions.o carte.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
 	./bin/jeu
 	make clean
 
@@ -20,6 +20,9 @@ main.o: main.c src/fonctions.h
 
 fonctions.o: src/fonctions.c
 	${CC} -c src/fonctions.c
+
+carte.o: src/carte.c
+	${CC} -c src/carte.c
 
 clean:
 	rm -f *.o
