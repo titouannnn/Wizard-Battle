@@ -13,7 +13,7 @@
 #define DIM_SPRITE_PLAYER 160
 #define FPS 60
 #define DELAI 1000 / FPS
-#define VITESSE_JOUEUR 7
+#define VITESSE_JOUEUR 4.5
 
 #define HAUT 0
 #define BAS 1

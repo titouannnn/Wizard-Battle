@@ -125,7 +125,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
         pers_destination->y -= VITESSE_JOUEUR;
         direction = 1;
     }
-    if (clavier[SDL_SCANCODE_S] && pers_destination->y < HAUTEUR_FOND - DIM_SPRITE) {
+    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE*1.5)) {
         pers_destination->y += VITESSE_JOUEUR;
         direction = 0;
     }
@@ -133,11 +133,18 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0) {
         pers_destination->x -= VITESSE_JOUEUR;
         direction = 3;
+        if(pers_destination->x*3.1> LARGEUR_FOND){
+                    pers_destination->x -= VITESSE_JOUEUR*1.5;
+        }
     }
-    if (clavier[SDL_SCANCODE_D] && pers_destination->x < LARGEUR_FOND - DIM_SPRITE) {
+    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_HEIGHT + DIM_SPRITE*2)) {
         pers_destination->x += VITESSE_JOUEUR;
         direction = 2;
+        if(pers_destination->x*3.1> LARGEUR_FOND){
+            pers_destination->x += VITESSE_JOUEUR*1.5;
+        }
     }
+    
 
     actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
     
@@ -148,16 +155,18 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     // Facteur d'interpolation
     float interpolationFactor = 1;  //à baisser pour un déplacement plus smooth
 
+    /*
     cameraRect->x = (1.0 - interpolationFactor) * cameraRect->x + interpolationFactor * pers_destination->x*2;
     cameraRect->y = (1.0 - interpolationFactor) * cameraRect->y + interpolationFactor * pers_destination->y*2;
+    */
 
+    cameraRect->x = pers_destination->x*3.1;
+    cameraRect->y = pers_destination->y*3.1;
+    
     
     // limites de la caméra
     if (cameraRect->x < 0) {
         cameraRect->x = 0;
-    } 
-    else if (cameraRect->x > LARGEUR_FOND ) {
-        cameraRect->x = LARGEUR_FOND ;
     }
     if (cameraRect->y < 0) {
         cameraRect->y = 0;
@@ -165,12 +174,16 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     else if (cameraRect->y > HAUTEUR_FOND + CAMERA_HEIGHT  ) {
         cameraRect->y = HAUTEUR_FOND + CAMERA_HEIGHT ; 
     }
-
+    if (cameraRect->x > LARGEUR_FOND) {
+            cameraRect->x = LARGEUR_FOND ; 
+    }
     
 
-    // Debug
+    // Debug 
+    /*
     printf("Position sprite -> x: %d, y: %d \n", pers_destination->x, pers_destination->y);
-    printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y);
+    printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y); */
+
 
     // Rendu du fond
     //SDL_RenderCopy(rendu,fond_tex,cameraRect,NULL);
