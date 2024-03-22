@@ -25,18 +25,12 @@ typedef struct {
     int casy;
 } case_t;
 
-typedef struct {
-    int posx;
-    int posy;
-    case_t caseJoueur;
-} position_t;
-
 
 typedef struct{
-    position_t haut_droit;
-    position_t haut_gauche;
-    position_t bas_droit;
-    position_t bas_gauche;
+    case_t case_hg;
+    case_t case_hd;
+    case_t case_bg;
+    case_t case_bd;
 
 }positionJoueur_t;
 

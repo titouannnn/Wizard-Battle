@@ -173,19 +173,23 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     // Calcul des positions des coins de la caméra
     positionJoueur_t position;
 
-    position.haut_droit.posx = cameraRect->x + CAMERA_WIDTH;
-    position.haut_droit.posy = cameraRect->y;
+    /*ici "DIM_SPRITE_PLAYER/7" correspond à l'espace vide de la tile autour du personnage, 
+    on divise par 100  car le personnage se déplace sur 1800 pixels sur l'axe x (et on divise par 120 parcequ'il se déplace sur 2160 pixels sur y)
+    A terme, créer une fonction pour faire ces calculs, et remplacer les divisions par des constantes*/
+    position.case_hg.casx = ((cameraRect->x - DIM_SPRITE_PLAYER/7)/ 100);
+    position.case_hg.casy = ((cameraRect->y - DIM_SPRITE_PLAYER/7 )/ 120);
 
-    position.haut_gauche.posx = cameraRect->x + DIM_SPRITE_PLAYER / 6;
-    position.haut_gauche.posy = cameraRect->y / 2;
+    position.case_hd.casx = (cameraRect->x + ((6/7)*DIM_SPRITE_PLAYER)) / 100;
+    position.case_hd.casy = ((cameraRect->y - DIM_SPRITE_PLAYER/7 )/ 120);
 
-    position.bas_droit.posx = cameraRect->x + CAMERA_WIDTH;
-    position.bas_droit.posy = cameraRect->y + CAMERA_HEIGHT;
+    position.case_bg.casx = ((cameraRect->x - DIM_SPRITE_PLAYER/7)/ 100);
+    position.case_bg.casy = (cameraRect->y + ((6/7)*DIM_SPRITE_PLAYER)) / 120;
 
-    position.bas_gauche.posx = cameraRect->x;
-    position.bas_gauche.posy = cameraRect->y + CAMERA_HEIGHT;
+    position.case_bd.casx = (cameraRect->x + ((6/7)*DIM_SPRITE_PLAYER)) / 100;
+    position.case_bd.casy = (cameraRect->y + ((6/7)*DIM_SPRITE_PLAYER)) / 120;
 
-    // Affichage de la carte
+    printf("case : %d , %d\n", position.case_hg.casx, position.case_hg.casy);
+
     afficherCarte(tab, rendu, tabTile, cameraRect, position);
 }
 
