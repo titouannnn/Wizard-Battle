@@ -144,19 +144,25 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
 
     actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
 }
-
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5]) {
-    
-    cameraRect->x = (pers_destination->x*VITESSE_JOUEUR_X)/(VITESSE_JOUEUR_X/2) ;
-    cameraRect->y = pers_destination->y*VITESSE_JOUEUR_Y; 
+    // Facteur d'interpolation linéaire
+    const float interpolationFactor = 0.1f;
 
+    // Calcul de la différence entre la position actuelle de la caméra et la position désirée du joueur
+    int dx = (pers_destination->x * 2) - cameraRect->x;
+    int dy = (pers_destination->y * 4) - cameraRect->y;
+
+    // Application de l'interpolation linéaire
+    cameraRect->x += (int)(dx * interpolationFactor);
+    cameraRect->y += (int)(dy * interpolationFactor);
+
+    // Correction des limites de la caméra
     if (cameraRect->x < 0) {
         cameraRect->x = 0;
     }
     if (cameraRect->y < 0) {
         cameraRect->y = 0;
     }
-    
     if (cameraRect->y > HAUTEUR_FOND - CAMERA_HEIGHT) {
         cameraRect->y = HAUTEUR_FOND - CAMERA_HEIGHT;
     }
@@ -164,16 +170,14 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
         cameraRect->x = LARGEUR_FOND - CAMERA_WIDTH;
     }
 
+    // Calcul des positions des coins de la caméra
     positionJoueur_t position;
 
     position.haut_droit.posx = cameraRect->x + CAMERA_WIDTH;
     position.haut_droit.posy = cameraRect->y;
 
-    position.haut_gauche.posx = cameraRect->x + DIM_SPRITE_PLAYER/6;
-    position.haut_gauche.posy = cameraRect->y/2;
-
-
-    printf("position haut gauche : %d %d\n", position.haut_gauche.posx, position.haut_gauche.posy);
+    position.haut_gauche.posx = cameraRect->x + DIM_SPRITE_PLAYER / 6;
+    position.haut_gauche.posy = cameraRect->y / 2;
 
     position.bas_droit.posx = cameraRect->x + CAMERA_WIDTH;
     position.bas_droit.posy = cameraRect->y + CAMERA_HEIGHT;
@@ -181,8 +185,10 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     position.bas_gauche.posx = cameraRect->x;
     position.bas_gauche.posy = cameraRect->y + CAMERA_HEIGHT;
 
+    // Affichage de la carte
     afficherCarte(tab, rendu, tabTile, cameraRect, position);
 }
+
 
 SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
     SDL_Surface *barSurface = SDL_CreateRGBSurface(0, HEALTH_BAR_WIDTH, HEALTH_BAR_HEIGHT, 32, 0, 0, 0, 0);
