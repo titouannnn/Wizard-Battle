@@ -10,6 +10,7 @@ SDL_Window *fenetre;
 
 SDL_Rect pers_source, pers_destination;
 SDL_Rect * cameraRect;
+//SDL_Texture * tabTile;
 
 // Alors j'ai crée un structure couleur vu qu'en C y a pas de tuple pour gérer les couleurs donc si tu dois mapper des couleurs n'hesite pas à utiliser ces constantes au lieu d'écrire (255,0,255)
 const Couleur_t JAUNE = {255,255,0};
@@ -21,15 +22,17 @@ int main() {
     int isRunning = 1;
     int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
     initialisation(&fenetre, &rendu);
-    chargerTextures(rendu);
+
+    SDL_Texture *tabTile[5];
+    chargerTextures(rendu, tabTile);
 
     cameraRect = malloc(sizeof(SDL_realloc));
     
     cameraRect->h = CAMERA_HEIGHT;
     cameraRect->w = CAMERA_WIDTH;   
 
-    pers_destination.y = WINDOWS_HEIGHT/ 2 - TAILLE_SPRITE_PLAYER / 2;
-    pers_destination.x = WINDOWS_WIDTH / 2 - TAILLE_SPRITE_PLAYER / 2;
+    pers_destination.y = 400;
+    pers_destination.x = 400;
 
     cameraRect->x = pers_destination.x;
     cameraRect->y = pers_destination.y;
@@ -82,21 +85,20 @@ int main() {
         }
 
         
-
         // Récupération de l'état du clavier : 
         const Uint8 *clavier = SDL_GetKeyboardState(NULL);
         
         
         SDL_RenderClear(rendu);
 
-        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1);
+        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile);
 
         action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
-
+/*
         // Rendu de la barre de viepers_destination
         SDL_RenderCopy(rendu, barTextureVie, NULL, &healthBarRect);
         SDL_RenderCopy(rendu, barTextureVieRestant, NULL, healthBarRectRestant);
-
+*/
         SDL_RenderPresent(rendu);
 
         SDL_Delay(DELAI);

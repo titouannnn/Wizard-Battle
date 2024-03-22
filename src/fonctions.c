@@ -37,7 +37,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     }
 }
 
-void chargerTextures(SDL_Renderer *rendu) {
+void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     temp_surface = SDL_LoadBMP("images/run_front.bmp");
     run_front_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -86,6 +86,10 @@ void chargerTextures(SDL_Renderer *rendu) {
     }
     else printf("Chargement de la tile verte réussi\n");
 
+
+    /*Tableau de texture de tiles*/
+
+    tabInit(tabTile, rendu);
 }
 
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
@@ -119,76 +123,65 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
 }
 
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu) {
-    int direction = 0;
+    int direction = BAS;
 
-    if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0) {
-        pers_destination->y -= VITESSE_JOUEUR;
-        direction = 1;
+    if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
+        pers_destination->y -= VITESSE_JOUEUR_Y;
+        direction = HAUT;
     }
-    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE*1.5)) {
-        pers_destination->y += VITESSE_JOUEUR;
-        direction = 0;
+    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
+        pers_destination->y += VITESSE_JOUEUR_Y;
+        direction = BAS;
     }
-    
-    if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0) {
-        pers_destination->x -= VITESSE_JOUEUR;
-        direction = 3;
-        if(pers_destination->x*3.1> LARGEUR_FOND){
-                    pers_destination->x -= VITESSE_JOUEUR*1.5;
-        }
+    if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0 ) {
+        pers_destination->x -= VITESSE_JOUEUR_X;
+        direction = GAUCHE;
     }
-    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_HEIGHT + DIM_SPRITE*2)) {
-        pers_destination->x += VITESSE_JOUEUR;
-        direction = 2;
-        if(pers_destination->x*3.1> LARGEUR_FOND){
-            pers_destination->x += VITESSE_JOUEUR*1.5;
-        }
+    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
+        pers_destination->x += VITESSE_JOUEUR_X;
+        direction = DROITE;
     }
-    
 
     actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
-    
 }
 
-
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
-    // Facteur d'interpolation
-    float interpolationFactor = 1;  //à baisser pour un déplacement plus smooth
-
-    /*
-    cameraRect->x = (1.0 - interpolationFactor) * cameraRect->x + interpolationFactor * pers_destination->x*2;
-    cameraRect->y = (1.0 - interpolationFactor) * cameraRect->y + interpolationFactor * pers_destination->y*2;
-    */
-
-    cameraRect->x = pers_destination->x*3.1;
-    cameraRect->y = pers_destination->y*3.1;
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5]) {
     
-    
-    // limites de la caméra
+    cameraRect->x = (pers_destination->x*VITESSE_JOUEUR_X)/(VITESSE_JOUEUR_X/2) ;
+    cameraRect->y = pers_destination->y*VITESSE_JOUEUR_Y; 
+
     if (cameraRect->x < 0) {
         cameraRect->x = 0;
     }
     if (cameraRect->y < 0) {
         cameraRect->y = 0;
     }
-    else if (cameraRect->y > HAUTEUR_FOND + CAMERA_HEIGHT  ) {
-        cameraRect->y = HAUTEUR_FOND + CAMERA_HEIGHT ; 
-    }
-    if (cameraRect->x > LARGEUR_FOND) {
-            cameraRect->x = LARGEUR_FOND ; 
-    }
     
+    if (cameraRect->y > HAUTEUR_FOND - CAMERA_HEIGHT) {
+        cameraRect->y = HAUTEUR_FOND - CAMERA_HEIGHT;
+    }
+    if (cameraRect->x > LARGEUR_FOND - CAMERA_WIDTH) {
+        cameraRect->x = LARGEUR_FOND - CAMERA_WIDTH;
+    }
 
-    // Debug 
-    /*
-    printf("Position sprite -> x: %d, y: %d \n", pers_destination->x, pers_destination->y);
-    printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y); */
+    positionJoueur_t position;
+
+    position.haut_droit.posx = cameraRect->x + CAMERA_WIDTH;
+    position.haut_droit.posy = cameraRect->y;
+
+    position.haut_gauche.posx = cameraRect->x + DIM_SPRITE_PLAYER/6;
+    position.haut_gauche.posy = cameraRect->y/2;
 
 
-    // Rendu du fond
-    //SDL_RenderCopy(rendu,fond_tex,cameraRect,NULL);
-    afficherCarte(tab, rendu, tile_verte_tex, cameraRect);
-    //SDL_RenderCopy(rendu, NULL, cameraRect , cameraRect); Cette ligne ne sert à rien en fait 
+    printf("position haut gauche : %d %d\n", position.haut_gauche.posx, position.haut_gauche.posy);
+
+    position.bas_droit.posx = cameraRect->x + CAMERA_WIDTH;
+    position.bas_droit.posy = cameraRect->y + CAMERA_HEIGHT;
+
+    position.bas_gauche.posx = cameraRect->x;
+    position.bas_gauche.posy = cameraRect->y + CAMERA_HEIGHT;
+
+    afficherCarte(tab, rendu, tabTile, cameraRect, position);
 }
 
 SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
@@ -214,3 +207,29 @@ void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentH
     healthBarRect->w = (currentHealth * healthBar->maxWidth) / 100;
 }
 
+/* Fonction d'initialisation du tableau de tiles */
+
+int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu){
+    int i = 0;
+    const char* paths[] = {
+        "images/tile0.png",
+        "images/tile1.png",
+        "images/tile2.png",
+        "images/tile3.png",
+        "images/tile4.png"
+    };
+    for (i = 0; i < 5; i++) {
+        SDL_Surface* temp_surface = IMG_Load(paths[i]);
+        if (!temp_surface) {
+            printf("Erreur de chargement de l'image '%s': %s\n", paths[i], SDL_GetError());
+            return -1;
+        }
+        tab[i] = SDL_CreateTextureFromSurface(rendu, temp_surface);
+        SDL_FreeSurface(temp_surface);
+        if (!tab[i]) {
+            printf("Erreur de création de la texture pour '%s': %s\n", paths[i], SDL_GetError());
+            return -1;
+        }
+    }
+    return 0;
+}
