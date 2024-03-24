@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include "fonctions.h"
 
 SDL_Surface *temp_surface;
@@ -14,6 +11,9 @@ SDL_Texture *run_right_tex;
 SDL_Texture *run_left_tex;
 
 SDL_Texture *fond_tex;
+
+// Texture du menu
+SDL_Texture *menu_tex;
 SDL_Texture *tile_verte_tex;
 
 
@@ -22,6 +22,18 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("Problème d'initialisation de la bibliothèque SDL : %s\n", SDL_GetError());
         return 0;
+    }
+
+    // Initialisation de SDL_ttf
+    if (TTF_Init() != 0) {
+        printf("Erreur lors de l'initialisation de SDL_ttf : %s\n", TTF_GetError());
+        return 1;
+    }
+
+    // Initialisation de la SDL
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("Erreur lors de l'initialisation de la SDL : %s\n", SDL_GetError());
+        return 1;
     }
 
     // Création de la fenêtre et du rendu
@@ -86,6 +98,12 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     }
     else printf("Chargement de la tile verte réussi\n");
 
+    temp_surface = SDL_LoadBMP("images/background2.bmp");
+    menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    if( menu_tex == NULL){
+        printf("Erreur de chargement de l'image du menu: %s\n", SDL_GetError());
+    }
+    else printf("Chargement du fond du menu réussi\n");
 
     /*Tableau de texture de tiles*/
 
@@ -97,6 +115,36 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     SDL_DestroyWindow(fenetre);
     SDL_Quit();
     return 0;
+}
+
+void affichageMenuImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, menu_tex, 0, 0);
+}
+
+int getMousePositionDirection(SDL_Rect *pers_destination){
+    int direction = BAS;
+    int x_joueur = pers_destination->x;
+    int y_joueur = pers_destination->y;
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    int x_relatif, y_relatif;
+    x_relatif = x - x_joueur;
+    y_relatif = -(y - y_joueur);
+
+    if (y_relatif > 0) {
+        if (x_relatif > 0) {
+            direction = DROITE;
+        } else if (x_relatif < 0) {
+            direction = BAS;
+        }
+    } else if (y_relatif < 0) {
+        if (x_relatif > 0) {
+            direction = HAUT;
+        } else if (x_relatif < 0) {
+            direction = GAUCHE;
+        }
+    } 
+    return direction;
 }
 
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
@@ -130,7 +178,6 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
         if(!colision->haut){
             pers_destination->y -= VITESSE_JOUEUR_Y;
-            direction = HAUT;
         }
         else if(colision->haut){
             pers_destination->y += VITESSE_JOUEUR_Y;
@@ -140,7 +187,6 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
         if(!colision->bas){
             pers_destination->y += VITESSE_JOUEUR_Y;
-            direction = BAS;
         }
         else if(colision->bas){
             pers_destination->y -= VITESSE_JOUEUR_Y;
@@ -151,7 +197,6 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0 ) {
         if(!colision->gauche){
             pers_destination->x -= VITESSE_JOUEUR_X;
-            direction = GAUCHE;
         }
         else if(colision->gauche){
             pers_destination->x += VITESSE_JOUEUR_X;
@@ -161,13 +206,14 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
         if(!colision->droite){
             pers_destination->x += VITESSE_JOUEUR_X;
-            direction = DROITE;
         }
         else if(colision->droite){
             pers_destination->x -= VITESSE_JOUEUR_X;
         }
         
     }
+
+    direction = getMousePositionDirection(pers_destination);
 
     actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, direction, pers_source, pers_destination, rendu);
 }
