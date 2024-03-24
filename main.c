@@ -19,6 +19,7 @@ const Couleur_t ROUGE = {255,0,0};
 const Couleur_t VERT = {0,255,0};
 
 int main() {
+    printf("salut\n");
     int isRunning = 1;
     int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
     chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
