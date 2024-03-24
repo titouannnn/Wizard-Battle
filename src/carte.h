@@ -34,12 +34,23 @@ typedef struct{
 
 }positionJoueur_t;
 
+typedef struct{
+    int haut;
+    int bas;
+    int gauche;
+    int droite;
+}colision_t;
+
 
 void chargerCarte(char * fichier, int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
 int afficherCarte(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
     SDL_Texture *tabTex[5],
     SDL_Rect * camera,
-    positionJoueur_t position);
+    positionJoueur_t position,
+    colision_t *colision);
+
+void chargerColisions(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
+void colisions(positionJoueur_t position, colision_t * colision, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
 
 #endif

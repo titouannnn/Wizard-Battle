@@ -21,12 +21,19 @@ const Couleur_t VERT = {0,255,0};
 int main() {
     int isRunning = 1;
     int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
+    chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
     initialisation(&fenetre, &rendu);
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
 
     cameraRect = malloc(sizeof(SDL_realloc));
+    colision_t *colision = malloc(sizeof(colision_t));
+    colision->haut = 0; colision->bas = 0; colision->gauche = 0; colision->droite = 0;
+
+    //initialisation du tableau de colision
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
+    chargerColisions(tile_lvl1, tabColision);
     
     cameraRect->h = CAMERA_HEIGHT;
     cameraRect->w = CAMERA_WIDTH;   
@@ -60,7 +67,7 @@ int main() {
     // Variable temporaire
     int count = 100;
 
-    chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
+    
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -91,9 +98,10 @@ int main() {
         
         SDL_RenderClear(rendu);
 
-        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile);
+        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile, colision, tabColision);
+        
 
-        action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
+        action(clavier, &pers_destination, &pers_source, frame, rendu, colision);
 /*
         // Rendu de la barre de viepers_destination
         SDL_RenderCopy(rendu, barTextureVie, NULL, &healthBarRect);

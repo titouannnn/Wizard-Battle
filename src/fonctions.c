@@ -122,31 +122,58 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
-void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu) {
+void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, SDL_Renderer *rendu, colision_t *colision) {
     int direction = BAS;
 
+    /* C'est ici qu'on vérifie les conditions de colisions*/
+
     if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
-        pers_destination->y -= VITESSE_JOUEUR_Y;
-        direction = HAUT;
+        if(!colision->haut){
+            pers_destination->y -= VITESSE_JOUEUR_Y;
+            direction = HAUT;
+        }
+        else if(colision->haut){
+            pers_destination->y += VITESSE_JOUEUR_Y;
+        }
+        
     }
     if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
-        pers_destination->y += VITESSE_JOUEUR_Y;
-        direction = BAS;
+        if(!colision->bas){
+            pers_destination->y += VITESSE_JOUEUR_Y;
+            direction = BAS;
+        }
+        else if(colision->bas){
+            pers_destination->y -= VITESSE_JOUEUR_Y;
+        }
+    
+
     }
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0 ) {
-        pers_destination->x -= VITESSE_JOUEUR_X;
-        direction = GAUCHE;
+        if(!colision->gauche){
+            pers_destination->x -= VITESSE_JOUEUR_X;
+            direction = GAUCHE;
+        }
+        else if(colision->gauche){
+            pers_destination->x += VITESSE_JOUEUR_X;
+        }
+    
     }
     if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
-        pers_destination->x += VITESSE_JOUEUR_X;
-        direction = DROITE;
+        if(!colision->droite){
+            pers_destination->x += VITESSE_JOUEUR_X;
+            direction = DROITE;
+        }
+        else if(colision->droite){
+            pers_destination->x -= VITESSE_JOUEUR_X;
+        }
+        
     }
 
-    actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
+    actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, direction, pers_source, pers_destination, rendu);
 }
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5]) {
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
     // Facteur d'interpolation linéaire
-    const float interpolationFactor = 0.1f;
+    const float interpolationFactor = 0.1;
 
     // Calcul de la différence entre la position actuelle de la caméra et la position désirée du joueur
     int dx = (pers_destination->x * 2) - cameraRect->x;
@@ -173,24 +200,48 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     // Calcul des positions des coins de la caméra
     positionJoueur_t position;
 
-    /*ici "DIM_SPRITE_PLAYER/7" correspond à l'espace vide de la tile autour du personnage, 
-    on divise par 100  car le personnage se déplace sur 1800 pixels sur l'axe x (et on divise par 120 parcequ'il se déplace sur 2160 pixels sur y)
-    A terme, créer une fonction pour faire ces calculs, et remplacer les divisions par des constantes*/
-    position.case_hg.casx = ((cameraRect->x - DIM_SPRITE_PLAYER/7)/ 100);
-    position.case_hg.casy = ((cameraRect->y - DIM_SPRITE_PLAYER/7 )/ 120);
+    // Fonction pour déterminer la position du joueur
+    initialiser_position_joueur(&position, cameraRect, pers_destination);
+    //printf("case hg : %d %d\n",position.case_hg.casx,position.case_hg.casy);
 
-    position.case_hd.casx = (cameraRect->x + ((6/7)*DIM_SPRITE_PLAYER)) / 100;
-    position.case_hd.casy = ((cameraRect->y - DIM_SPRITE_PLAYER/7 )/ 120);
+    // Affichage de la carte
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision);
+    //On regarde si on a des colisons
+    colisions(position, colision, tabColisions);
+}
 
-    position.case_bg.casx = ((cameraRect->x - DIM_SPRITE_PLAYER/7)/ 100);
-    position.case_bg.casy = (cameraRect->y + ((6/7)*DIM_SPRITE_PLAYER)) / 120;
 
-    position.case_bd.casx = (cameraRect->x + ((6/7)*DIM_SPRITE_PLAYER)) / 100;
-    position.case_bd.casy = (cameraRect->y + ((6/7)*DIM_SPRITE_PLAYER)) / 120;
+void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination) {
+  const int marge_joueur = DIM_SPRITE_PLAYER / 7;
+  const float unite_x = 54.11; //x = 920 / NB_TILE_WIDTH -1
+  const int unite_y = 127.05; //y = 2160 / NB_TILE_HEIGHT -1
 
-    printf("case : %d , %d\n", position.case_hg.casx, position.case_hg.casy);
+    /*Amélioration possible : au lieu de faire avec les 4 coins, faire un cercle (beacoup plus galère)*/
 
-    afficherCarte(tab, rendu, tabTile, cameraRect, position);
+    // Coin supérieur gauche
+    positionJoueur->case_hg.casx = ((pers_destination->x + marge_joueur-2) / unite_x); 
+    positionJoueur->case_hg.casy = ((cameraRect->y + (1/2)*marge_joueur) / unite_y);
+
+    // Coin supérieur droit 
+    positionJoueur->case_hd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
+    positionJoueur->case_hd.casy = ((cameraRect->y + (1/2)*marge_joueur) / unite_y);
+
+    // Coin bas gauche 
+    positionJoueur->case_bg.casx = ((pers_destination->x + marge_joueur-2) / unite_x); 
+    positionJoueur->case_bg.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
+
+    // Coin bas droit 
+    positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
+    positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
+
+    printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
+    printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
+    printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
+    printf("case bd : %d %d\n",positionJoueur->case_bd.casx,positionJoueur->case_bd.casy);
+
+    printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
+    printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
+    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y);
 }
 
 
@@ -220,6 +271,7 @@ void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentH
 /* Fonction d'initialisation du tableau de tiles */
 
 int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu){
+    /* A terme charger une seule image (tile set)*/
     int i = 0;
     const char* paths[] = {
         "images/tile0.png",

@@ -13,7 +13,7 @@
 #define DIM_SPRITE_PLAYER 160
 #define FPS 60
 #define DELAI 1000 / FPS
-#define VITESSE_JOUEUR_X 3
+#define VITESSE_JOUEUR_X 4
 #define VITESSE_JOUEUR_Y 3
 
 #define HAUT 0
@@ -54,8 +54,9 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu);
 void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]);
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu);
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
-void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu);
+void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, SDL_Renderer *rendu, colision_t *colision);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5]);
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH]);
 int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu);
+void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination);
 #endif
