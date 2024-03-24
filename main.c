@@ -6,6 +6,9 @@ SDL_Window *fenetre;
 SDL_Rect pers_source, pers_destination;
 SDL_Rect * cameraRect;
 
+projectiles_t proj1[MAX_PROJ];
+int projN = 0;
+
 int main() {
     int isRunning = 1;
     int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
@@ -32,11 +35,10 @@ int main() {
     cameraRect->x = pers_destination.x;
     cameraRect->y = pers_destination.y;
 
-    /* Création de l'objet Projectile */
-    projectiles_t projectile;
-
     /* Initialisation de l'objet Projectile */
-    projectile_creer(&projectile);
+    for (int i = 0; i < MAX_PROJ; i++){
+        projectile_creer(&proj1[i]);
+    }
 
     entite_t joueur;
     initialiserJoueur(&joueur);
@@ -119,8 +121,11 @@ int main() {
 
                         int mouse_x, mouse_y;
                         SDL_GetMouseState(&mouse_x, &mouse_y);
-                        printf("perso x : %d, perso y : %d\n", pers_destination.x, pers_destination.y);
-                        projectile.init(&projectile, cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, cameraRect);
+                        proj1[projN].init(&proj1[projN], cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, cameraRect);
+                        projN++;
+                        if (projN == MAX_PROJ){
+                            projN = 0;
+                        }
                     }
                     
                     break;
@@ -207,8 +212,10 @@ int main() {
             
 
             action(clavier, &pers_destination, &pers_source, frame, rendu, colision);
-            projectile.update(&projectile, cameraRect);
-            projectile.render(rendu, &projectile);
+            for (int i = 0; i < MAX_PROJ; i++){
+                proj1[i].update(&proj1[i], cameraRect);
+                proj1[i].render(rendu, &proj1[i]);
+            }
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
 
