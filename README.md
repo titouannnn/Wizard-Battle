@@ -1,7 +1,8 @@
 
 # Le Projet
 
-Nous sommes Léo, Nassim et Titouan et voici notre projet, un roguelike du nom de ??? 
+Nous sommes Léo, Nassim et Titouan, étudiants en L2 et voici notre projet, un roguelike.
+Dans ce jeu, vous arriverez dans une salle ou vous devrez vous battre contre de robustes ennemis qui arriveront par vague, et triompher afin de récupérer votre récompense.
 
 
 Voici le lien de notre [matrice GANTT](https://docs.google.com/spreadsheets/d/1Mg9UQ9PWvGM-6L3-nj4hynLEFj7fFx33uv-HTwo-MKw/edit#gid=0).
@@ -18,4 +19,5 @@ sudo chmod +x install.sh
 
 > [!NOTE]
 > Le projet n'est actuellement disponible que sur Linux.
+
 
