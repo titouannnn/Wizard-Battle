@@ -10,7 +10,6 @@ SDL_Window *fenetre;
 
 SDL_Rect pers_source, pers_destination;
 SDL_Rect * cameraRect;
-//SDL_Texture * tabTile;
 
 // Alors j'ai crée un structure couleur vu qu'en C y a pas de tuple pour gérer les couleurs donc si tu dois mapper des couleurs n'hesite pas à utiliser ces constantes au lieu d'écrire (255,0,255)
 const Couleur_t JAUNE = {255,255,0};
@@ -19,26 +18,28 @@ const Couleur_t ROUGE = {255,0,0};
 const Couleur_t VERT = {0,255,0};
 
 int main() {
-    printf("salut\n");
-    int isRunning = 1;
+    int isRunning = 1; int direction = HAUT;
     int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
     chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
     initialisation(&fenetre, &rendu);
+
+    //initialisation du tableau de colision
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
+    chargerColisions(tile_lvl1, tabColision);
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
 
     cameraRect = malloc(sizeof(SDL_realloc));
     colision_t *colision = malloc(sizeof(colision_t));
+    positionJoueur_t position;
     colision->haut = 0; colision->bas = 0; colision->gauche = 0; colision->droite = 0;
-
-    //initialisation du tableau de colision
-    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-    chargerColisions(tile_lvl1, tabColision);
+    colision->position = &position;
     
     cameraRect->h = CAMERA_HEIGHT;
     cameraRect->w = CAMERA_WIDTH;   
 
+    //doivent être des cases vides
     pers_destination.y = 400;
     pers_destination.x = 400;
 
@@ -99,10 +100,15 @@ int main() {
         
         SDL_RenderClear(rendu);
 
-        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile, colision, tabColision);
+        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile, colision, tabColision, position);
         
+        printf("direction main : %d",direction);
+        action(clavier, &pers_destination, colision, &direction);
+        actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, &direction, &pers_source, &pers_destination, rendu);
 
-        action(clavier, &pers_destination, &pers_source, frame, rendu, colision);
+
+
+
 /*
         // Rendu de la barre de viepers_destination
         SDL_RenderCopy(rendu, barTextureVie, NULL, &healthBarRect);

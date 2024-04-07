@@ -5,7 +5,7 @@
 #include "fonctions.h"
 
 #define TILE_WIDTH 160
-#define TILE_HEIGT 160
+#define TILE_HEIGHT 160
 
 #define NB_TILE_WIDTH 18
 #define NB_TILE_HEIGHT 18
@@ -39,6 +39,7 @@ typedef struct{
     int bas;
     int gauche;
     int droite;
+    positionJoueur_t *position;
 }colision_t;
 
 
@@ -48,9 +49,11 @@ int afficherCarte(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT],
     SDL_Texture *tabTex[5],
     SDL_Rect * camera,
     positionJoueur_t position,
-    colision_t *colision);
+    colision_t *colision,
+    SDL_Texture *tilemap);
 
 void chargerColisions(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
 void colisions(positionJoueur_t position, colision_t * colision, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
+int peutDash(positionJoueur_t position,int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int direction);
 
 #endif

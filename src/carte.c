@@ -38,33 +38,168 @@ void chargerColisions(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB
         }
     }
 }
-
+/*
 int afficherCarte(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
     SDL_Texture *tabTex[5],
     SDL_Rect * camera,
     positionJoueur_t position,
-    colision_t *colision)    {
+    colision_t *colision,
+    SDL_Texture *tilemap)    {
+
     int x;
     int y;
     SDL_Rect * dest = malloc(sizeof(SDL_Rect));
-    dest->h = TILE_HEIGT;
-    dest->w = TILE_WIDTH;
+    SDL_Rect * origin = malloc(sizeof(SDL_Rect));
+    dest->h = TILE_HEIGHT; 
+    dest->w = TILE_WIDTH; 
   
+    origin->h = TILE_HEIGHT;
+    origin->w = TILE_WIDTH;
 
+
+    
     for (y=0;y<NB_TILE_WIDTH;y++)
     {
         for (x=0;x<NB_TILE_HEIGHT;x++)
         {
     
             if(tab[y][x] >= 0 && tab[y][x] <= 4){
-                dest->x = x*TILE_HEIGT - camera->x;
-                dest->y = y*TILE_WIDTH - camera->y;
-                SDL_RenderCopy(rendu, tabTex[tab[y][x]], NULL, dest);
+                switch (tab[y][x])
+                {
+                case 0:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*0;
+                    origin->y = 0;
+                    break;
+
+                case 1:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*1 ;
+                    origin->y = 0;
+                    break;
+                case 2:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*2;
+                    origin->y = 0;        
+                    break;
+                
+                case 3:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*3;
+                    origin->y = 0;
+                    break;
+
+                case 4:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*4;
+                    origin->y = 0;
+                    break;
+                
+                default:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*0;
+                    origin->y = 0;
+                    break;
+                }
+                dest->x = x*TILE_HEIGHT - camera->x;
+                dest->y = y*TILE_WIDTH - camera->y;          
+                //SDL_RenderCopy(rendu, tabTex[tab[y][x]], NULL, dest);
+                SDL_RenderCopy(rendu,tilemap,origin,dest);
             }   
 
         }
     }
+    
+    free(dest);
+} */
+
+//test avec tilemap 2
+
+int afficherCarte(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], 
+    SDL_Renderer * rendu,
+    SDL_Texture *tabTex[5],
+    SDL_Rect * camera,
+    positionJoueur_t position,
+    colision_t *colision,
+    SDL_Texture *tilemap)    {
+
+    int x;
+    int y;
+    SDL_Rect * dest = malloc(sizeof(SDL_Rect));
+    SDL_Rect * origin = malloc(sizeof(SDL_Rect));
+    dest->h = TILE_HEIGHT; 
+    dest->w = TILE_WIDTH; 
+  
+    origin->h = TILE_HEIGHT;
+    origin->w = TILE_WIDTH;
+
+
+    
+    for (y=0;y<NB_TILE_WIDTH;y++)
+    {
+        for (x=0;x<NB_TILE_HEIGHT;x++)
+        {
+    
+            if(tab[y][x] >= 0 && tab[y][x] <= 4){
+                switch (tab[y][x])
+                {
+                case 0:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*0;
+                    origin->y = 0;
+                    break;
+
+                case 1:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*1 ;
+                    origin->y = 0;
+                    break;
+                case 2:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*8;
+                    origin->y = TILE_HEIGHT*3;        
+                    break;
+                
+                case 3:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*3;
+                    origin->y = 0;
+                    break;
+
+                case 4:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*4;
+                    origin->y = 0;
+                    break;
+                
+                default:
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH;
+                    origin->x = TILE_HEIGHT*0;
+                    origin->y = 0;
+                    break;
+                }
+                dest->x = x*TILE_HEIGHT - camera->x;
+                dest->y = y*TILE_WIDTH - camera->y;          
+                //SDL_RenderCopy(rendu, tabTex[tab[y][x]], NULL, dest);
+                SDL_RenderCopy(rendu,tilemap,origin,dest);
+            }   
+
+        }
+    }
+    
     free(dest);
 }
 
@@ -97,8 +232,6 @@ void colisions(positionJoueur_t position, colision_t * colision, int tabTilesCol
         else{
             colision->droite = 0;
         }
-    
-    //printf("colision : h %d b %d g %d d %d\n",colision->haut,colision->bas,colision->gauche,colision->droite);
-    
-    
+    //printf("colision : h %d b %d g %d d %d\n",colision->haut,colision->bas,colision->gauche,colision->droite); 
 }
+
