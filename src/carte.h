@@ -43,16 +43,17 @@ typedef struct{
 }colision_t;
 
 
-void chargerCarte(char * fichier, int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
-int afficherCarte(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], 
+void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb);
+int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
     SDL_Texture *tabTex[5],
     SDL_Rect * camera,
     positionJoueur_t position,
     colision_t *colision,
-    SDL_Texture *tilemap);
+    SDL_Texture *tilemap, 
+    int nb);
 
-void chargerColisions(int tab[NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
+void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb);
 void colisions(positionJoueur_t position, colision_t * colision, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);
 int peutDash(positionJoueur_t position,int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int direction);
 

@@ -19,13 +19,20 @@ const Couleur_t VERT = {0,255,0};
 
 int main() {
     int isRunning = 1; int direction = HAUT;
-    int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
-    chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
+    chargerCarte("src/tilemap_grass.txt",tilemap,0);
+    chargerCarte("src/tilemap_structs.txt",tilemap,1);
     initialisation(&fenetre, &rendu);
+
+    /* Maintenant le tableau représentant les tiles à afficher marche de la manière suivante :
+    * C'est un tableau à 3 dimensions, la première dimension est le numéro de la couche (0 pour le sol, 1 pour les structures, etc...)
+    * Et ensuite c'est un tableau classique à deux dimensions qui représente les tiles à afficher (x et y)
+    * Pour les colisions ça reste un tableau à deux dimensions classique, qu'on charge à partir d'une des couches du tableau de tiles
+    */
 
     //initialisation du tableau de colision
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-    chargerColisions(tile_lvl1, tabColision);
+    chargerColisions(tilemap, tabColision, 0);
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
@@ -100,9 +107,8 @@ int main() {
         
         SDL_RenderClear(rendu);
 
-        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile, colision, tabColision, position);
+        updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
         
-        printf("direction main : %d",direction);
         action(clavier, &pers_destination, colision, &direction);
         actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, &direction, &pers_source, &pers_destination, rendu);
 

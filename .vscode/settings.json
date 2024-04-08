@@ -57,6 +57,9 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "sdl_image.h": "c"
+    "sdl_image.h": "c",
+    "fonctions.h": "c",
+    "sdl.h": "c",
+    "stdio.h": "c"
   }
 }

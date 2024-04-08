@@ -15,8 +15,10 @@ SDL_Texture *run_left_tex;
 
 SDL_Texture *fond_tex;
 SDL_Texture *tile_verte_tex;
+SDL_Texture *tilemap_grass_tex;
+SDL_Texture *tilemap_structures_tex;
+//a supprimer
 SDL_Texture *tilemap;
-SDL_Texture *tilemap2;
 
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
@@ -96,13 +98,22 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     }
     else{ printf("Chargement de la tilemap réussi\n"); }
 
-    temp_surface = IMG_Load("images/tilemap2.png");
-    tilemap2 = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    temp_surface = IMG_Load("images/tilemap_grass.png");
+    tilemap_grass_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
     SDL_FreeSurface(temp_surface);
-    if(tilemap2 == NULL){
+    if(tilemap_grass_tex == NULL){
         printf("chargement de tilemap2 échoué");
     }
     else printf("chargement de tilemap2 reussi \n");
+
+    //chargement de la seconde tilemap
+    temp_surface = IMG_Load("images/tilemap_structures.png");
+    tilemap_structures_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap_structures_tex == NULL){
+        printf("chargement de tilemap2_80 échoué");
+    }
+    else printf("chargement de tilemap2_80 reussi \n");
 
 
     /*Tableau de texture de tiles*/
@@ -143,7 +154,6 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction) {
 
     /* C'est ici qu'on vérifie les conditions de colisions*/
-    printf("direction %d : \n",*direction);
     if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
         if(!colision->haut){
             pers_destination->y -= VITESSE_JOUEUR_Y;
@@ -188,7 +198,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colisi
 }
 
 
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
     // Facteur d'interpolation linéaire
     const float interpolationFactor = 0.1;
 
@@ -219,11 +229,12 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     initialiser_position_joueur(&position, cameraRect, pers_destination);
     //printf("case hg : %d %d\n",position.case_hg.casx,position.case_hg.casy);
 
-    // Affichage de la carte
-    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap);
-    //test avec tilemap 2
-    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap2);
-    //On regarde si on a des colisons
+    //Affichage de la première couche (herbe)
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
+
+    // Affichage de la seconde couche (structures)
+    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+
     colisions(position, colision, tabColisions);
 }
 
