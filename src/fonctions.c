@@ -5,8 +5,10 @@ SDL_Surface *temp_surface;
 int vrai = 1;
 int direction = 0;
 
+/*
 SDL_Texture *run_front_tex;
 SDL_Texture *run_back_tex;
+*/
 SDL_Texture *run_right_tex;
 SDL_Texture *run_left_tex;
 
@@ -37,7 +39,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     }
 
     // Création de la fenêtre et du rendu
-    *fenetre = SDL_CreateWindow("test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWS_WIDTH, WINDOWS_HEIGHT, SDL_WINDOW_OPENGL);
+    *fenetre = SDL_CreateWindow("Roguelike", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWS_WIDTH, WINDOWS_HEIGHT, SDL_WINDOW_OPENGL);
     *rendu = SDL_CreateRenderer(*fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(*rendu, 255, 255, 255, 255);
 
@@ -50,6 +52,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
 }
 
 void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
+    /*
     temp_surface = SDL_LoadBMP("images/run_front.bmp");
     run_front_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -66,21 +69,23 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     }
     else printf("Chargement de l'image 'run_back' réussi\n");
 
-    temp_surface = SDL_LoadBMP("images/run_right.bmp");
+    */
+
+    temp_surface = SDL_LoadBMP("images/wizard_run_right.bmp");
     run_right_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
     if(run_right_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_right': %s\n", SDL_GetError());
+        printf("Erreur de chargement de l'image 'wizard_run_right': %s\n", SDL_GetError());
     }
-    else printf("Chargement de l'image 'run_right' réussi\n");
+    else printf("Chargement de l'image 'wizard_run_right' réussi\n");
 
-    temp_surface = SDL_LoadBMP("images/run_left.bmp");
+    temp_surface = SDL_LoadBMP("images/wizard_run_left.bmp");
     run_left_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
     if(run_left_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_left': %s\n", SDL_GetError());
+        printf("Erreur de chargement de l'image 'wizard_run_left': %s\n", SDL_GetError());
     }
-    else printf("Chargement de l'image 'run_left' réussi\n");
+    else printf("Chargement de l'image 'wizard_run_left' réussi\n");
 
     temp_surface = IMG_Load("images/backround.png");
     fond_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
@@ -122,7 +127,7 @@ void affichageMenuImage(SDL_Renderer *rendu){
 }
 
 int getMousePositionDirection(SDL_Rect *pers_destination){
-    int direction = BAS;
+    int direction = GAUCHE;
     int x_joueur = pers_destination->x;
     int y_joueur = pers_destination->y;
     int x, y;
@@ -131,29 +136,18 @@ int getMousePositionDirection(SDL_Rect *pers_destination){
     x_relatif = x - x_joueur;
     y_relatif = -(y - y_joueur);
 
-    if (y_relatif > 0) {
-        if (x_relatif > 0) {
-            direction = DROITE;
-        } else if (x_relatif < 0) {
-            direction = BAS;
-        }
-    } else if (y_relatif < 0) {
-        if (x_relatif > 0) {
-            direction = HAUT;
-        } else if (x_relatif < 0) {
-            direction = GAUCHE;
-        }
-    } 
+    
+    if (x_relatif > 0) {
+        direction = DROITE;
+    } else if (x_relatif < 0) {
+        direction = GAUCHE;
+    }
     return direction;
 }
 
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
-    if (direction == HAUT) { 
-        texSprite = run_front_tex;
-    } else if (direction == BAS) { 
-        texSprite = run_back_tex;
-    } else if (direction == DROITE) { 
+    if (direction == DROITE) { 
         texSprite = run_right_tex;
     } else if (direction == GAUCHE) { 
         texSprite = run_left_tex;
@@ -163,14 +157,15 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     src->y = 0;
     src->w = largeur;
     src->h = hauteur;
-    dst->w = TAILLE_SPRITE_PLAYER;
-    dst->h = TAILLE_SPRITE_PLAYER;
+    dst->w = DIM_SPRITE_PLAYER_X;
+    dst->h = DIM_SPRITE_PLAYER_Y;
 
     // On affiche les sprites  :
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, SDL_Renderer *rendu, colision_t *colision) {
+    int direction_souris = BAS;
     int direction = BAS;
 
     /* C'est ici qu'on vérifie les conditions de colisions*/
@@ -184,7 +179,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
         }
         
     }
-    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
+    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER_X)) {
         if(!colision->bas){
             pers_destination->y += VITESSE_JOUEUR_Y;
         }
@@ -203,7 +198,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
         }
     
     }
-    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
+    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER_X)) {
         if(!colision->droite){
             pers_destination->x += VITESSE_JOUEUR_X;
         }
@@ -215,7 +210,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
 
     direction = getMousePositionDirection(pers_destination);
 
-    actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, direction, pers_source, pers_destination, rendu);
+    actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, direction, pers_source, pers_destination, rendu);
 }
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
     // Facteur d'interpolation linéaire
@@ -258,7 +253,7 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
 
 
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination) {
-  const int marge_joueur = DIM_SPRITE_PLAYER / 7;
+  const int marge_joueur = DIM_SPRITE_PLAYER_X / 7;
   const float unite_x = 54.11; //x = 920 / NB_TILE_WIDTH -1
   const int unite_y = 127.05; //y = 2160 / NB_TILE_HEIGHT -1
 
@@ -279,7 +274,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     // Coin bas droit 
     positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
     positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
-
+    /*
     printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
     printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
     printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
@@ -288,6 +283,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
     printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
     printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y);
+    */
 }
 
 
