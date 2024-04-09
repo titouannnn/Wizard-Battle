@@ -15,6 +15,10 @@ SDL_Texture *fond_tex;
 // Texture du menu
 SDL_Texture *menu_tex;
 SDL_Texture *tile_verte_tex;
+SDL_Texture *tilemap_grass_tex;
+SDL_Texture *tilemap_structures_tex;
+//a supprimer
+SDL_Texture *tilemap;
 
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
@@ -98,12 +102,31 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     }
     else printf("Chargement de la tile verte réussi\n");
 
-    temp_surface = SDL_LoadBMP("images/background2.bmp");
-    menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    if( menu_tex == NULL){
-        printf("Erreur de chargement de l'image du menu: %s\n", SDL_GetError());
+    temp_surface = IMG_Load("images/tilemap.png");
+    tilemap = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap == NULL){
+        printf("chargement de la tilemap échoué \n");
     }
-    else printf("Chargement du fond du menu réussi\n");
+    else{ printf("Chargement de la tilemap réussi\n"); }
+
+    temp_surface = IMG_Load("images/tilemap_grass.png");
+    tilemap_grass_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap_grass_tex == NULL){
+        printf("chargement de tilemap2 échoué");
+    }
+    else printf("chargement de tilemap2 reussi \n");
+
+    //chargement de la seconde tilemap
+    temp_surface = IMG_Load("images/tilemap_structures.png");
+    tilemap_structures_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap_structures_tex == NULL){
+        printf("chargement de tilemap2_80 échoué");
+    }
+    else printf("chargement de tilemap2_80 reussi \n");
+
 
     /*Tableau de texture de tiles*/
 
@@ -147,15 +170,15 @@ int getMousePositionDirection(SDL_Rect *pers_destination){
     return direction;
 }
 
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
+void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
-    if (direction == HAUT) { 
+    if (*direction == HAUT) { 
         texSprite = run_front_tex;
-    } else if (direction == BAS) { 
+    } else if (*direction == BAS) { 
         texSprite = run_back_tex;
-    } else if (direction == DROITE) { 
+    } else if (*direction == DROITE) { 
         texSprite = run_right_tex;
-    } else if (direction == GAUCHE) { 
+    } else if (*direction == GAUCHE) { 
         texSprite = run_left_tex;
     }
 
@@ -170,14 +193,13 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
-void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, SDL_Renderer *rendu, colision_t *colision) {
-    int direction = BAS;
+void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction) {
 
     /* C'est ici qu'on vérifie les conditions de colisions*/
-
     if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
         if(!colision->haut){
             pers_destination->y -= VITESSE_JOUEUR_Y;
+            *direction = BAS;
         }
         else if(colision->haut){
             pers_destination->y += VITESSE_JOUEUR_Y;
@@ -187,6 +209,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
         if(!colision->bas){
             pers_destination->y += VITESSE_JOUEUR_Y;
+            *direction = HAUT;
         }
         else if(colision->bas){
             pers_destination->y -= VITESSE_JOUEUR_Y;
@@ -197,6 +220,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0 ) {
         if(!colision->gauche){
             pers_destination->x -= VITESSE_JOUEUR_X;
+            *direction = GAUCHE;
         }
         else if(colision->gauche){
             pers_destination->x += VITESSE_JOUEUR_X;
@@ -206,18 +230,17 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
     if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
         if(!colision->droite){
             pers_destination->x += VITESSE_JOUEUR_X;
+            *direction = DROITE;
         }
         else if(colision->droite){
             pers_destination->x -= VITESSE_JOUEUR_X;
         }
         
     }
-
-    direction = getMousePositionDirection(pers_destination);
-
-    actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, direction, pers_source, pers_destination, rendu);
 }
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
+
+
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
     // Facteur d'interpolation linéaire
     const float interpolationFactor = 0.1;
 
@@ -242,17 +265,18 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     if (cameraRect->x > LARGEUR_FOND - CAMERA_WIDTH) {
         cameraRect->x = LARGEUR_FOND - CAMERA_WIDTH;
     }
-
-    // Calcul des positions des coins de la caméra
-    positionJoueur_t position;
+    
 
     // Fonction pour déterminer la position du joueur
     initialiser_position_joueur(&position, cameraRect, pers_destination);
     //printf("case hg : %d %d\n",position.case_hg.casx,position.case_hg.casy);
 
-    // Affichage de la carte
-    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision);
-    //On regarde si on a des colisons
+    //Affichage de la première couche (herbe)
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
+
+    // Affichage de la seconde couche (structures)
+    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+
     colisions(position, colision, tabColisions);
 }
 
@@ -280,6 +304,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
     positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
 
+    /*
     printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
     printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
     printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
@@ -287,7 +312,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
 
     printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
     printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
-    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y);
+    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); */
 }
 
 
