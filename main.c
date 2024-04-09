@@ -18,18 +18,37 @@ const Couleur_t ROUGE = {255,0,0};
 const Couleur_t VERT = {0,255,0};
 
 int main() {
-    int isRunning = 1;
-    int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
+    int isRunning = 1; int direction = HAUT;
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
+    chargerCarte("src/tilemap_grass.txt",tilemap,0);
+    chargerCarte("src/tilemap_structs.txt",tilemap,1);
     initialisation(&fenetre, &rendu);
-    chargerTextures(rendu);
+
+    /* Maintenant le tableau représentant les tiles à afficher marche de la manière suivante :
+    * C'est un tableau à 3 dimensions, la première dimension est le numéro de la couche (0 pour le sol, 1 pour les structures, etc...)
+    * Et ensuite c'est un tableau classique à deux dimensions qui représente les tiles à afficher (x et y)
+    * Pour les colisions ça reste un tableau à deux dimensions classique, qu'on charge à partir d'une des couches du tableau de tiles
+    */
+
+    //initialisation du tableau de colision
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
+    chargerColisions(tilemap, tabColision, 0);
+
+    SDL_Texture *tabTile[5];
+    chargerTextures(rendu, tabTile);
 
     cameraRect = malloc(sizeof(SDL_realloc));
+    colision_t *colision = malloc(sizeof(colision_t));
+    positionJoueur_t position;
+    colision->haut = 0; colision->bas = 0; colision->gauche = 0; colision->droite = 0;
+    colision->position = &position;
     
     cameraRect->h = CAMERA_HEIGHT;
     cameraRect->w = CAMERA_WIDTH;   
 
-    pers_destination.y = WINDOWS_HEIGHT/ 2 - TAILLE_SPRITE_PLAYER / 2;
-    pers_destination.x = WINDOWS_WIDTH / 2 - TAILLE_SPRITE_PLAYER / 2;
+    //doivent être des cases vides
+    pers_destination.y = 400;
+    pers_destination.x = 400;
 
     cameraRect->x = pers_destination.x;
     cameraRect->y = pers_destination.y;
@@ -57,7 +76,7 @@ int main() {
     // Variable temporaire
     int count = 100;
 
-    chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
+    
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -82,21 +101,25 @@ int main() {
         }
 
         
-
         // Récupération de l'état du clavier : 
         const Uint8 *clavier = SDL_GetKeyboardState(NULL);
         
         
         SDL_RenderClear(rendu);
 
-        updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1);
+        updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
+        
+        action(clavier, &pers_destination, colision, &direction);
+        actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, &direction, &pers_source, &pers_destination, rendu);
 
-        action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
 
+
+
+/*
         // Rendu de la barre de viepers_destination
         SDL_RenderCopy(rendu, barTextureVie, NULL, &healthBarRect);
         SDL_RenderCopy(rendu, barTextureVieRestant, NULL, healthBarRectRestant);
-
+*/
         SDL_RenderPresent(rendu);
 
         SDL_Delay(DELAI);

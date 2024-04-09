@@ -15,6 +15,10 @@ SDL_Texture *run_left_tex;
 
 SDL_Texture *fond_tex;
 SDL_Texture *tile_verte_tex;
+SDL_Texture *tilemap_grass_tex;
+SDL_Texture *tilemap_structures_tex;
+//a supprimer
+SDL_Texture *tilemap;
 
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
@@ -37,7 +41,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     }
 }
 
-void chargerTextures(SDL_Renderer *rendu) {
+void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     temp_surface = SDL_LoadBMP("images/run_front.bmp");
     run_front_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -86,6 +90,35 @@ void chargerTextures(SDL_Renderer *rendu) {
     }
     else printf("Chargement de la tile verte réussi\n");
 
+    temp_surface = IMG_Load("images/tilemap.png");
+    tilemap = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap == NULL){
+        printf("chargement de la tilemap échoué \n");
+    }
+    else{ printf("Chargement de la tilemap réussi\n"); }
+
+    temp_surface = IMG_Load("images/tilemap_grass.png");
+    tilemap_grass_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap_grass_tex == NULL){
+        printf("chargement de tilemap2 échoué");
+    }
+    else printf("chargement de tilemap2 reussi \n");
+
+    //chargement de la seconde tilemap
+    temp_surface = IMG_Load("images/tilemap_structures.png");
+    tilemap_structures_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(tilemap_structures_tex == NULL){
+        printf("chargement de tilemap2_80 échoué");
+    }
+    else printf("chargement de tilemap2_80 reussi \n");
+
+
+    /*Tableau de texture de tiles*/
+
+    tabInit(tabTile, rendu);
 }
 
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
@@ -95,15 +128,15 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     return 0;
 }
 
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
+void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
-    if (direction == HAUT) { 
+    if (*direction == HAUT) { 
         texSprite = run_front_tex;
-    } else if (direction == BAS) { 
+    } else if (*direction == BAS) { 
         texSprite = run_back_tex;
-    } else if (direction == DROITE) { 
+    } else if (*direction == DROITE) { 
         texSprite = run_right_tex;
-    } else if (direction == GAUCHE) { 
+    } else if (*direction == GAUCHE) { 
         texSprite = run_left_tex;
     }
 
@@ -118,78 +151,128 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
-void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu) {
-    int direction = 0;
+void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction) {
 
-    if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0) {
-        pers_destination->y -= VITESSE_JOUEUR;
-        direction = 1;
-    }
-    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE*1.5)) {
-        pers_destination->y += VITESSE_JOUEUR;
-        direction = 0;
-    }
-    
-    if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0) {
-        pers_destination->x -= VITESSE_JOUEUR;
-        direction = 3;
-        if(pers_destination->x*3.1> LARGEUR_FOND){
-                    pers_destination->x -= VITESSE_JOUEUR*1.5;
+    /* C'est ici qu'on vérifie les conditions de colisions*/
+    if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0 ) {
+        if(!colision->haut){
+            pers_destination->y -= VITESSE_JOUEUR_Y;
+            *direction = BAS;
         }
-    }
-    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_HEIGHT + DIM_SPRITE*2)) {
-        pers_destination->x += VITESSE_JOUEUR;
-        direction = 2;
-        if(pers_destination->x*3.1> LARGEUR_FOND){
-            pers_destination->x += VITESSE_JOUEUR*1.5;
+        else if(colision->haut){
+            pers_destination->y += VITESSE_JOUEUR_Y;
         }
+        
     }
+    if (clavier[SDL_SCANCODE_S] && (pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE_PLAYER)) {
+        if(!colision->bas){
+            pers_destination->y += VITESSE_JOUEUR_Y;
+            *direction = HAUT;
+        }
+        else if(colision->bas){
+            pers_destination->y -= VITESSE_JOUEUR_Y;
+        }
     
 
-    actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
+    }
+    if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0 ) {
+        if(!colision->gauche){
+            pers_destination->x -= VITESSE_JOUEUR_X;
+            *direction = GAUCHE;
+        }
+        else if(colision->gauche){
+            pers_destination->x += VITESSE_JOUEUR_X;
+        }
     
+    }
+    if (clavier[SDL_SCANCODE_D] && (pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE_PLAYER)) {
+        if(!colision->droite){
+            pers_destination->x += VITESSE_JOUEUR_X;
+            *direction = DROITE;
+        }
+        else if(colision->droite){
+            pers_destination->x -= VITESSE_JOUEUR_X;
+        }
+        
+    }
 }
 
 
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH]) {
-    // Facteur d'interpolation
-    float interpolationFactor = 1;  //à baisser pour un déplacement plus smooth
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
+    // Facteur d'interpolation linéaire
+    const float interpolationFactor = 0.1;
 
-    /*
-    cameraRect->x = (1.0 - interpolationFactor) * cameraRect->x + interpolationFactor * pers_destination->x*2;
-    cameraRect->y = (1.0 - interpolationFactor) * cameraRect->y + interpolationFactor * pers_destination->y*2;
-    */
+    // Calcul de la différence entre la position actuelle de la caméra et la position désirée du joueur
+    int dx = (pers_destination->x * 2) - cameraRect->x;
+    int dy = (pers_destination->y * 4) - cameraRect->y;
 
-    cameraRect->x = pers_destination->x*3.1;
-    cameraRect->y = pers_destination->y*3.1;
-    
-    
-    // limites de la caméra
+    // Application de l'interpolation linéaire
+    cameraRect->x += (int)(dx * interpolationFactor);
+    cameraRect->y += (int)(dy * interpolationFactor);
+
+    // Correction des limites de la caméra
     if (cameraRect->x < 0) {
         cameraRect->x = 0;
     }
     if (cameraRect->y < 0) {
         cameraRect->y = 0;
     }
-    else if (cameraRect->y > HAUTEUR_FOND + CAMERA_HEIGHT  ) {
-        cameraRect->y = HAUTEUR_FOND + CAMERA_HEIGHT ; 
+    if (cameraRect->y > HAUTEUR_FOND - CAMERA_HEIGHT) {
+        cameraRect->y = HAUTEUR_FOND - CAMERA_HEIGHT;
     }
-    if (cameraRect->x > LARGEUR_FOND) {
-            cameraRect->x = LARGEUR_FOND ; 
+    if (cameraRect->x > LARGEUR_FOND - CAMERA_WIDTH) {
+        cameraRect->x = LARGEUR_FOND - CAMERA_WIDTH;
     }
     
 
-    // Debug 
-    /*
-    printf("Position sprite -> x: %d, y: %d \n", pers_destination->x, pers_destination->y);
-    printf("Camera x: %d, y: %d \n", cameraRect->x, cameraRect->y); */
+    // Fonction pour déterminer la position du joueur
+    initialiser_position_joueur(&position, cameraRect, pers_destination);
+    //printf("case hg : %d %d\n",position.case_hg.casx,position.case_hg.casy);
 
+    //Affichage de la première couche (herbe)
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
 
-    // Rendu du fond
-    //SDL_RenderCopy(rendu,fond_tex,cameraRect,NULL);
-    afficherCarte(tab, rendu, tile_verte_tex, cameraRect);
-    //SDL_RenderCopy(rendu, NULL, cameraRect , cameraRect); Cette ligne ne sert à rien en fait 
+    // Affichage de la seconde couche (structures)
+    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+
+    colisions(position, colision, tabColisions);
 }
+
+
+void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination) {
+  const int marge_joueur = DIM_SPRITE_PLAYER / 7;
+  const float unite_x = 54.11; //x = 920 / NB_TILE_WIDTH -1
+  const int unite_y = 127.05; //y = 2160 / NB_TILE_HEIGHT -1
+
+    /*Amélioration possible : au lieu de faire avec les 4 coins, faire un cercle (beacoup plus galère)*/
+
+    // Coin supérieur gauche
+    positionJoueur->case_hg.casx = ((pers_destination->x + marge_joueur-2) / unite_x); 
+    positionJoueur->case_hg.casy = ((cameraRect->y + (1/2)*marge_joueur) / unite_y);
+
+    // Coin supérieur droit 
+    positionJoueur->case_hd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
+    positionJoueur->case_hd.casy = ((cameraRect->y + (1/2)*marge_joueur) / unite_y);
+
+    // Coin bas gauche 
+    positionJoueur->case_bg.casx = ((pers_destination->x + marge_joueur-2) / unite_x); 
+    positionJoueur->case_bg.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
+
+    // Coin bas droit 
+    positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
+    positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
+
+    /*
+    printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
+    printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
+    printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
+    printf("case bd : %d %d\n",positionJoueur->case_bd.casx,positionJoueur->case_bd.casy);
+
+    printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
+    printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
+    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); */
+}
+
 
 SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
     SDL_Surface *barSurface = SDL_CreateRGBSurface(0, HEALTH_BAR_WIDTH, HEALTH_BAR_HEIGHT, 32, 0, 0, 0, 0);
@@ -214,3 +297,30 @@ void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentH
     healthBarRect->w = (currentHealth * healthBar->maxWidth) / 100;
 }
 
+/* Fonction d'initialisation du tableau de tiles */
+
+int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu){
+    /* A terme charger une seule image (tile set)*/
+    int i = 0;
+    const char* paths[] = {
+        "images/tile0.png",
+        "images/tile1.png",
+        "images/tile2.png",
+        "images/tile3.png",
+        "images/tile4.png"
+    };
+    for (i = 0; i < 5; i++) {
+        SDL_Surface* temp_surface = IMG_Load(paths[i]);
+        if (!temp_surface) {
+            printf("Erreur de chargement de l'image '%s': %s\n", paths[i], SDL_GetError());
+            return -1;
+        }
+        tab[i] = SDL_CreateTextureFromSurface(rendu, temp_surface);
+        SDL_FreeSurface(temp_surface);
+        if (!tab[i]) {
+            printf("Erreur de création de la texture pour '%s': %s\n", paths[i], SDL_GetError());
+            return -1;
+        }
+    }
+    return 0;
+}
