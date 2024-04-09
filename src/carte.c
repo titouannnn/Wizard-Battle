@@ -29,7 +29,7 @@ void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision
     for(int y = 0; y < NB_TILE_WIDTH; y++){
         for(int x = 0; x < NB_TILE_HEIGHT; x++){
             //ici on consiède que les tiles de colisions sont les tiles 0 et 2
-            if(tab[nb][y][x] == 2 || tab[nb][y][x] == 1){
+            if(tab[nb][y][x] == 2 || tab[nb][y][x] == 1 || tab[nb][y][x] == 3 || tab[nb][y][x] == 4 ){
                 tabColision[y][x] = 1;
             }
             else{
@@ -94,6 +94,8 @@ int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT],
                 * index des structures
                 * 1 : banc (face)
                 * 2 : tonneau
+                * 3 : Rocher
+                * 4 : pillier 
                 */
                 val = tab[nb][y][x];
                 if(val == 1)
@@ -126,6 +128,37 @@ int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT],
                     dest->y = y * TILE_WIDTH - camera->y;
                     SDL_RenderCopy(rendu, tilemap, origin, dest);
                 }
+                else if(val == 3)
+                {
+                    origin->h = TILE_HEIGHT/1.5;
+                    origin->w = TILE_WIDTH;
+
+                    origin->y = 850;
+                    origin->x = 0;
+
+                    dest->h = TILE_HEIGHT;
+                    dest->w = TILE_WIDTH*1.5;
+
+                    dest->x = x * TILE_HEIGHT - camera->x;
+                    dest->y = y * TILE_WIDTH - camera->y;
+                    SDL_RenderCopy(rendu, tilemap, origin, dest);
+                }
+                else if(val == 4)
+                {
+                    origin->h = TILE_HEIGHT;
+                    origin->w = TILE_WIDTH/2;
+
+                    origin->y = 10;
+                    origin->x = 450;
+
+                    dest->h = TILE_HEIGHT*2;
+                    dest->w = TILE_WIDTH;
+
+                    dest->x = x * TILE_HEIGHT - camera->x + TILE_WIDTH/6;
+                    dest->y = y * TILE_WIDTH - camera->y;
+                    SDL_RenderCopy(rendu, tilemap, origin, dest);
+                }
+                
 
             }
 
