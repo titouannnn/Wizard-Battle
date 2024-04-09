@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include "fonctions.h"
 
 SDL_Surface *temp_surface;
@@ -14,6 +11,9 @@ SDL_Texture *run_right_tex;
 SDL_Texture *run_left_tex;
 
 SDL_Texture *fond_tex;
+
+// Texture du menu
+SDL_Texture *menu_tex;
 SDL_Texture *tile_verte_tex;
 SDL_Texture *tilemap_grass_tex;
 SDL_Texture *tilemap_structures_tex;
@@ -26,6 +26,18 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("Problème d'initialisation de la bibliothèque SDL : %s\n", SDL_GetError());
         return 0;
+    }
+
+    // Initialisation de SDL_ttf
+    if (TTF_Init() != 0) {
+        printf("Erreur lors de l'initialisation de SDL_ttf : %s\n", TTF_GetError());
+        return 1;
+    }
+
+    // Initialisation de la SDL
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("Erreur lors de l'initialisation de la SDL : %s\n", SDL_GetError());
+        return 1;
     }
 
     // Création de la fenêtre et du rendu
@@ -126,6 +138,36 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     SDL_DestroyWindow(fenetre);
     SDL_Quit();
     return 0;
+}
+
+void affichageMenuImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, menu_tex, 0, 0);
+}
+
+int getMousePositionDirection(SDL_Rect *pers_destination){
+    int direction = BAS;
+    int x_joueur = pers_destination->x;
+    int y_joueur = pers_destination->y;
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    int x_relatif, y_relatif;
+    x_relatif = x - x_joueur;
+    y_relatif = -(y - y_joueur);
+
+    if (y_relatif > 0) {
+        if (x_relatif > 0) {
+            direction = DROITE;
+        } else if (x_relatif < 0) {
+            direction = BAS;
+        }
+    } else if (y_relatif < 0) {
+        if (x_relatif > 0) {
+            direction = HAUT;
+        } else if (x_relatif < 0) {
+            direction = GAUCHE;
+        }
+    } 
+    return direction;
 }
 
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
@@ -233,7 +275,7 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
 
     // Affichage de la seconde couche (structures)
-    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
 
     colisions(position, colision, tabColisions);
 }

@@ -60,6 +60,8 @@
     "sdl_image.h": "c",
     "fonctions.h": "c",
     "sdl.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdlib.h": "c",
+    "projectile.h": "c"
   }
 }

@@ -3,6 +3,13 @@
 
 #include "carte.h"
 
+#include <stdio.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <stdbool.h>
+
+
 #define WINDOWS_WIDTH 1080
 #define WINDOWS_HEIGHT 720
 
@@ -13,8 +20,8 @@
 #define DIM_SPRITE_PLAYER 160
 #define FPS 60
 #define DELAI 1000 / FPS
-#define VITESSE_JOUEUR_X 4
-#define VITESSE_JOUEUR_Y 3
+#define VITESSE_JOUEUR_X 3
+#define VITESSE_JOUEUR_Y 2
 
 #define HAUT 0
 #define BAS 1
@@ -59,4 +66,7 @@ void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position);
 int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu);
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination);
+void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
+int getMousePositionDirection(SDL_Rect *pers_destination);
+void affichageMenuImage(SDL_Renderer *rendu);
 #endif
