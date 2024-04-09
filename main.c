@@ -142,20 +142,23 @@ int main() {
             drawButton(rendu, jouerButton);
             drawButton(rendu, difficulteButton);
 
-            if(mouseOnButton(jouerButton)){
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+
+            if(mouseOnButton(jouerButton)){   
                 /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 0, 255, 100);
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
                 SDL_RenderFillRect(rendu, &jouerButton.rect);
             }
 
             if(mouseOnButton(difficileButton)){
                 /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 0, 255, 255, 100);
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
                 SDL_RenderFillRect(rendu, &difficileButton.rect);
             }
 
             SDL_RenderPresent(rendu);
-
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
             
         }
 
@@ -163,13 +166,34 @@ int main() {
             SDL_RenderClear(rendu);
             affichageMenuImage(rendu);
 
-            // Dessiner les boutons
             drawButton(rendu, facileButton);
             drawButton(rendu, normalButton);
             drawButton(rendu, difficileButton);
             drawButton(rendu, accueilButton);
 
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+            // Dessiner les boutons
+            if(mouseOnButton(facileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &facileButton.rect);
+            }
+            if(mouseOnButton(normalButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &normalButton.rect);
+            }
+            if(mouseOnButton(accueilButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &accueilButton.rect);
+            }
+            if(mouseOnButton(difficileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &difficileButton.rect);
+            }
+            
+
             SDL_RenderPresent(rendu);
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
         }
 
         

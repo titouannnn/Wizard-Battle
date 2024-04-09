@@ -8,8 +8,8 @@ void projectile_creer(projectiles_t *projectile){
 }
 
 void init(projectiles_t *projectile, float px, float py, float mx, float my, SDL_Rect *cameraRect){
-    projectile->x = px ;
-    projectile->y = py ;
+    projectile->x = px + 50;
+    projectile->y = py + 50;
 
     int d1 = mx + cameraRect->x - px;
     int d2 = my + cameraRect->y - py;
@@ -20,7 +20,7 @@ void init(projectiles_t *projectile, float px, float py, float mx, float my, SDL
     projectile->w = 50;
     projectile->h = 50;
     projectile->collision = 0;
-    projectile->vitesse = 5;
+    projectile->vitesse = 10;
 }
 
 int verifCollision(projectiles_t *projectile){
@@ -39,9 +39,21 @@ void update(projectiles_t *projectile, SDL_Rect *cameraRect){
     projectile->rect.h = projectile->h;
 }
 
+void renderCircle(SDL_Renderer *renderer, int centerX, int centerY, int radius) {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Couleur bleue
+    for (int dy = -radius; dy <= radius; dy++) {
+        for (int dx = -radius; dx <= radius; dx++) {
+            if (dx * dx + dy * dy <= radius * radius) {
+                SDL_RenderDrawPoint(renderer, centerX + dx, centerY + dy);
+            }
+        }
+    }
+}
+
 void render(SDL_Renderer *rendu, projectiles_t *projectile){
-    SDL_SetRenderDrawColor(rendu, 0, 0, 255, 255);
-    SDL_RenderFillRect(rendu, &projectile->rect);
+    renderCircle(rendu, projectile->rect.x + projectile->rect.w / 2, 
+                            projectile->rect.y + projectile->rect.h / 2, 
+                            projectile->rect.w / 2);
 }
 
 
