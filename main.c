@@ -26,7 +26,6 @@ void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *
 }
 
 int main() {
-
     projectiles_t projJoueur[MAX_PROJ];
     projectiles_t projEnnemi[MAX_PROJ];
 
@@ -38,11 +37,21 @@ int main() {
         projectile_creer(&projJoueur[i]);
         projectile_creer(&projEnnemi[i]);
     }
-
-    int isRunning = 1;
-    int tile_lvl1[NB_TILE_WIDTH][NB_TILE_WIDTH];
-    chargerCarte("src/tilemap_lvl1.txt",tile_lvl1);
+    int isRunning = 1; int direction = DROITE;
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
+    chargerCarte("src/tilemap_grass.txt",tilemap,0);
+    chargerCarte("src/tilemap_structs.txt",tilemap,1);
     initialisation(&fenetre, &rendu);
+
+    /* Maintenant le tableau représentant les tiles à afficher marche de la manière suivante :
+    * C'est un tableau à 3 dimensions, la première dimension est le numéro de la couche (0 pour le sol, 1 pour les structures, etc...)
+    * Et ensuite c'est un tableau classique à deux dimensions qui représente les tiles à afficher (x et y)
+    * Pour les colisions ça reste un tableau à deux dimensions classique, qu'on charge à partir d'une des couches du tableau de tiles
+    */
+
+    //initialisation du tableau de colision
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
+    chargerColisions(tilemap, tabColision, 0);
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
@@ -51,16 +60,14 @@ int main() {
 
     cameraRect = malloc(sizeof(SDL_realloc));
     colision_t *colision = malloc(sizeof(colision_t));
+    positionJoueur_t position;
     colision->haut = 0; colision->bas = 0; colision->gauche = 0; colision->droite = 0;
-
-    //initialisation du tableau de colision
-    /* 1 si c'est une collision */
-    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-    chargerColisions(tile_lvl1, tabColision);
+    colision->position = &position;
     
     cameraRect->h = CAMERA_HEIGHT;
     cameraRect->w = CAMERA_WIDTH;   
 
+    //doivent être des cases vides
     pers_destination.y = 400;
     pers_destination.x = 400;
 
@@ -234,6 +241,7 @@ int main() {
 
         
 
+
         else if(menu == 3){
             SDL_RenderClear(rendu);
             affichageMenuImage(rendu);
@@ -255,7 +263,8 @@ int main() {
                 delta_temps = 0;
                 frame = (frame + 1) % 6;
             }
-        
+            SDL_RenderClear(rendu);
+
             // Récupération de l'état du clavier : 
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
@@ -265,12 +274,9 @@ int main() {
                 menu = 3;
             }
 
-            SDL_RenderClear(rendu);
-
-            updateCamera(&pers_destination,rendu, cameraRect,tile_lvl1, tabTile, colision, tabColision);
-            
-            
-            
+            updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
+            action(clavier, &pers_destination, colision, &direction);
+            updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
             
             for (int i = 0; i < NB_ENNEMI; i++){
                 Uint32 temp_vivant = SDL_GetTicks() - ennemi[i].delta;
@@ -281,7 +287,7 @@ int main() {
                 projNbEnnemi = 0;
             }
             
-            action(clavier, &pers_destination, &pers_source, frame, rendu, colision);
+            action(clavier, &pers_destination, colision, &direction);
             
 
             for (int i = 0; i < projNbEnnemi; i++){
@@ -303,6 +309,8 @@ int main() {
             for (int i = 0; i < NB_ENNEMI; i++){
                 ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
             }
+
+            actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, &direction, &pers_source, &pers_destination, rendu);
 
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);

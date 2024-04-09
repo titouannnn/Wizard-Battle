@@ -103,7 +103,7 @@ void initProj(projectiles_t *projectile, float px, float py, float mx, float my,
 
 void verifCollisionProj(projectiles_t *projectile, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]){
     int x = projectile->x / TILE_WIDTH;
-    int y = projectile->y / TILE_HEIGT;
+    int y = projectile->y / TILE_HEIGHT;
     if(tabTilesColision[y][x] == 1){
         projectile->collision = 1;
     }
