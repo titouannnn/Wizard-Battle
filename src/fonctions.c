@@ -275,7 +275,7 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
 
     // Affichage de la seconde couche (structures)
-    //afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
 
     colisions(position, colision, tabColisions);
 }

@@ -27,7 +27,7 @@ int main() {
 
     //initialisation du tableau de colision
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-    chargerColisions(tilemap, tabColision, 0);
+    chargerColisions(tilemap, tabColision, 1);
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
@@ -103,7 +103,7 @@ int main() {
     * 3 - Game Over
     * */
 
-   int menu = 1;
+   int menu = 0;
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
