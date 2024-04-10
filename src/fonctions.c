@@ -1,5 +1,6 @@
 #include "fonctions.h"
 
+
 SDL_Surface *temp_surface;
 
 int vrai = 1;
@@ -22,6 +23,23 @@ SDL_Texture *tilemap_structures_tex;
 //a supprimer
 SDL_Texture *tilemap;
 
+SDL_Rect * initCamera(){
+    SDL_Rect *cameraRect = malloc(sizeof(SDL_Rect));
+    cameraRect->x = 0;
+    cameraRect->y = 0;
+    cameraRect->w = CAMERA_WIDTH;
+    cameraRect->h = CAMERA_HEIGHT;
+    return cameraRect;
+}
+
+SDL_Rect * initJoueur(int x, int y){
+    SDL_Rect *pers_destination = malloc(sizeof(SDL_Rect));
+    pers_destination->x = x;
+    pers_destination->y = y;
+    pers_destination->w = DIM_SPRITE_PLAYER_X;
+    pers_destination->h = DIM_SPRITE_PLAYER_Y;
+    return pers_destination;
+}
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     // Initialisation de la bibliothèque SDL
@@ -53,6 +71,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
         printf("Problème de création de la fenêtre : %s\n", SDL_GetError());
         return 0;
     }
+    
 }
 
 void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){

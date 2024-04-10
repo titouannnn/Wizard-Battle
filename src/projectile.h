@@ -53,6 +53,7 @@ struct projectiles_s {
 
 } ;
 
+void initTabProj(projectiles_t proj[MAX_PROJ]);
 void chargerTexturesProj(SDL_Renderer *rendu);
 void projectile_creer(projectiles_t *projectile) ;
 void initProj(projectiles_t *projectile, float px, float py, float mx, float my, int id, SDL_Rect *cameraRect);

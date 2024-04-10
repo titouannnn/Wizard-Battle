@@ -4,6 +4,29 @@
 #include "fonctions.h"
 #include "carte.h"
 
+
+positionJoueur_t * initPositionJoueur(){
+    positionJoueur_t * position = malloc(sizeof(positionJoueur_t));
+    position->case_hg.casx = 0;
+    position->case_hg.casy = 0;
+    position->case_hd.casx = 1;
+    position->case_hd.casy = 0;
+    position->case_bg.casx = 0;
+    position->case_bg.casy = 1;
+    position->case_bd.casx = 1;
+    position->case_bd.casy = 1;
+    return position;
+}
+
+colision_t * initColision(){
+    colision_t * colision = malloc(sizeof(colision_t));
+    colision->haut = 0;
+    colision->bas = 0;
+    colision->gauche = 0;
+    colision->droite = 0;
+    return colision;
+}
+
 void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb){
     FILE * fp;
     int x;

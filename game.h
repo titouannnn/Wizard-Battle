@@ -10,7 +10,7 @@
 #include "src/carte.h"
 #include "src/menu.h"
 
-#define NB_ENNEMI 5
+
 
 
 

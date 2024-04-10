@@ -5,6 +5,12 @@ SDL_Window *fenetre;
 
 SDL_Rect pers_source, pers_destination;
 SDL_Rect * cameraRect;
+positionJoueur_t position;
+colision_t *colision;
+joueur_t joueur;
+ennemi_t ennemi[NB_ENNEMI];
+projectiles_t projJoueur[MAX_PROJ];
+projectiles_t projEnnemi[MAX_PROJ];
 
 /* Désolé Titouan j'ai du mettre cette fonction ici car elle nécéssite projectile.h et entite.h et je peux pas dcp la mettre dans projectile.c vu que ça crée une dépendance circulaire (entite.h a besoin de projectile.h et inversement) */
 
@@ -14,68 +20,46 @@ void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *
 
 
 
-
 int main() {
-    projectiles_t projJoueur[MAX_PROJ];
-    projectiles_t projEnnemi[MAX_PROJ];
 
-    int projNbEnnemi = 0;
-    int projNbJoueur = 0;
 
-    /* Initialisation de l'objet Projectile */
-    for (int i = 0; i < MAX_PROJ; i++){
-        projectile_creer(&projJoueur[i]);
-        projectile_creer(&projEnnemi[i]);
-    }
-    int isRunning = 1; int direction = DROITE;
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
+
+    int projNbEnnemi = 0; int projNbJoueur = 0;
+    int isRunning = 1; int direction = DROITE;
+    
     chargerCarte("src/tilemap_grass.txt",tilemap,0);
     chargerCarte("src/tilemap_structs.txt",tilemap,1);
-    initialisation(&fenetre, &rendu);
-
-    /* Maintenant le tableau représentant les tiles à afficher marche de la manière suivante :
-    * C'est un tableau à 3 dimensions, la première dimension est le numéro de la couche (0 pour le sol, 1 pour les structures, etc...)
-    * Et ensuite c'est un tableau classique à deux dimensions qui représente les tiles à afficher (x et y)
-    * Pour les colisions ça reste un tableau à deux dimensions classique, qu'on charge à partir d'une des couches du tableau de tiles
-    */
-
-    //initialisation du tableau de colision
-    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
     chargerColisions(tilemap, tabColision, 1);
+    initTabProj(projJoueur);
+    initTabProj(projEnnemi);
+    initialisation(&fenetre, &rendu);
+    initialiserJoueur(&joueur);
+    initTabEnnemi(ennemi);
 
+
+    /* A supprimer, inutile*/
     SDL_Texture *tabTile[5];
+
     chargerTextures(rendu, tabTile);
     chargerTexturesEnnemi(rendu);
     chargerTexturesProj(rendu);
 
-    cameraRect = malloc(sizeof(SDL_realloc));
-    colision_t *colision = malloc(sizeof(colision_t));
-    positionJoueur_t position;
-    colision->haut = 0; colision->bas = 0; colision->gauche = 0; colision->droite = 0;
-    colision->position = &position;
-    
-    cameraRect->h = CAMERA_HEIGHT;
-    cameraRect->w = CAMERA_WIDTH;   
 
-    //doivent être des cases vides
-    pers_destination.y = 400;
-    pers_destination.x = 400;
+    cameraRect = initCamera();
+    position = *initPositionJoueur();
+    colision = initColision();
+    pers_destination = *initJoueur(400, 400); 
 
-    cameraRect->x = pers_destination.x;
-    cameraRect->y = pers_destination.y;
+
 
     
 
-    joueur_t joueur;
-    initialiserJoueur(&joueur);
 
-    ennemi_t ennemi[NB_ENNEMI];
-    for (int i = 0; i < NB_ENNEMI; i++){
-        int positionRand_x = rand() % 1000;
-        int positionRand_y = rand() % 1000;
-        ennemi_creer(&ennemi[i]);
-        ennemi[i].initEnnemi(&ennemi[i], positionRand_x, positionRand_y, 1, 100, 10);
-    }
+
+
+    
 
     // Gestion des événements SDL
     SDL_Event event;
