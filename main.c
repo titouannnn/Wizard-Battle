@@ -184,7 +184,7 @@ int main() {
             // Récupération de l'état du clavier : 
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
-            updateHealthBar(&healthBar, healthBarRect, joueur.pv);
+            updateHealthBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
 
             if(joueur.pv <= 0){
                 menu = 3;
@@ -240,9 +240,10 @@ int main() {
     return fin(fenetre, rendu);
 }
 
+/* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
     if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
-        if (projectile->x + projectile->w/2 > ennemi->x && projectile->x < ennemi->x + ennemi->rect.w && projectile->y + projectile->h/2 > ennemi->y && projectile->y < ennemi->y + ennemi->rect.h){
+        if (((projectile->x +25 + projectile->w > ennemi->x) && (projectile->x + 25 < ennemi->x + ennemi->rect.w)) && ((projectile->y + projectile->h/2 > ennemi->y) && (projectile->y + 50 < ennemi->y + ennemi->rect.h))){
             ennemi->pv -= ennemi->attaque;
             projectile->collision = 1;
         }

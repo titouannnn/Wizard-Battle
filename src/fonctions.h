@@ -65,7 +65,7 @@ SDL_Rect * initCamera();
 SDL_Rect * initJoueur(int x, int y);
 SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur);
 void initHealthBar(HealthBar *healthBar, int x, int y, int maxWidth);
-void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth);
+void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth, int maxHealth);
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu);
 void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]);
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu);

@@ -122,6 +122,14 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
 
     */
 
+    temp_surface = SDL_LoadBMP("images/background2.bmp");
+    menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(menu_tex == NULL){
+        printf("Erreur de chargement de l'image 'background2': %s\n", SDL_GetError());
+    }
+    else printf("Chargement de l'image 'background2' réussi\n");
+
     temp_surface = SDL_LoadBMP("images/wizard_run_right.bmp");
     run_right_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -145,6 +153,8 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
         printf("Erreur de chargement du fond: %s\n", SDL_GetError());
     }
     else printf("Chargement du fond réussi\n");
+
+    
 
     temp_surface = IMG_Load("images/tile1.png");
     tile_verte_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
@@ -228,8 +238,11 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     src->y = 0;
     src->w = largeur;
     src->h = hauteur;
-    dst->w = DIM_SPRITE_PLAYER_X;
-    dst->h = DIM_SPRITE_PLAYER_Y;
+    dst->w = DIM_SPRITE_PLAYER_X/1.5;
+    dst->h = DIM_SPRITE_PLAYER_Y/1.5;
+
+    printf("largeur sprite : %d\n",dst->w);
+    printf("hauteur sprite : %d\n",dst->h);
 
     // On affiche les sprites  :
     SDL_RenderCopy(rendu, texSprite, src, dst);
@@ -374,8 +387,13 @@ void initHealthBar(HealthBar *healthBar, int x, int y, int maxWidth) {
 }
 
 // Met à jour la barre de vie du joueur (currentHealth prend un pourcentage)
-void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth) {
-    healthBarRect->w = (currentHealth * healthBar->maxWidth) / 100;
+void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth, int maxHealth) {
+    /* Je veux que ma barre de ma vie ai la meme taille n'importe le montant de vie */
+    // Calculer le pourcentage de vie actuel par rapport à la vie maximale
+    float healthPercentage = (float)currentHealth / (float)maxHealth;
+
+    // Mettre à jour la largeur de la barre de vie en fonction du pourcentage de vie
+    healthBarRect->w = (int)(HEALTH_BAR_WIDTH * healthPercentage);
 }
 
 /* Fonction d'initialisation du tableau de tiles */
