@@ -38,6 +38,21 @@ void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
     }
 }
 
+void initEnnemis(
+    projectiles_t projJoueur[MAX_PROJ],
+    projectiles_t projEnnemi[MAX_PROJ],
+    joueur_t *joueur,
+    ennemi_t ennemi[NB_ENNEMI],
+    SDL_Renderer *rendu
+) {
+    initTabProj(projJoueur);
+    initTabProj(projEnnemi);
+    initialiserJoueur(joueur);
+    initTabEnnemi(ennemi);
+    chargerTexturesEnnemi(rendu);
+    chargerTexturesProj(rendu);
+}
+
 void actualisationSpriteEnnemi(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     if (direction == DROITE) { 

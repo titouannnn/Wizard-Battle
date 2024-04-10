@@ -41,6 +41,34 @@ SDL_Rect * initJoueur(int x, int y){
     return pers_destination;
 }
 
+void initFonctions(
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH],
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT],
+    SDL_Window **fenetre,
+    SDL_Renderer **rendu,
+    SDL_Rect **cameraRect,
+    positionJoueur_t *position,
+    colision_t **colision,
+    SDL_Rect *pers_destination,
+    Uint32 *temps_ancien,
+    SDL_Texture **barTextureVieMax,
+    SDL_Texture **barTextureVie,
+    HealthBar *healthBar
+) {
+    chargerCarte("src/tilemap_grass.txt",tilemap,0);
+    chargerCarte("src/tilemap_structs.txt",tilemap,1);
+    chargerColisions(tilemap, tabColision, 1);
+    initialisation(fenetre, rendu);
+    *cameraRect = initCamera();
+    *position = *initPositionJoueur();
+    *colision = initColision();
+    *pers_destination = *initJoueur(400, 400); 
+    *temps_ancien = SDL_GetTicks();
+    *barTextureVieMax = creationTextureBar(*rendu, JAUNE);
+    *barTextureVie = creationTextureBar(*rendu, ROUGE);
+    initHealthBar(healthBar, 50, 50, HEALTH_BAR_WIDTH);
+}
+
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     // Initialisation de la bibliothèque SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {

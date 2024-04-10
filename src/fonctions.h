@@ -33,6 +33,15 @@
 #define CAMERA_WIDTH 1080
 #define CAMERA_HEIGHT 720
 
+#define JAUNE ((Couleur_t){255, 255, 0})
+#define BLEU ((Couleur_t){0, 0, 255})
+#define ROUGE ((Couleur_t){255, 0, 0})
+#define VERT ((Couleur_t){0, 255, 0})
+#define NOIR ((Couleur_t){0, 0, 0})
+#define BLANC ((Couleur_t){255, 255, 255})
+#define ORANGE ((Couleur_t){255, 165, 0})
+
+
 typedef struct {
     float x;
     float y;
@@ -69,4 +78,20 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 int getMousePositionDirection(SDL_Rect *pers_destination);
 void affichageMenuImage(SDL_Renderer *rendu);
+
+void initFonctions(
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH],
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT],
+    SDL_Window **fenetre,
+    SDL_Renderer **rendu,
+    SDL_Rect **cameraRect,
+    positionJoueur_t *position,
+    colision_t **colision,
+    SDL_Rect *pers_destination,
+    Uint32 *temps_ancien,
+    SDL_Texture **barTextureVieMax,
+    SDL_Texture **barTextureVie,
+    HealthBar *healthBar
+);
+
 #endif

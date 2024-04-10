@@ -10,8 +10,29 @@
 #include "src/carte.h"
 #include "src/menu.h"
 
+SDL_Renderer *rendu;
+SDL_Window *fenetre;
+SDL_Rect pers_source, pers_destination;
+SDL_Rect * cameraRect;
+positionJoueur_t position;
+colision_t *colision;
+joueur_t joueur;
+ennemi_t ennemi[NB_ENNEMI];
+projectiles_t projJoueur[MAX_PROJ];
+projectiles_t projEnnemi[MAX_PROJ];
+SDL_Event event;
+Uint32 temps_ancien;
+Uint32 temps_actuel;
+SDL_Texture *barTextureVie ;
+SDL_Texture *barTextureVieMax ;
+HealthBar healthBar;
+Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
 
-
+int projNbEnnemi = 0; 
+int projNbJoueur = 0;
+int isRunning = 1; 
+int frame = 0; 
+int delta_temps = 0;
 
 
 // Définition des couleurs avec les directives de préprocesseur

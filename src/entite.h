@@ -78,4 +78,12 @@ void DessinerLigneEnnemiJoueur(point_t A, point_t B, SDL_Renderer *rendu);
 void DessinerLigneEnnemiVu(point_t A, point_t B, SDL_Renderer *rendu);
 void chargerTexturesEnnemi(SDL_Renderer *rendu);
 
+void initEnnemis(
+    projectiles_t projJoueur[MAX_PROJ],
+    projectiles_t projEnnemi[MAX_PROJ],
+    joueur_t *joueur,
+    ennemi_t ennemi[NB_ENNEMI],
+    SDL_Renderer *rendu
+);
+
 #endif // ENTITE_H

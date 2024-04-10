@@ -1,102 +1,44 @@
 #include "game.h"
 
-SDL_Renderer *rendu;
-SDL_Window *fenetre;
-
-SDL_Rect pers_source, pers_destination;
-SDL_Rect * cameraRect;
-positionJoueur_t position;
-colision_t *colision;
-joueur_t joueur;
-ennemi_t ennemi[NB_ENNEMI];
-projectiles_t projJoueur[MAX_PROJ];
-projectiles_t projEnnemi[MAX_PROJ];
-
-/* Désolé Titouan j'ai du mettre cette fonction ici car elle nécéssite projectile.h et entite.h et je peux pas dcp la mettre dans projectile.c vu que ça crée une dépendance circulaire (entite.h a besoin de projectile.h et inversement) */
-
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
+
+
 
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
 
 
 
 int main() {
-
-
+    /* 
+    * Déclaration des tableaux pour la carte et les colisions
+    * Ici tableau de 3 dimensions car il y a plusieurs couches pour la carte (herbe et structures)
+    */
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-
-    int projNbEnnemi = 0; int projNbJoueur = 0;
-    int isRunning = 1; int direction = DROITE;
+    int direction = DROITE;
     
-    chargerCarte("src/tilemap_grass.txt",tilemap,0);
-    chargerCarte("src/tilemap_structs.txt",tilemap,1);
-    chargerColisions(tilemap, tabColision, 1);
-    initTabProj(projJoueur);
-    initTabProj(projEnnemi);
-    initialisation(&fenetre, &rendu);
-    initialiserJoueur(&joueur);
-    initTabEnnemi(ennemi);
+    /* Initialisation des variables, encapsulées dans trois fonctions pour plus de clarté*/
+    initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar);
+    initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
+    initBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
 
-
+    
     /* A supprimer, inutile*/
     SDL_Texture *tabTile[5];
-
     chargerTextures(rendu, tabTile);
-    chargerTexturesEnnemi(rendu);
-    chargerTexturesProj(rendu);
-
-
-    cameraRect = initCamera();
-    position = *initPositionJoueur();
-    colision = initColision();
-    pers_destination = *initJoueur(400, 400); 
-
-
-
-    
-
-
-
-
-    
-
-    // Gestion des événements SDL
-    SDL_Event event;
-    int frame = 0;
-    Uint32 temps_ancien = SDL_GetTicks();
-    Uint32 temps_actuel;
-    int delta_temps;
-
-    SDL_Texture *barTextureVieMax = creationTextureBar(rendu, JAUNE);
-    SDL_Texture *barTextureVie = creationTextureBar(rendu, ROUGE);
 
     // Initialisation de la structure barre de vie
-    HealthBar healthBar;
-    initHealthBar(&healthBar, 50, 50, HEALTH_BAR_WIDTH);
+    
+    
 
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
     SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, HEALTH_BAR_HEIGHT };
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
     *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, HEALTH_BAR_HEIGHT };
 
-    // Variable temporaire
-    int count = 100;
 
-    Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
 
-    // Création des boutons
-    jouerButton = createButton(rendu, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    difficulteButton = createButton(rendu, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
-    facileButton = createButton(rendu, "FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
-    normalButton = createButton(rendu, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
-    difficileButton = createButton(rendu, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
-    accueilButton = createButton(rendu, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
-    gameoverButton = createButton(rendu, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
+    
     /*
     * MENU =
     * 0 - Jeu
@@ -105,7 +47,7 @@ int main() {
     * 3 - Game Over
     * */
 
-   int menu = 0;
+   int menu = 1;
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
