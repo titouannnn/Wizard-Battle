@@ -14,6 +14,15 @@ double calculerAngle(int x1, int y1, int x2, int y2) {
     return atan2(y2 - y1, x2 - x1);
 }
 
+
+void initTabProj(projectiles_t proj[MAX_PROJ])
+{
+    for (int i = 0; i < MAX_PROJ; i++){
+        projectile_creer(&proj[i]);
+        projectile_creer(&proj[i]);
+    }
+}
+
 void chargerTexturesProj(SDL_Renderer *rendu){
 
     projectile_temp_surface = SDL_LoadBMP("images/projectiles/lancer.bmp");

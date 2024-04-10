@@ -18,6 +18,8 @@
 #define CHAMP_DETECTION 500
 #define MAX_PROJ_ENNEMI 2
 
+#define NB_ENNEMI 5
+
 typedef struct ennemi_s ennemi_t;
 typedef struct joueur_s joueur_t;
 
@@ -64,6 +66,7 @@ struct ennemi_s {
     void (*renderVecteur)(SDL_Renderer * rendu, ennemi_t * ennemi, SDL_Rect * playerRect);
 };
 
+void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]);
 void initialiserJoueur(joueur_t * joueur);
 void ennemi_creer(ennemi_t * ennemi);
 void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int attaque);

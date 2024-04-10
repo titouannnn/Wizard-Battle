@@ -27,6 +27,17 @@ void chargerTexturesEnnemi(SDL_Renderer *rendu){
     else printf("Chargement de l'image 'necro_run_left' réussi\n");
 }
 
+void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
+    int positionRand_x = 0;
+    int positionRand_y = 0;
+    for (int i = 0; i < NB_ENNEMI; i++){
+        positionRand_x = rand() % 1000;
+        positionRand_y = rand() % 1000;
+        ennemi_creer(&tabEnnemi[i]);
+        tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100, 10);
+    }
+}
+
 void actualisationSpriteEnnemi(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     if (direction == DROITE) { 

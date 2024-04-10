@@ -42,6 +42,8 @@ typedef struct{
     positionJoueur_t *position;
 }colision_t;
 
+positionJoueur_t * initPositionJoueur();
+colision_t * initColision();
 
 void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb);
 int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], 
