@@ -9,21 +9,11 @@ SDL_Rect * cameraRect;
 /* Désolé Titouan j'ai du mettre cette fonction ici car elle nécéssite projectile.h et entite.h et je peux pas dcp la mettre dans projectile.c vu que ça crée une dépendance circulaire (entite.h a besoin de projectile.h et inversement) */
 
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
-void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
-    if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
-        if (projectile->x + projectile->w/2 > ennemi->x && projectile->x < ennemi->x + ennemi->rect.w && projectile->y + projectile->h/2 > ennemi->y && projectile->y < ennemi->y + ennemi->rect.h){
-            ennemi->pv -= ennemi->attaque;
-            projectile->collision = 1;
-        }
-    }
-    else if (projectile->id == PROJ_ENNEMI && projectile->collision != 1){
-        if (projectile->x + projectile->w/2 > cameraRect->x + playerRect->x && projectile->x < cameraRect->x + playerRect->x + playerRect->w && projectile->y + projectile->h/2 > playerRect->y + cameraRect->y && projectile->y < playerRect->y + playerRect->h + cameraRect->y){
-            joueur->pv -= joueur->attaque;
-            projectile->collision = 1;
-        }
-    }
 
-}
+void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
+
+
+
 
 int main() {
     projectiles_t projJoueur[MAX_PROJ];
@@ -322,4 +312,20 @@ int main() {
     }
     free(healthBarRect);
     return fin(fenetre, rendu);
+}
+
+void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
+    if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
+        if (projectile->x + projectile->w/2 > ennemi->x && projectile->x < ennemi->x + ennemi->rect.w && projectile->y + projectile->h/2 > ennemi->y && projectile->y < ennemi->y + ennemi->rect.h){
+            ennemi->pv -= ennemi->attaque;
+            projectile->collision = 1;
+        }
+    }
+    else if (projectile->id == PROJ_ENNEMI && projectile->collision != 1){
+        if (projectile->x + projectile->w/2 > cameraRect->x + playerRect->x && projectile->x < cameraRect->x + playerRect->x + playerRect->w && projectile->y + projectile->h/2 > playerRect->y + cameraRect->y && projectile->y < playerRect->y + playerRect->h + cameraRect->y){
+            joueur->pv -= joueur->attaque;
+            projectile->collision = 1;
+        }
+    }
+
 }
