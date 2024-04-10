@@ -84,19 +84,19 @@ void initProj(projectiles_t *projectile, float px, float py, float mx, float my,
     projectile->id = id;
     projectile->animation_impact = 0;
 
-    projectile->x = px + 50;
-    projectile->y = py + 50;
+    projectile->x = px -50;
+    projectile->y = py +50;
 
     projectile->angle = calculerAngle(px + 50, py + 50, mx + cameraRect->x, my + cameraRect->y);
 
-    int d1 = mx + cameraRect->x - px - 200;
-    int d2 = my + cameraRect->y - py - 200;
+    int d1 = mx + cameraRect->x - projectile->x - 100;
+    int d2 = my + cameraRect->y - projectile->y - 100;
 
     projectile->vx = d1 / sqrt(d1 * d1 + d2 * d2);
     projectile->vy = d2 / sqrt(d1 * d1 + d2 * d2);
 
-    projectile->w = 200;
-    projectile->h = 200;
+    projectile->w = 100;
+    projectile->h = 100;
     projectile->collision = 0;
     projectile->vitesse = 10;
 }
@@ -120,8 +120,8 @@ void updateProj(projectiles_t *projectile, SDL_Rect *cameraRect, int tabTilesCol
         projectile->y += projectile->vy * projectile->vitesse;
         projectile->rect.x = projectile->x - cameraRect->x;
         projectile->rect.y = projectile->y - cameraRect->y;
-        projectile->rect.w = projectile->w;
-        projectile->rect.h = projectile->h;
+        projectile->rect.w = 170;
+        projectile->rect.h = 170;
     }
     
 }
@@ -136,7 +136,9 @@ void renderProj(SDL_Renderer *rendu, projectiles_t *projectile, int frame){
         return;
     }
     else{
+        /* Regler la taille du projectile beaucoup trop gros */
         actualisationSpriteProj(projectile, 4, frame, DIM_SPRITE_LANCER_X, DIM_SPRITE_LANCER_Y, &projectile->sprite, &projectile->rect, rendu);
+        
     }
     
 }

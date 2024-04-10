@@ -183,8 +183,8 @@ void ennemi_creer(ennemi_t * ennemi){
 
 void initialiserJoueur(joueur_t * joueur){
     joueur->attaque = 10;
-    joueur->pv = 10000;
-    joueur->pvMax = 100;
+    joueur->pv = 1000;
+    joueur->pvMax = 1000;
     joueur->vitesse = 1;
 }
 
@@ -202,8 +202,8 @@ void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int atta
     ennemi->rect.x = 100;
     ennemi->rect.y = 100;
 
-    ennemi->rect.w = DIM_SPRITE_ENNEMI_X;
-    ennemi->rect.h = DIM_SPRITE_ENNEMI_Y;
+    ennemi->rect.w = DIM_SPRITE_ENNEMI_X/1.5;
+    ennemi->rect.h = DIM_SPRITE_ENNEMI_Y/1.5;
 
     ennemi->attaque = attaque;
     ennemi->id = id;
@@ -287,13 +287,18 @@ void renderEnnemi(SDL_Renderer *rendu, ennemi_t *ennemi, int frame){
     if (ennemi->pv <= 0){
         return;
     }
+    //SDL_SetRenderDrawColor(rendu, 255, 0, 0, 255);
     if(ennemi->gauche){
         dessinerBarreDeVie(ennemi, rendu);
         actualisationSpriteEnnemi(4, frame, DIM_SPRITE_ENNEMI_X, DIM_SPRITE_ENNEMI_Y, GAUCHE, &ennemi->sprite, &ennemi->rect, rendu);
+        //SDL_RenderFillRect(rendu, &ennemi->rect);
+        
+        
     }
     else if(ennemi->droite){
         dessinerBarreDeVie(ennemi, rendu);
         actualisationSpriteEnnemi(4, frame, DIM_SPRITE_ENNEMI_X, DIM_SPRITE_ENNEMI_Y, DROITE, &ennemi->sprite, &ennemi->rect, rendu);
+        //SDL_RenderFillRect(rendu, &ennemi->rect);
     }
     
 }
