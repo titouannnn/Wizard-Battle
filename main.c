@@ -72,13 +72,13 @@ int main() {
     SDL_Texture *barTextureVie = creationTextureBar(rendu, ROUGE);
 
     // Initialisation de la structure barre de vie
-    HealthBar healthBar;
-    initHealthBar(&healthBar, 50, 50, HEALTH_BAR_WIDTH);
+    bar_t healthBar;
+    initHealthBar(&healthBar, 50, 50, BAR_WIDTH);
 
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
-    SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, HEALTH_BAR_HEIGHT };
+    SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, BAR_HEIGHT };
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
-    *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, HEALTH_BAR_HEIGHT };
+    *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, BAR_HEIGHT };
 
     // Variable temporaire
     int count = 100;

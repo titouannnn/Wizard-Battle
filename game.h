@@ -9,6 +9,7 @@
 #include "src/fonctions.h"
 #include "src/carte.h"
 #include "src/menu.h"
+#include "src/barre.h"
 
 
 
