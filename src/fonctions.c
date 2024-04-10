@@ -241,9 +241,6 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     dst->w = DIM_SPRITE_PLAYER_X/1.5;
     dst->h = DIM_SPRITE_PLAYER_Y/1.5;
 
-    printf("largeur sprite : %d\n",dst->w);
-    printf("hauteur sprite : %d\n",dst->h);
-
     // On affiche les sprites  :
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
