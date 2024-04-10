@@ -1,14 +1,13 @@
 #ifndef FONCTIONS_H
 #define FONCTIONS_H
 
-#include "carte.h"
-
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 
+#include "carte.h"
 
 #define WINDOWS_WIDTH 1080
 #define WINDOWS_HEIGHT 720
@@ -16,8 +15,8 @@
 #define HEALTH_BAR_WIDTH 300
 #define HEALTH_BAR_HEIGHT 20
 
-#define TAILLE_SPRITE_PLAYER 160
-#define DIM_SPRITE_PLAYER 160
+#define DIM_SPRITE_PLAYER_X 128
+#define DIM_SPRITE_PLAYER_Y 224
 #define FPS 60
 #define DELAI 1000 / FPS
 #define VITESSE_JOUEUR_X 3

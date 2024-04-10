@@ -6,14 +6,38 @@ SDL_Window *fenetre;
 SDL_Rect pers_source, pers_destination;
 SDL_Rect * cameraRect;
 
+/* Désolé Titouan j'ai du mettre cette fonction ici car elle nécéssite projectile.h et entite.h et je peux pas dcp la mettre dans projectile.c vu que ça crée une dépendance circulaire (entite.h a besoin de projectile.h et inversement) */
 
-projectiles_t proj1[MAX_PROJ];
-int projN = 0;
+/* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
+void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
+    if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
+        if (projectile->x + projectile->w/2 > ennemi->x && projectile->x < ennemi->x + ennemi->rect.w && projectile->y + projectile->h/2 > ennemi->y && projectile->y < ennemi->y + ennemi->rect.h){
+            ennemi->pv -= ennemi->attaque;
+            projectile->collision = 1;
+        }
+    }
+    else if (projectile->id == PROJ_ENNEMI && projectile->collision != 1){
+        if (projectile->x + projectile->w/2 > cameraRect->x + playerRect->x && projectile->x < cameraRect->x + playerRect->x + playerRect->w && projectile->y + projectile->h/2 > playerRect->y + cameraRect->y && projectile->y < playerRect->y + playerRect->h + cameraRect->y){
+            joueur->pv -= joueur->attaque;
+            projectile->collision = 1;
+        }
+    }
+
+}
 
 int main() {
+    projectiles_t projJoueur[MAX_PROJ];
+    projectiles_t projEnnemi[MAX_PROJ];
 
+    int projNbEnnemi = 0;
+    int projNbJoueur = 0;
 
-    int isRunning = 1; int direction = HAUT;
+    /* Initialisation de l'objet Projectile */
+    for (int i = 0; i < MAX_PROJ; i++){
+        projectile_creer(&projJoueur[i]);
+        projectile_creer(&projEnnemi[i]);
+    }
+    int isRunning = 1; int direction = DROITE;
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
     chargerCarte("src/tilemap_grass.txt",tilemap,0);
     chargerCarte("src/tilemap_structs.txt",tilemap,1);
@@ -31,6 +55,8 @@ int main() {
 
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
+    chargerTexturesEnnemi(rendu);
+    chargerTexturesProj(rendu);
 
     cameraRect = malloc(sizeof(SDL_realloc));
     colision_t *colision = malloc(sizeof(colision_t));
@@ -48,16 +74,18 @@ int main() {
     cameraRect->x = pers_destination.x;
     cameraRect->y = pers_destination.y;
 
-    /* Initialisation de l'objet Projectile */
-    for (int i = 0; i < MAX_PROJ; i++){
-        projectile_creer(&proj1[i]);
-    }
+    
 
-    entite_t joueur;
+    joueur_t joueur;
     initialiserJoueur(&joueur);
 
-    entite_t ennemi;
-    initialiserEnnemi(&ennemi);
+    ennemi_t ennemi[NB_ENNEMI];
+    for (int i = 0; i < NB_ENNEMI; i++){
+        int positionRand_x = rand() % 1000;
+        int positionRand_y = rand() % 1000;
+        ennemi_creer(&ennemi[i]);
+        ennemi[i].initEnnemi(&ennemi[i], positionRand_x, positionRand_y, 1, 100, 10);
+    }
 
     // Gestion des événements SDL
     SDL_Event event;
@@ -134,10 +162,12 @@ int main() {
 
                         int mouse_x, mouse_y;
                         SDL_GetMouseState(&mouse_x, &mouse_y);
-                        proj1[projN].init(&proj1[projN], cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, cameraRect);
-                        projN++;
-                        if (projN == MAX_PROJ){
-                            projN = 0;
+            
+                        /* Initialisation du tableau de projectiles appartenant au joueur */
+                        projJoueur[projNbJoueur].initProj(&projJoueur[projNbJoueur], cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, PROJ_JOUEUR, cameraRect);
+                        projNbJoueur++;
+                        if (projNbJoueur == MAX_PROJ){
+                            projNbJoueur = 0;
                         }
                     }
                     
@@ -155,20 +185,23 @@ int main() {
             drawButton(rendu, jouerButton);
             drawButton(rendu, difficulteButton);
 
-            if(mouseOnButton(jouerButton)){
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+
+            if(mouseOnButton(jouerButton)){   
                 /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 0, 255, 100);
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
                 SDL_RenderFillRect(rendu, &jouerButton.rect);
             }
 
             if(mouseOnButton(difficileButton)){
                 /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 0, 255, 255, 100);
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
                 SDL_RenderFillRect(rendu, &difficileButton.rect);
             }
 
             SDL_RenderPresent(rendu);
-
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
             
         }
 
@@ -176,13 +209,34 @@ int main() {
             SDL_RenderClear(rendu);
             affichageMenuImage(rendu);
 
-            // Dessiner les boutons
             drawButton(rendu, facileButton);
             drawButton(rendu, normalButton);
             drawButton(rendu, difficileButton);
             drawButton(rendu, accueilButton);
 
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+            // Dessiner les boutons
+            if(mouseOnButton(facileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &facileButton.rect);
+            }
+            if(mouseOnButton(normalButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &normalButton.rect);
+            }
+            if(mouseOnButton(accueilButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &accueilButton.rect);
+            }
+            if(mouseOnButton(difficileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &difficileButton.rect);
+            }
+            
+
             SDL_RenderPresent(rendu);
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
         }
 
         
@@ -219,24 +273,44 @@ int main() {
             if(joueur.pv <= 0){
                 menu = 3;
             }
+
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
-        
             action(clavier, &pers_destination, colision, &direction);
-
-
-
-            
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
-
             
-
-            action(clavier, &pers_destination, colision, &direction);
-            for (int i = 0; i < MAX_PROJ; i++){
-                proj1[i].update(&proj1[i], cameraRect);
-                proj1[i].render(rendu, &proj1[i]);
+            for (int i = 0; i < NB_ENNEMI; i++){
+                Uint32 temp_vivant = SDL_GetTicks() - ennemi[i].delta;
+                ennemi[i].updateEnnemi(&ennemi[i], cameraRect, &pers_destination, tabColision, projEnnemi, &projNbEnnemi, temp_vivant);
             }
             
-            actualisationSprite(6, frame, DIM_SPRITE_PLAYER, DIM_SPRITE_PLAYER, &direction, &pers_source, &pers_destination, rendu);
+            if (projNbEnnemi == MAX_PROJ){
+                projNbEnnemi = 0;
+            }
+            
+            action(clavier, &pers_destination, colision, &direction);
+            
+
+            for (int i = 0; i < projNbEnnemi; i++){
+                for(int j = 0; j < NB_ENNEMI; j++){
+                    collisionProjEntite(&projEnnemi[i], &ennemi[j], &pers_destination, cameraRect, &joueur);
+                }
+                projEnnemi[i].updateProj(&projEnnemi[i], cameraRect, tabColision);
+                projEnnemi[i].renderProj(rendu, &projEnnemi[i], frame);
+                
+            }
+            for (int i = 0; i < projNbJoueur; i++){
+                for(int j = 0; j < NB_ENNEMI; j++){
+                    collisionProjEntite(&projJoueur[i], &ennemi[j], &pers_destination, cameraRect, &joueur);
+                }
+                projJoueur[i].updateProj(&projJoueur[i], cameraRect, tabColision);
+                projJoueur[i].renderProj(rendu, &projJoueur[i], frame);
+                
+            }
+            for (int i = 0; i < NB_ENNEMI; i++){
+                ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
+            }
+
+            actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, &direction, &pers_source, &pers_destination, rendu);
 
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
