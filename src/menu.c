@@ -69,3 +69,81 @@ void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileBu
     *gameoverButton = createButton(rendu, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
     *retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 }
+
+void menuFonc(int menu, SDL_Renderer * rendu, Button jouerButton, Button difficulteButton, Button difficileButton, Button accueilButton, Button gameoverButton, Button retryButton, Button facileButton, Button normalButton)
+{
+    if(menu == 1)
+    {
+            SDL_RenderClear(rendu);
+            affichageMenuImage(rendu);
+
+            // Dessiner les boutons
+            drawButton(rendu, jouerButton);
+            drawButton(rendu, difficulteButton);
+
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+
+            if(mouseOnButton(jouerButton)){   
+                /* I want to fill the rect with transparent color */
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &jouerButton.rect);
+            }
+
+            if(mouseOnButton(difficileButton)){
+                /* I want to fill the rect with transparent color */
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &difficileButton.rect);
+            }
+
+            SDL_RenderPresent(rendu);
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+    }
+    else if(menu == 2)
+    {
+        SDL_RenderClear(rendu);
+            affichageMenuImage(rendu);
+
+            drawButton(rendu, facileButton);
+            drawButton(rendu, normalButton);
+            drawButton(rendu, difficileButton);
+            drawButton(rendu, accueilButton);
+
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+            // Dessiner les boutons
+            if(mouseOnButton(facileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &facileButton.rect);
+            }
+            if(mouseOnButton(normalButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &normalButton.rect);
+            }
+            if(mouseOnButton(accueilButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &accueilButton.rect);
+            }
+            if(mouseOnButton(difficileButton)){
+                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+                SDL_RenderFillRect(rendu, &difficileButton.rect);
+            }
+            
+
+            SDL_RenderPresent(rendu);
+            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+    }
+    else if(menu == 3)
+    {
+            SDL_RenderClear(rendu);
+            affichageMenuImage(rendu);
+
+            // Dessiner les boutons
+            drawButton(rendu, gameoverButton);
+            drawButton(rendu, retryButton);
+            
+            SDL_RenderPresent(rendu);
+    }
+    else printf("Erreur de la valeur de la variable \"menu\" (%d) \n ",menu);
+}
+

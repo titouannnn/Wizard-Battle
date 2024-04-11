@@ -1,9 +1,6 @@
 #include "game.h"
 
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
-
-
-
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
 
 
@@ -26,10 +23,7 @@ int main() {
     /* A supprimer, inutile*/
     SDL_Texture *tabTile[5];
     chargerTextures(rendu, tabTile);
-
-    // Initialisation de la structure barre de vie
-    
-    
+ 
 
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
     SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, HEALTH_BAR_HEIGHT };
@@ -39,13 +33,7 @@ int main() {
 
 
     
-    /*
-    * MENU =
-    * 0 - Jeu
-    * 1 - Page d'accueil
-    * 2 - Choix de la difficulté
-    * 3 - Game Over
-    * */
+    
 
    int menu = 1;
     
@@ -92,84 +80,22 @@ int main() {
 
             }
         }
-        
-        if(menu == 1){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
 
-            // Dessiner les boutons
-            drawButton(rendu, jouerButton);
-            drawButton(rendu, difficulteButton);
-
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
-
-
-            if(mouseOnButton(jouerButton)){   
-                /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &jouerButton.rect);
-            }
-
-            if(mouseOnButton(difficileButton)){
-                /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &difficileButton.rect);
-            }
-
-            SDL_RenderPresent(rendu);
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
-            
+        /*
+        * MENU =
+        * 0 - Jeu
+        * 1 - Page d'accueil
+        * 2 - Choix de la difficulté
+        * 3 - Game Over
+        */
+   
+        if(menu != 0)  /* Si la valeur menu n'est pas censé renvoyer sur le jeu directement*/
+        {
+            menuFonc( menu, rendu, jouerButton, difficulteButton, difficileButton, accueilButton, gameoverButton, retryButton, facileButton, normalButton);
         }
 
-        else if(menu == 2){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
-
-            drawButton(rendu, facileButton);
-            drawButton(rendu, normalButton);
-            drawButton(rendu, difficileButton);
-            drawButton(rendu, accueilButton);
-
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
-
-            // Dessiner les boutons
-            if(mouseOnButton(facileButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &facileButton.rect);
-            }
-            if(mouseOnButton(normalButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &normalButton.rect);
-            }
-            if(mouseOnButton(accueilButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &accueilButton.rect);
-            }
-            if(mouseOnButton(difficileButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &difficileButton.rect);
-            }
-            
-
-            SDL_RenderPresent(rendu);
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
-        }
-
-        
-
-
-        else if(menu == 3){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
-
-            // Dessiner les boutons
-            drawButton(rendu, gameoverButton);
-            drawButton(rendu, retryButton);
-            
-            SDL_RenderPresent(rendu);
-        }
-
-        else if (menu == 0){
+        else if (menu == 0)
+        {
             //calcul du temps
             temps_actuel = SDL_GetTicks();
             delta_temps += temps_actuel - temps_ancien;
