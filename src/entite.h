@@ -77,6 +77,9 @@ void DessinerPixel(int x, int y, SDL_Renderer *rendu);
 void DessinerLigneEnnemiJoueur(point_t A, point_t B, SDL_Renderer *rendu);
 void DessinerLigneEnnemiVu(point_t A, point_t B, SDL_Renderer *rendu);
 void chargerTexturesEnnemi(SDL_Renderer *rendu);
+void renderEnemies(ennemi_t* ennemi, SDL_Renderer* rendu, int frame);
+
+
 
 void initEnnemis(
     projectiles_t projJoueur[MAX_PROJ],

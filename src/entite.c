@@ -341,3 +341,9 @@ void renderVecteur(SDL_Renderer *rendu, ennemi_t *ennemi, SDL_Rect * playerRect)
     DessinerLigneEnnemiVu(A, B, rendu);
 
 }  
+
+void renderEnemies(ennemi_t* ennemi, SDL_Renderer* rendu, int frame) {
+    for (int i = 0; i < NB_ENNEMI; i++){
+        ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
+    }
+}

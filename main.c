@@ -13,6 +13,7 @@ int main() {
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
     int direction = DROITE;
+    int menu = 1;
     
     /* Initialisation des variables, encapsulées dans trois fonctions pour plus de clarté*/
     initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar);
@@ -30,12 +31,9 @@ int main() {
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
     *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, HEALTH_BAR_HEIGHT };
 
+ 
 
-
-    
-    
-
-   int menu = 1;
+   
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -95,31 +93,19 @@ int main() {
         }
 
         else if (menu == 0)
+        /* On entre dans le jeu */
         {
-            //calcul du temps
-            temps_actuel = SDL_GetTicks();
-            delta_temps += temps_actuel - temps_ancien;
-            temps_ancien = temps_actuel;
-
-            if(delta_temps >= 100){ // ms entre les images du sprite
-                delta_temps = 0;
-                frame = (frame + 1) % 6;
-            }
+            /* On efface le rendu précédent*/
             SDL_RenderClear(rendu);
 
             // Récupération de l'état du clavier : 
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
             updateHealthBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
-
-            if(joueur.pv <= 0){
-                menu = 3;
-            }
-
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
             action(clavier, &pers_destination, colision, &direction);
-            updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
             
+            /* Rendu des enemis et des projectiles*/
             for (int i = 0; i < NB_ENNEMI; i++){
                 Uint32 temp_vivant = SDL_GetTicks() - ennemi[i].delta;
                 ennemi[i].updateEnnemi(&ennemi[i], cameraRect, &pers_destination, tabColision, projEnnemi, &projNbEnnemi, temp_vivant);
@@ -128,9 +114,7 @@ int main() {
             if (projNbEnnemi == MAX_PROJ){
                 projNbEnnemi = 0;
             }
-            
-            action(clavier, &pers_destination, colision, &direction);
-            
+                        
 
             for (int i = 0; i < projNbEnnemi; i++){
                 for(int j = 0; j < NB_ENNEMI; j++){
@@ -148,25 +132,29 @@ int main() {
                 projJoueur[i].renderProj(rendu, &projJoueur[i], frame);
                 
             }
-            for (int i = 0; i < NB_ENNEMI; i++){
-                ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
-            }
+            renderEnemies(ennemi, rendu, frame);
 
             actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, &direction, &pers_source, &pers_destination, rendu);
 
+            /* La Barre de vie est rendue en dernière pour être affichée devant les autres éléments */
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
 
             SDL_RenderPresent(rendu);
 
-            SDL_Delay(DELAI);
+            /* Game Over*/
+            if(joueur.pv <= 0){
+                menu = 3;
+            }
         }
     }
     free(healthBarRect);
     return fin(fenetre, rendu);
 }
 
-/* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
+/* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence 
+* La fonction est déclarée ici pour des problèmes de dépendances circulaires
+*/
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
     if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
         if (((projectile->x +25 + projectile->w > ennemi->x) && (projectile->x + 25 < ennemi->x + ennemi->rect.w)) && ((projectile->y + projectile->h/2 > ennemi->y) && (projectile->y + 50 < ennemi->y + ennemi->rect.h))){
