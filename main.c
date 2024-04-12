@@ -19,11 +19,7 @@ int main() {
     initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar);
     initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
     initBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
-
-    
-    /* A supprimer, inutile*/
-    SDL_Texture *tabTile[5];
-    chargerTextures(rendu, tabTile);
+    chargerTextures(rendu);
  
 
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
@@ -102,7 +98,7 @@ int main() {
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
             updateHealthBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
-            updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
+            updateCamera(&pers_destination,rendu, cameraRect,tilemap, colision, tabColision, position);
             action(clavier, &pers_destination, colision, &direction);
             
             /* Rendu des enemis et des projectiles*/
