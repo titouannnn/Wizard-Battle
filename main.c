@@ -130,7 +130,7 @@ int main() {
             }
             renderEnemies(ennemi, rendu, frame);
 
-            actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, &direction, &pers_source, &pers_destination, rendu);
+            actualisationSprite(4, frame, &direction, &pers_source, &pers_destination, rendu);
 
             /* La Barre de vie est rendue en dernière pour être affichée devant les autres éléments */
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);

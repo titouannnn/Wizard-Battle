@@ -69,7 +69,7 @@ void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentH
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu);
 void chargerTextures(SDL_Renderer *rendu);
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu);
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
+void actualisationSprite(int nb_sprite, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], colision_t *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position);

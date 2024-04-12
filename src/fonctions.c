@@ -103,25 +103,8 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
 }
 
 void chargerTextures(SDL_Renderer *rendu){
-    /*
-    temp_surface = SDL_LoadBMP("images/run_front.bmp");
-    run_front_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(run_front_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_front': %s\n", SDL_GetError());
-    }
-    else printf("Chargement de l'image 'run_front' réussi\n");
 
-    temp_surface = SDL_LoadBMP("images/run_back.bmp");
-    run_back_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(run_back_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_back': %s\n", SDL_GetError());
-    }
-    else printf("Chargement de l'image 'run_back' réussi\n");
-
-    */
-
+    /*Ecran du menu */
     temp_surface = SDL_LoadBMP("images/background2.bmp");
     menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -155,15 +138,6 @@ void chargerTextures(SDL_Renderer *rendu){
     else printf("Chargement du fond réussi\n");
 
     
-
-    temp_surface = IMG_Load("images/tile1.png");
-    tile_verte_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(fond_tex == NULL){
-        printf("Erreur de chargement de la tile verte: %s\n", SDL_GetError());
-    }
-    else printf("Chargement de la tile verte réussi\n");
-
     temp_surface = IMG_Load("images/tilemap.png");
     tilemap = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -176,18 +150,18 @@ void chargerTextures(SDL_Renderer *rendu){
     tilemap_grass_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
     SDL_FreeSurface(temp_surface);
     if(tilemap_grass_tex == NULL){
-        printf("chargement de tilemap2 échoué");
+        printf("chargement de la tilemap_grass échoué");
     }
-    else printf("chargement de tilemap2 reussi \n");
+    else printf("chargement de la tilemap_grass reussi \n");
 
     //chargement de la seconde tilemap
     temp_surface = IMG_Load("images/tilemap_structures.png");
     tilemap_structures_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
     SDL_FreeSurface(temp_surface);
     if(tilemap_structures_tex == NULL){
-        printf("chargement de tilemap2_80 échoué");
+        printf("chargement de la tilemap_struct échoué");
     }
-    else printf("chargement de tilemap2_80 reussi \n");
+    else printf("chargement de la tilemap_struct reussi \n");
 
 }
 
@@ -221,7 +195,7 @@ int getMousePositionDirection(SDL_Rect *pers_destination){
     return direction;
 }
 
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
+void actualisationSprite(int nb_sprite, int frame, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     
     if (*direction == DROITE) { 
@@ -230,10 +204,10 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
         texSprite = run_left_tex;
     }
 
-    src->x = (frame % nb_sprite)*largeur;
+    src->x = (frame % nb_sprite)*DIM_SPRITE_PLAYER_X;
     src->y = 0;
-    src->w = largeur;
-    src->h = hauteur;
+    src->w = DIM_SPRITE_PLAYER_X;
+    src->h = DIM_SPRITE_PLAYER_Y;
     dst->w = DIM_SPRITE_PLAYER_X/1.5;
     dst->h = DIM_SPRITE_PLAYER_Y/1.5;
 
