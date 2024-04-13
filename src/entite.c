@@ -28,14 +28,35 @@ void chargerTexturesEnnemi(SDL_Renderer *rendu){
 }
 
 void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
-    int positionRand_x = 0;
-    int positionRand_y = 0;
+    
     for (int i = 0; i < NB_ENNEMI; i++){
-        positionRand_x = rand() % 1000;
-        positionRand_y = rand() % 1000;
+        
         ennemi_creer(&tabEnnemi[i]);
+        
+    }
+}
+
+void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis){
+    for (int i = 0; i < nb_ennemis; i++){
+        int positionRand_x = rand() % ((NB_TILE_WIDTH-2) * TILE_WIDTH);
+        int positionRand_y = rand() % ((NB_TILE_HEIGHT-2) * TILE_HEIGHT);
         tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100, 10);
     }
+}
+
+void initEnnemis(
+    projectiles_t projJoueur[MAX_PROJ],
+    projectiles_t projEnnemi[MAX_PROJ],
+    joueur_t *joueur,
+    ennemi_t ennemi[NB_ENNEMI],
+    SDL_Renderer *rendu
+) {
+    initTabProj(projJoueur);
+    initTabProj(projEnnemi);
+    initialiserJoueur(joueur);
+    initTabEnnemi(ennemi);
+    chargerTexturesEnnemi(rendu);
+    chargerTexturesProj(rendu);
 }
 
 void actualisationSpriteEnnemi(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
@@ -194,13 +215,15 @@ void ennemi_creer(ennemi_t * ennemi){
 
 void initialiserJoueur(joueur_t * joueur){
     joueur->attaque = 10;
-    joueur->pv = 1000;
-    joueur->pvMax = 1000;
+    joueur->pv = 100;
+    joueur->pvMax = 100;
     joueur->vitesse = 1;
 }
 
 /* x et y pour coordonnées, id correspond aux types de monstre cela servira pour l'affichage des sprites (si y a plusieurs monstres) */
 void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int attaque){
+
+    ennemi->mort = 0;
 
     ennemi->delta = SDL_GetTicks();
 
@@ -222,18 +245,20 @@ void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int atta
     ennemi->pv = pvMax;
 
     ennemi->detection = 0;
-    ennemi->vitesse = 3;
+    ennemi->vitesse = 2.5;
 }
 
 void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], projectiles_t projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant){
+    srand(time(NULL));
 
     /* Si l'ennemi meurt (pv <= 0) on ne l'update plus et on le replace aléatoirement avec tous ses pv */
-    if (ennemi->pv <= 0){
-        int randX = rand() % 1000;
-        int randY = rand() % 1000;
-        ennemi->x = randX;
-        ennemi->y = randY;
-        ennemi->pv = ennemi->pvMax;
+    if (ennemi->pv <= 0 && ennemi->mort == 0){    
+        ennemi->mort = 1;
+        ennemi->x = 0;
+        ennemi->y = 0;
+        return;
+    }
+    if (ennemi->pv <= 0 && ennemi->mort == 1){
         return;
     }
 
@@ -250,7 +275,7 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
     float diry = (playerRect->y + 100/2) - ennemi->rect.y ;
 
     /* Si l'ennemi est à proximité du joueur, il s'arrête (pour éviter que l'ennemi aille directement sur le joueur à l'infini) */
-    if ((dirx < 100 && dirx > -100) && (diry < 100 && diry > -100)){
+    if ((dirx < 300 && dirx > -300) && (diry < 300 && diry > -300)){
         proche = 1;
     }
     else{
@@ -267,15 +292,27 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
         ennemi->droite = 1;
     }
 
+    int colision_bas = 0;
+    int colision_haut = 0;
+    int colision_gauche = 0;
+    int colision_droite = 0;
+
+    /* On vérifie si l'ennemi est en collision avec les tiles de la carte */
+    colision_bas = tabColision[(ennemi->rect.y + 200) / TILE_HEIGHT][(ennemi->rect.x + 300) / TILE_WIDTH];
+    colision_haut = tabColision[(ennemi->rect.y + 100) / TILE_HEIGHT][(ennemi->rect.x + 300) / TILE_WIDTH];
+    colision_gauche = tabColision[(ennemi->rect.y + 150) / TILE_HEIGHT][(ennemi->rect.x + 250) / TILE_WIDTH];
+    colision_droite = tabColision[(ennemi->rect.y + 150) / TILE_HEIGHT][(ennemi->rect.x + 350) / TILE_WIDTH];
+
     /* Si l'ennemi detecte le joueur, il fonce vers lui */
-    if (ennemi->detection == 1 && proche == 0){
+    if (ennemi->detection == 1){
+        if (proche == 0){
+            float hyp = sqrt(dirx * dirx + diry * diry);
+            dirx /= hyp;
+            diry /= hyp;
 
-        float hyp = sqrt(dirx * dirx + diry * diry);
-        dirx /= hyp;
-        diry /= hyp;
-
-        ennemi->x += dirx * ennemi->vitesse; 
-        ennemi->y += diry * ennemi->vitesse;
+            ennemi->x += dirx * ennemi->vitesse; 
+            ennemi->y += diry * ennemi->vitesse;
+        }
 
         /* temp_vivant correspond à la durée durant laquelle l'ennemi est en vit, ici toutes les deux secondes il lance un projectile */
         if (temp_vivant > 2000 ){

@@ -41,6 +41,34 @@ SDL_Rect * initJoueur(int x, int y){
     return pers_destination;
 }
 
+void initFonctions(
+    int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH],
+    int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT],
+    SDL_Window **fenetre,
+    SDL_Renderer **rendu,
+    SDL_Rect **cameraRect,
+    positionJoueur_t *position,
+    colision_t **colision,
+    SDL_Rect *pers_destination,
+    Uint32 *temps_ancien,
+    SDL_Texture **barTextureVieMax,
+    SDL_Texture **barTextureVie,
+    bar_t *healthBar
+) {
+    chargerCarte("src/tilemap_grass.txt",tilemap,0);
+    chargerCarte("src/tilemap_structs.txt",tilemap,1);
+    chargerColisions(tilemap, tabColision, 1);
+    initialisation(fenetre, rendu);
+    *cameraRect = initCamera();
+    *position = *initPositionJoueur();
+    *colision = initColision();
+    *pers_destination = *initJoueur(400, 400); 
+    *temps_ancien = SDL_GetTicks();
+    *barTextureVieMax = creationTextureBar(*rendu, JAUNE);
+    *barTextureVie = creationTextureBar(*rendu, ROUGE);
+    initBar(healthBar, 50, 50, BAR_WIDTH);
+}
+
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     // Initialisation de la bibliothèque SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -212,9 +240,6 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
     src->h = hauteur;
     dst->w = DIM_SPRITE_PLAYER_X/1.5;
     dst->h = DIM_SPRITE_PLAYER_Y/1.5;
-
-    printf("largeur sprite : %d\n",dst->w);
-    printf("hauteur sprite : %d\n",dst->h);
 
     // On affiche les sprites  :
     SDL_RenderCopy(rendu, texSprite, src, dst);

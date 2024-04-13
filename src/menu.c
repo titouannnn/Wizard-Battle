@@ -57,3 +57,130 @@ int mouseOnButton(Button button){
 }
 
 
+void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu) {
+    *jouerButton = createButton(rendu, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *difficulteButton = createButton(rendu, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+
+    *facileButton = createButton(rendu, "FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
+    *normalButton = createButton(rendu, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
+    *difficileButton = createButton(rendu, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
+    *accueilButton = createButton(rendu, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+
+    *gameoverButton = createButton(rendu, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+}
+
+void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteButton){
+    SDL_RenderClear(rendu);
+    affichageMenuImage(rendu);
+
+    // Dessiner les boutons
+    drawButton(rendu, jouerButton);
+    drawButton(rendu, difficulteButton);
+
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+
+    if(mouseOnButton(jouerButton)){   
+        /* I want to fill the rect with transparent color */
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &jouerButton.rect);
+    }
+
+    if(mouseOnButton(difficulteButton)){
+        /* I want to fill the rect with transparent color */
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &difficulteButton.rect);
+    }
+
+    SDL_RenderPresent(rendu);
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+}
+
+void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton){
+    SDL_RenderClear(rendu);
+    affichageMenuImage(rendu);
+
+    drawButton(rendu, facileButton);
+    drawButton(rendu, normalButton);
+    drawButton(rendu, difficileButton);
+    drawButton(rendu, accueilButton);
+
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+    // Dessiner les boutons
+    if(mouseOnButton(facileButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &facileButton.rect);
+    }
+    if(mouseOnButton(normalButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &normalButton.rect);
+    }
+    if(mouseOnButton(accueilButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &accueilButton.rect);
+    }
+    if(mouseOnButton(difficileButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &difficileButton.rect);
+    }
+    
+
+    SDL_RenderPresent(rendu);
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+}
+
+int menuGameOver( SDL_Renderer *rendu, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill){
+    SDL_RenderClear(rendu);
+    affichageMenuImage(rendu);
+
+    // Dessiner les boutons
+    drawButton(rendu, gameoverButton);
+    drawButton(rendu, retryButton);
+
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+    if(mouseOnButton(retryButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &retryButton.rect);
+    }
+    
+    
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+
+    /* Affichage des scores */
+    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
+    SDL_Color blanc = {255, 0, 0};
+    char texte[512];
+    sprintf(texte, "Vague : %d | Survie : %d sec | Kills : %d", vague, duree_partie/100, (nb_kill + 5 * (vague-1)));
+
+    // Allouer dynamiquement la mémoire pour la chaîne de caractères
+    char* texte_dyn = malloc(strlen(texte) + 1);
+    if (texte_dyn == NULL) {
+        // Gestion de l'erreur de l'allocation mémoire
+        printf("Erreur d'allocation de mémoire\n");
+        return (EXIT_FAILURE);
+    }
+    strcpy(texte_dyn, texte); // Copier la chaîne dans l'espace alloué dynamiquement
+
+    SDL_Surface* surfaceMessage;
+    
+    surfaceMessage = TTF_RenderText_Solid(font, texte_dyn, blanc);
+    free(texte_dyn); // Libérer la mémoire allouée dynamiquement
+
+    SDL_Texture* messageScore = SDL_CreateTextureFromSurface(rendu, surfaceMessage);
+
+    SDL_Rect messageRect;
+
+    messageRect.x = WINDOWS_WIDTH/2-240;
+    messageRect.y = WINDOWS_HEIGHT/2 - 150;
+    messageRect.w = 500;
+    messageRect.h = 50;
+
+    SDL_RenderCopy(rendu, messageScore, NULL, &messageRect);
+    SDL_RenderPresent(rendu);
+    
+    SDL_DestroyTexture(messageScore);
+    SDL_FreeSurface(surfaceMessage);
+}

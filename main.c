@@ -1,102 +1,44 @@
 #include "game.h"
 
-SDL_Renderer *rendu;
-SDL_Window *fenetre;
-
-SDL_Rect pers_source, pers_destination;
-SDL_Rect * cameraRect;
-positionJoueur_t position;
-colision_t *colision;
-joueur_t joueur;
-ennemi_t ennemi[NB_ENNEMI];
-projectiles_t projJoueur[MAX_PROJ];
-projectiles_t projEnnemi[MAX_PROJ];
-
-/* Désolé Titouan j'ai du mettre cette fonction ici car elle nécéssite projectile.h et entite.h et je peux pas dcp la mettre dans projectile.c vu que ça crée une dépendance circulaire (entite.h a besoin de projectile.h et inversement) */
-
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
+
+
 
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
 
 
 
 int main() {
-
-
+    /* 
+    * Déclaration des tableaux pour la carte et les colisions
+    * Ici tableau de 3 dimensions car il y a plusieurs couches pour la carte (herbe et structures)
+    */
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH];
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
-
-    int projNbEnnemi = 0; int projNbJoueur = 0;
-    int isRunning = 1; int direction = DROITE;
+    int direction = DROITE;
     
-    chargerCarte("src/tilemap_grass.txt",tilemap,0);
-    chargerCarte("src/tilemap_structs.txt",tilemap,1);
-    chargerColisions(tilemap, tabColision, 1);
-    initTabProj(projJoueur);
-    initTabProj(projEnnemi);
-    initialisation(&fenetre, &rendu);
-    initialiserJoueur(&joueur);
-    initTabEnnemi(ennemi);
+    /* Initialisation des variables, encapsulées dans trois fonctions pour plus de clarté*/
+    initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar);
+    initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
+    initBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
 
-
+    
     /* A supprimer, inutile*/
     SDL_Texture *tabTile[5];
-
     chargerTextures(rendu, tabTile);
-    chargerTexturesEnnemi(rendu);
-    chargerTexturesProj(rendu);
-
-
-    cameraRect = initCamera();
-    position = *initPositionJoueur();
-    colision = initColision();
-    pers_destination = *initJoueur(400, 400); 
-
-
-
-    
-
-
-
-
-    
-
-    // Gestion des événements SDL
-    SDL_Event event;
-    int frame = 0;
-    Uint32 temps_ancien = SDL_GetTicks();
-    Uint32 temps_actuel;
-    int delta_temps;
-
-    SDL_Texture *barTextureVieMax = creationTextureBar(rendu, JAUNE);
-    SDL_Texture *barTextureVie = creationTextureBar(rendu, ROUGE);
 
     // Initialisation de la structure barre de vie
-    bar_t healthBar;
-    initHealthBar(&healthBar, 50, 50, BAR_WIDTH);
+    
+    
 
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
     SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, BAR_HEIGHT };
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
     *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, BAR_HEIGHT };
 
-    // Variable temporaire
-    int count = 100;
 
-    Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
 
-    // Création des boutons
-    jouerButton = createButton(rendu, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    difficulteButton = createButton(rendu, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
-    facileButton = createButton(rendu, "FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
-    normalButton = createButton(rendu, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
-    difficileButton = createButton(rendu, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
-    accueilButton = createButton(rendu, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
-    gameoverButton = createButton(rendu, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-
+    
     /*
     * MENU =
     * 0 - Jeu
@@ -105,7 +47,11 @@ int main() {
     * 3 - Game Over
     * */
 
-   int menu = 0;
+    int menu = 1;
+    vague = 1;
+    nb_ennemis = 5;
+    nb_kill = 0;
+    ennemis_initialises = 0;
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -118,6 +64,7 @@ int main() {
                 case SDL_MOUSEBUTTONDOWN:
                     if(menu == 1 && clickButton(event, jouerButton)){
                         menu = 0;
+                        duree_partie = SDL_GetTicks();
                     }
                     
                     if(menu == 1 && clickButton(event, difficulteButton)){
@@ -152,82 +99,17 @@ int main() {
         }
         
         if(menu == 1){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
-
-            // Dessiner les boutons
-            drawButton(rendu, jouerButton);
-            drawButton(rendu, difficulteButton);
-
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
-
-
-            if(mouseOnButton(jouerButton)){   
-                /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &jouerButton.rect);
-            }
-
-            if(mouseOnButton(difficileButton)){
-                /* I want to fill the rect with transparent color */
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &difficileButton.rect);
-            }
-
-            SDL_RenderPresent(rendu);
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
-            
+            menuPrincipal(rendu, jouerButton, difficulteButton);
         }
-
         else if(menu == 2){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
-
-            drawButton(rendu, facileButton);
-            drawButton(rendu, normalButton);
-            drawButton(rendu, difficileButton);
-            drawButton(rendu, accueilButton);
-
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
-
-            // Dessiner les boutons
-            if(mouseOnButton(facileButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &facileButton.rect);
-            }
-            if(mouseOnButton(normalButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &normalButton.rect);
-            }
-            if(mouseOnButton(accueilButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &accueilButton.rect);
-            }
-            if(mouseOnButton(difficileButton)){
-                SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
-                SDL_RenderFillRect(rendu, &difficileButton.rect);
-            }
-            
-
-            SDL_RenderPresent(rendu);
-            SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+            menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton);
         }
-
-        
-
-
         else if(menu == 3){
-            SDL_RenderClear(rendu);
-            affichageMenuImage(rendu);
-
-            // Dessiner les boutons
-            drawButton(rendu, gameoverButton);
-            drawButton(rendu, retryButton);
-            
-            SDL_RenderPresent(rendu);
+            menuGameOver(rendu, gameoverButton, retryButton, vague, duree_partie, nb_kill); 
         }
 
         else if (menu == 0){
+            
             //calcul du temps
             temps_actuel = SDL_GetTicks();
             delta_temps += temps_actuel - temps_ancien;
@@ -242,54 +124,85 @@ int main() {
             // Récupération de l'état du clavier : 
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
-            updateHealthBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
+            updateBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
 
             if(joueur.pv <= 0){
+                duree_partie = SDL_GetTicks() - duree_partie;
                 menu = 3;
             }
 
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
             action(clavier, &pers_destination, colision, &direction);
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, tabTile, colision, tabColision, position);
+
             
-            for (int i = 0; i < NB_ENNEMI; i++){
-                Uint32 temp_vivant = SDL_GetTicks() - ennemi[i].delta;
-                ennemi[i].updateEnnemi(&ennemi[i], cameraRect, &pers_destination, tabColision, projEnnemi, &projNbEnnemi, temp_vivant);
+
+            if (!ennemis_initialises){
+                duree_vague = SDL_GetTicks();
+                initEnnemisVague(ennemi, nb_ennemis);
+                ennemis_initialises = 1;
             }
-            
+
+            /* Update de la position des ennemis */
+            for (int i = 0; i < nb_ennemis; i++){
+                Uint32 temp_vivant = SDL_GetTicks() - ennemi[i].delta;
+                if (ennemi[i].pv <= 0 && ennemi[i].mort == 0){
+                    nb_kill++;
+                }
+                ennemi[i].updateEnnemi(&ennemi[i], cameraRect, &pers_destination, tabColision, projEnnemi, &projNbEnnemi, temp_vivant);
+                
+            }            
+
             if (projNbEnnemi == MAX_PROJ){
                 projNbEnnemi = 0;
             }
             
-            action(clavier, &pers_destination, colision, &direction);
+            action(clavier, &pers_destination, colision, &direction);            
             
-
+            /* Update et rendu des projectile ennemis */
             for (int i = 0; i < projNbEnnemi; i++){
-                for(int j = 0; j < NB_ENNEMI; j++){
+                for(int j = 0; j < nb_ennemis; j++){
                     collisionProjEntite(&projEnnemi[i], &ennemi[j], &pers_destination, cameraRect, &joueur);
                 }
                 projEnnemi[i].updateProj(&projEnnemi[i], cameraRect, tabColision);
                 projEnnemi[i].renderProj(rendu, &projEnnemi[i], frame);
                 
             }
+
+            /* Update et rendu des projectiles du joueur */
             for (int i = 0; i < projNbJoueur; i++){
-                for(int j = 0; j < NB_ENNEMI; j++){
+                for(int j = 0; j < nb_ennemis; j++){
                     collisionProjEntite(&projJoueur[i], &ennemi[j], &pers_destination, cameraRect, &joueur);
+                    
                 }
                 projJoueur[i].updateProj(&projJoueur[i], cameraRect, tabColision);
                 projJoueur[i].renderProj(rendu, &projJoueur[i], frame);
                 
             }
-            for (int i = 0; i < NB_ENNEMI; i++){
+
+            /* Rendu des ennemis */
+            for (int i = 0; i < nb_ennemis; i++){
                 ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
             }
 
+            /* Si on a fait suffisamment de kill on passe à la manche suivante */
+            if (nb_kill >= nb_ennemis) {
+                nextVague(&vague, &nb_ennemis, &nb_kill, &ennemis_initialises); 
+            }
+
+            if (SDL_GetTicks() - duree_vague < 2000){
+                afficherVague(rendu, vague, SDL_GetTicks() - duree_vague);
+            }
+
+            /* Rendu du joueur */
             actualisationSprite(4, frame, DIM_SPRITE_PLAYER_X, DIM_SPRITE_PLAYER_Y, &direction, &pers_source, &pers_destination, rendu);
 
+           
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
 
             SDL_RenderPresent(rendu);
+
 
             SDL_Delay(DELAI);
         }
@@ -302,14 +215,16 @@ int main() {
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
     if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){
         if (((projectile->x +25 + projectile->w > ennemi->x) && (projectile->x + 25 < ennemi->x + ennemi->rect.w)) && ((projectile->y + projectile->h/2 > ennemi->y) && (projectile->y + 50 < ennemi->y + ennemi->rect.h))){
-            ennemi->pv -= ennemi->attaque;
+            ennemi->pv -= joueur->attaque;
             projectile->collision = 1;
+            
         }
     }
     else if (projectile->id == PROJ_ENNEMI && projectile->collision != 1){
         if (projectile->x + projectile->w/2 > cameraRect->x + playerRect->x && projectile->x < cameraRect->x + playerRect->x + playerRect->w && projectile->y + projectile->h/2 > playerRect->y + cameraRect->y && projectile->y < playerRect->y + playerRect->h + cameraRect->y){
-            joueur->pv -= joueur->attaque;
+            joueur->pv -= ennemi->attaque;
             projectile->collision = 1;
+            
         }
     }
 
