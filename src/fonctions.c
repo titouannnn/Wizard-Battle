@@ -102,26 +102,9 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     
 }
 
-void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
-    /*
-    temp_surface = SDL_LoadBMP("images/run_front.bmp");
-    run_front_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(run_front_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_front': %s\n", SDL_GetError());
-    }
-    else printf("Chargement de l'image 'run_front' réussi\n");
+void chargerTextures(SDL_Renderer *rendu){
 
-    temp_surface = SDL_LoadBMP("images/run_back.bmp");
-    run_back_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(run_back_tex == NULL){
-        printf("Erreur de chargement de l'image 'run_back': %s\n", SDL_GetError());
-    }
-    else printf("Chargement de l'image 'run_back' réussi\n");
-
-    */
-
+    /*Ecran du menu */
     temp_surface = SDL_LoadBMP("images/background2.bmp");
     menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -155,15 +138,6 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     else printf("Chargement du fond réussi\n");
 
     
-
-    temp_surface = IMG_Load("images/tile1.png");
-    tile_verte_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
-    SDL_FreeSurface(temp_surface);
-    if(fond_tex == NULL){
-        printf("Erreur de chargement de la tile verte: %s\n", SDL_GetError());
-    }
-    else printf("Chargement de la tile verte réussi\n");
-
     temp_surface = IMG_Load("images/tilemap.png");
     tilemap = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
@@ -176,23 +150,19 @@ void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]){
     tilemap_grass_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
     SDL_FreeSurface(temp_surface);
     if(tilemap_grass_tex == NULL){
-        printf("chargement de tilemap2 échoué");
+        printf("chargement de la tilemap_grass échoué");
     }
-    else printf("chargement de tilemap2 reussi \n");
+    else printf("chargement de la tilemap_grass reussi \n");
 
     //chargement de la seconde tilemap
     temp_surface = IMG_Load("images/tilemap_structures.png");
     tilemap_structures_tex = SDL_CreateTextureFromSurface(rendu,temp_surface);
     SDL_FreeSurface(temp_surface);
     if(tilemap_structures_tex == NULL){
-        printf("chargement de tilemap2_80 échoué");
+        printf("chargement de la tilemap_struct échoué");
     }
-    else printf("chargement de tilemap2_80 reussi \n");
+    else printf("chargement de la tilemap_struct reussi \n");
 
-
-    /*Tableau de texture de tiles*/
-
-    tabInit(tabTile, rendu);
 }
 
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
@@ -225,7 +195,7 @@ int getMousePositionDirection(SDL_Rect *pers_destination){
     return direction;
 }
 
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
+void actualisationSprite(int nb_sprite, int frame, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     
     if (*direction == DROITE) { 
@@ -234,10 +204,10 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
         texSprite = run_left_tex;
     }
 
-    src->x = (frame % nb_sprite)*largeur;
+    src->x = (frame % nb_sprite)*DIM_SPRITE_PLAYER_X;
     src->y = 0;
-    src->w = largeur;
-    src->h = hauteur;
+    src->w = DIM_SPRITE_PLAYER_X;
+    src->h = DIM_SPRITE_PLAYER_Y;
     dst->w = DIM_SPRITE_PLAYER_X/1.5;
     dst->h = DIM_SPRITE_PLAYER_Y/1.5;
 
@@ -289,7 +259,7 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colisi
 }
 
 
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
     // Facteur d'interpolation linéaire
     const float interpolationFactor = 0.1;
 
@@ -321,10 +291,10 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     //printf("case hg : %d %d\n",position.case_hg.casx,position.case_hg.casy);
 
     //Affichage de la première couche (herbe)
-    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_grass_tex,0);
+    afficherCarte(tab, rendu, cameraRect, position, colision, tilemap_grass_tex,0);
 
     // Affichage de la seconde couche (structures)
-    afficherCarte(tab, rendu, tabTile, cameraRect, position, colision, tilemap_structures_tex,1);
+    afficherCarte(tab, rendu, cameraRect, position, colision, tilemap_structures_tex,1);
 
     colisions(position, colision, tabColisions);
 }
@@ -364,30 +334,4 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); */
 }
 
-/* Fonction d'initialisation du tableau de tiles */
 
-int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu){
-    /* A terme charger une seule image (tile set)*/
-    int i = 0;
-    const char* paths[] = {
-        "images/tile0.png",
-        "images/tile1.png",
-        "images/tile2.png",
-        "images/tile3.png",
-        "images/tile4.png"
-    };
-    for (i = 0; i < 5; i++) {
-        SDL_Surface* temp_surface = IMG_Load(paths[i]);
-        if (!temp_surface) {
-            printf("Erreur de chargement de l'image '%s': %s\n", paths[i], SDL_GetError());
-            return -1;
-        }
-        tab[i] = SDL_CreateTextureFromSurface(rendu, temp_surface);
-        SDL_FreeSurface(temp_surface);
-        if (!tab[i]) {
-            printf("Erreur de création de la texture pour '%s': %s\n", paths[i], SDL_GetError());
-            return -1;
-        }
-    }
-    return 0;
-}

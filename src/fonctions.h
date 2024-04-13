@@ -17,8 +17,8 @@
 #define DIM_SPRITE_PLAYER_Y 224
 #define FPS 60
 #define DELAI 1000 / FPS
-#define VITESSE_JOUEUR_X 3
-#define VITESSE_JOUEUR_Y 2
+#define VITESSE_JOUEUR_X 6
+#define VITESSE_JOUEUR_Y 4
 
 #define HAUT 0
 #define BAS 1
@@ -48,13 +48,12 @@ typedef struct {
 SDL_Rect * initCamera();
 SDL_Rect * initJoueur(int x, int y);
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu);
-void chargerTextures(SDL_Renderer *rendu, SDL_Texture * tabTile[5]);
+void chargerTextures(SDL_Renderer *rendu);
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu);
-void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
+void actualisationSprite(int nb_sprite, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
-void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5], colision_t *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position);
-int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu);
+void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], colision_t *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position);
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 int getMousePositionDirection(SDL_Rect *pers_destination);

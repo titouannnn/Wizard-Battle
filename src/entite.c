@@ -172,28 +172,7 @@ void DessinerLigneEnnemiVu(point_t A, point_t B, SDL_Renderer *rendu){
     }
 }
 
-/*SDL_Texture *creationTextureBar(SDL_Renderer *rendu, Couleur_t couleur){
-    SDL_Surface *barSurface = SDL_CreateRGBSurface(0, HEALTH_BAR_WIDTH, HEALTH_BAR_HEIGHT, 32, 0, 0, 0, 0);
-    SDL_FillRect(barSurface, NULL, SDL_MapRGB(barSurface->format, couleur.red, couleur.green, couleur.blue));
-    SDL_Texture *barTexture = SDL_CreateTextureFromSurface(rendu, barSurface);
-    SDL_FreeSurface(barSurface);
-    return barTexture;
 
-
-}
-
-// Initialise la barre de vie du joueur au max
-void initHealthBar(HealthBar *healthBar, int x, int y, int maxWidth) {
-    healthBar -> x = x;
-    healthBar -> y = y;
-    healthBar -> width = maxWidth;
-    healthBar -> maxWidth = maxWidth;
-}
-
-// Met à jour la barre de vie du joueur (currentHealth prend un pourcentage)
-void updateHealthBar(HealthBar *healthBar, SDL_Rect *healthBarRect, int currentHealth) {
-    healthBarRect->w = (currentHealth * healthBar->maxWidth) / 100;
-}*/
 
 void dessinerBarreDeVie(ennemi_t *ennemi, SDL_Renderer *rendu){
     SDL_Rect barreDeVie;
@@ -363,3 +342,9 @@ void renderVecteur(SDL_Renderer *rendu, ennemi_t *ennemi, SDL_Rect * playerRect)
     DessinerLigneEnnemiVu(A, B, rendu);
 
 }  
+
+void renderEnemies(ennemi_t* ennemi, SDL_Renderer* rendu, int frame) {
+    for (int i = 0; i < NB_ENNEMI; i++){
+        ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
+    }
+}

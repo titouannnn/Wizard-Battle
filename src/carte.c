@@ -65,7 +65,6 @@ void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision
 
 int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
-    SDL_Texture *tabTex[5],
     SDL_Rect * camera,
     positionJoueur_t position,
     colision_t *colision,
