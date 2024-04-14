@@ -32,6 +32,8 @@ struct joueur_s {
     int id;
     int x;
     int y;
+    int mana;
+    int manaMax;
     int pv;
     int pvMax;
     int attaque;

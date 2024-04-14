@@ -11,14 +11,6 @@
 #define BUTTON_WIDTH 200
 #define BUTTON_HEIGHT 75
 
-#define JAUNE ((Couleur_t){255, 255, 0})
-#define BLEU ((Couleur_t){0, 0, 255})
-#define ROUGE ((Couleur_t){255, 0, 0})
-#define VERT ((Couleur_t){0, 255, 0})
-#define NOIR ((Couleur_t){0, 0, 0})
-#define BLANC ((Couleur_t){255, 255, 255})
-#define ORANGE ((Couleur_t){255, 165, 0})
-
 // Structure pour représenter un bouton
 typedef struct {
     SDL_Rect rect;

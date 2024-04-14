@@ -16,7 +16,7 @@ int main() {
     int menu = 1;
     
     /* Initialisation des variables, encapsulées dans trois fonctions pour plus de clarté*/
-    initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar);
+    initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar, &barTextureManaMax, &barTextureMana, &manaBar);
     initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
     initBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
     chargerTextures(rendu);
@@ -27,7 +27,10 @@ int main() {
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
     *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, BAR_HEIGHT };
 
- 
+    // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
+    SDL_Rect manaBarMaxRect = { manaBar.x, manaBar.y, manaBar.maxWidth, BAR_HEIGHT };
+    SDL_Rect *manaBarRect = malloc(sizeof(SDL_Rect));
+    *manaBarRect = (SDL_Rect){ manaBar.x, manaBar.y, manaBar.width, BAR_HEIGHT };
 
     
     /*
@@ -53,6 +56,7 @@ int main() {
                 case SDL_MOUSEBUTTONDOWN:
                     if(menu == 1 && clickButton(event, jouerButton)){
                         menu = 0;
+                        gain_mana = SDL_GetTicks();
                         duree_partie = SDL_GetTicks();
                     }
                     
@@ -69,15 +73,18 @@ int main() {
                         joueur.pv = 100;
                     }
                     else{
-
-                        int mouse_x, mouse_y;
-                        SDL_GetMouseState(&mouse_x, &mouse_y);
-            
-                        /* Initialisation du tableau de projectiles appartenant au joueur */
-                        projJoueur[projNbJoueur].initProj(&projJoueur[projNbJoueur], cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, PROJ_JOUEUR, cameraRect);
-                        projNbJoueur++;
-                        if (projNbJoueur == MAX_PROJ){
-                            projNbJoueur = 0;
+                        /* Lancer un projectile si on appuie sur le click gauche, que le jeu à débuté et que le joueur a assez de mana */
+                        if (menu == 0 && event.button.button == SDL_BUTTON_LEFT && joueur.mana >= 10){
+                                
+                            int mouse_x, mouse_y;
+                            SDL_GetMouseState(&mouse_x, &mouse_y);
+                            joueur.mana -= 5;
+                            /* Initialisation du tableau de projectiles appartenant au joueur */
+                            projJoueur[projNbJoueur].initProj(&projJoueur[projNbJoueur], cameraRect->x + pers_destination.x, cameraRect->y + pers_destination.y, mouse_x, mouse_y, PROJ_JOUEUR, cameraRect);
+                            projNbJoueur++;
+                            if (projNbJoueur == MAX_PROJ){
+                                projNbJoueur = 0;
+                            }
                         }
                     }
                     
@@ -99,16 +106,26 @@ int main() {
 
         else if (menu == 0)
         /* On entre dans le jeu */
-        {
+        {   
             //calcul du temps
             temps_actuel = SDL_GetTicks();
             delta_temps += temps_actuel - temps_ancien;
             temps_ancien = temps_actuel;
 
+            if (temps_actuel - gain_mana >= 1000){
+                joueur.mana += 5;
+                if (joueur.mana > joueur.manaMax){
+                    joueur.mana = joueur.manaMax;
+                }
+                gain_mana = temps_actuel;
+            }
+
             if(delta_temps >= 100){ // ms entre les images du sprite
                 delta_temps = 0;
                 frame = (frame + 1) % 6;
             }
+
+            
 
             /* On efface le rendu précédent*/
             SDL_RenderClear(rendu);
@@ -117,6 +134,7 @@ int main() {
             const Uint8 *clavier = SDL_GetKeyboardState(NULL);
             
             updateBar(&healthBar, healthBarRect, joueur.pv, joueur.pvMax);
+            updateBar(&manaBar, manaBarRect, joueur.mana, joueur.manaMax);
 
 
             updateCamera(&pers_destination,rendu, cameraRect,tilemap, colision, tabColision, position);
@@ -128,6 +146,7 @@ int main() {
             if (!ennemis_initialises){
                 duree_vague = SDL_GetTicks();
                 initEnnemisVague(ennemi, nb_ennemis);
+                joueur.mana = 100;
                 ennemis_initialises = 1;
             }
 
@@ -189,6 +208,11 @@ int main() {
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
 
+            SDL_RenderCopy(rendu, barTextureManaMax, NULL, &manaBarMaxRect);
+            SDL_RenderCopy(rendu, barTextureMana, NULL, manaBarRect);
+
+
+
             SDL_RenderPresent(rendu);
 
 
@@ -201,6 +225,7 @@ int main() {
         }
     }
     free(healthBarRect);
+    free(manaBarRect);
     return fin(fenetre, rendu);
 }
 

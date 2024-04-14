@@ -32,12 +32,21 @@
 #define CAMERA_HEIGHT 720
 
 #define JAUNE ((Couleur_t){255, 255, 0})
-#define BLEU ((Couleur_t){0, 0, 255})
+
 #define ROUGE ((Couleur_t){255, 0, 0})
-#define VERT ((Couleur_t){0, 255, 0})
+
+#define VERT ((Couleur_t){0, 204, 0})
+#define VERT_FONCE ((Couleur_t){0, 51, 0})
+
+#define BLEU ((Couleur_t){0, 102, 204})
+#define BLEU_FONCE ((Couleur_t){0, 25, 51})
+
 #define NOIR ((Couleur_t){0, 0, 0})
 #define BLANC ((Couleur_t){255, 255, 255})
 #define ORANGE ((Couleur_t){255, 165, 0})
+
+
+
 
 
 typedef struct {
@@ -71,7 +80,10 @@ void initFonctions(
     Uint32 *temps_ancien,
     SDL_Texture **barTextureVieMax,
     SDL_Texture **barTextureVie,
-    bar_t *healthBar
+    bar_t *healthBar,
+    SDL_Texture **barTextureManaMax,
+    SDL_Texture **barTextureMana,
+    bar_t *manaBar
 );
 
 #endif

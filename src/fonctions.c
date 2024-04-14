@@ -53,7 +53,10 @@ void initFonctions(
     Uint32 *temps_ancien,
     SDL_Texture **barTextureVieMax,
     SDL_Texture **barTextureVie,
-    bar_t *healthBar
+    bar_t *healthBar,
+    SDL_Texture **barTextureManaMax,
+    SDL_Texture **barTextureMana,
+    bar_t *manaBar
 ) {
     chargerCarte("src/tilemap_grass.txt",tilemap,0);
     chargerCarte("src/tilemap_structs.txt",tilemap,1);
@@ -64,9 +67,12 @@ void initFonctions(
     *colision = initColision();
     *pers_destination = *initJoueur(400, 400); 
     *temps_ancien = SDL_GetTicks();
-    *barTextureVieMax = creationTextureBar(*rendu, JAUNE);
-    *barTextureVie = creationTextureBar(*rendu, ROUGE);
+    *barTextureVieMax = creationTextureBar(*rendu, VERT_FONCE);
+    *barTextureVie = creationTextureBar(*rendu, VERT);
     initBar(healthBar, 50, 50, BAR_WIDTH);
+    *barTextureManaMax = creationTextureBar(*rendu, BLEU_FONCE);
+    *barTextureMana = creationTextureBar(*rendu, BLEU);
+    initBar(manaBar, 50, 100, BAR_WIDTH);
 }
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {

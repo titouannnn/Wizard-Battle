@@ -196,6 +196,9 @@ void initialiserJoueur(joueur_t * joueur){
     joueur->attaque = 10;
     joueur->pv = 100;
     joueur->pvMax = 100;
+
+    joueur->mana = 100;
+    joueur->manaMax = 100;
     joueur->vitesse = 1;
 }
 
