@@ -79,13 +79,13 @@ int main() {
                         }
                         if(clickButton(event, normalButton)){
                             coefDifficulte = 1;
-                            nb_ennemis = 10;
+                            nb_ennemis = 7;
                             gain_mana = SDL_GetTicks();
                             duree_partie = SDL_GetTicks();
                         }
                         if(clickButton(event, difficileButton)){
                             coefDifficulte = 1.3;
-                            nb_ennemis = 15;
+                            nb_ennemis = 10;
                             gain_mana = SDL_GetTicks();
                             duree_partie = SDL_GetTicks();
                         }
@@ -94,8 +94,34 @@ int main() {
                     }
 
                     if(menu == 3 && clickButton(event, retryButton)){
-                        menu = 1;
                         joueur.pv = 100;
+                        joueur.mana = 100;
+
+                        vague = 1;
+                        ennemis_initialises = 0;
+                        nb_kill = 0;
+                        joueur.x = 400;
+                        joueur.y = 400;
+                        projNbEnnemi = 0; 
+                        projNbJoueur = 0;
+                        frame = 0; 
+                        delta_temps = 0;
+                        
+                        if (coefDifficulte == 0.7){
+                            nb_ennemis = 5;
+                        }
+                        else if (coefDifficulte == 1){
+                            nb_ennemis = 7;
+                        }
+                        else if (coefDifficulte == 1.3){
+                            nb_ennemis = 10;
+                        }
+
+                        menu = 0;
+
+                        gain_mana = SDL_GetTicks();
+                        duree_partie = SDL_GetTicks();
+                        
                     }
                     else{
                         /* Lancer un projectile si on appuie sur le click gauche, que le jeu à débuté et que le joueur a assez de mana */

@@ -12,7 +12,7 @@
 #define PROJ_ENNEMI 1
 #define PROJ_JOUEUR 2
 
-#define MAX_PROJ 100
+#define MAX_PROJ 512
 
 #define M_PI 3.14159265358979323846
 
