@@ -1,4 +1,5 @@
 #include "game.h"
+#include "src/global.h"
 
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
@@ -44,6 +45,11 @@ int main() {
     nb_ennemis = 5;
     nb_kill = 0;
     ennemis_initialises = 0;
+    projNbEnnemi = 0; 
+    projNbJoueur = 0;
+    isRunning = 1; 
+    frame = 0; 
+    delta_temps = 0;
     
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -64,8 +70,27 @@ int main() {
                         menu = 2;
                     }
 
-                    if(menu == 2 && clickButton(event, accueilButton)){
-                        menu = 1;
+                    if(menu == 2){
+                        if(clickButton(event, facileButton)){
+                            coefDifficulte = 0.7;
+                            nb_ennemis = 5;
+                            gain_mana = SDL_GetTicks();
+                            duree_partie = SDL_GetTicks();
+                        }
+                        if(clickButton(event, normalButton)){
+                            coefDifficulte = 1;
+                            nb_ennemis = 10;
+                            gain_mana = SDL_GetTicks();
+                            duree_partie = SDL_GetTicks();
+                        }
+                        if(clickButton(event, difficileButton)){
+                            coefDifficulte = 1.3;
+                            nb_ennemis = 15;
+                            gain_mana = SDL_GetTicks();
+                            duree_partie = SDL_GetTicks();
+                        }
+                        if(clickButton(event, accueilButton)) menu = 1;
+                        
                     }
 
                     if(menu == 3 && clickButton(event, retryButton)){
@@ -112,7 +137,7 @@ int main() {
             delta_temps += temps_actuel - temps_ancien;
             temps_ancien = temps_actuel;
 
-            if (temps_actuel - gain_mana >= 1000){
+            if (temps_actuel - gain_mana >= 500){
                 joueur.mana += 5;
                 if (joueur.mana > joueur.manaMax){
                     joueur.mana = joueur.manaMax;
@@ -160,7 +185,7 @@ int main() {
                 
             }            
 
-            if (projNbEnnemi == MAX_PROJ){
+            if (projNbEnnemi > MAX_PROJ - 1){
                 projNbEnnemi = 0;
             }
             

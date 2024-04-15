@@ -45,10 +45,6 @@
 #define BLANC ((Couleur_t){255, 255, 255})
 #define ORANGE ((Couleur_t){255, 165, 0})
 
-
-
-
-
 typedef struct {
     float x;
     float y;

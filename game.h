@@ -34,17 +34,19 @@ SDL_Texture *barTextureManaMax ;
 bar_t manaBar;
 Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
 
+
+
 SDL_Texture* messageScore;
 int vague;
 int nb_ennemis;
 int nb_kill;
 int ennemis_initialises;
 
-int projNbEnnemi = 0; 
-int projNbJoueur = 0;
-int isRunning = 1; 
-int frame = 0; 
-int delta_temps = 0;
+int projNbEnnemi; 
+int projNbJoueur;
+int isRunning; 
+int frame; 
+int delta_temps;
 int duree_vague;
 int duree_partie;
 

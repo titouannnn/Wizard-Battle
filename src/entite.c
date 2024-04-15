@@ -1,7 +1,6 @@
 #include "entite.h"
 #include "projectile.h"
-
-/* https://openclassrooms.com/forum/sujet/sdl-tracer-un-trait-entre-deux-points-49344 */
+#include "global.h"
 
 SDL_Surface *ennemi_temp_surface;
 
@@ -40,7 +39,9 @@ void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis){
     for (int i = 0; i < nb_ennemis; i++){
         int positionRand_x = rand() % ((NB_TILE_WIDTH-2) * TILE_WIDTH);
         int positionRand_y = rand() % ((NB_TILE_HEIGHT-2) * TILE_HEIGHT);
-        tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100, 10);
+
+        /* Initialisation des ennemis en fonction de la difficulté */
+        tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100*coefDifficulte, 10*coefDifficulte);
     }
 }
 
@@ -297,7 +298,7 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
         }
 
         /* temp_vivant correspond à la durée durant laquelle l'ennemi est en vit, ici toutes les deux secondes il lance un projectile */
-        if (temp_vivant > 2000 ){
+        if (temp_vivant > (2000/coefDifficulte) ){
             ennemi->delta = SDL_GetTicks();
             projEnnemi[*projNbEnnemi].initProj(&projEnnemi[*projNbEnnemi], ennemi->rect.x + cameraRect->x, ennemi->rect.y + cameraRect->y, playerRect->x + DIM_SPRITE_PLAYER_X/2, playerRect->y + DIM_SPRITE_PLAYER_Y/2, PROJ_ENNEMI, cameraRect);
             *projNbEnnemi += 1;

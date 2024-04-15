@@ -10,12 +10,12 @@ INCS=-I${SDL_INC_DIR}
 PROG=jeu
 
 all: jeu
-jeu: main.o fonctions.o carte.o menu.o entite.o projectile.o barre.o vague.o
-	${CC} main.o vague.o projectile.o entite.o menu.o fonctions.o carte.o barre.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
+jeu: main.o fonctions.o carte.o menu.o entite.o projectile.o barre.o vague.o global.o
+	${CC} main.o global.o vague.o projectile.o entite.o menu.o fonctions.o carte.o barre.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
 	./bin/jeu
 	make clean
 
-main.o: main.c src/fonctions.h src/menu.h src/entite.h src/projectile.h src/carte.h src/barre.h src/vague.h
+main.o: main.c src/fonctions.h src/menu.h src/entite.h src/projectile.h src/carte.h src/barre.h src/vague.h src/global.h
 	${CC} -c main.c
 
 fonctions.o: src/fonctions.c src/barre.h
@@ -33,14 +33,14 @@ barre.o: src/barre.c src/barre.h
 projectile.o: src/projectile.c src/projectile.h src/carte.h src/fonctions.h
 	${CC} -c src/projectile.c
 
-entite.o: src/entite.c src/entite.h src/carte.h src/projectile.h src/fonctions.h
+entite.o: src/entite.c src/entite.h src/carte.h src/projectile.h src/fonctions.h 
 	${CC} -c src/entite.c
 
 vague.o: src/vague.c src/vague.h src/fonctions.h
 	${CC} -c src/vague.c
 
-
-
+global.o: src/global.c src/global.h
+	${CC} -c src/global.c
 
 clean:
 	rm -f *.o bin/${PROG}

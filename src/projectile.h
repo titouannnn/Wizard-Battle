@@ -1,8 +1,6 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 
-/* https://github.com/JOJOBOIIIIIII/Projectiles-Scrolling */
-
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <math.h>
