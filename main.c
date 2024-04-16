@@ -55,7 +55,7 @@ int main() {
     delta_temps = 0;
     char texte[52];
     strcpy(texte, "Difficulte choisie : Normale");
-    printf("1111\n");
+    
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
             // Pour fermer la fenêtre 
@@ -147,7 +147,7 @@ int main() {
         }
         
         if(menu == 1){
-            printf("1111\n");
+            
             menuPrincipal(rendu, jouerButton, difficulteButton);
         }
         else if(menu == 2){
@@ -277,6 +277,12 @@ int main() {
                 menu = 3;
             }
         }
+    }
+    for (int i = 0; i < 50; i++){
+        free(ennemi[i].initEnnemi);
+        free(ennemi[i].updateEnnemi);
+        free(ennemi[i].renderEnnemi);
+        free(ennemi[i].renderVecteur);
     }
     free(healthBarRect);
     free(manaBarRect);
