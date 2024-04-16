@@ -275,17 +275,6 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
         ennemi->droite = 1;
     }
 
-    int colision_bas = 0;
-    int colision_haut = 0;
-    int colision_gauche = 0;
-    int colision_droite = 0;
-
-    /* On vérifie si l'ennemi est en collision avec les tiles de la carte */
-    colision_bas = tabColision[(ennemi->rect.y + 200) / TILE_HEIGHT][(ennemi->rect.x + 300) / TILE_WIDTH];
-    colision_haut = tabColision[(ennemi->rect.y + 100) / TILE_HEIGHT][(ennemi->rect.x + 300) / TILE_WIDTH];
-    colision_gauche = tabColision[(ennemi->rect.y + 150) / TILE_HEIGHT][(ennemi->rect.x + 250) / TILE_WIDTH];
-    colision_droite = tabColision[(ennemi->rect.y + 150) / TILE_HEIGHT][(ennemi->rect.x + 350) / TILE_WIDTH];
-
     /* Si l'ennemi detecte le joueur, il fonce vers lui */
     if (ennemi->detection == 1){
         if (proche == 0){
@@ -298,7 +287,7 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
         }
 
         /* temp_vivant correspond à la durée durant laquelle l'ennemi est en vit, ici toutes les deux secondes il lance un projectile */
-        if (temp_vivant > (2000/coefDifficulte) ){
+        if (temp_vivant > (2000/(coefDifficulte)) ){
             ennemi->delta = SDL_GetTicks();
             projEnnemi[*projNbEnnemi].initProj(&projEnnemi[*projNbEnnemi], ennemi->rect.x + cameraRect->x, ennemi->rect.y + cameraRect->y, playerRect->x + DIM_SPRITE_PLAYER_X/2, playerRect->y + DIM_SPRITE_PLAYER_Y/2, PROJ_ENNEMI, cameraRect);
             *projNbEnnemi += 1;
