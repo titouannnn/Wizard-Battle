@@ -24,6 +24,7 @@ SDL_Texture *tilemap_structures_tex;
 SDL_Texture *tilemap;
 
 
+
 /**
  * @brief Initializes the camera.
  * @return A pointer to the initialized SDL_Rect representing the camera.
@@ -220,7 +221,8 @@ void chargerTextures(SDL_Renderer *rendu){
  * @return 0
  */
 
-int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
+int fin(SDL_Window *fenetre, SDL_Renderer *rendu, TTF_Font *arial) {
+    TTF_CloseFont(arial);
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
     SDL_Quit();
@@ -396,7 +398,7 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination) {
   const int marge_joueur = DIM_SPRITE_PLAYER_X / 7;
   const float unite_x = 54.11; //x = 920 / NB_TILE_WIDTH -1
-  const int unite_y = 127.05; //y = 2160 / NB_TILE_HEIGHT -1
+  const float unite_y = 127.05; //y = 2160 / NB_TILE_HEIGHT -1
 
     /*Amélioration possible : au lieu de faire avec les 4 coins, faire un cercle (beacoup plus galère)*/
 
@@ -416,7 +418,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
     positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
 
-    /*
+    
     printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
     printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
     printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
@@ -424,7 +426,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
 
     printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
     printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
-    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); */
+    printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); 
 }
 
 

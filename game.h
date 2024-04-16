@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "src/projectile.h"
 #include "src/entite.h"
@@ -35,7 +36,7 @@ bar_t manaBar;
 Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
 
 
-
+TTF_Font *arial;
 SDL_Texture* messageScore;
 int vague;
 int nb_ennemis;

@@ -34,7 +34,7 @@ typedef struct {
  * \param couleur Couleur du bouton.
  * \return Le bouton créé.
  */
-Button createButton(SDL_Renderer* renderer, const char* text, int x, int y, int width, int height, Couleur_t couleur);
+Button createButton(SDL_Renderer* renderer, TTF_Font *font, const char* text, int x, int y, int width, int height, Couleur_t couleur);
 
 /**
  * \brief Affiche un bouton.
@@ -82,7 +82,7 @@ int mouseOnButton(Button button);
  * \param retryButton Bouton retry.
  * \param rendu Renderer.
  */
-void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu);
+void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu);
 
 /**
  * \brief Gère les boutons.
@@ -126,7 +126,7 @@ void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteBut
  * \param difficileButton Bouton difficile.
  * \param accueilButton Bouton accueil.
  */
-void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton);
+void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton, char* difficulte, TTF_Font *font);
 
 /**
  * \brief Affiche le menu de pause.
@@ -136,7 +136,21 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
  * \param rendu Renderer.
  * \param accueilButton Bouton accueil.
  */
-int menuGameOver( SDL_Renderer *rendu, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill);
+int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill);
+
+/**
+ * \brief Affiche un texte.
+ *
+ * Cette fonction affiche à l'écran.
+ *
+ * \param rendu Renderer.
+ * \param texte Texte à afficher.
+ * \param x Position horizontale du texte.
+ * \param y Position verticale du texte.
+ * \param taille Taille du texte.
+ * \param couleur Couleur du texte
+ */
+void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, int y, int taille);
 
 
 #endif

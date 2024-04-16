@@ -6,6 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "carte.h"
 #include "barre.h"
@@ -50,7 +51,7 @@ SDL_Rect * initCamera();
 SDL_Rect * initJoueur(int x, int y);
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu);
 void chargerTextures(SDL_Renderer *rendu);
-int fin(SDL_Window *fenetre, SDL_Renderer *rendu);
+int fin(SDL_Window *fenetre, SDL_Renderer *rendu, TTF_Font *arial);
 void actualisationSprite(int nb_sprite, int hauteur, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu);
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
@@ -77,5 +78,7 @@ void initFonctions(
     SDL_Texture **barTextureMana,
     bar_t *manaBar
 );
+
+
 
 #endif

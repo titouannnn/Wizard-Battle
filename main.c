@@ -4,8 +4,6 @@
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence */
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur);
 
-
-
 int main() {
     /* 
     * Déclaration des tableaux pour la carte et les colisions
@@ -15,19 +13,24 @@ int main() {
     int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT];
     int direction = DROITE;
     int menu = 1;
+
     
     /* Initialisation des variables, encapsulées dans trois fonctions pour plus de clarté*/
     initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar, &barTextureManaMax, &barTextureMana, &manaBar);
     initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
-    initBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
-    chargerTextures(rendu);
- 
 
+    TTF_Font *arial = TTF_OpenFont("police/arial.ttf", 24);
+
+    initBoutons(arial, &jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
+    chargerTextures(rendu);
+    
+ 
+    
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
     SDL_Rect healthBarMaxRect = { healthBar.x, healthBar.y, healthBar.maxWidth, BAR_HEIGHT };
     SDL_Rect *healthBarRect = malloc(sizeof(SDL_Rect));
     *healthBarRect = (SDL_Rect){ healthBar.x, healthBar.y, healthBar.width, BAR_HEIGHT };
-
+    
     // Création de deux rectangles : un pour la barre de vie fixe et l'autre pour celle qui baisse (vie restante)
     SDL_Rect manaBarMaxRect = { manaBar.x, manaBar.y, manaBar.maxWidth, BAR_HEIGHT };
     SDL_Rect *manaBarRect = malloc(sizeof(SDL_Rect));
@@ -50,7 +53,9 @@ int main() {
     isRunning = 1; 
     frame = 0; 
     delta_temps = 0;
-    
+    char texte[52];
+    strcpy(texte, "Difficulte choisie : Normale");
+    printf("1111\n");
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
             // Pour fermer la fenêtre 
@@ -61,36 +66,32 @@ int main() {
                 
                 case SDL_MOUSEBUTTONDOWN:
                     if(menu == 1 && clickButton(event, jouerButton)){
-                        menu = 0;
                         gain_mana = SDL_GetTicks();
                         duree_partie = SDL_GetTicks();
+                        menu = 0;
                     }
                     
                     if(menu == 1 && clickButton(event, difficulteButton)){
                         menu = 2;
                     }
 
-                    if(menu == 2){
-                        if(clickButton(event, facileButton)){
-                            coefDifficulte = 0.7;
-                            nb_ennemis = 5;
-                            gain_mana = SDL_GetTicks();
-                            duree_partie = SDL_GetTicks();
-                        }
-                        if(clickButton(event, normalButton)){
-                            coefDifficulte = 1;
-                            nb_ennemis = 7;
-                            gain_mana = SDL_GetTicks();
-                            duree_partie = SDL_GetTicks();
-                        }
-                        if(clickButton(event, difficileButton)){
-                            coefDifficulte = 1.3;
-                            nb_ennemis = 10;
-                            gain_mana = SDL_GetTicks();
-                            duree_partie = SDL_GetTicks();
-                        }
-                        if(clickButton(event, accueilButton)) menu = 1;
-                        
+                    if(menu == 2 && clickButton(event, facileButton)){
+                        coefDifficulte = 0.7;
+                        nb_ennemis = 5;
+                        strcpy(texte, "Difficulte choisie : Facile");
+                    }
+                    if (menu == 2 && clickButton(event, normalButton)){
+                        coefDifficulte = 1;
+                        nb_ennemis = 7;
+                        strcpy(texte, "Difficulte choisie : Normale");
+                    }
+                    if (menu == 2 && clickButton(event, difficileButton)){
+                        coefDifficulte = 1.3;
+                        nb_ennemis = 10;
+                        strcpy(texte, "Difficulte choisie : Difficile");
+                    }
+                    if(menu == 2 && clickButton(event, accueilButton)){
+                        menu = 1;
                     }
 
                     if(menu == 3 && clickButton(event, retryButton)){
@@ -146,13 +147,14 @@ int main() {
         }
         
         if(menu == 1){
+            printf("1111\n");
             menuPrincipal(rendu, jouerButton, difficulteButton);
         }
         else if(menu == 2){
-            menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton);
+            menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton, texte, arial);
         }
         else if(menu == 3){
-            menuGameOver(rendu, gameoverButton, retryButton, vague, duree_partie, nb_kill); 
+            menuGameOver(rendu, arial, gameoverButton, retryButton, vague, duree_partie, nb_kill); 
         }
 
         else if (menu == 0)
@@ -164,7 +166,7 @@ int main() {
             temps_ancien = temps_actuel;
 
             if (temps_actuel - gain_mana >= 500){
-                joueur.mana += 5;
+                joueur.mana += 10;
                 if (joueur.mana > joueur.manaMax){
                     joueur.mana = joueur.manaMax;
                 }
@@ -198,6 +200,7 @@ int main() {
                 duree_vague = SDL_GetTicks();
                 initEnnemisVague(ennemi, nb_ennemis);
                 joueur.mana = 100;
+                joueur.pv = 100;
                 ennemis_initialises = 1;
             }
 
@@ -277,7 +280,7 @@ int main() {
     }
     free(healthBarRect);
     free(manaBarRect);
-    return fin(fenetre, rendu);
+    return fin(fenetre, rendu, arial);
 }
 
 /* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence 

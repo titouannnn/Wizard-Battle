@@ -18,30 +18,50 @@
  * \param couleur Couleur du texte du bouton.
  * \return Button Structure représentant le bouton créé.
  */
-Button createButton(SDL_Renderer* renderer, const char* text, int x, int y, int width, int height, Couleur_t couleur) {
+
+void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, int y, int taille){
+    // Créer la surface de texte
+    SDL_Color color = {0, 0, 0};
+    SDL_Surface* surfaceMessage;
+    
+    surfaceMessage = TTF_RenderText_Solid(font, texte, color);
+    if (!surfaceMessage) {
+        printf("Erreur lors de la création de la surface de texte : %s\n", TTF_GetError());
+        exit(1);
+    }
+
+    SDL_Texture* messageScore = SDL_CreateTextureFromSurface(rendu, surfaceMessage);
+
+    SDL_Rect messageRect;
+
+    messageRect.x = x;
+    messageRect.y = y;
+    messageRect.w = taille;
+    messageRect.h = 50;
+
+    SDL_RenderCopy(rendu, messageScore, NULL, &messageRect);
+    
+    SDL_DestroyTexture(messageScore);
+    SDL_FreeSurface(surfaceMessage);
+}
+
+Button createButton(SDL_Renderer* renderer, TTF_Font *font, const char* text, int x, int y, int width, int height, Couleur_t couleur) {
     Button button;
     button.rect.x = x;
     button.rect.y = y;
     button.rect.w = width;
     button.rect.h = height;
-
-    // Charger la police
-    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
-    if (!font) {
-        printf("Erreur lors du chargement de la police : %s\n", TTF_GetError());
-        exit(1);
-    }
-
+    
     // Créer la surface de texte
     SDL_Color color = {couleur.red, couleur.green, couleur.blue}; 
     SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
     
-
+    
     if (!surface) {
         printf("Erreur lors de la création de la surface de texte : %s\n", TTF_GetError());
         exit(1);
     }
-
+    
     // Créer la texture à partir de la surface
     button.texture = SDL_CreateTextureFromSurface(renderer, surface);
     if (!button.texture) {
@@ -50,7 +70,6 @@ Button createButton(SDL_Renderer* renderer, const char* text, int x, int y, int 
     }
 
     SDL_FreeSurface(surface);
-    TTF_CloseFont(font);
 
     return button;
 }
@@ -103,17 +122,18 @@ int mouseOnButton(Button button){
  * \param retryButton Bouton pour recommencer.
  * \param rendu Rendu SDL.
  */
-void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu) {
-    *jouerButton = createButton(rendu, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    *difficulteButton = createButton(rendu, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu) {
+    printf("2222\n");
+    *jouerButton = createButton(rendu, font, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *difficulteButton = createButton(rendu, font, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 
-    *facileButton = createButton(rendu, "FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
-    *normalButton = createButton(rendu, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
-    *difficileButton = createButton(rendu, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
-    *accueilButton = createButton(rendu, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *facileButton = createButton(rendu, font,"FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
+    *normalButton = createButton(rendu, font, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
+    *difficileButton = createButton(rendu, font, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
+    *accueilButton = createButton(rendu, font, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 
-    *gameoverButton = createButton(rendu, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
-    *retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *gameoverButton = createButton(rendu, font, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *retryButton = createButton(rendu, font, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 }
 
 /**
@@ -160,9 +180,10 @@ void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteBut
  * \param normalButton Bouton normal.
  * \param difficileButton Bouton difficile.
  */
-void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton){
+void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton, char *difficulte, TTF_Font *font){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
+    afficherMessage(rendu, font, difficulte, (WINDOWS_WIDTH/2)-700/2, 100, 700);
 
     drawButton(rendu, facileButton);
     drawButton(rendu, normalButton);
@@ -189,7 +210,7 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
         SDL_RenderFillRect(rendu, &difficileButton.rect);
     }
     
-
+    
     SDL_RenderPresent(rendu);
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
 }
@@ -204,7 +225,7 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
  * \param duree_partie Durée de la partie.
  * \param nb_kill Nombre de kills.
  */
-int menuGameOver( SDL_Renderer *rendu, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill){
+int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
 
@@ -221,9 +242,6 @@ int menuGameOver( SDL_Renderer *rendu, Button gameoverButton, Button retryButton
     
     
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
-
-    /* Affichage des scores */
-    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
     SDL_Color blanc = {255, 0, 0};
     char texte[512];
     sprintf(texte, "Vague : %d | Survie : %d sec | Kills : %d", vague, duree_partie/100, (nb_kill + 5 * (vague-1)));
