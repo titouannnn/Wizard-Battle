@@ -1,0 +1,57 @@
+\doxysection{game.\+h}
+\hypertarget{game_8h_source}{}\label{game_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}src/projectile.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}src/entite.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}src/fonctions.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}src/carte.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}src/menu.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}src/barre.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}src/vague.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ SDL\_Renderer\ *rendu;}
+\DoxyCodeLine{00016\ SDL\_Window\ *fenetre;}
+\DoxyCodeLine{00017\ SDL\_Rect\ pers\_source,\ pers\_destination;}
+\DoxyCodeLine{00018\ SDL\_Rect\ *\ cameraRect;}
+\DoxyCodeLine{00019\ positionJoueur\_t\ position;}
+\DoxyCodeLine{00020\ colision\_t\ *colision;}
+\DoxyCodeLine{00021\ joueur\_t\ joueur;}
+\DoxyCodeLine{00022\ ennemi\_t\ ennemi[NB\_ENNEMI];}
+\DoxyCodeLine{00023\ projectiles\_t\ projJoueur[MAX\_PROJ];}
+\DoxyCodeLine{00024\ projectiles\_t\ projEnnemi[MAX\_PROJ];}
+\DoxyCodeLine{00025\ SDL\_Event\ event;}
+\DoxyCodeLine{00026\ Uint32\ temps\_ancien;}
+\DoxyCodeLine{00027\ Uint32\ temps\_actuel;}
+\DoxyCodeLine{00028\ Uint32\ gain\_mana;}
+\DoxyCodeLine{00029\ SDL\_Texture\ *barTextureVie\ ;}
+\DoxyCodeLine{00030\ SDL\_Texture\ *barTextureVieMax\ ;}
+\DoxyCodeLine{00031\ bar\_t\ healthBar;}
+\DoxyCodeLine{00032\ SDL\_Texture\ *barTextureMana\ ;}
+\DoxyCodeLine{00033\ SDL\_Texture\ *barTextureManaMax\ ;}
+\DoxyCodeLine{00034\ bar\_t\ manaBar;}
+\DoxyCodeLine{00035\ Button\ jouerButton,\ difficulteButton,\ facileButton,\ normalButton,\ difficileButton,\ accueilButton,\ gameoverButton,\ retryButton;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ SDL\_Texture*\ messageScore;}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{int}\ vague;}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ nb\_ennemis;}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ nb\_kill;}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ ennemis\_initialises;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{int}\ projNbEnnemi;\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ projNbJoueur;}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ isRunning;\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{int}\ frame;\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ delta\_temps;}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{int}\ duree\_vague;}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ duree\_partie;}
+\DoxyCodeLine{00052\ }
+
+\end{DoxyCode}

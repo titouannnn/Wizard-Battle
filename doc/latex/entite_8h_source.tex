@@ -1,0 +1,103 @@
+\doxysection{entite.\+h}
+\hypertarget{entite_8h_source}{}\label{entite_8h_source}\index{src/entite.h@{src/entite.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ENTITE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ENTITE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}projectile.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}fonctions.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}carte.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_ENNEMI\_X\ 128}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_ENNEMI\_Y\ 184}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ CHAMP\_DETECTION\ 500}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ MAX\_PROJ\_ENNEMI\ 2}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NB\_ENNEMI\ 50}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structennemi__s}{ennemi\_s}}\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjoueur__s}{joueur\_s}}\ \mbox{\hyperlink{structjoueur__s}{joueur\_t}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpoint__s}{point\_s}}\{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00029\ \}\ \mbox{\hyperlink{structpoint__s}{point\_t}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structjoueur__s}{joueur\_s}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ mana;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ manaMax;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ pv;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ pvMax;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ vitesse;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structennemi__s}{ennemi\_s}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ vx;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ vy;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ pv;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ pvMax;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ vitesse;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ detection;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ gauche;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ droite;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ mort;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Uint32\ delta;\ \textcolor{comment}{/*\ Variable\ servant\ à\ calculer\ la\ durée\ d'apparition\ d'un\ ennemi\ */}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ SDL\_Rect\ rect;}
+\DoxyCodeLine{00065\ \ \ \ \ SDL\_Rect\ sprite;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ void\ (*initEnnemi)(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *ennemi,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{int}\ id,\ \textcolor{keywordtype}{int}\ pvMax,\ \textcolor{keywordtype}{int}\ attaque);}
+\DoxyCodeLine{00068\ \ \ \ \ void\ (*updateEnnemi)(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi,\ SDL\_Rect\ *\ cameraRect,\ SDL\_Rect\ *\ playerRect,\ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projEnnemi[MAX\_PROJ],\ \textcolor{keywordtype}{int}\ *projNbEnnemi,\ \textcolor{keywordtype}{int}\ temp\_vivant);}
+\DoxyCodeLine{00069\ \ \ \ \ void\ (*renderEnnemi)(SDL\_Renderer\ *\ rendu,\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi,\ \textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{00070\ \ \ \ \ void\ (*renderVecteur)(SDL\_Renderer\ *\ rendu,\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi,\ SDL\_Rect\ *\ playerRect);}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ initTabEnnemi(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ tabEnnemi[NB\_ENNEMI]);}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ initialiserJoueur(\mbox{\hyperlink{structjoueur__s}{joueur\_t}}\ *\ joueur);}
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ ennemi\_creer(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi);}
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ initEnnemi(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ pvMax,\ \textcolor{keywordtype}{int}\ attaque);}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ initEnnemisVague(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ tabEnnemi[NB\_ENNEMI],\ \textcolor{keywordtype}{int}\ nb\_ennemis);}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ updateEnnemi(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *\ ennemi,\ SDL\_Rect\ *\ cameraRect,\ SDL\_Rect\ *\ playerRect,\ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projEnnemi[MAX\_PROJ],\ \textcolor{keywordtype}{int}\ *projNbEnnemi,\ \textcolor{keywordtype}{int}\ temp\_vivant);}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ renderEnnemi(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *ennemi,\ \textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ renderVecteur(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ *ennemi,\ SDL\_Rect\ *\ playerRect);}
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ DessinerPixel(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ DessinerLigneEnnemiJoueur(\mbox{\hyperlink{structpoint__s}{point\_t}}\ A,\ \mbox{\hyperlink{structpoint__s}{point\_t}}\ B,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ DessinerLigneEnnemiVu(\mbox{\hyperlink{structpoint__s}{point\_t}}\ A,\ \mbox{\hyperlink{structpoint__s}{point\_t}}\ B,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ chargerTexturesEnnemi(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ renderEnemies(\mbox{\hyperlink{structennemi__s}{ennemi\_t}}*\ ennemi,\ SDL\_Renderer*\ rendu,\ \textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ initEnnemis(}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projJoueur[MAX\_PROJ],}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projEnnemi[MAX\_PROJ],}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{structjoueur__s}{joueur\_t}}\ *joueur,}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ ennemi[NB\_ENNEMI],}
+\DoxyCodeLine{00094\ \ \ \ \ SDL\_Renderer\ *rendu}
+\DoxyCodeLine{00095\ );}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ENTITE\_H}}
+
+\end{DoxyCode}

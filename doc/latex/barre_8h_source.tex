@@ -1,0 +1,37 @@
+\doxysection{barre.\+h}
+\hypertarget{barre_8h_source}{}\label{barre_8h_source}\index{src/barre.h@{src/barre.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BARRE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BARRE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ BAR\_WIDTH\ 300}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ BAR\_HEIGHT\ 20}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Structure\ pour\ représenter\ la\ barre\ de\ vie}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;\ \ \ \ \ \textcolor{comment}{//\ Position\ de\ la\ barre\ de\ vie}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ width;\ \ \ \ \textcolor{comment}{//\ Largeur\ initiale\ de\ la\ barre\ de\ vie}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ maxWidth;\ \textcolor{comment}{//\ Largeur\ maximale\ de\ la\ barre\ de\ vie\ (pleine\ vie)}}
+\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{structbar__t}{bar\_t}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ Structure\ pour\ représenter\ une\ couleur\ en\ RGB}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ red;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ green;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ blue;}
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{structCouleur__t}{Couleur\_t}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ SDL\_Texture\ *creationTextureBar(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structCouleur__t}{Couleur\_t}}\ couleur);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ initBar(\mbox{\hyperlink{structbar__t}{bar\_t}}\ *bar,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ maxWidth);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ updateBar(\mbox{\hyperlink{structbar__t}{bar\_t}}\ *bar,\ SDL\_Rect\ *barRect,\ \textcolor{keywordtype}{int}\ currentValue,\ \textcolor{keywordtype}{int}\ maxValue);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

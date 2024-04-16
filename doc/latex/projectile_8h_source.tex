@@ -1,0 +1,69 @@
+\doxysection{projectile.\+h}
+\hypertarget{projectile_8h_source}{}\label{projectile_8h_source}\index{src/projectile.h@{src/projectile.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJECTILE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJECTILE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}fonctions.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}carte.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ PROJ\_ENNEMI\ 1}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ PROJ\_JOUEUR\ 2}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ MAX\_PROJ\ 512}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ M\_PI\ 3.14159265358979323846}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_LANCER\_X\ 48}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_LANCER\_Y\ 48}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_IMPACT\_X\ 48}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_IMPACT\_Y\ 48}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structprojectiles__s}{projectiles\_s}}\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structprojectiles__s}{projectiles\_s}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ vitesse;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ vx;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{float}\ vy;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ angle;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ animation\_impact;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ SDL\_Rect\ rect;}
+\DoxyCodeLine{00043\ \ \ \ \ SDL\_Rect\ sprite;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ collision;\ \textcolor{comment}{/*\ Si\ la\ collision\ est\ égal\ à\ un\ 1,\ le\ mur\ est\ détecté\ */}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ void\ (*initProj)(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *,\ float,\ float,\ float,\ float,\ int,\ SDL\_Rect\ *);}
+\DoxyCodeLine{00048\ \ \ \ \ void\ (*verifCollisionProj)(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *,\ \textcolor{keywordtype}{int}\ tabTilesColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT]);}
+\DoxyCodeLine{00049\ \ \ \ \ void\ (*updateProj)(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *,\ SDL\_Rect\ *,\ \textcolor{keywordtype}{int}\ tabTilesColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT]);}
+\DoxyCodeLine{00050\ \ \ \ \ void\ (*renderProj)(SDL\_Renderer\ *,\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *,\ \textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \}\ ;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ initTabProj(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ proj[MAX\_PROJ]);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ chargerTexturesProj(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ projectile\_creer(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile)\ ;}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ initProj(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile,\ \textcolor{keywordtype}{float}\ px,\ \textcolor{keywordtype}{float}\ py,\ \textcolor{keywordtype}{float}\ mx,\ \textcolor{keywordtype}{float}\ my,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ SDL\_Rect\ *cameraRect);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ verifCollisionProj(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile,\ \textcolor{keywordtype}{int}\ tabTilesColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT]);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ updateProj(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile,\ SDL\_Rect\ *cameraRect,\ \textcolor{keywordtype}{int}\ tabTilesColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT]);}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ actualisationSpriteProj(\mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile,\ \textcolor{keywordtype}{int}\ nb\_sprite,\ \textcolor{keywordtype}{int}\ frame,\ \textcolor{keywordtype}{int}\ largeur,\ \textcolor{keywordtype}{int}\ hauteur,\ SDL\_Rect\ *src,\ SDL\_Rect\ *dst,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ renderProj(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ *projectile,\ \textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PROJECTILE\_H}}
+
+\end{DoxyCode}

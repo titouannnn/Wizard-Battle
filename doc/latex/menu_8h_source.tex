@@ -1,0 +1,41 @@
+\doxysection{menu.\+h}
+\hypertarget{menu_8h_source}{}\label{menu_8h_source}\index{src/menu.h@{src/menu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}./fonctions.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ BUTTON\_WIDTH\ 200}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ BUTTON\_HEIGHT\ 75}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Structure\ pour\ représenter\ un\ bouton}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ SDL\_Rect\ rect;}
+\DoxyCodeLine{00017\ \ \ \ \ SDL\_Texture*\ texture;}
+\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{structButton}{Button}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \mbox{\hyperlink{structButton}{Button}}\ createButton(SDL\_Renderer*\ renderer,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \mbox{\hyperlink{structCouleur__t}{Couleur\_t}}\ couleur);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ drawButton(SDL\_Renderer*\ renderer,\ \mbox{\hyperlink{structButton}{Button}}\ button);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ clickButton(SDL\_Event\ event,\ \mbox{\hyperlink{structButton}{Button}}\ button);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ mouseOnButton(\mbox{\hyperlink{structButton}{Button}}\ button);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ initBoutons(\mbox{\hyperlink{structButton}{Button}}\ *jouerButton,\ \mbox{\hyperlink{structButton}{Button}}\ *difficulteButton,\ \mbox{\hyperlink{structButton}{Button}}\ *facileButton,\ \mbox{\hyperlink{structButton}{Button}}\ *normalButton,\ \mbox{\hyperlink{structButton}{Button}}\ *difficileButton,\ \mbox{\hyperlink{structButton}{Button}}\ *accueilButton,\ \mbox{\hyperlink{structButton}{Button}}\ *gameoverButton,\ \mbox{\hyperlink{structButton}{Button}}\ *retryButton,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ menuFonc(\textcolor{keywordtype}{int}\ menu,\ SDL\_Renderer\ *\ rendu,\ \mbox{\hyperlink{structButton}{Button}}\ jouerButton,\ \mbox{\hyperlink{structButton}{Button}}\ difficulteButton,\ \mbox{\hyperlink{structButton}{Button}}\ difficileButton,\ \mbox{\hyperlink{structButton}{Button}}\ accueilButton,\ \mbox{\hyperlink{structButton}{Button}}\ gameoverButton,\ \mbox{\hyperlink{structButton}{Button}}\ retryButton,\ \mbox{\hyperlink{structButton}{Button}}\ facileButton,\ \mbox{\hyperlink{structButton}{Button}}\ normalButton);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ Fonction\ des\ 3\ menus\ */}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ menuPrincipal(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structButton}{Button}}\ jouerButton,\ \mbox{\hyperlink{structButton}{Button}}\ difficulteButton);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ menuDifficulte(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structButton}{Button}}\ facileButton,\ \mbox{\hyperlink{structButton}{Button}}\ normalButton,\ \mbox{\hyperlink{structButton}{Button}}\ difficileButton,\ \mbox{\hyperlink{structButton}{Button}}\ accueilButton);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{int}\ menuGameOver(\ SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structButton}{Button}}\ gameoverButton,\ \mbox{\hyperlink{structButton}{Button}}\ retryButton,\ \textcolor{keywordtype}{int}\ vague,\ \textcolor{keywordtype}{int}\ duree\_partie,\ \textcolor{keywordtype}{int}\ nb\_kill);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

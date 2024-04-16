@@ -1,0 +1,67 @@
+\doxysection{carte.\+h}
+\hypertarget{carte_8h_source}{}\label{carte_8h_source}\index{src/carte.h@{src/carte.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CARTE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CARTE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}fonctions.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ TILE\_WIDTH\ 160}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ TILE\_HEIGHT\ 160}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ NB\_TILE\_WIDTH\ 18}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ NB\_TILE\_HEIGHT\ 18}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ TILE\_VERTE\ 0}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ num;}
+\DoxyCodeLine{00017\ \ \ \ \ SDL\_Texture\ *tex;}
+\DoxyCodeLine{00018\ \ \ \ \ SDL\_Rect\ tile;}
+\DoxyCodeLine{00019\ \}\mbox{\hyperlink{structtile__t}{tile\_t}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*Représentation\ de\ la\ position\ du\ joueur*/}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ casx;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ casy;}
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{structcase__t}{case\_t}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{structcase__t}{case\_t}}\ case\_hg;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{structcase__t}{case\_t}}\ case\_hd;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structcase__t}{case\_t}}\ case\_bg;}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{structcase__t}{case\_t}}\ case\_bd;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ haut;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ bas;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ gauche;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ droite;}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *position;}
+\DoxyCodeLine{00043\ \}\mbox{\hyperlink{structcolision__t}{colision\_t}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *\ initPositionJoueur();}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *\ initColision();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ chargerCarte(\textcolor{keywordtype}{char}\ *\ fichier,\ \textcolor{keywordtype}{int}\ tab[2][NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \textcolor{keywordtype}{int}\ nb);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ afficherCarte(\textcolor{keywordtype}{int}\ tab[2][NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ }
+\DoxyCodeLine{00050\ \ \ \ \ SDL\_Renderer\ *\ rendu,}
+\DoxyCodeLine{00051\ \ \ \ \ SDL\_Rect\ *\ camera,}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position,}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision,}
+\DoxyCodeLine{00054\ \ \ \ \ SDL\_Texture\ *tilemap,\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ nb);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ chargerColisions(\textcolor{keywordtype}{int}\ tab[2][NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \textcolor{keywordtype}{int}\ nb);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ colisions(\mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position,\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *\ colision,\ \textcolor{keywordtype}{int}\ tabTilesColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT]);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ peutDash(\mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position,\textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],\ \textcolor{keywordtype}{int}\ direction);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

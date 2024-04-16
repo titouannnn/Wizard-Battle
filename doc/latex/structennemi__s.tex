@@ -1,0 +1,70 @@
+\doxysection{Référence de la structure ennemi\+\_\+s}
+\hypertarget{structennemi__s}{}\label{structennemi__s}\index{ennemi\_s@{ennemi\_s}}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structennemi__s_a59cb3e53a2fd1bf02f9adff7ff5fe759}\label{structennemi__s_a59cb3e53a2fd1bf02f9adff7ff5fe759} 
+int {\bfseries id}
+\item 
+\Hypertarget{structennemi__s_ac061718ebe8c4296f02712c7cd6c82f3}\label{structennemi__s_ac061718ebe8c4296f02712c7cd6c82f3} 
+float {\bfseries x}
+\item 
+\Hypertarget{structennemi__s_a3a640501da228e6c5a22d3b44b3c087a}\label{structennemi__s_a3a640501da228e6c5a22d3b44b3c087a} 
+float {\bfseries y}
+\item 
+\Hypertarget{structennemi__s_ac24bb29d264eba5447f00183274b6726}\label{structennemi__s_ac24bb29d264eba5447f00183274b6726} 
+float {\bfseries vx}
+\item 
+\Hypertarget{structennemi__s_abf575524102d9489941ba72d636c411f}\label{structennemi__s_abf575524102d9489941ba72d636c411f} 
+float {\bfseries vy}
+\item 
+\Hypertarget{structennemi__s_acced51b66bf14056583ddbe794fcc2e3}\label{structennemi__s_acced51b66bf14056583ddbe794fcc2e3} 
+int {\bfseries pv}
+\item 
+\Hypertarget{structennemi__s_a557702f4ea38513021e4d4b195616289}\label{structennemi__s_a557702f4ea38513021e4d4b195616289} 
+int {\bfseries pv\+Max}
+\item 
+\Hypertarget{structennemi__s_a1b3d60dde3acf89c6ba6ae2c250109e2}\label{structennemi__s_a1b3d60dde3acf89c6ba6ae2c250109e2} 
+int {\bfseries attaque}
+\item 
+\Hypertarget{structennemi__s_a750a404590c6fe1c2d8060e384a3a16d}\label{structennemi__s_a750a404590c6fe1c2d8060e384a3a16d} 
+float {\bfseries vitesse}
+\item 
+\Hypertarget{structennemi__s_ad37529c6dfbb8c1e4b061edb1a0e76e2}\label{structennemi__s_ad37529c6dfbb8c1e4b061edb1a0e76e2} 
+int {\bfseries detection}
+\item 
+\Hypertarget{structennemi__s_aa695a476036d705794ea46689e2b6be5}\label{structennemi__s_aa695a476036d705794ea46689e2b6be5} 
+int {\bfseries gauche}
+\item 
+\Hypertarget{structennemi__s_a403fef609be44118b1fdefa1ad76e53e}\label{structennemi__s_a403fef609be44118b1fdefa1ad76e53e} 
+int {\bfseries droite}
+\item 
+\Hypertarget{structennemi__s_a4717380a47998fa4c33a978e839d4a7b}\label{structennemi__s_a4717380a47998fa4c33a978e839d4a7b} 
+int {\bfseries mort}
+\item 
+\Hypertarget{structennemi__s_ab7f4e8890f883ab6ac605dcc14b8adf1}\label{structennemi__s_ab7f4e8890f883ab6ac605dcc14b8adf1} 
+Uint32 {\bfseries delta}
+\item 
+\Hypertarget{structennemi__s_a0c8753638344695436036d949aa608ad}\label{structennemi__s_a0c8753638344695436036d949aa608ad} 
+SDL\+\_\+\+Rect {\bfseries rect}
+\item 
+\Hypertarget{structennemi__s_af5c4b1234474ef25fd91a6786c2e3da3}\label{structennemi__s_af5c4b1234474ef25fd91a6786c2e3da3} 
+SDL\+\_\+\+Rect {\bfseries sprite}
+\item 
+\Hypertarget{structennemi__s_a46acb62cbf2f663716658b7596ac9067}\label{structennemi__s_a46acb62cbf2f663716658b7596ac9067} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries init\+Ennemi} )(\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, float x, float y, int id, int pv\+Max, int attaque)
+\item 
+\Hypertarget{structennemi__s_aa1e7a00c037d09faedcceca198c44fb6}\label{structennemi__s_aa1e7a00c037d09faedcceca198c44fb6} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries update\+Ennemi} )(\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}camera\+Rect, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}player\+Rect, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} proj\+Ennemi\mbox{[}MAX\+\_\+\+PROJ\mbox{]}, int \texorpdfstring{$\ast$}{*}proj\+Nb\+Ennemi, int temp\+\_\+vivant)
+\item 
+\Hypertarget{structennemi__s_a5db905a36ad97987db7e1380f65c237d}\label{structennemi__s_a5db905a36ad97987db7e1380f65c237d} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries render\+Ennemi} )(SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, int frame)
+\item 
+\Hypertarget{structennemi__s_ac377901c471b777ef8a7d102f66be5a3}\label{structennemi__s_ac377901c471b777ef8a7d102f66be5a3} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries render\+Vecteur} )(SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}player\+Rect)
+\end{DoxyCompactItemize}
+
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+src/entite.\+h\end{DoxyCompactItemize}
