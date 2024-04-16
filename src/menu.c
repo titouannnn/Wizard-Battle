@@ -1,6 +1,23 @@
+
+/**
+ * @file projectile.h
+ * @brief Gestion des projectiles
+ */
+
 #include "./menu.h"
 
-// Fonction pour créer un bouton
+/**
+ * \brief Crée un bouton avec du texte.
+ *
+ * \param renderer Rendu SDL.
+ * \param text Texte à afficher sur le bouton.
+ * \param x Position horizontale du bouton.
+ * \param y Position verticale du bouton.
+ * \param width Largeur du bouton.
+ * \param height Hauteur du bouton.
+ * \param couleur Couleur du texte du bouton.
+ * \return Button Structure représentant le bouton créé.
+ */
 Button createButton(SDL_Renderer* renderer, const char* text, int x, int y, int width, int height, Couleur_t couleur) {
     Button button;
     button.rect.x = x;
@@ -38,16 +55,33 @@ Button createButton(SDL_Renderer* renderer, const char* text, int x, int y, int 
     return button;
 }
 
-// Fonction pour dessiner un bouton
+/**
+ * \brief Affiche un bouton.
+ *
+ * \param renderer Rendu SDL.
+ * \param button Bouton à afficher.
+ */
 void drawButton(SDL_Renderer* renderer, Button button) {
     SDL_RenderCopy(renderer, button.texture, NULL, &button.rect);
 }
 
-/* Renvoie 1 si la souris est sur le bouton en paramètre, 0 sinon */
+/**
+ * \brief Vérifie si un bouton est cliqué.
+ *
+ * \param event Événement SDL.
+ * \param button Bouton à vérifier.
+ * \return 1 si le bouton est cliqué, 0 sinon.
+ */
 int clickButton(SDL_Event event, Button button){
     return (event.button.x > button.rect.x && event.button.x < (button.rect.x + BUTTON_WIDTH) && event.button.y > button.rect.y && event.button.y < (button.rect.y + BUTTON_HEIGHT));
 }
 
+/**
+ * \brief Vérifie si la souris est sur un bouton.
+ *
+ * \param button Bouton à vérifier.
+ * \return 1 si la souris est sur le bouton, 0 sinon.
+ */
 int mouseOnButton(Button button){
     int mouse_x, mouse_y;
 
@@ -56,7 +90,19 @@ int mouseOnButton(Button button){
     return (mouse_x > button.rect.x && mouse_x < (button.rect.x + BUTTON_WIDTH) && mouse_y > button.rect.y && mouse_y < (button.rect.y + BUTTON_HEIGHT));
 }
 
-
+/**
+ * \brief Initialise les boutons.
+ *
+ * \param jouerButton Bouton pour jouer.
+ * \param difficulteButton Bouton pour choisir la difficulté.
+ * \param facileButton Bouton pour choisir la difficulté facile.
+ * \param normalButton Bouton pour choisir la difficulté normale.
+ * \param difficileButton Bouton pour choisir la difficulté difficile.
+ * \param accueilButton Bouton pour revenir à l'accueil.
+ * \param gameoverButton Bouton pour afficher le game over.
+ * \param retryButton Bouton pour recommencer.
+ * \param rendu Rendu SDL.
+ */
 void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu) {
     *jouerButton = createButton(rendu, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
     *difficulteButton = createButton(rendu, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
@@ -70,6 +116,14 @@ void initBoutons(Button *jouerButton, Button *difficulteButton, Button *facileBu
     *retryButton = createButton(rendu, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 }
 
+/**
+ * \brief Gère le menu principal.
+ *
+ * \param rendu Rendu SDL.
+ * \param jouerButton Bouton pour jouer.
+ * \param difficulteButton Bouton pour choisir la difficulté.
+ * \param difficileButton Bouton pour choisir la difficulté difficile.
+ */
 void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteButton){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
@@ -97,6 +151,15 @@ void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteBut
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
 }
 
+
+/**
+ * \brief Gère le menu difficulte.
+ *
+ * \param rendu Renderer.
+ * \param facileButton Bouton facile.
+ * \param normalButton Bouton normal.
+ * \param difficileButton Bouton difficile.
+ */
 void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
@@ -131,6 +194,16 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
 }
 
+/**
+ * \brief Gère le menu game over.
+ *
+ * \param rendu Renderer.
+ * \param gameoverButton Bouton game over.
+ * \param retryButton Bouton retry.
+ * \param vague Vague actuelle.
+ * \param duree_partie Durée de la partie.
+ * \param nb_kill Nombre de kills.
+ */
 int menuGameOver( SDL_Renderer *rendu, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
