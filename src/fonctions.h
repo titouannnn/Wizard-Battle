@@ -10,7 +10,7 @@
 #include "carte.h"
 #include "barre.h"
 
-#define WINDOWS_WIDTH 1280
+#define WINDOWS_WIDTH 1080
 #define WINDOWS_HEIGHT 720
 
 #define DIM_SPRITE_PLAYER_X 128
