@@ -4,7 +4,11 @@
 #include "fonctions.h"
 #include "carte.h"
 
-
+/**
+ * @brief Initialise la position du joueur sur la carte.
+ * 
+ * @return positionJoueur_t* Pointeur vers la structure de position du joueur.
+ */
 positionJoueur_t * initPositionJoueur(){
     positionJoueur_t * position = malloc(sizeof(positionJoueur_t));
     position->case_hg.casx = 0;
@@ -18,6 +22,11 @@ positionJoueur_t * initPositionJoueur(){
     return position;
 }
 
+/**
+ * @brief Initialise la structure de colision.
+ * 
+ * @return colision_t* Pointeur vers la structure de colision.
+ */
 colision_t * initColision(){
     colision_t * colision = malloc(sizeof(colision_t));
     colision->haut = 0;
@@ -27,6 +36,14 @@ colision_t * initColision(){
     return colision;
 }
 
+
+/**
+ * @brief Charge une carte depuis un fichier.
+ * 
+ * @param fichier Nom du fichier à charger.
+ * @param tab Tableau de la carte.
+ * @param nb Numéro de la couche de la carte.
+ */
 void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb){
     FILE * fp;
     int x;
@@ -48,6 +65,13 @@ void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int
     fclose(fp);
 }
 
+/**
+ * @brief Charge les colisions depuis un tableau de carte.
+ * 
+ * @param tab Tableau de la carte.
+ * @param tabColision Tableau de colisions.
+ * @param nb Numéro de la couche de la carte.
+ */
 void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb){
     for(int y = 0; y < NB_TILE_WIDTH; y++){
         for(int x = 0; x < NB_TILE_HEIGHT; x++){
@@ -62,6 +86,18 @@ void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision
     }
 }
 
+/**
+ * @brief Affiche la carte.
+ * 
+ * @param tab Tableau de la carte.
+ * @param rendu Pointeur vers le rendu.
+ * @param camera Pointeur vers la caméra.
+ * @param position Structure de position du joueur.
+ * @param colision Structure de colision.
+ * @param tilemap Texture de la carte.
+ * @param nb Numéro de la couche de la carte.
+ * @return int Retourne 0 si tout s'est bien passé.
+ */
 
 int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
@@ -189,11 +225,21 @@ int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT],
     }
     free(dest);
     free(origin);
+    return 0;
 }
     
 
 
-
+/**
+ * @brief Vérifie les collisions entre le joueur et les tuiles de la carte.
+ * 
+ * Cette fonction vérifie si le joueur est en collision avec une tuile sur la carte. 
+ * Elle met à jour les valeurs de la structure de collision en fonction de la position du joueur.
+ * 
+ * @param position La position actuelle du joueur sur la carte.
+ * @param colision Pointeur vers la structure de collision à mettre à jour.
+ * @param tabTilesColision Tableau 2D représentant les tuiles de collision de la carte.
+ */
 
 void colisions(positionJoueur_t position, colision_t * colision, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]){
     

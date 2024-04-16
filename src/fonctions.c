@@ -23,6 +23,11 @@ SDL_Texture *tilemap_structures_tex;
 //a supprimer
 SDL_Texture *tilemap;
 
+
+/**
+ * @brief Initializes the camera.
+ * @return A pointer to the initialized SDL_Rect representing the camera.
+ */
 SDL_Rect * initCamera(){
     SDL_Rect *cameraRect = malloc(sizeof(SDL_Rect));
     cameraRect->x = 0;
@@ -32,6 +37,12 @@ SDL_Rect * initCamera(){
     return cameraRect;
 }
 
+/**
+ * @brief Initializes the player.
+ * @param x The x-coordinate of the player.
+ * @param y The y-coordinate of the player.
+ * @return A pointer to the initialized SDL_Rect representing the player.
+ */
 SDL_Rect * initJoueur(int x, int y){
     SDL_Rect *pers_destination = malloc(sizeof(SDL_Rect));
     pers_destination->x = x;
@@ -40,6 +51,25 @@ SDL_Rect * initJoueur(int x, int y){
     pers_destination->h = DIM_SPRITE_PLAYER_Y;
     return pers_destination;
 }
+
+/**
+ * @brief Initializes various game functions.
+ * @param tilemap The tilemap of the game.
+ * @param tabColision The collision table.
+ * @param fenetre The game window.
+ * @param rendu The game renderer.
+ * @param cameraRect The camera rectangle.
+ * @param position The position of the player.
+ * @param colision The collision object.
+ * @param pers_destination The destination of the player.
+ * @param temps_ancien The old time.
+ * @param barTextureVieMax The texture for the maximum life bar.
+ * @param barTextureVie The texture for the life bar.
+ * @param healthBar The health bar.
+ * @param barTextureManaMax The texture for the maximum mana bar.
+ * @param barTextureMana The texture for the mana bar.
+ * @param manaBar The mana bar.
+ */
 
 void initFonctions(
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH],
@@ -75,6 +105,13 @@ void initFonctions(
     initBar(manaBar, 50, 100, BAR_WIDTH);
 }
 
+/**
+ * @brief Initialise la SDL, la SDL_ttf, la fenêtre et le rendu.
+ * @param fenetre Pointeur vers la fenêtre à initialiser.
+ * @param rendu Pointeur vers le rendu à initialiser.
+ * @return 0 si l'initialisation de la SDL ou la création de la fenêtre échoue, 1 sinon.
+ */
+
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     // Initialisation de la bibliothèque SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -107,6 +144,11 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     }
     
 }
+
+/**
+ * @brief Charge les textures nécessaires pour le jeu.
+ * @param rendu Pointeur vers le rendu utilisé pour créer les textures.
+ */
 
 void chargerTextures(SDL_Renderer *rendu){
 
@@ -171,6 +213,13 @@ void chargerTextures(SDL_Renderer *rendu){
 
 }
 
+/**
+ * @brief Libère les ressources de la SDL et ferme la fenêtre.
+ * @param fenetre Pointeur vers la fenêtre à détruire.
+ * @param rendu Pointeur vers le rendu à détruire.
+ * @return 0
+ */
+
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
@@ -178,9 +227,20 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     return 0;
 }
 
+/**
+ * @brief Affiche l'image du menu.
+ * @param rendu Pointeur vers le rendu utilisé pour afficher l'image.
+ */
+
 void affichageMenuImage(SDL_Renderer *rendu){
     SDL_RenderCopy(rendu, menu_tex, 0, 0);
 }
+
+/**
+ * @brief Obtient la direction de la position de la souris par rapport à la position du personnage.
+ * @param pers_destination Pointeur vers le rectangle définissant la position du personnage.
+ * @return GAUCHE si la souris est à gauche du personnage, DROITE sinon.
+ */
 
 int getMousePositionDirection(SDL_Rect *pers_destination){
     int direction = GAUCHE;
@@ -201,6 +261,15 @@ int getMousePositionDirection(SDL_Rect *pers_destination){
     return direction;
 }
 
+/**
+ * @brief Actualise le sprite du personnage.
+ * @param nb_sprite Le nombre de sprites.
+ * @param frame Le numéro du sprite.
+ * @param direction La direction du personnage.
+ * @param src Le rectangle source du sprite.
+ * @param dst Le rectangle de destination du sprite.
+ * @param rendu Le rendu utilisé pour afficher le sprite.
+ */
 void actualisationSprite(int nb_sprite, int frame, int *direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     
@@ -221,6 +290,13 @@ void actualisationSprite(int nb_sprite, int frame, int *direction, SDL_Rect *src
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
+/**
+ * @brief Gère les actions du joueur.
+ * @param clavier Les touches du clavier.
+ * @param pers_destination Le rectangle définissant la position du personnage.
+ * @param colision Les collisions du personnage.
+ * @param direction La direction du personnage.
+ */
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colision, int *direction) {
 
     /* C'est ici qu'on vérifie les conditions de colisions*/
@@ -264,7 +340,11 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, colision_t *colisi
     *direction = getMousePositionDirection(pers_destination);
 }
 
-
+/**
+ * @brief Rendu du fond.
+ * @param rendu Le rendu utilisé pour afficher le fond.
+ * @param cameraRect Le rectangle définissant la position de la caméra.
+ */
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], colision_t *colision, int tabColisions[NB_TILE_HEIGHT][NB_TILE_WIDTH], positionJoueur_t position) {
     // Facteur d'interpolation linéaire
     const float interpolationFactor = 0.1;
@@ -305,6 +385,13 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
     colisions(position, colision, tabColisions);
 }
 
+
+/**
+ * @brief Initialise la position du joueur.
+ * @param positionJoueur Pointeur vers la structure représentant la position du joueur.
+ * @param cameraRect Pointeur vers le rectangle définissant la position de la caméra.
+ * @param pers_destination Pointeur vers le rectangle définissant la position du personnage.
+ */
 
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination) {
   const int marge_joueur = DIM_SPRITE_PLAYER_X / 7;

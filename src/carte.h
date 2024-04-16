@@ -12,34 +12,48 @@
 
 #define TILE_VERTE 0
 
-typedef struct {
-    int num;
-    SDL_Texture *tex;
-    SDL_Rect tile;
-}tile_t;
+
 
 /*Représentation de la position du joueur*/
 
+
+/**
+ * @struct case_t
+ * @brief Structure représentant une case sur la carte.
+ * 
+ * Cette structure contient les coordonnées x et y d'une case sur la carte.
+ */
 typedef struct {
-    int casx;
-    int casy;
+    int casx; /**< Coordonnée x de la case. */
+    int casy; /**< Coordonnée y de la case. */
 } case_t;
 
-
+/**
+ * @struct positionJoueur_t
+ * @brief Structure représentant la position du joueur sur la carte.
+ * 
+ * Cette structure contient les cases correspondant aux quatre coins du joueur.
+ */
 typedef struct{
-    case_t case_hg;
-    case_t case_hd;
-    case_t case_bg;
-    case_t case_bd;
-
+    case_t case_hg; /**< Case en haut à gauche du joueur. */
+    case_t case_hd; /**< Case en haut à droite du joueur. */
+    case_t case_bg; /**< Case en bas à gauche du joueur. */
+    case_t case_bd; /**< Case en bas à droite du joueur. */
 }positionJoueur_t;
 
+/**
+ * @struct colision_t
+ * @brief Structure représentant les collisions du joueur.
+ * 
+ * Cette structure contient les informations de collision pour chaque direction (haut, bas, gauche, droite) 
+ * et un pointeur vers la position du joueur.
+ */
 typedef struct{
-    int haut;
-    int bas;
-    int gauche;
-    int droite;
-    positionJoueur_t *position;
+    int haut; /**< Collision en haut. */
+    int bas; /**< Collision en bas. */
+    int gauche; /**< Collision à gauche. */
+    int droite; /**< Collision à droite. */
+    positionJoueur_t *position; /**< Pointeur vers la position du joueur. */
 }colision_t;
 
 positionJoueur_t * initPositionJoueur();
