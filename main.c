@@ -385,12 +385,14 @@ int main() {
             }
         }
     }
-    for (int i = 0; i < 50; i++){
-        free(ennemi[i].initEnnemi);
-        free(ennemi[i].updateEnnemi);
-        free(ennemi[i].renderEnnemi);
-        free(ennemi[i].renderVecteur);
-    }
+    /* Libération de la mémoire */
+
+    /* Destruction des textures */
+    destructionTextureBarres(barTextureVieMax, barTextureVie, barTextureManaMax, barTextureMana);
+    destructionBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, &reprendreButton);
+
+    destructionPolice(arial);
+    free(cameraRect);
     free(healthBarRect);
     free(manaBarRect);
     return fin(fenetre, rendu, arial);

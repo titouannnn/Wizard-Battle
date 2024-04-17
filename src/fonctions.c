@@ -446,4 +446,35 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); 
 }
 
+/* FONCTION DE DESTRUCTION */
+
+/**
+ * @brief Détruit une texture.
+ * @param texture Pointeur vers la texture à détruire.
+ */
+
+void destructionTextureBarres(SDL_Texture *texture, ...){
+    va_list textures;
+    va_start(textures, texture);
+    SDL_DestroyTexture(texture);
+    while((texture = va_arg(textures, SDL_Texture*)) != NULL){
+        SDL_DestroyTexture(texture);
+    }
+    va_end(textures);
+}
+
+/**
+ * @brief Détruit une police.
+ * @param police Pointeur vers la police à détruire.
+ */
+
+void destructionPolice(TTF_Font *police, ...){
+    va_list polices;
+    va_start(polices, police);
+    TTF_CloseFont(police);
+    while((police = va_arg(polices, TTF_Font*)) != NULL){
+        TTF_CloseFont(police);
+    }
+    va_end(polices);
+}
 

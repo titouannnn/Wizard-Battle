@@ -7,6 +7,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdarg.h>
 
 #include "carte.h"
 #include "barre.h"
@@ -80,6 +81,11 @@ void initFonctions(
     bar_t *manaBar
 );
 
+/* FONCTIONS DE DESTRUCTION */
+
+void destructionTextureBarres(SDL_Texture *texture, ...) ;
+
+void destructionPolice(TTF_Font *police, ...) ;
 
 
 #endif

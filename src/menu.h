@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
+#include <stdarg.h>
 
 #include "./fonctions.h"
 
@@ -42,6 +43,10 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
 int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button gameoverButton, Button retryButton, int vague, int duree_partie, int nb_kill);
 
 void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, int y, int taille);
+
+/* FONCTIONS DE DESTRUCTION */
+
+void destructionBoutons(Button *bouton, ...) ;
 
 
 #endif

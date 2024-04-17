@@ -323,3 +323,18 @@ int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button gameoverButton, Bu
     SDL_DestroyTexture(messageScore);
     SDL_FreeSurface(surfaceMessage);
 }
+
+void destructionBoutons(Button *bouton, ...){
+    va_list args;
+    va_start(args, bouton);
+
+    Button *current = bouton;
+    while (current != NULL) {
+        SDL_DestroyTexture(current->texture);
+        free(current);
+        current = va_arg(args, Button*);
+    }
+
+    va_end(args);
+    
+}
