@@ -33,7 +33,7 @@ bar_t healthBar;
 SDL_Texture *barTextureMana ;
 SDL_Texture *barTextureManaMax ;
 bar_t manaBar;
-Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton;
+Button jouerButton, difficulteButton, facileButton, normalButton, difficileButton, accueilButton, gameoverButton, retryButton, reprendreButton;
 
 
 TTF_Font *arial;

@@ -45,6 +45,21 @@ void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, in
     SDL_FreeSurface(surfaceMessage);
 }
 
+/**
+ * \brief Crée un bouton.
+ *
+ * Cette fonction crée un bouton.
+ *
+ * \param renderer Le renderer SDL pour l'affichage.
+ * \param text Texte du bouton.
+ * \param x Position horizontale du bouton.
+ * \param y Position verticale du bouton.
+ * \param width Largeur du bouton.
+ * \param height Hauteur du bouton.
+ * \param couleur Couleur du bouton.
+ * \return Le bouton créé.
+ */
+
 Button createButton(SDL_Renderer* renderer, TTF_Font *font, const char* text, int x, int y, int width, int height, Couleur_t couleur) {
     Button button;
     button.rect.x = x;
@@ -122,18 +137,19 @@ int mouseOnButton(Button button){
  * \param retryButton Bouton pour recommencer.
  * \param rendu Rendu SDL.
  */
-void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, SDL_Renderer *rendu) {
+void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *gameoverButton, Button *retryButton, Button *reprendreButton, SDL_Renderer *rendu) {
     printf("2222\n");
     *jouerButton = createButton(rendu, font, "JOUER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
     *difficulteButton = createButton(rendu, font, "DIFFICULTE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 
-    *facileButton = createButton(rendu, font,"FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
+    *facileButton = createButton(rendu, font,"FACILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, VERT);
     *normalButton = createButton(rendu, font, "NORMAL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 1, BUTTON_WIDTH, BUTTON_HEIGHT, ORANGE);
-    *difficileButton = createButton(rendu, font, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 2, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
+    *difficileButton = createButton(rendu, font, "DIFFICILE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 0, BUTTON_WIDTH, BUTTON_HEIGHT, ROUGE);
     *accueilButton = createButton(rendu, font, "ACCUEIL", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, 250 + BUTTON_HEIGHT * 3, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 
     *gameoverButton = createButton(rendu, font, "GAME OVER", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
     *retryButton = createButton(rendu, font, "RETRY", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 + BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
+    *reprendreButton = createButton(rendu, font, "REPRENDRE", (WINDOWS_WIDTH - BUTTON_WIDTH) / 2, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2, BUTTON_WIDTH, BUTTON_HEIGHT, NOIR);
 }
 
 /**
@@ -144,13 +160,15 @@ void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, 
  * \param difficulteButton Bouton pour choisir la difficulté.
  * \param difficileButton Bouton pour choisir la difficulté difficile.
  */
-void menuPrincipal(SDL_Renderer *rendu, Button jouerButton, Button difficulteButton){
+void menuPrincipal(SDL_Renderer *rendu, TTF_Font *font, Button jouerButton, Button difficulteButton){
     SDL_RenderClear(rendu);
     affichageMenuImage(rendu);
 
     // Dessiner les boutons
     drawButton(rendu, jouerButton);
     drawButton(rendu, difficulteButton);
+
+    afficherMessage(rendu, font, "WIZARD BATTLE", (WINDOWS_WIDTH/2)/2, 100, 500);
 
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
 
@@ -185,9 +203,11 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
     affichageMenuImage(rendu);
     afficherMessage(rendu, font, difficulte, (WINDOWS_WIDTH/2)-700/2, 100, 700);
 
-    drawButton(rendu, facileButton);
-    drawButton(rendu, normalButton);
+    
+    
     drawButton(rendu, difficileButton);
+    drawButton(rendu, normalButton);
+    drawButton(rendu, facileButton);
     drawButton(rendu, accueilButton);
 
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
@@ -210,6 +230,34 @@ void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButto
         SDL_RenderFillRect(rendu, &difficileButton.rect);
     }
     
+    
+    SDL_RenderPresent(rendu);
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
+}
+
+void MenuPause(SDL_Renderer *rendu, Button reprendreButton, Button retryButton, Button accueilButton){
+    SDL_RenderClear(rendu);
+    affichageMenuImage(rendu);
+
+    drawButton(rendu, reprendreButton);
+    drawButton(rendu, retryButton);
+    drawButton(rendu, accueilButton);
+
+    SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
+
+    // Dessiner les boutons
+    if(mouseOnButton(reprendreButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &reprendreButton.rect);
+    }
+    if(mouseOnButton(retryButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &retryButton.rect);
+    }
+    if(mouseOnButton(accueilButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &accueilButton.rect);
+    }
     
     SDL_RenderPresent(rendu);
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);

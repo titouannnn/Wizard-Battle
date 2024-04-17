@@ -21,7 +21,7 @@ int main() {
 
     TTF_Font *arial = TTF_OpenFont("police/arial.ttf", 24);
 
-    initBoutons(arial, &jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, rendu);
+    initBoutons(arial, &jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, &reprendreButton, rendu);
     chargerTextures(rendu);
     
  
@@ -43,7 +43,9 @@ int main() {
     * 1 - Page d'accueil
     * 2 - Choix de la difficulté
     * 3 - Game Over
+    * 4 - Pause
     * */
+    int mx, my;
     vague = 1;
     nb_ennemis = 5;
     nb_kill = 0;
@@ -63,9 +65,21 @@ int main() {
                 case SDL_QUIT:
                     isRunning = 0;
                     break;
+                case SDL_MOUSEMOTION:
+                    mx = event.motion.x;
+                    my = event.motion.y;
+                    break;
                 
+                case SDL_KEYDOWN:
+                    if (event.key.keysym.sym == SDLK_ESCAPE){
+                        SDL_SetRelativeMouseMode(SDL_FALSE);
+                        menu = 4;
+                    }
+                    break;
+
                 case SDL_MOUSEBUTTONDOWN:
                     if(menu == 1 && clickButton(event, jouerButton)){
+                        SDL_SetRelativeMouseMode(SDL_TRUE);
                         gain_mana = SDL_GetTicks();
                         duree_partie = SDL_GetTicks();
                         menu = 0;
@@ -94,7 +108,37 @@ int main() {
                         menu = 1;
                     }
 
-                    if(menu == 3 && clickButton(event, retryButton)){
+                    if(menu == 4 && clickButton(event, retryButton)){
+                        joueur.pv = 100;
+                        joueur.mana = 100;
+
+                        vague = 1;
+                        ennemis_initialises = 0;
+                        nb_kill = 0;
+                        joueur.x = 400;
+                        joueur.y = 400;
+                        projNbEnnemi = 0; 
+                        projNbJoueur = 0;
+                        frame = 0; 
+                        delta_temps = 0;
+                        
+                        if (coefDifficulte == 0.7){
+                            nb_ennemis = 5;
+                        }
+                        else if (coefDifficulte == 1){
+                            nb_ennemis = 7;
+                        }
+                        else if (coefDifficulte == 1.3){
+                            nb_ennemis = 10;
+                        }
+                        SDL_SetRelativeMouseMode(SDL_TRUE);
+                        menu = 0;
+
+                        gain_mana = SDL_GetTicks();
+                        duree_partie = SDL_GetTicks();
+                        
+                    }
+                    if(menu == 4 && clickButton(event, accueilButton)){
                         joueur.pv = 100;
                         joueur.mana = 100;
 
@@ -118,11 +162,69 @@ int main() {
                             nb_ennemis = 10;
                         }
 
+                        menu = 1;
+                        
+                    }
+
+                    if (menu == 4 && clickButton(event, reprendreButton)){
+                        SDL_SetRelativeMouseMode(SDL_TRUE);
+                        menu = 0;
+                    }
+                    if(menu == 3 && clickButton(event, retryButton)){
+                        joueur.pv = 100;
+                        joueur.mana = 100;
+
+                        vague = 1;
+                        ennemis_initialises = 0;
+                        nb_kill = 0;
+                        joueur.x = 400;
+                        joueur.y = 400;
+                        projNbEnnemi = 0; 
+                        projNbJoueur = 0;
+                        frame = 0; 
+                        delta_temps = 0;
+                        
+                        if (coefDifficulte == 0.7){
+                            nb_ennemis = 5;
+                        }
+                        else if (coefDifficulte == 1){
+                            nb_ennemis = 7;
+                        }
+                        else if (coefDifficulte == 1.3){
+                            nb_ennemis = 10;
+                        }
+                        SDL_SetRelativeMouseMode(SDL_TRUE);
                         menu = 0;
 
                         gain_mana = SDL_GetTicks();
                         duree_partie = SDL_GetTicks();
                         
+                    }
+                    if(menu == 3 && clickButton(event, accueilButton)){
+                        joueur.pv = 100;
+                        joueur.mana = 100;
+
+                        vague = 1;
+                        ennemis_initialises = 0;
+                        nb_kill = 0;
+                        joueur.x = 400;
+                        joueur.y = 400;
+                        projNbEnnemi = 0; 
+                        projNbJoueur = 0;
+                        frame = 0; 
+                        delta_temps = 0;
+                        
+                        if (coefDifficulte == 0.7){
+                            nb_ennemis = 5;
+                        }
+                        else if (coefDifficulte == 1){
+                            nb_ennemis = 7;
+                        }
+                        else if (coefDifficulte == 1.3){
+                            nb_ennemis = 10;
+                        }
+
+                        menu = 1;
                     }
                     else{
                         /* Lancer un projectile si on appuie sur le click gauche, que le jeu à débuté et que le joueur a assez de mana */
@@ -148,7 +250,7 @@ int main() {
         
         if(menu == 1){
             
-            menuPrincipal(rendu, jouerButton, difficulteButton);
+            menuPrincipal(rendu, arial, jouerButton, difficulteButton);
         }
         else if(menu == 2){
             menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton, texte, arial);
@@ -156,10 +258,14 @@ int main() {
         else if(menu == 3){
             menuGameOver(rendu, arial, gameoverButton, retryButton, vague, duree_partie, nb_kill); 
         }
+        else if(menu == 4){
+            MenuPause(rendu, reprendreButton, retryButton, accueilButton);
+        }
 
         else if (menu == 0)
         /* On entre dans le jeu */
         {   
+            printf("mx et my : %d %d\n", mx, my);
             //calcul du temps
             temps_actuel = SDL_GetTicks();
             delta_temps += temps_actuel - temps_ancien;
@@ -257,7 +363,7 @@ int main() {
 
             /* Rendu du joueur */
             actualisationSprite(4, frame, &direction, &pers_source, &pers_destination, rendu);
-
+            
            
             SDL_RenderCopy(rendu, barTextureVieMax, NULL, &healthBarMaxRect);
             SDL_RenderCopy(rendu, barTextureVie, NULL, healthBarRect);
@@ -265,7 +371,7 @@ int main() {
             SDL_RenderCopy(rendu, barTextureManaMax, NULL, &manaBarMaxRect);
             SDL_RenderCopy(rendu, barTextureMana, NULL, manaBarRect);
 
-
+            afficherAim(rendu, mx, my);
 
             SDL_RenderPresent(rendu);
 
@@ -274,6 +380,7 @@ int main() {
             /* Game Over*/
             if(joueur.pv <= 0){
                 duree_partie = SDL_GetTicks() - duree_partie;
+                SDL_SetRelativeMouseMode(SDL_FALSE);
                 menu = 3;
             }
         }

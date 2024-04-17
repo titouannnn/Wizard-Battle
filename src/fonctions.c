@@ -20,6 +20,8 @@ SDL_Texture *menu_tex;
 SDL_Texture *tile_verte_tex;
 SDL_Texture *tilemap_grass_tex;
 SDL_Texture *tilemap_structures_tex;
+
+SDL_Texture *aim_tex;
 //a supprimer
 SDL_Texture *tilemap;
 
@@ -133,7 +135,7 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
     }
 
     // Création de la fenêtre et du rendu
-    *fenetre = SDL_CreateWindow("Roguelike", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWS_WIDTH, WINDOWS_HEIGHT, SDL_WINDOW_OPENGL);
+    *fenetre = SDL_CreateWindow("Wizard Battle", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWS_WIDTH, WINDOWS_HEIGHT, SDL_WINDOW_OPENGL);
     *rendu = SDL_CreateRenderer(*fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(*rendu, 255, 255, 255, 255);
 
@@ -152,7 +154,13 @@ int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
  */
 
 void chargerTextures(SDL_Renderer *rendu){
-
+    temp_surface = IMG_Load("images/aim.png");
+    aim_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(aim_tex == NULL){
+        printf("Erreur de chargement de l'image 'aim.png': %s\n", SDL_GetError());
+    }
+    else printf("Chargement de l'image 'aim.png' réussi\n");
     /*Ecran du menu */
     temp_surface = SDL_LoadBMP("images/background2.bmp");
     menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
@@ -212,6 +220,15 @@ void chargerTextures(SDL_Renderer *rendu){
     }
     else printf("chargement de la tilemap_struct reussi \n");
 
+}
+
+void afficherAim(SDL_Renderer *rendu, int mx, int my){
+    SDL_Rect dest;
+    dest.x = mx - 25;
+    dest.y = my - 25;
+    dest.w = 50;
+    dest.h = 50;
+    SDL_RenderCopy(rendu, aim_tex, NULL, &dest);
 }
 
 /**

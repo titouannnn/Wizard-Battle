@@ -60,6 +60,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 int getMousePositionDirection(SDL_Rect *pers_destination);
 void affichageMenuImage(SDL_Renderer *rendu);
+void afficherAim(SDL_Renderer *rendu, int mx, int my);
 
 void initFonctions(
     int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH],
