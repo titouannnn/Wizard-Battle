@@ -182,6 +182,8 @@ void menuPrincipal(SDL_Renderer *rendu, TTF_Font *font, Button jouerButton, Butt
         SDL_RenderFillRect(rendu, &difficulteButton.rect);
     }
 
+    afficherMessage(rendu, font, "Appuyer sur la touche 'ESC' pour faire PAUSE", (WINDOWS_WIDTH) / 2 -410, (WINDOWS_HEIGHT - BUTTON_HEIGHT) / 2 +270, 800);
+
     SDL_RenderPresent(rendu);
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
 }

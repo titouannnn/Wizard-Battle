@@ -1,3 +1,7 @@
+/**
+ * @file barre.h
+ * @brief Gestion des barres de vie et de mana
+ */
 #ifndef BARRE_H
 #define BARRE_H
 
@@ -10,11 +14,14 @@
 #define BAR_WIDTH 300
 #define BAR_HEIGHT 20
 
-// Structure pour représenter la barre de vie
+/**
+ * \struct bar_t
+ * \brief Structure représentant une barre quelconque.
+*/
 typedef struct {
-    int x, y;     // Position de la barre de vie
-    int width;    // Largeur initiale de la barre de vie
-    int maxWidth; // Largeur maximale de la barre de vie (pleine vie)
+    int x, y;     /**< Position de la barre de vie */ 
+    int width;    /**< Largeur de la barre de vie */
+    int maxWidth; /**< Largeur maximale de la barre de vie */
 } bar_t;
 
 // Structure pour représenter une couleur en RGB

@@ -1,3 +1,10 @@
+/**
+ * \file entite.c
+ * \brief Ce fichier contient les fonctions liées à la gestion des entités.
+ * 
+ * Ce fichier contient les définitions des fonctions permettant de gérer les entités, de les afficher et de vérifier les collisions.
+ * 
+ */
 #include "entite.h"
 #include "projectile.h"
 #include "global.h"
@@ -7,6 +14,14 @@ SDL_Surface *ennemi_temp_surface;
 SDL_Texture *ennemi_run_right_tex;
 SDL_Texture *ennemi_run_left_tex;
 
+
+/**
+ * \brief Charge les textures des ennemis.
+ *
+ * Cette fonction charge les textures des ennemis.
+ *
+ * \param rendu Le renderer SDL pour l'affichage.
+ */
 void chargerTexturesEnnemi(SDL_Renderer *rendu){
 
     ennemi_temp_surface = SDL_LoadBMP("images/necro_run_right.bmp");
@@ -26,6 +41,13 @@ void chargerTexturesEnnemi(SDL_Renderer *rendu){
     else printf("Chargement de l'image 'necro_run_left' réussi\n");
 }
 
+/**
+ * \brief Initialise la structure de l'ennemi.
+ *
+ * Cette fonction initialise la structure de l'ennemi en créant chaque ennemi un par un.
+ *
+ * \param ennemi L'ennemi à initialiser.
+ */
 void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
     
     for (int i = 0; i < NB_ENNEMI; i++){
@@ -35,6 +57,14 @@ void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
     }
 }
 
+/**
+ * \brief Initialise les ennemis de la vague.
+ *
+ * Cette fonction initialise les ennemis de la vague en fonction du nombre d'ennemis et de la difficulté.
+ *
+ * \param tabEnnemi Tableau des ennemis.
+ * \param nb_ennemis Nombre d'ennemis.
+ */
 void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis){
     for (int i = 0; i < nb_ennemis; i++){
         int positionRand_x = rand() % ((NB_TILE_WIDTH-2) * TILE_WIDTH);
@@ -45,6 +75,17 @@ void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis){
     }
 }
 
+/**
+ * \brief Initialise les ennemis.
+ *
+ * Cette fonction initialise les ennemis en fonction des projectiles, du joueur et des ennemis.
+ *
+ * \param projJoueur Tableau des projectiles du joueur.
+ * \param projEnnemi Tableau des projectiles des ennemis.
+ * \param joueur Le joueur.
+ * \param ennemi Tableau des ennemis.
+ * \param rendu Le renderer SDL pour l'affichage.
+ */
 void initEnnemis(
     projectiles_t projJoueur[MAX_PROJ],
     projectiles_t projEnnemi[MAX_PROJ],
@@ -60,6 +101,20 @@ void initEnnemis(
     chargerTexturesProj(rendu);
 }
 
+/**
+ * \brief Actualise les ennemis.
+ *
+ * Cette fonction actualise le sprite des ennemis en fonction de leur direction.
+ *
+ * \param nb_sprite Nombre de sprites.
+ * \param frame Frame.
+ * \param largeur Largeur de l'image.
+ * \param hauteur Hauteur de l'image.
+ * \param direction Direction de l'ennemi (droite ou gauche).
+ * \param src Rectangle source (rectangle du sprite).
+ * \param dst Rectangle destination (rectangle de la hitbox).
+ * \param rendu Le renderer SDL pour l'affichage.
+ */
 void actualisationSpriteEnnemi(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
     SDL_Texture *texSprite;
     if (direction == DROITE) { 
@@ -77,11 +132,16 @@ void actualisationSpriteEnnemi(int nb_sprite, int frame, int largeur, int hauteu
     SDL_RenderCopy(rendu, texSprite, src, dst);
 }
 
-
-
-/* algorithme de Bresenham */
-
-void DessinerLigneEnnemiJoueur(point_t A, point_t B, SDL_Renderer *rendu)
+/**
+ * \brief Dessine une ligne entre deux points.
+ *
+ * Cette fonction dessine une ligne entre deux points à l'aide de l'algorithme de Bresenham.
+ *
+ * \param A Point A.
+ * \param B Point B.
+ * \param rendu Le renderer SDL pour l'affichage.
+ */
+void DessinerLigneEnnemiVu(point_t A, point_t B, SDL_Renderer *rendu)
 {
         long xvAB = B.x - A.x; // abscisse du vecteur AB
         long absX = abs(xvAB); // abs() est une fonction de math.h
@@ -125,56 +185,14 @@ void DessinerLigneEnnemiJoueur(point_t A, point_t B, SDL_Renderer *rendu)
         }
 } 
 
-
-void DessinerLigneEnnemiVu(point_t A, point_t B, SDL_Renderer *rendu){
-    long xvAB = B.x - A.x; // abscisse du vecteur AB
-    long absX = abs(xvAB); // abs() est une fonction de math.h
-    long yvAB = B.y - A.y; // ordonnée du vecteur AB
-    long absY = abs(yvAB);
-    long i;
-
-    if(absX > absY)
-    {
-            if(xvAB > 0)
-            {
-                    for(i = 0; i <= xvAB; i++)
-                    {
-                            
-                            SDL_RenderDrawPoint(rendu, A.x + i, A.y + yvAB * i / xvAB);
-                    }
-            }
-            else
-            {
-                    for(i = 0; i >= xvAB; i--)
-                    {       
-                            
-                            SDL_RenderDrawPoint(rendu, A.x + i, A.y + yvAB * i / xvAB);
-                    }
-            }
-    }
-    else
-    {
-            if(yvAB > 0)
-            {
-                    for(i = 0; i <= yvAB; i++)
-                    {
-                            
-                            SDL_RenderDrawPoint(rendu, A.x + xvAB * i / yvAB, A.y + i);
-                    }
-            }
-            else
-            {
-                    for(i = 0; i >= yvAB; i--)
-                    {
-                            
-                            SDL_RenderDrawPoint(rendu, A.x + xvAB * i / yvAB, A.y + i);
-                    }
-            }
-    }
-}
-
-
-
+/**
+ * \brief Dessine une barre de vie pour chaque ennemi.
+ * 
+ * Cette fonction dessine une barre de vie rouge pour chaque ennemi, la barre de vie se place au dessus de l'ennemi. 
+ * 
+ * \param ennemi L'ennemi.
+ * \param rendu Le renderer SDL pour l'affichage
+*/
 void dessinerBarreDeVie(ennemi_t *ennemi, SDL_Renderer *rendu){
     SDL_Rect barreDeVie;
     barreDeVie.x = ennemi->rect.x;
@@ -186,6 +204,13 @@ void dessinerBarreDeVie(ennemi_t *ennemi, SDL_Renderer *rendu){
 }
 
 
+/**
+ * \brief Crée un ennemi.
+ *
+ * Cette fonction crée un ennemi en associant les pointeurs sur fonction aux fonctions.
+ *
+ * \param ennemi L'ennemi à créer.
+ */
 void ennemi_creer(ennemi_t * ennemi){
     ennemi->initEnnemi = initEnnemi;
     ennemi->updateEnnemi = updateEnnemi;
@@ -193,6 +218,13 @@ void ennemi_creer(ennemi_t * ennemi){
     ennemi->renderVecteur = renderVecteur;
 }
 
+/**
+ * \brief Initialise le joueur.
+ *
+ * Cette fonction initialise le joueur en lui attribuant des points de vie, des points de mana, une attaque et une vitesse.
+ *
+ * \param joueur Le joueur à initialiser.
+ */
 void initialiserJoueur(joueur_t * joueur){
     joueur->attaque = 10;
     joueur->pv = 100;
@@ -203,7 +235,18 @@ void initialiserJoueur(joueur_t * joueur){
     joueur->vitesse = 1;
 }
 
-/* x et y pour coordonnées, id correspond aux types de monstre cela servira pour l'affichage des sprites (si y a plusieurs monstres) */
+/**
+ * \brief Initialise un ennemi.
+ *
+ * Cette fonction initialise un ennemi en lui attribuant des points de vie, une attaque, une position, un identifiant, une vitesse et un état de mort.
+ *
+ * \param ennemi L'ennemi à initialiser.
+ * \param x Position horizontale de l'ennemi.
+ * \param y Position verticale de l'ennemi.
+ * \param id Identifiant de l'ennemi (Pour différencier plusieurs types d'ennemis).
+ * \param pvMax Points de vie maximum de l'ennemi.
+ * \param attaque Attaque de l'ennemi.
+ */
 void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int attaque){
 
     ennemi->mort = 0;
@@ -231,6 +274,20 @@ void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int atta
     ennemi->vitesse = 2.5;
 }
 
+/**
+ * \brief Actualise un ennemi.
+ *
+ * Cette fonction actualise un ennemi en fonction de la position du joueur, de la caméra, des collisions, des projectiles et de la durée de vie.
+ * L'ennemi est attirée par le joueur et lance des projectiles vers le joueur.
+ *
+ * \param ennemi L'ennemi à actualiser.
+ * \param cameraRect Rectangle de la caméra.
+ * \param playerRect Rectangle du joueur.
+ * \param tabColision Tableau des collisions.
+ * \param projEnnemi Tableau des projectiles des ennemis.
+ * \param projNbEnnemi Nombre de projectiles des ennemis.
+ * \param temp_vivant Durée de vie de l'ennemi.
+ */
 void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], projectiles_t projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant){
     srand(time(NULL));
 
