@@ -43,8 +43,7 @@ void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vag
     SDL_DestroyTexture(Message);
 }
 
-void afficherNbKill(SDL_Renderer *rendu, int nbKill, int nbEnnemis) {
-    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
+void afficherNbKill(SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnemis) {
     SDL_Color blanc = {255, 255, 255};
     char texte[20];
     sprintf(texte, "%d / %d", nbKill, nbEnnemis);
@@ -65,7 +64,7 @@ void afficherNbKill(SDL_Renderer *rendu, int nbKill, int nbEnnemis) {
 
     SDL_Rect messageRect;
 
-    messageRect.x = 100;
+    messageRect.x = WINDOWS_WIDTH-130;
     messageRect.y = 10;
     messageRect.w = 100;
     messageRect.h = 50;
@@ -76,8 +75,7 @@ void afficherNbKill(SDL_Renderer *rendu, int nbKill, int nbEnnemis) {
     SDL_DestroyTexture(Message);
 }
 
-void afficherTemps(SDL_Renderer *rendu, int temps) {
-    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
+void afficherTemps(SDL_Renderer *rendu, TTF_Font *font, int temps) {
     SDL_Color blanc = {255, 255, 255};
     char texte[20];
     sprintf(texte, "Time : %d", temps);
@@ -100,8 +98,8 @@ void afficherTemps(SDL_Renderer *rendu, int temps) {
 
     SDL_Rect messageRect;
 
-    messageRect.x = 200;
-    messageRect.y = 10;
+    messageRect.x = WINDOWS_WIDTH-130;
+    messageRect.y = WINDOWS_HEIGHT-70;
     messageRect.w = 100;
     messageRect.h = 50;
 

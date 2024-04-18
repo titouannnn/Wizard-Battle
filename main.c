@@ -79,7 +79,7 @@ int main() {
 
                 case SDL_MOUSEBUTTONDOWN:
                     if(menu == 1 && clickButton(event, jouerButton)){
-                        SDL_SetRelativeMouseMode(SDL_TRUE);
+                        SDL_SetRelativeMouseMode(SDL_FALSE);
                         gain_mana = SDL_GetTicks();
                         duree_partie = SDL_GetTicks();
                         menu = 0;
@@ -371,6 +371,8 @@ int main() {
             if (SDL_GetTicks() - duree_vague < 2000){
                 afficherVague(rendu, arial, vague, SDL_GetTicks() - duree_vague);
             }
+            afficherNbKill(rendu, arial, nb_kill, nb_ennemis);
+            afficherTemps(rendu, arial, (SDL_GetTicks() - duree_partie)/1000);
 
             afficherAim(rendu, mx, my);
 

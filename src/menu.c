@@ -287,7 +287,7 @@ int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, int v
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
     SDL_Color blanc = {255, 0, 0};
     char texte[512];
-    sprintf(texte, "Vague : %d | Survie : %d sec | Kills : %d", vague, duree_partie/100, (nb_kill + 5 * (vague-1)));
+    sprintf(texte, "Vague : %d | Survie : %d sec | Kills : %d", vague, duree_partie/1000, (nb_kill + 5 * (vague-1)));
 
     // Allouer dynamiquement la mémoire pour la chaîne de caractères
     char* texte_dyn = malloc(strlen(texte) + 1);

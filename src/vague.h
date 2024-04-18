@@ -9,9 +9,9 @@
 
 #include "fonctions.h"
 
-void afficherTemps(SDL_Renderer *rendu, int temps);
+void afficherTemps(SDL_Renderer *rendu, TTF_Font *font, int temps);
 void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vague);
-void afficherNbKill(SDL_Renderer *rendu, int nbKill, int nbEnnemis);
+void afficherNbKill(SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnemis);
 void nextVague(int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialises);
 void afficherScore(SDL_Renderer *rendu, int vague, int temps, int nbKills);
 
