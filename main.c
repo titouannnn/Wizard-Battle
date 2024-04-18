@@ -19,9 +19,9 @@ int main() {
     initFonctions(tilemap, tabColision, &fenetre, &rendu, &cameraRect, &position, &colision, &pers_destination, &temps_ancien, &barTextureVieMax, &barTextureVie, &healthBar, &barTextureManaMax, &barTextureMana, &manaBar);
     initEnnemis(projJoueur, projEnnemi, &joueur, ennemi, rendu);
 
-    TTF_Font *arial = TTF_OpenFont("police/arial.ttf", 24);
+    TTF_Font *arial = TTF_OpenFont("police/wizard.ttf", 24);
 
-    initBoutons(arial, &jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, &reprendreButton, rendu);
+    initBoutons(arial, &jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &retryButton, &reprendreButton, rendu);
     chargerTextures(rendu);
     
  
@@ -86,6 +86,7 @@ int main() {
                     }
                     
                     if(menu == 1 && clickButton(event, difficulteButton)){
+                        printf("click sur difficulte\n");
                         menu = 2;
                     }
 
@@ -256,7 +257,7 @@ int main() {
             menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton, texte, arial);
         }
         else if(menu == 3){
-            menuGameOver(rendu, arial, gameoverButton, retryButton, vague, duree_partie, nb_kill); 
+            menuGameOver(rendu, arial, retryButton, vague, duree_partie, nb_kill); 
         }
         else if(menu == 4){
             MenuPause(rendu, reprendreButton, retryButton, accueilButton);
@@ -357,10 +358,6 @@ int main() {
                 nextVague(&vague, &nb_ennemis, &nb_kill, &ennemis_initialises); 
             }
 
-            if (SDL_GetTicks() - duree_vague < 2000){
-                afficherVague(rendu, vague, SDL_GetTicks() - duree_vague);
-            }
-
             /* Rendu du joueur */
             actualisationSprite(4, frame, &direction, &pers_source, &pers_destination, rendu);
             
@@ -370,6 +367,10 @@ int main() {
 
             SDL_RenderCopy(rendu, barTextureManaMax, NULL, &manaBarMaxRect);
             SDL_RenderCopy(rendu, barTextureMana, NULL, manaBarRect);
+
+            if (SDL_GetTicks() - duree_vague < 2000){
+                afficherVague(rendu, arial, vague, SDL_GetTicks() - duree_vague);
+            }
 
             afficherAim(rendu, mx, my);
 
@@ -389,7 +390,7 @@ int main() {
 
     /* Destruction des textures */
     destructionTextureBarres(barTextureVieMax, barTextureVie, barTextureManaMax, barTextureMana);
-    destructionBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &gameoverButton, &retryButton, &reprendreButton);
+    destructionBoutons(&jouerButton, &difficulteButton, &facileButton, &normalButton, &difficileButton, &accueilButton, &retryButton, &reprendreButton);
 
     destructionPolice(arial);
     free(cameraRect);

@@ -16,7 +16,12 @@ SDL_Texture *run_left_tex;
 SDL_Texture *fond_tex;
 
 // Texture du menu
-SDL_Texture *menu_tex;
+SDL_Texture *accueil_tex;
+SDL_Texture *gameover_tex;
+SDL_Texture *pause_tex;
+SDL_Texture *difficulte_tex;
+
+
 SDL_Texture *tile_verte_tex;
 SDL_Texture *tilemap_grass_tex;
 SDL_Texture *tilemap_structures_tex;
@@ -161,14 +166,47 @@ void chargerTextures(SDL_Renderer *rendu){
         printf("Erreur de chargement de l'image 'aim.png': %s\n", SDL_GetError());
     }
     else printf("Chargement de l'image 'aim.png' réussi\n");
-    /*Ecran du menu */
-    temp_surface = SDL_LoadBMP("images/background2.bmp");
-    menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+
+
+
+
+    /* Images des menus */
+
+    /* Image d'accueil*/
+    temp_surface = IMG_Load("images/menu/Accueil.png");
+    accueil_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
     SDL_FreeSurface(temp_surface);
-    if(menu_tex == NULL){
-        printf("Erreur de chargement de l'image 'background2': %s\n", SDL_GetError());
+    if(accueil_tex == NULL){
+        printf("Erreur de chargement de l'image 'accueil.png': %s\n", SDL_GetError());
     }
-    else printf("Chargement de l'image 'background2' réussi\n");
+    else printf("Chargement de l'image 'accueil.png' réussi\n");
+
+    /* Image de game over */
+    temp_surface = IMG_Load("images/menu/GameOver.png");
+    gameover_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(gameover_tex == NULL){
+        printf("Erreur de chargement de l'image 'GameOver.png': %s\n", SDL_GetError());
+    }
+    else printf("Chargement de l'image 'GameOver.png' réussi\n");
+
+    /* Image de difficulté */
+    temp_surface = IMG_Load("images/menu/Difficulte.png");
+    difficulte_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(accueil_tex == NULL){
+        printf("Erreur de chargement de l'image 'Difficulte.png': %s\n", SDL_GetError());
+    }
+    else printf("Chargement de l'image 'Diffilculte.png' réussi\n");
+
+    /* Image de pause */
+    temp_surface = IMG_Load("images/menu/Pause.png");
+    pause_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    SDL_FreeSurface(temp_surface);
+    if(accueil_tex == NULL){
+        printf("Erreur de chargement de l'image 'Pause.png': %s\n", SDL_GetError());
+    }
+    else printf("Chargement de l'image 'Pause.png' réussi\n");
 
     temp_surface = SDL_LoadBMP("images/wizard_run_right.bmp");
     run_right_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
@@ -251,8 +289,35 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu, TTF_Font *arial) {
  * @param rendu Pointeur vers le rendu utilisé pour afficher l'image.
  */
 
-void affichageMenuImage(SDL_Renderer *rendu){
-    SDL_RenderCopy(rendu, menu_tex, 0, 0);
+void affichageAccueilImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, accueil_tex, 0, 0);
+}
+
+/**
+ * @brief Affiche l'image du menu.
+ * @param rendu Pointeur vers le rendu utilisé pour afficher l'image.
+ */
+
+void affichageGameOverImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, gameover_tex, 0, 0);
+}
+
+/**
+ * @brief Affiche l'image du menu.
+ * @param rendu Pointeur vers le rendu utilisé pour afficher l'image.
+ */
+
+void affichagePauseImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, pause_tex, 0, 0);
+}
+
+/**
+ * @brief Affiche l'image du menu.
+ * @param rendu Pointeur vers le rendu utilisé pour afficher l'image.
+ */
+
+void affichageDifficulteImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, difficulte_tex, 0, 0);
 }
 
 /**

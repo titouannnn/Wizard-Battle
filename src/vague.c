@@ -9,9 +9,8 @@ void nextVague(int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialis
     *ennemis_initialises = 0;
 }
 
-void afficherVague(SDL_Renderer *rendu, int vague, int duree_vague) {
-    TTF_Font* font = TTF_OpenFont("police/arial.ttf", 30);
-    SDL_Color blanc = {225, 20, 20};
+void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vague) {
+    SDL_Color blanc = {255, 255, 255};
     char texte[20];
     sprintf(texte, "Vague %d", vague);
 

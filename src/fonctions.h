@@ -60,7 +60,13 @@ void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cam
 void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cameraRect, SDL_Rect *pers_destination);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 int getMousePositionDirection(SDL_Rect *pers_destination);
-void affichageMenuImage(SDL_Renderer *rendu);
+
+/* Affichage des images des différents menu */
+void affichageAccueilImage(SDL_Renderer *rendu);
+void affichageGameOverImage(SDL_Renderer *rendu);
+void affichagePauseImage(SDL_Renderer *rendu);
+void affichageDifficulteImage(SDL_Renderer *rendu);
+
 void afficherAim(SDL_Renderer *rendu, int mx, int my);
 
 void initFonctions(

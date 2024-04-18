@@ -13,6 +13,7 @@ all: jeu
 jeu: main.o fonctions.o carte.o menu.o entite.o projectile.o barre.o vague.o global.o
 	${CC} main.o global.o vague.o projectile.o entite.o menu.o fonctions.o carte.o barre.o -o bin/${PROG} ${LIBS} ${INCS} ${FLAGS}
 	./bin/jeu
+	make clean
 	
 
 main.o: main.c src/fonctions.h src/menu.h src/entite.h src/projectile.h src/carte.h src/barre.h src/vague.h src/global.h
