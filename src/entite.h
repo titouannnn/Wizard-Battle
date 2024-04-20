@@ -74,7 +74,7 @@ void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]);
 void initialiserJoueur(joueur_t * joueur);
 void ennemi_creer(ennemi_t * ennemi);
 void initEnnemi(ennemi_t * ennemi, float x, float y, int id, int pvMax, int attaque);
-void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis);
+void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis, int *ennemi_initialises, int *joueurMana, int *joueurManaMax, int *joueurPv, int *joueurPvMax, int *duree_vague);
 void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], projectiles_t projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant);
 void renderEnnemi(SDL_Renderer *rendu, ennemi_t *ennemi, int frame);
 void renderVecteur(SDL_Renderer *rendu, ennemi_t *ennemi, SDL_Rect * playerRect);

@@ -58,21 +58,35 @@ void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]){
 }
 
 /**
- * \brief Initialise les ennemis de la vague.
+ * \brief Initialise les données d'une nouvelle vague.
  *
  * Cette fonction initialise les ennemis de la vague en fonction du nombre d'ennemis et de la difficulté.
+ * Elle initialise également les données du joueur.
  *
  * \param tabEnnemi Tableau des ennemis.
  * \param nb_ennemis Nombre d'ennemis.
+ * \param ennemi_initialises Booléen permettant de savoir si les ennemis ont déjà été initialisés.
+ * \param joueurMana Pointeur sur le mana du joueur.
+ * \param joueurManaMax Pointeur sur le mana maximum du joueur.
+ * \param joueurPv Pointeur sur les points de vie du joueur.
+ * \param joueurPvMax Pointeur sur les points de vie maximum du joueur.
+ * \param duree_vague Pointeur sur la durée de la vague.
  */
-void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis){
-    for (int i = 0; i < nb_ennemis; i++){
-        int positionRand_x = rand() % ((NB_TILE_WIDTH-2) * TILE_WIDTH);
-        int positionRand_y = rand() % ((NB_TILE_HEIGHT-2) * TILE_HEIGHT);
+void initEnnemisVague(ennemi_t tabEnnemi[NB_ENNEMI], int nb_ennemis, int *ennemi_initialises, int *joueurMana, int *joueurManaMax, int *joueurPv, int *joueurPvMax, int *duree_vague){
+    if (!(*ennemi_initialises)){
+        *joueurPv = *joueurPvMax;
+        *joueurMana = *joueurManaMax;
+        *duree_vague = SDL_GetTicks();
+        for (int i = 0; i < nb_ennemis; i++){
+            int positionRand_x = rand() % ((NB_TILE_WIDTH-2) * TILE_WIDTH);
+            int positionRand_y = rand() % ((NB_TILE_HEIGHT-2) * TILE_HEIGHT);
 
-        /* Initialisation des ennemis en fonction de la difficulté */
-        tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100*coefDifficulte, 10*coefDifficulte);
+            /* Initialisation des ennemis en fonction de la difficulté */
+            tabEnnemi[i].initEnnemi(&tabEnnemi[i], positionRand_x, positionRand_y, 1, 100*coefDifficulte, 10*coefDifficulte);
+        }
+        *ennemi_initialises = 1;
     }
+    
 }
 
 /**

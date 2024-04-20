@@ -42,6 +42,8 @@ int vague;
 int nb_ennemis;
 int nb_kill;
 int ennemis_initialises;
+int mx, my;
+char texte[52];
 
 int projNbEnnemi; 
 int projNbJoueur;
