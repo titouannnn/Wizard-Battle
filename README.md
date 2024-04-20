@@ -1,7 +1,7 @@
 
-# Le Projet
+# Wizard Battle
 
-Nous sommes Léo, Nassim et Titouan, étudiants en L2 et voici notre projet, un roguelike.
+Nous sommes Léo, Nassim et Titouan, étudiants en L2 et voici notre jeu Wizard Battle, un jeu s'inspirant du genre roguelike.
 Dans ce jeu, vous arriverez dans une salle ou vous devrez vous battre contre de robustes ennemis qui arriveront par vague, et triompher afin de récupérer votre récompense.
 
 
