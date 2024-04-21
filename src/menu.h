@@ -40,7 +40,7 @@ void MenuPause(SDL_Renderer *rendu, Button reprendreButton, Button retryButton, 
 
 void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton, char* difficulte, TTF_Font *font);
 
-int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, int vague, int duree_partie, int nb_kill);
+int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, Button accueilButton, int vague, int duree_partie, int nb_kill);
 
 void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, int y, int taille);
 

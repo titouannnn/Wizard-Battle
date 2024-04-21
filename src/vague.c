@@ -136,8 +136,6 @@ void renitialiserStats(int *joueurPv, int *joueurMana, int *joueurX, int *joueur
 
     *gain_mana = SDL_GetTicks();
     *duree_parti = SDL_GetTicks();
-
-    SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 void gameOver(int *joueurPv, int *menu, int *duree_partie){

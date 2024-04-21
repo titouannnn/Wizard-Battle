@@ -272,11 +272,13 @@ void MenuPause(SDL_Renderer *rendu, Button reprendreButton, Button retryButton, 
  * \param duree_partie Durée de la partie.
  * \param nb_kill Nombre de kills.
  */
-int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, int vague, int duree_partie, int nb_kill){
+int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, Button accueilButton, int vague, int duree_partie, int nb_kill){
     SDL_RenderClear(rendu);
     affichageGameOverImage(rendu);
 
     drawButton(rendu, retryButton);
+    drawButton(rendu, accueilButton);
+
 
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_ADD);
 
@@ -284,10 +286,15 @@ int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, int v
         SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
         SDL_RenderFillRect(rendu, &retryButton.rect);
     }
+
+    if(mouseOnButton(accueilButton)){
+        SDL_SetRenderDrawColor(rendu, 255, 255, 255, 100);
+        SDL_RenderFillRect(rendu, &accueilButton.rect);
+    }
     
     
     SDL_SetRenderDrawBlendMode(rendu, SDL_BLENDMODE_NONE);
-    SDL_Color blanc = {255, 0, 0};
+    SDL_Color blanc = {255, 255, 255};
     char texte[512];
     sprintf(texte, "Vague : %d | Survie : %d sec | Kills : %d", vague, duree_partie/1000, (nb_kill + 5 * (vague-1)));
 

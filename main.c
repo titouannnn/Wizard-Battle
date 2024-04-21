@@ -60,8 +60,7 @@ int main() {
                     break;
                 
                 case SDL_KEYDOWN:
-                    if (event.key.keysym.sym == SDLK_ESCAPE){
-                        SDL_SetRelativeMouseMode(SDL_FALSE);
+                    if (event.key.keysym.sym == SDLK_ESCAPE && menu != 1 && menu != 2 && menu != 3){
                         menu = 4;
                     }
                     break;
@@ -69,7 +68,7 @@ int main() {
                 case SDL_MOUSEBUTTONDOWN:
                     if (menu == 1){
                         if(clickButton(event, jouerButton)){
-                            SDL_SetRelativeMouseMode(SDL_FALSE);
+                        
                             gain_mana = SDL_GetTicks();
                             duree_partie = SDL_GetTicks();
                             menu = 0;
@@ -94,6 +93,7 @@ int main() {
                             strcpy(texte, "Difficulte choisie : Difficile");
                         }
                         else if(clickButton(event, accueilButton)){
+                            renitialiserStats(&joueur.pv, &joueur.mana, &joueur.x, &joueur.y, &vague, &ennemis_initialises, &nb_ennemis, &nb_kill, &projNbJoueur, &projNbEnnemi, &frame, &delta_temps, &coefDifficulte, &gain_mana, &duree_partie);
                             menu = 1;
                         }
                     } else if (menu == 4){
@@ -124,20 +124,25 @@ int main() {
         }
         
         if(menu == 1){
+            SDL_SetRelativeMouseMode(SDL_FALSE);
             menuPrincipal(rendu, arial, jouerButton, difficulteButton);
         }
         else if(menu == 2){
+            SDL_SetRelativeMouseMode(SDL_FALSE);
             menuDifficulte(rendu, facileButton, normalButton, difficileButton, accueilButton, texte, arial);
         }
         else if(menu == 3){
-            menuGameOver(rendu, arial, retryButton, vague, duree_partie, nb_kill); 
+            SDL_SetRelativeMouseMode(SDL_FALSE);
+            menuGameOver(rendu, arial, retryButton, accueilButton , vague, duree_partie, nb_kill); 
         }
         else if(menu == 4){
+            SDL_SetRelativeMouseMode(SDL_FALSE);
             MenuPause(rendu, reprendreButton, retryButton, accueilButton);
         }
         else if (menu == 0)
         /* On entre dans le jeu */
         {   
+            SDL_SetRelativeMouseMode(SDL_TRUE);
             /* Recalcule le temps et effectue la regeneration du mana */
             calculTemps(&temps_actuel, &delta_temps, &temps_ancien, &gain_mana, &joueur.mana, &joueur.manaMax, &frame);
             /* On efface le rendu précédent*/
