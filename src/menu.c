@@ -1,7 +1,7 @@
 
 /**
- * @file projectile.h
- * @brief Gestion des projectiles
+ * @file menu.h
+ * @brief Gestion des menus du jeu au compte de 5.
  */
 
 #include "./menu.h"

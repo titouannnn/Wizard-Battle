@@ -1,3 +1,10 @@
+/**
+ * \file fonctions.c
+ * \brief Ce fichier contient diverses fonctions afin de gérer la caméra, le joueur, le jeu dans sa globalité.
+ * 
+ * Ce fichier contient les fonctions pour initialiser la caméra, le joueur, les textures, les menus, les collisions, les actions du joueur, le rendu du fond, la mise à jour de la caméra, la position du joueur, la destruction des textures, la destruction de la police, l'affichage des images des différents menus, l'affichage du viseur, l'initialisation des fonctions, l'actualisation du sprite, l'obtention de la direction de la position de la souris, la mise à jour de la caméra, l'initialisation de la position du joueur, la destruction des textures des barres, la destruction de la police, l'affichage du fond.
+ * 
+ */
 #include "fonctions.h"
 
 
@@ -260,6 +267,12 @@ void chargerTextures(SDL_Renderer *rendu){
 
 }
 
+/**
+ * @brief Affiche un viseur à la place du curseur de la souris.
+ * @param rendu Pointeur vers le rendu utilisé pour créer les textures.
+ * @param mx Coordonnée x de la souris.
+ * @param my Coordonnée y de la souris.
+ */
 void afficherAim(SDL_Renderer *rendu, int mx, int my){
     SDL_Rect dest;
     dest.x = mx - 25;

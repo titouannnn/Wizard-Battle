@@ -1,7 +1,12 @@
+/**
+ * \file fonctions.h
+ * \brief Ce fichier contient les définitions des variables nécéssaires pour le jeu.
+ * 
+ */
 #ifndef FONCTIONS_H
 #define FONCTIONS_H
 
-#include <stdio.h>
+#include <stdio.h>  
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -12,7 +17,7 @@
 #include "carte.h"
 #include "barre.h"
 
-#define WINDOWS_WIDTH 1080
+#define WINDOWS_WIDTH 1080  
 #define WINDOWS_HEIGHT 720
 
 #define DIM_SPRITE_PLAYER_X 128

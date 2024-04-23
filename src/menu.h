@@ -1,3 +1,7 @@
+/**
+ * @file menu.h
+ * @brief Gestion des prototypes des fonctions pour le menu.
+ */
 #ifndef MENU_H
 #define MENU_H
 
@@ -23,25 +27,15 @@ typedef struct {
 
 
 Button createButton(SDL_Renderer* renderer, TTF_Font *font, const char* text, int x, int y, int width, int height, Couleur_t couleur);
-
 void drawButton(SDL_Renderer* renderer, Button button);
-
 int clickButton(SDL_Event event, Button button);
-
 int mouseOnButton(Button button);
-
 void initBoutons(TTF_Font *font, Button *jouerButton, Button *difficulteButton, Button *facileButton, Button *normalButton, Button *difficileButton, Button *accueilButton, Button *retryButton, Button *reprendreButton, SDL_Renderer *rendu);
-
 void menuFonc(int menu, SDL_Renderer * rendu, Button jouerButton, Button difficulteButton, Button difficileButton, Button accueilButton, Button gameoverButton, Button retryButton, Button facileButton, Button normalButton);
-
 void menuPrincipal(SDL_Renderer *rendu, TTF_Font *font, Button jouerButton, Button difficulteButton);
-
 void MenuPause(SDL_Renderer *rendu, Button reprendreButton, Button retryButton, Button accueilButton);
-
 void menuDifficulte(SDL_Renderer *rendu, Button facileButton, Button normalButton, Button difficileButton, Button accueilButton, char* difficulte, TTF_Font *font);
-
 int menuGameOver( SDL_Renderer *rendu, TTF_Font *font, Button retryButton, Button accueilButton, int vague, int duree_partie, int nb_kill);
-
 void afficherMessage(SDL_Renderer *rendu, TTF_Font *font, char *texte, int x, int y, int taille);
 
 /* FONCTIONS DE DESTRUCTION */

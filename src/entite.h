@@ -1,3 +1,10 @@
+/**
+ * \file entite.h
+ * \brief Ce fichier contient les structures et les prototypes des fonctions pour la gestion des entités.
+ * 
+ * Les entités sont les personnages du jeu, c'est-à-dire le joueur et les ennemis.
+ * 
+ */
 #ifndef ENTITE_H
 #define ENTITE_H
 
@@ -23,51 +30,70 @@
 typedef struct ennemi_s ennemi_t;
 typedef struct joueur_s joueur_t;
 
+/**
+ * \struct point_s
+ * \brief Structure représentant un point.
+ * 
+ * Un point est défini par ses coordonnées x et y.
+*/
 typedef struct point_s{
-    int x;
-    int y;
+    int x;  /**< Coordonnée x du point */
+    int y;  /**< Coordonnée y du point */
 } point_t;
 
+
+/**
+ * \struct joueur_s
+ * \brief Structure représentant le joueur.
+ * 
+ * Le joueur est défini par ses coordonnées x et y, son nombre de points de vie, son nombre de points de mana, son attaque et sa vitesse.
+*/
 struct joueur_s {
-    int id;
-    int x;
-    int y;
-    int mana;
-    int manaMax;
-    int pv;
-    int pvMax;
-    int attaque;
-    int vitesse;
+    int id; /**< identifiant du joueur */
+    int x;  /**< Coordonnée x du joueur */
+    int y;  /**< Coordonnée y du joueur */
+    int mana;   /**< Points de mana du joueur */
+    int manaMax;    /**< Points de mana maximum du joueur */
+    int pv; /**< Points de vie du joueur */
+    int pvMax;  /**< Points de vie maximum du joueur */
+    int attaque;    /**< Attaque du joueur */
+    int vitesse;    /**< Vitesse du joueur */
 };
 
+/**
+ * \struct ennemi_s
+ * \brief Structure représentant un ennemi.
+ * 
+ * Un ennemi est défini par ses coordonnées x et y, son nombre de points de vie, son nombre de points de vie maximum, son attaque, sa vitesse, sa portée de détection, son état de mort, son rectangle de collision, son rectangle de sprite, son vecteur de déplacement, sa durée d'apparition et ses fonctions d'initialisation, de mise à jour et d'affichage.
+*/
 struct ennemi_s {
-    int id;
-    float x;
-    float y;
+    int id; /**< identifiant de l'ennemi */
+    float x;    /**< Coordonnée x de l'ennemi */
+    float y;    /**< Coordonnée y de l'ennemi */
     
-    float vx;
-    float vy;
+    float vx;   /**< Vecteur de déplacement en x */
+    float vy;   /**< Vecteur de déplacement en y */
 
-    int pv;
-    int pvMax;
-    int attaque;
-    float vitesse;
-    int detection;
+    int pv; /**< Points de vie de l'ennemi */
+    int pvMax;  /**< Points de vie maximum de l'ennemi */
+    int attaque;    /**< Attaque de l'ennemi */
+    float vitesse;  /**< Vitesse de l'ennemi */
+    int detection;  /**< Portée de détection de l'ennemi */
 
-    int gauche;
-    int droite;
+    int gauche; /**< Booléen indiquant si l'ennemi est tourné vers la gauche */
+    int droite; /**< Booléen indiquant si l'ennemi est tourné vers la droite */
 
-    int mort;
+    int mort;   /**< Booléen indiquant si l'ennemi est mort */
 
-    Uint32 delta; /* Variable servant à calculer la durée d'apparition d'un ennemi */
+    Uint32 delta;  /**< Durée d'apparition de l'ennemi */
 
-    SDL_Rect rect;
-    SDL_Rect sprite;
+    SDL_Rect rect;  /**< Rectangle de collision de l'ennemi */
+    SDL_Rect sprite;    /**< Rectangle de sprite de l'ennemi */
 
-    void (*initEnnemi)(ennemi_t *ennemi, float x, float y, int id, int pvMax, int attaque);
-    void (*updateEnnemi)(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], projectiles_t projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant);
-    void (*renderEnnemi)(SDL_Renderer * rendu, ennemi_t * ennemi, int frame);
-    void (*renderVecteur)(SDL_Renderer * rendu, ennemi_t * ennemi, SDL_Rect * playerRect);
+    void (*initEnnemi)(ennemi_t *ennemi, float x, float y, int id, int pvMax, int attaque); /** < fonction d'initialisation d'un ennemi */
+    void (*updateEnnemi)(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], projectiles_t projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant);  /** < fonction de mise à jour d'un ennemi */
+    void (*renderEnnemi)(SDL_Renderer * rendu, ennemi_t * ennemi, int frame); /** < fonction d'affichage d'un ennemi */
+    void (*renderVecteur)(SDL_Renderer * rendu, ennemi_t * ennemi, SDL_Rect * playerRect);  /** < fonction d'affichage du vecteur de déplacement d'un ennemi */
 };
 
 void initTabEnnemi(ennemi_t tabEnnemi[NB_ENNEMI]);

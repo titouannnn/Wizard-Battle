@@ -1,3 +1,9 @@
+/**
+ * @file vague.h
+ * @brief Fichier contenant les protoypes des fonctions pour le système de vague.
+ * 
+ *  Ce fichier contient les prototypes des fonctions pour gérer le système de vague.
+ */
 #ifndef VAGUE_H
 #define VAGUE_H
 

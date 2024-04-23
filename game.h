@@ -1,3 +1,9 @@
+/**
+ * @file game.h
+ * @brief Fichier contenant les variables qui vont être utilisées dans le main.c.
+ * 
+ *  Ce fichier initialise les variables qui vont être utilisées dans le main.c.
+ */
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h> 
 #include <stdio.h>

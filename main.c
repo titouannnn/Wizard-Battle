@@ -1,3 +1,9 @@
+/**
+ * @file main.c
+ * @brief Fichier principal du jeu contenant la boucle principale.
+ * 
+ *  Ce fichier contient la boucle principale du jeu.
+ */
 #include "game.h"
 #include "src/global.h"
 
@@ -45,7 +51,7 @@ int main() {
     * 3 - Game Over
     * 4 - Pause
     * */
-    strcpy(texte, "Difficulte choisie : Normale");
+    strcpy(texte, "Difficulte choisie : Normal");
     isRunning = 1; 
     while (isRunning) {
         while (SDL_PollEvent(&event)) {
@@ -142,7 +148,7 @@ int main() {
         else if (menu == 0)
         /* On entre dans le jeu */
         {   
-            SDL_SetRelativeMouseMode(SDL_TRUE);
+            SDL_SetRelativeMouseMode(SDL_FALSE);
             /* Recalcule le temps et effectue la regeneration du mana */
             calculTemps(&temps_actuel, &delta_temps, &temps_ancien, &gain_mana, &joueur.mana, &joueur.manaMax, &frame);
             /* On efface le rendu précédent*/
@@ -232,8 +238,15 @@ int main() {
     return fin(fenetre, rendu, arial);
 }
 
-/* Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence 
-* La fonction est déclarée ici pour des problèmes de dépendances circulaires
+/**
+ * @brief Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence
+ * 
+ * @param projectile Pointeur sur le projectile
+ * @param ennemi Pointeur sur l'ennemi
+ * @param playerRect Pointeur sur le rectangle du joueur
+ * @param cameraRect Pointeur sur le rectangle de la camera
+ * @param joueur Pointeur sur le joueur
+ * 
 */
 void collisionProjEntite(projectiles_t *projectile, ennemi_t *ennemi, SDL_Rect *playerRect, SDL_Rect *cameraRect, joueur_t *joueur){
     if (projectile->id == PROJ_JOUEUR && projectile->collision != 1){

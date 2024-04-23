@@ -1,5 +1,20 @@
+/**
+ * @file vague.c
+ * @brief Gestion du système de vague.
+ * 
+ * Ce fichier contient les fonctions pour gérer le système de vague.
+ */
 #include "vague.h"
 
+/**
+ * @brief Fonction pour passer à la vague suivante.
+ * 
+ * @param vague Pointeur sur le numéro de la vague actuelle.
+ * @param nb_ennemis Pointeur sur le nombre d'ennemis à initialiser.
+ * @param nb_kill Pointeur sur le nombre d'ennemis tués.
+ * @param ennemis_initialises Pointeur sur le nombre d'ennemis initialisés.
+ * 
+*/
 void nextVague(int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialises)
 {
     printf("Vague suivante\n");
@@ -9,6 +24,15 @@ void nextVague(int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialis
     *ennemis_initialises = 0;
 }
 
+/**
+ * @brief Fonction pour afficher la vague actuelle à l'écran.
+ * 
+ * @param rendu Pointeur sur le rendu.
+ * @param font Pointeur sur la police d'écriture.
+ * @param vague Numéro de la vague actuelle.
+ * @param duree_vague Durée de la vague actuelle
+ * 
+*/
 void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vague) {
     SDL_Color blanc = {255, 255, 255};
     char texte[20];
@@ -43,6 +67,15 @@ void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vag
     SDL_DestroyTexture(Message);
 }
 
+/**
+ * @brief Fonction pour afficher le nombre d'ennemis tués à l'écran.
+ * 
+ * @param rendu Pointeur sur le rendu.
+ * @param font Pointeur sur la police d'écriture.
+ * @param nbKill Nombre d'ennemis tués.
+ * @param nbEnnemis Nombre d'ennemis à tuer.
+ * 
+*/
 void afficherNbKill(SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnemis) {
     SDL_Color blanc = {255, 255, 255};
     char texte[20];
@@ -75,6 +108,14 @@ void afficherNbKill(SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnem
     SDL_DestroyTexture(Message);
 }
 
+/**
+ * @brief Fonction pour afficher le temps écoulé à l'écran.
+ * 
+ * @param rendu Pointeur sur le rendu.
+ * @param font Pointeur sur la police d'écriture.
+ * @param temps Temps écoulé.
+ * 
+*/
 void afficherTemps(SDL_Renderer *rendu, TTF_Font *font, int temps) {
     SDL_Color blanc = {255, 255, 255};
     char texte[20];
@@ -110,6 +151,26 @@ void afficherTemps(SDL_Renderer *rendu, TTF_Font *font, int temps) {
     SDL_FreeSurface(surfaceMessage);
 }
 
+/**
+ * @brief Fonction pour renitialiser les stats du joueur et de la partie.
+ * 
+ * @param joueurPv Pointeur sur les points de vie du joueur.
+ * @param joueurMana Pointeur sur le mana du joueur.
+ * @param joueurX Pointeur sur la position en x du joueur.
+ * @param joueurY Pointeur sur la position en y du joueur.
+ * @param vague Pointeur sur le numéro de la vague actuelle.
+ * @param ennemis_initialises Pointeur sur le nombre d'ennemis initialisés.
+ * @param nb_ennemis Pointeur sur le nombre d'ennemis à initialiser.
+ * @param nb_kill Pointeur sur le nombre d'ennemis tués.
+ * @param projNbJoueur Pointeur sur le nombre de projectiles du joueur.
+ * @param projNbEnnemi Pointeur sur le nombre de projectiles des ennemis.
+ * @param frame Pointeur sur le numéro de l'image du sprite.
+ * @param delta_temps Pointeur sur le temps écoulé entre les images du sprite.
+ * @param coefDifficulte Pointeur sur le coefficient de difficulté.
+ * @param gain_mana Pointeur sur le moment où le joueur gagne du mana.
+ * @param duree_parti Pointeur sur la durée de la partie.
+ * 
+*/
 void renitialiserStats(int *joueurPv, int *joueurMana, int *joueurX, int *joueurY, int *vague, int *ennemis_initialises, int *nb_ennemis, int *nb_kill, int *projNbJoueur, int *projNbEnnemi, int *frame, int *delta_temps, float *coefDifficulte, Uint32 *gain_mana, int *duree_parti) {
     *joueurPv = 100;
     *joueurMana = 100;
@@ -138,6 +199,14 @@ void renitialiserStats(int *joueurPv, int *joueurMana, int *joueurX, int *joueur
     *duree_parti = SDL_GetTicks();
 }
 
+/**
+ * @brief Fonction pour gérer la fin de la partie.
+ * 
+ * @param joueurPv Pointeur sur les points de vie du joueur.
+ * @param menu Pointeur sur le menu actuel.
+ * @param duree_partie Pointeur sur la durée de la partie.
+ * 
+*/
 void gameOver(int *joueurPv, int *menu, int *duree_partie){
     if (*joueurPv <= 0){
         *menu = 3;
@@ -146,7 +215,18 @@ void gameOver(int *joueurPv, int *menu, int *duree_partie){
     }
 }
 
-
+/**
+ * @brief Fonction pour calculer le temps écoulé et le gain de mana.
+ * 
+ * @param temps_actuel Pointeur sur le temps actuel.
+ * @param delta_temps Pointeur sur le temps écoulé entre les images du sprite.
+ * @param temps_ancien Pointeur sur le temps précédent.
+ * @param gain_mana Pointeur sur le moment où le joueur gagne du mana.
+ * @param joueurMana Pointeur sur le mana du joueur.
+ * @param joueurManaMax Pointeur sur le mana maximum du joueur.
+ * @param frame Pointeur sur le numéro de l'image du sprite.
+ * 
+*/
 void calculTemps(Uint32 *temps_actuel, int *delta_temps, Uint32 *temps_ancien, Uint32 *gain_mana, int *joueurMana, int *joueurManaMax, int *frame){
     *temps_actuel = SDL_GetTicks();
     *delta_temps += *temps_actuel - *temps_ancien;

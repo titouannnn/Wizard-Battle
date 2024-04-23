@@ -373,7 +373,15 @@ void updateEnnemi(ennemi_t * ennemi, SDL_Rect * cameraRect, SDL_Rect * playerRec
     
 }
 
-/* Fonction de rendu de l'ennemi, n'est pas rendu si il est mort*/
+/**
+ * \brief Affiche un ennemi.
+ *
+ * Cette fonction affiche un ennemi en fonction de sa direction.
+ *
+ * \param rendu Le renderer SDL pour l'affichage.
+ * \param ennemi L'ennemi à afficher.
+ * \param frame Frame.
+ */
 void renderEnnemi(SDL_Renderer *rendu, ennemi_t *ennemi, int frame){
     if (ennemi->pv <= 0){
         return;
@@ -394,7 +402,15 @@ void renderEnnemi(SDL_Renderer *rendu, ennemi_t *ennemi, int frame){
     
 }
 
-/* Fonction non utiliser dans le jeu et sert seulement à vérifier si les projectiles ont la bonne trajectoire */
+/**
+ * \brief Affiche le vecteur de déplacement de l'ennemi.
+ *
+ * Cette fonction affiche le vecteur de déplacement de l'ennemi.
+ *
+ * \param rendu Le renderer SDL pour l'affichage.
+ * \param ennemi L'ennemi.
+ * \param playerRect Rectangle du joueur.
+ */
 void renderVecteur(SDL_Renderer *rendu, ennemi_t *ennemi, SDL_Rect * playerRect){
     point_t A;
     point_t B;
@@ -407,6 +423,15 @@ void renderVecteur(SDL_Renderer *rendu, ennemi_t *ennemi, SDL_Rect * playerRect)
 
 }  
 
+/**
+ * \brief Affiche les ennemis.
+ *
+ * Cette fonction affiche les ennemis.
+ *
+ * \param ennemi Tableau des ennemis.
+ * \param rendu Le renderer SDL pour l'affichage.
+ * \param frame Frame.
+ */
 void renderEnemies(ennemi_t* ennemi, SDL_Renderer* rendu, int frame) {
     for (int i = 0; i < NB_ENNEMI; i++){
         ennemi[i].renderEnnemi(rendu, &ennemi[i], frame);
