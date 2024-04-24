@@ -1,0 +1,1012 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier src/fonctions.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier fonctions.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce fichier contient les définitions des variables nécéssaires pour le jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+<code>#include &quot;carte.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="barre_8h_source.html">barre.h</a>&quot;</code><br />
+</div>
+<p><a href="fonctions_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a2beea3dee2937ac69773a3591b58e884"><td class="memItemLeft" align="right" valign="top"><a id="a2beea3dee2937ac69773a3591b58e884" name="a2beea3dee2937ac69773a3591b58e884"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WINDOWS_WIDTH</b>&#160;&#160;&#160;1080</td></tr>
+<tr class="separator:a2beea3dee2937ac69773a3591b58e884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2792af9d84f5421586a955baee972c4"><td class="memItemLeft" align="right" valign="top"><a id="ac2792af9d84f5421586a955baee972c4" name="ac2792af9d84f5421586a955baee972c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WINDOWS_HEIGHT</b>&#160;&#160;&#160;720</td></tr>
+<tr class="separator:ac2792af9d84f5421586a955baee972c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d355bc42bc52216813fa42fcf3cf8c3"><td class="memItemLeft" align="right" valign="top"><a id="a8d355bc42bc52216813fa42fcf3cf8c3" name="a8d355bc42bc52216813fa42fcf3cf8c3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_PLAYER_X</b>&#160;&#160;&#160;128</td></tr>
+<tr class="separator:a8d355bc42bc52216813fa42fcf3cf8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878972786766b938e24a7b301dfeaedc"><td class="memItemLeft" align="right" valign="top"><a id="a878972786766b938e24a7b301dfeaedc" name="a878972786766b938e24a7b301dfeaedc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_PLAYER_Y</b>&#160;&#160;&#160;224</td></tr>
+<tr class="separator:a878972786766b938e24a7b301dfeaedc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92ca5ab87034a348decad7ee8d4bd1b"><td class="memItemLeft" align="right" valign="top"><a id="ac92ca5ab87034a348decad7ee8d4bd1b" name="ac92ca5ab87034a348decad7ee8d4bd1b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FPS</b>&#160;&#160;&#160;60</td></tr>
+<tr class="separator:ac92ca5ab87034a348decad7ee8d4bd1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f922e5657f0a4ca19607f0e3028eac2"><td class="memItemLeft" align="right" valign="top"><a id="a0f922e5657f0a4ca19607f0e3028eac2" name="a0f922e5657f0a4ca19607f0e3028eac2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DELAI</b>&#160;&#160;&#160;1000 / FPS</td></tr>
+<tr class="separator:a0f922e5657f0a4ca19607f0e3028eac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5e36a1ced1bf622af2ea764204b5897"><td class="memItemLeft" align="right" valign="top"><a id="ac5e36a1ced1bf622af2ea764204b5897" name="ac5e36a1ced1bf622af2ea764204b5897"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VITESSE_JOUEUR_X</b>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:ac5e36a1ced1bf622af2ea764204b5897"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b96ce30055c92cb9e82cd47155ee530"><td class="memItemLeft" align="right" valign="top"><a id="a4b96ce30055c92cb9e82cd47155ee530" name="a4b96ce30055c92cb9e82cd47155ee530"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VITESSE_JOUEUR_Y</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a4b96ce30055c92cb9e82cd47155ee530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0f9b88c35112b35f67d3cde4b2365c"><td class="memItemLeft" align="right" valign="top"><a id="acd0f9b88c35112b35f67d3cde4b2365c" name="acd0f9b88c35112b35f67d3cde4b2365c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HAUT</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:acd0f9b88c35112b35f67d3cde4b2365c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7bcdd3b14eec4414469f88f2bd8f12"><td class="memItemLeft" align="right" valign="top"><a id="abd7bcdd3b14eec4414469f88f2bd8f12" name="abd7bcdd3b14eec4414469f88f2bd8f12"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAS</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:abd7bcdd3b14eec4414469f88f2bd8f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af625d3f3bc022848a558f2b18def5b15"><td class="memItemLeft" align="right" valign="top"><a id="af625d3f3bc022848a558f2b18def5b15" name="af625d3f3bc022848a558f2b18def5b15"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DROITE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:af625d3f3bc022848a558f2b18def5b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07f8bf974fdf76afd17f2b97ac15a22"><td class="memItemLeft" align="right" valign="top"><a id="af07f8bf974fdf76afd17f2b97ac15a22" name="af07f8bf974fdf76afd17f2b97ac15a22"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GAUCHE</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:af07f8bf974fdf76afd17f2b97ac15a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1324e1caf5dcfbec68bca170fb746e"><td class="memItemLeft" align="right" valign="top"><a id="a2f1324e1caf5dcfbec68bca170fb746e" name="a2f1324e1caf5dcfbec68bca170fb746e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LARGEUR_FOND</b>&#160;&#160;&#160;NB_TILE_WIDTH*TILE_WIDTH</td></tr>
+<tr class="separator:a2f1324e1caf5dcfbec68bca170fb746e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d0828cf20538d95574383a37cac3e0"><td class="memItemLeft" align="right" valign="top"><a id="a90d0828cf20538d95574383a37cac3e0" name="a90d0828cf20538d95574383a37cac3e0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HAUTEUR_FOND</b>&#160;&#160;&#160;NB_TILE_HEIGHT*TILE_HEIGHT</td></tr>
+<tr class="separator:a90d0828cf20538d95574383a37cac3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48447a9f1224dfc39abebc6a6d920d36"><td class="memItemLeft" align="right" valign="top"><a id="a48447a9f1224dfc39abebc6a6d920d36" name="a48447a9f1224dfc39abebc6a6d920d36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CAMERA_WIDTH</b>&#160;&#160;&#160;1080</td></tr>
+<tr class="separator:a48447a9f1224dfc39abebc6a6d920d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ffdd1d90debad0734331c202651c0bc"><td class="memItemLeft" align="right" valign="top"><a id="a6ffdd1d90debad0734331c202651c0bc" name="a6ffdd1d90debad0734331c202651c0bc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CAMERA_HEIGHT</b>&#160;&#160;&#160;720</td></tr>
+<tr class="separator:a6ffdd1d90debad0734331c202651c0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c109ff6a0293c4706defe141ef7e0c"><td class="memItemLeft" align="right" valign="top"><a id="a34c109ff6a0293c4706defe141ef7e0c" name="a34c109ff6a0293c4706defe141ef7e0c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>JAUNE</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){255, 255, 0})</td></tr>
+<tr class="separator:a34c109ff6a0293c4706defe141ef7e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358a59dd21062085dd34d5c228c5f136"><td class="memItemLeft" align="right" valign="top"><a id="a358a59dd21062085dd34d5c228c5f136" name="a358a59dd21062085dd34d5c228c5f136"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ROUGE</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){255, 0, 0})</td></tr>
+<tr class="separator:a358a59dd21062085dd34d5c228c5f136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c2b7cb14b1ffb516a9ed4a164b5cda"><td class="memItemLeft" align="right" valign="top"><a id="a22c2b7cb14b1ffb516a9ed4a164b5cda" name="a22c2b7cb14b1ffb516a9ed4a164b5cda"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VERT</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){0, 204, 0})</td></tr>
+<tr class="separator:a22c2b7cb14b1ffb516a9ed4a164b5cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addb94dd4bc07b85c726c37ea6b5295a8"><td class="memItemLeft" align="right" valign="top"><a id="addb94dd4bc07b85c726c37ea6b5295a8" name="addb94dd4bc07b85c726c37ea6b5295a8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VERT_FONCE</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){0, 51, 0})</td></tr>
+<tr class="separator:addb94dd4bc07b85c726c37ea6b5295a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22837728df88da892b4bb16bb98296d"><td class="memItemLeft" align="right" valign="top"><a id="ae22837728df88da892b4bb16bb98296d" name="ae22837728df88da892b4bb16bb98296d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BLEU</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){0, 102, 204})</td></tr>
+<tr class="separator:ae22837728df88da892b4bb16bb98296d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d7e84358294ed9873a654833b420cf7"><td class="memItemLeft" align="right" valign="top"><a id="a1d7e84358294ed9873a654833b420cf7" name="a1d7e84358294ed9873a654833b420cf7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BLEU_FONCE</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){0, 25, 51})</td></tr>
+<tr class="separator:a1d7e84358294ed9873a654833b420cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a711bd77f878f23e61dfd98fc505a1c"><td class="memItemLeft" align="right" valign="top"><a id="a8a711bd77f878f23e61dfd98fc505a1c" name="a8a711bd77f878f23e61dfd98fc505a1c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOIR</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){0, 0, 0})</td></tr>
+<tr class="separator:a8a711bd77f878f23e61dfd98fc505a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4371941fa5aa27c04b3e2b973c39f4b0"><td class="memItemLeft" align="right" valign="top"><a id="a4371941fa5aa27c04b3e2b973c39f4b0" name="a4371941fa5aa27c04b3e2b973c39f4b0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BLANC</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){255, 255, 255})</td></tr>
+<tr class="separator:a4371941fa5aa27c04b3e2b973c39f4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b6e19bf06822021f35602c59658de3"><td class="memItemLeft" align="right" valign="top"><a id="ac5b6e19bf06822021f35602c59658de3" name="ac5b6e19bf06822021f35602c59658de3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ORANGE</b>&#160;&#160;&#160;((<a class="el" href="structCouleur__t.html">Couleur_t</a>){255, 165, 0})</td></tr>
+<tr class="separator:ac5b6e19bf06822021f35602c59658de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a3243cbf17a24df002d54a92e9c6a2e2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a3243cbf17a24df002d54a92e9c6a2e2d">initCamera</a> ()</td></tr>
+<tr class="memdesc:a3243cbf17a24df002d54a92e9c6a2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the camera.  <br /></td></tr>
+<tr class="separator:a3243cbf17a24df002d54a92e9c6a2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552dfde78010181ce3461638dd6ad4f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a552dfde78010181ce3461638dd6ad4f3">initJoueur</a> (int x, int y)</td></tr>
+<tr class="memdesc:a552dfde78010181ce3461638dd6ad4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the player.  <br /></td></tr>
+<tr class="separator:a552dfde78010181ce3461638dd6ad4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023375a71579eecbb69f87eac081d638"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a023375a71579eecbb69f87eac081d638">initialisation</a> (SDL_Window **fenetre, SDL_Renderer **rendu)</td></tr>
+<tr class="memdesc:a023375a71579eecbb69f87eac081d638"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la SDL, la SDL_ttf, la fenêtre et le rendu.  <br /></td></tr>
+<tr class="separator:a023375a71579eecbb69f87eac081d638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae624aa0dc8f8ac669ee18d90c0bee2e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#ae624aa0dc8f8ac669ee18d90c0bee2e8">chargerTextures</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:ae624aa0dc8f8ac669ee18d90c0bee2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les textures nécessaires pour le jeu.  <br /></td></tr>
+<tr class="separator:ae624aa0dc8f8ac669ee18d90c0bee2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac10a603815def79c4f1a4eb193095b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#abac10a603815def79c4f1a4eb193095b">fin</a> (SDL_Window *fenetre, SDL_Renderer *rendu, TTF_Font *arial)</td></tr>
+<tr class="memdesc:abac10a603815def79c4f1a4eb193095b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère les ressources de la SDL et ferme la fenêtre.  <br /></td></tr>
+<tr class="separator:abac10a603815def79c4f1a4eb193095b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ca63716af3b8a54610d5bd7a72d9b04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a3ca63716af3b8a54610d5bd7a72d9b04">actualisationSprite</a> (int nb_sprite, int hauteur, int *direction, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *src, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *dst, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a3ca63716af3b8a54610d5bd7a72d9b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise le sprite du personnage.  <br /></td></tr>
+<tr class="separator:a3ca63716af3b8a54610d5bd7a72d9b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac61f52c77eacfbd0260a72ebed2900f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#ac61f52c77eacfbd0260a72ebed2900f2">action</a> (const Uint8 *clavier, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *pers_destination, <a class="el" href="structcolision__t.html">colision_t</a> *colision, int *direction)</td></tr>
+<tr class="memdesc:ac61f52c77eacfbd0260a72ebed2900f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les actions du joueur.  <br /></td></tr>
+<tr class="separator:ac61f52c77eacfbd0260a72ebed2900f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56dfb9fd6b11daafcd57f8847d9f81cd"><td class="memItemLeft" align="right" valign="top"><a id="a56dfb9fd6b11daafcd57f8847d9f81cd" name="a56dfb9fd6b11daafcd57f8847d9f81cd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>renduFond</b> (SDL_Renderer *rendu, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect)</td></tr>
+<tr class="separator:a56dfb9fd6b11daafcd57f8847d9f81cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb4cb2e7eff3e12a89bfa22d93c19da7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#abb4cb2e7eff3e12a89bfa22d93c19da7">updateCamera</a> (<a class="el" href="structSDL__Rect.html">SDL_Rect</a> *pers_destination, SDL_Renderer *rendu, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect, int tab[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], <a class="el" href="structcolision__t.html">colision_t</a> *colision, int tabColision[NB_TILE_HEIGHT][NB_TILE_WIDTH], <a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> position)</td></tr>
+<tr class="memdesc:abb4cb2e7eff3e12a89bfa22d93c19da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rendu du fond.  <br /></td></tr>
+<tr class="separator:abb4cb2e7eff3e12a89bfa22d93c19da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28a36bc3b279d4a4a4091fe150003803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a28a36bc3b279d4a4a4091fe150003803">initialiser_position_joueur</a> (<a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> *positionJoueur, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *pers_destination)</td></tr>
+<tr class="memdesc:a28a36bc3b279d4a4a4091fe150003803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la position du joueur.  <br /></td></tr>
+<tr class="separator:a28a36bc3b279d4a4a4091fe150003803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d687ac613c37f883043a4cba34a5427"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a9d687ac613c37f883043a4cba34a5427">getMousePositionDirection</a> (<a class="el" href="structSDL__Rect.html">SDL_Rect</a> *pers_destination)</td></tr>
+<tr class="memdesc:a9d687ac613c37f883043a4cba34a5427"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient la direction de la position de la souris par rapport à la position du personnage.  <br /></td></tr>
+<tr class="separator:a9d687ac613c37f883043a4cba34a5427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9219dfe0d2e348b8169d7ff90a17f47b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a9219dfe0d2e348b8169d7ff90a17f47b">affichageAccueilImage</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a9219dfe0d2e348b8169d7ff90a17f47b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'image du menu.  <br /></td></tr>
+<tr class="separator:a9219dfe0d2e348b8169d7ff90a17f47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9becdc08427bc30ccfd24d03c1818f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a9becdc08427bc30ccfd24d03c1818f6a">affichageGameOverImage</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a9becdc08427bc30ccfd24d03c1818f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'image du menu.  <br /></td></tr>
+<tr class="separator:a9becdc08427bc30ccfd24d03c1818f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e15309811616656782bf5292bcf12e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a6e15309811616656782bf5292bcf12e5">affichagePauseImage</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a6e15309811616656782bf5292bcf12e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'image du menu.  <br /></td></tr>
+<tr class="separator:a6e15309811616656782bf5292bcf12e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c92c2263578fa8a5e009e5b0e0511f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a3c92c2263578fa8a5e009e5b0e0511f1">affichageDifficulteImage</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a3c92c2263578fa8a5e009e5b0e0511f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'image du menu.  <br /></td></tr>
+<tr class="separator:a3c92c2263578fa8a5e009e5b0e0511f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef32bb80779174ed7195cf6bc4d274a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#abef32bb80779174ed7195cf6bc4d274a">afficherAim</a> (SDL_Renderer *rendu, int mx, int my)</td></tr>
+<tr class="memdesc:abef32bb80779174ed7195cf6bc4d274a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un viseur à la place du curseur de la souris.  <br /></td></tr>
+<tr class="separator:abef32bb80779174ed7195cf6bc4d274a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259c8e55522662473d3f5f38fc9110e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a259c8e55522662473d3f5f38fc9110e0">initFonctions</a> (int tilemap[2][NB_TILE_WIDTH][NB_TILE_WIDTH], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], SDL_Window **fenetre, SDL_Renderer **rendu, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> **cameraRect, <a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> *position, <a class="el" href="structcolision__t.html">colision_t</a> **colision, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *pers_destination, Uint32 *temps_ancien, SDL_Texture **barTextureVieMax, SDL_Texture **barTextureVie, <a class="el" href="structbar__t.html">bar_t</a> *healthBar, SDL_Texture **barTextureManaMax, SDL_Texture **barTextureMana, <a class="el" href="structbar__t.html">bar_t</a> *manaBar)</td></tr>
+<tr class="memdesc:a259c8e55522662473d3f5f38fc9110e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes various game functions.  <br /></td></tr>
+<tr class="separator:a259c8e55522662473d3f5f38fc9110e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54fd8d09863d0099063a0e21a984b772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a54fd8d09863d0099063a0e21a984b772">destructionTextureBarres</a> (SDL_Texture *texture,...)</td></tr>
+<tr class="memdesc:a54fd8d09863d0099063a0e21a984b772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit une texture.  <br /></td></tr>
+<tr class="separator:a54fd8d09863d0099063a0e21a984b772"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a71fd0e72d82e10964747a3285353cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonctions_8h.html#a9a71fd0e72d82e10964747a3285353cc">destructionPolice</a> (TTF_Font *police,...)</td></tr>
+<tr class="memdesc:a9a71fd0e72d82e10964747a3285353cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détruit une police.  <br /></td></tr>
+<tr class="separator:a9a71fd0e72d82e10964747a3285353cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce fichier contient les définitions des variables nécéssaires pour le jeu. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ac61f52c77eacfbd0260a72ebed2900f2" name="ac61f52c77eacfbd0260a72ebed2900f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac61f52c77eacfbd0260a72ebed2900f2">&#9670;&#160;</a></span>action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void action </td>
+          <td>(</td>
+          <td class="paramtype">const Uint8 *&#160;</td>
+          <td class="paramname"><em>clavier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>pers_destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcolision__t.html">colision_t</a> *&#160;</td>
+          <td class="paramname"><em>colision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>direction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère les actions du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clavier</td><td>Les touches du clavier. </td></tr>
+    <tr><td class="paramname">pers_destination</td><td>Le rectangle définissant la position du personnage. </td></tr>
+    <tr><td class="paramname">colision</td><td>Les collisions du personnage. </td></tr>
+    <tr><td class="paramname">direction</td><td>La direction du personnage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3ca63716af3b8a54610d5bd7a72d9b04" name="a3ca63716af3b8a54610d5bd7a72d9b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca63716af3b8a54610d5bd7a72d9b04">&#9670;&#160;</a></span>actualisationSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actualisationSprite </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise le sprite du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nb_sprite</td><td>Le nombre de sprites. </td></tr>
+    <tr><td class="paramname">frame</td><td>Le numéro du sprite. </td></tr>
+    <tr><td class="paramname">direction</td><td>La direction du personnage. </td></tr>
+    <tr><td class="paramname">src</td><td>Le rectangle source du sprite. </td></tr>
+    <tr><td class="paramname">dst</td><td>Le rectangle de destination du sprite. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le rendu utilisé pour afficher le sprite. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9219dfe0d2e348b8169d7ff90a17f47b" name="a9219dfe0d2e348b8169d7ff90a17f47b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9219dfe0d2e348b8169d7ff90a17f47b">&#9670;&#160;</a></span>affichageAccueilImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichageAccueilImage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'image du menu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour afficher l'image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c92c2263578fa8a5e009e5b0e0511f1" name="a3c92c2263578fa8a5e009e5b0e0511f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c92c2263578fa8a5e009e5b0e0511f1">&#9670;&#160;</a></span>affichageDifficulteImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichageDifficulteImage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'image du menu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour afficher l'image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9becdc08427bc30ccfd24d03c1818f6a" name="a9becdc08427bc30ccfd24d03c1818f6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9becdc08427bc30ccfd24d03c1818f6a">&#9670;&#160;</a></span>affichageGameOverImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichageGameOverImage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'image du menu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour afficher l'image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6e15309811616656782bf5292bcf12e5" name="a6e15309811616656782bf5292bcf12e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e15309811616656782bf5292bcf12e5">&#9670;&#160;</a></span>affichagePauseImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichagePauseImage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'image du menu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour afficher l'image. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abef32bb80779174ed7195cf6bc4d274a" name="abef32bb80779174ed7195cf6bc4d274a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef32bb80779174ed7195cf6bc4d274a">&#9670;&#160;</a></span>afficherAim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherAim </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>my</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche un viseur à la place du curseur de la souris. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour créer les textures. </td></tr>
+    <tr><td class="paramname">mx</td><td>Coordonnée x de la souris. </td></tr>
+    <tr><td class="paramname">my</td><td>Coordonnée y de la souris. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae624aa0dc8f8ac669ee18d90c0bee2e8" name="ae624aa0dc8f8ac669ee18d90c0bee2e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae624aa0dc8f8ac669ee18d90c0bee2e8">&#9670;&#160;</a></span>chargerTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargerTextures </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les textures nécessaires pour le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu utilisé pour créer les textures. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a71fd0e72d82e10964747a3285353cc" name="a9a71fd0e72d82e10964747a3285353cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a71fd0e72d82e10964747a3285353cc">&#9670;&#160;</a></span>destructionPolice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void destructionPolice </td>
+          <td>(</td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit une police. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">police</td><td>Pointeur vers la police à détruire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a54fd8d09863d0099063a0e21a984b772" name="a54fd8d09863d0099063a0e21a984b772"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54fd8d09863d0099063a0e21a984b772">&#9670;&#160;</a></span>destructionTextureBarres()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void destructionTextureBarres </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détruit une texture. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture</td><td>Pointeur vers la texture à détruire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abac10a603815def79c4f1a4eb193095b" name="abac10a603815def79c4f1a4eb193095b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac10a603815def79c4f1a4eb193095b">&#9670;&#160;</a></span>fin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fin </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>fenetre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>arial</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libère les ressources de la SDL et ferme la fenêtre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fenetre</td><td>Pointeur vers la fenêtre à détruire. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu à détruire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 </dd></dl>
+
+</div>
+</div>
+<a id="a9d687ac613c37f883043a4cba34a5427" name="a9d687ac613c37f883043a4cba34a5427"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d687ac613c37f883043a4cba34a5427">&#9670;&#160;</a></span>getMousePositionDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getMousePositionDirection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>pers_destination</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtient la direction de la position de la souris par rapport à la position du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pers_destination</td><td>Pointeur vers le rectangle définissant la position du personnage. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>GAUCHE si la souris est à gauche du personnage, DROITE sinon. </dd></dl>
+
+</div>
+</div>
+<a id="a3243cbf17a24df002d54a92e9c6a2e2d" name="a3243cbf17a24df002d54a92e9c6a2e2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3243cbf17a24df002d54a92e9c6a2e2d">&#9670;&#160;</a></span>initCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> * initCamera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the camera. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>A pointer to the initialized <a class="el" href="structSDL__Rect.html">SDL_Rect</a> representing the camera. </dd></dl>
+
+</div>
+</div>
+<a id="a259c8e55522662473d3f5f38fc9110e0" name="a259c8e55522662473d3f5f38fc9110e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a259c8e55522662473d3f5f38fc9110e0">&#9670;&#160;</a></span>initFonctions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initFonctions </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tilemap</em>[2][NB_TILE_WIDTH][NB_TILE_WIDTH], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabColision</em>[NB_TILE_WIDTH][NB_TILE_HEIGHT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window **&#160;</td>
+          <td class="paramname"><em>fenetre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer **&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> **&#160;</td>
+          <td class="paramname"><em>cameraRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcolision__t.html">colision_t</a> **&#160;</td>
+          <td class="paramname"><em>colision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>pers_destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>temps_ancien</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture **&#160;</td>
+          <td class="paramname"><em>barTextureVieMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture **&#160;</td>
+          <td class="paramname"><em>barTextureVie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbar__t.html">bar_t</a> *&#160;</td>
+          <td class="paramname"><em>healthBar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture **&#160;</td>
+          <td class="paramname"><em>barTextureManaMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture **&#160;</td>
+          <td class="paramname"><em>barTextureMana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structbar__t.html">bar_t</a> *&#160;</td>
+          <td class="paramname"><em>manaBar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes various game functions. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tilemap</td><td>The tilemap of the game. </td></tr>
+    <tr><td class="paramname">tabColision</td><td>The collision table. </td></tr>
+    <tr><td class="paramname">fenetre</td><td>The game window. </td></tr>
+    <tr><td class="paramname">rendu</td><td>The game renderer. </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>The camera rectangle. </td></tr>
+    <tr><td class="paramname">position</td><td>The position of the player. </td></tr>
+    <tr><td class="paramname">colision</td><td>The collision object. </td></tr>
+    <tr><td class="paramname">pers_destination</td><td>The destination of the player. </td></tr>
+    <tr><td class="paramname">temps_ancien</td><td>The old time. </td></tr>
+    <tr><td class="paramname">barTextureVieMax</td><td>The texture for the maximum life bar. </td></tr>
+    <tr><td class="paramname">barTextureVie</td><td>The texture for the life bar. </td></tr>
+    <tr><td class="paramname">healthBar</td><td>The health bar. </td></tr>
+    <tr><td class="paramname">barTextureManaMax</td><td>The texture for the maximum mana bar. </td></tr>
+    <tr><td class="paramname">barTextureMana</td><td>The texture for the mana bar. </td></tr>
+    <tr><td class="paramname">manaBar</td><td>The mana bar. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a023375a71579eecbb69f87eac081d638" name="a023375a71579eecbb69f87eac081d638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023375a71579eecbb69f87eac081d638">&#9670;&#160;</a></span>initialisation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int initialisation </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Window **&#160;</td>
+          <td class="paramname"><em>fenetre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer **&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la SDL, la SDL_ttf, la fenêtre et le rendu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fenetre</td><td>Pointeur vers la fenêtre à initialiser. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Pointeur vers le rendu à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si l'initialisation de la SDL ou la création de la fenêtre échoue, 1 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="a28a36bc3b279d4a4a4091fe150003803" name="a28a36bc3b279d4a4a4091fe150003803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28a36bc3b279d4a4a4091fe150003803">&#9670;&#160;</a></span>initialiser_position_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialiser_position_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> *&#160;</td>
+          <td class="paramname"><em>positionJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>cameraRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>pers_destination</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la position du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">positionJoueur</td><td>Pointeur vers la structure représentant la position du joueur. </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>Pointeur vers le rectangle définissant la position de la caméra. </td></tr>
+    <tr><td class="paramname">pers_destination</td><td>Pointeur vers le rectangle définissant la position du personnage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a552dfde78010181ce3461638dd6ad4f3" name="a552dfde78010181ce3461638dd6ad4f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a552dfde78010181ce3461638dd6ad4f3">&#9670;&#160;</a></span>initJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> * initJoueur </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the player. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The x-coordinate of the player. </td></tr>
+    <tr><td class="paramname">y</td><td>The y-coordinate of the player. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>A pointer to the initialized <a class="el" href="structSDL__Rect.html">SDL_Rect</a> representing the player. </dd></dl>
+
+</div>
+</div>
+<a id="abb4cb2e7eff3e12a89bfa22d93c19da7" name="abb4cb2e7eff3e12a89bfa22d93c19da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb4cb2e7eff3e12a89bfa22d93c19da7">&#9670;&#160;</a></span>updateCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateCamera </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>pers_destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>cameraRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tab</em>[2][NB_TILE_HEIGHT][NB_TILE_WIDTH], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcolision__t.html">colision_t</a> *&#160;</td>
+          <td class="paramname"><em>colision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabColisions</em>[NB_TILE_HEIGHT][NB_TILE_WIDTH], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a>&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rendu du fond. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le rendu utilisé pour afficher le fond. </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>Le rectangle définissant la position de la caméra. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

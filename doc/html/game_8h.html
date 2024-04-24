@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier game.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier game.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fichier contenant les variables qui vont être utilisées dans le <a class="el" href="main_8c.html" title="Fichier principal du jeu contenant la boucle principale.">main.c</a>.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="projectile_8h_source.html">src/projectile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="entite_8h_source.html">src/entite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fonctions_8h_source.html">src/fonctions.h</a>&quot;</code><br />
+<code>#include &quot;src/carte.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="menu_8h_source.html">src/menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="barre_8h_source.html">src/barre.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vague_8h_source.html">src/vague.h</a>&quot;</code><br />
+</div>
+<p><a href="game_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5b163fafde24bef5e6b019af29b92072"><td class="memItemLeft" align="right" valign="top"><a id="a5b163fafde24bef5e6b019af29b92072" name="a5b163fafde24bef5e6b019af29b92072"></a>
+SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><b>rendu</b></td></tr>
+<tr class="separator:a5b163fafde24bef5e6b019af29b92072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83273a719e3c35f920b32f1e64e2e22a"><td class="memItemLeft" align="right" valign="top"><a id="a83273a719e3c35f920b32f1e64e2e22a" name="a83273a719e3c35f920b32f1e64e2e22a"></a>
+SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>fenetre</b></td></tr>
+<tr class="separator:a83273a719e3c35f920b32f1e64e2e22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e9733e9492ec1ffa59bd654b3efa54"><td class="memItemLeft" align="right" valign="top"><a id="ad0e9733e9492ec1ffa59bd654b3efa54" name="ad0e9733e9492ec1ffa59bd654b3efa54"></a>
+<a class="el" href="structSDL__Rect.html">SDL_Rect</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pers_source</b></td></tr>
+<tr class="separator:ad0e9733e9492ec1ffa59bd654b3efa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fffa438d8134c6f0251143d55017c2f"><td class="memItemLeft" align="right" valign="top"><a id="a6fffa438d8134c6f0251143d55017c2f" name="a6fffa438d8134c6f0251143d55017c2f"></a>
+<a class="el" href="structSDL__Rect.html">SDL_Rect</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pers_destination</b></td></tr>
+<tr class="separator:a6fffa438d8134c6f0251143d55017c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286f5b4a4a3a7cdbb853441a8cd9e1bc"><td class="memItemLeft" align="right" valign="top"><a id="a286f5b4a4a3a7cdbb853441a8cd9e1bc" name="a286f5b4a4a3a7cdbb853441a8cd9e1bc"></a>
+<a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>cameraRect</b></td></tr>
+<tr class="separator:a286f5b4a4a3a7cdbb853441a8cd9e1bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fdf1f7944ea405700678608c49bf571"><td class="memItemLeft" align="right" valign="top"><a id="a9fdf1f7944ea405700678608c49bf571" name="a9fdf1f7944ea405700678608c49bf571"></a>
+<a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
+<tr class="separator:a9fdf1f7944ea405700678608c49bf571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5516f4437fa9bffc0c3ed78018d60abe"><td class="memItemLeft" align="right" valign="top"><a id="a5516f4437fa9bffc0c3ed78018d60abe" name="a5516f4437fa9bffc0c3ed78018d60abe"></a>
+<a class="el" href="structcolision__t.html">colision_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>colision</b></td></tr>
+<tr class="separator:a5516f4437fa9bffc0c3ed78018d60abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ffde23209d41bbc397ce8c91d8df25"><td class="memItemLeft" align="right" valign="top"><a id="a64ffde23209d41bbc397ce8c91d8df25" name="a64ffde23209d41bbc397ce8c91d8df25"></a>
+<a class="el" href="structjoueur__s.html">joueur_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joueur</b></td></tr>
+<tr class="separator:a64ffde23209d41bbc397ce8c91d8df25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3bfcfd149b296b8a56981e43de22190"><td class="memItemLeft" align="right" valign="top"><a id="ae3bfcfd149b296b8a56981e43de22190" name="ae3bfcfd149b296b8a56981e43de22190"></a>
+<a class="el" href="structennemi__s.html">ennemi_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ennemi</b> [NB_ENNEMI]</td></tr>
+<tr class="separator:ae3bfcfd149b296b8a56981e43de22190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7adbebc7c11ea48f073b88fba641c87f"><td class="memItemLeft" align="right" valign="top"><a id="a7adbebc7c11ea48f073b88fba641c87f" name="a7adbebc7c11ea48f073b88fba641c87f"></a>
+<a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>projJoueur</b> [MAX_PROJ]</td></tr>
+<tr class="separator:a7adbebc7c11ea48f073b88fba641c87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c60616acc2a7eefb50fb6232b24001"><td class="memItemLeft" align="right" valign="top"><a id="a15c60616acc2a7eefb50fb6232b24001" name="a15c60616acc2a7eefb50fb6232b24001"></a>
+<a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>projEnnemi</b> [MAX_PROJ]</td></tr>
+<tr class="separator:a15c60616acc2a7eefb50fb6232b24001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b57f01d3c576db5368dd0efc2f435a4"><td class="memItemLeft" align="right" valign="top"><a id="a6b57f01d3c576db5368dd0efc2f435a4" name="a6b57f01d3c576db5368dd0efc2f435a4"></a>
+SDL_Event&#160;</td><td class="memItemRight" valign="bottom"><b>event</b></td></tr>
+<tr class="separator:a6b57f01d3c576db5368dd0efc2f435a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d422b9b4a7e64d189a3d800fa892634"><td class="memItemLeft" align="right" valign="top"><a id="a2d422b9b4a7e64d189a3d800fa892634" name="a2d422b9b4a7e64d189a3d800fa892634"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>temps_ancien</b></td></tr>
+<tr class="separator:a2d422b9b4a7e64d189a3d800fa892634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4bc5fd2b968d2d39daada4d4cad9d62"><td class="memItemLeft" align="right" valign="top"><a id="ab4bc5fd2b968d2d39daada4d4cad9d62" name="ab4bc5fd2b968d2d39daada4d4cad9d62"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>temps_actuel</b></td></tr>
+<tr class="separator:ab4bc5fd2b968d2d39daada4d4cad9d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebc5ebb9226f9fa28652d2b61d6a8259"><td class="memItemLeft" align="right" valign="top"><a id="aebc5ebb9226f9fa28652d2b61d6a8259" name="aebc5ebb9226f9fa28652d2b61d6a8259"></a>
+Uint32&#160;</td><td class="memItemRight" valign="bottom"><b>gain_mana</b></td></tr>
+<tr class="separator:aebc5ebb9226f9fa28652d2b61d6a8259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abce9102bf26100118bf60952741b39f2"><td class="memItemLeft" align="right" valign="top"><a id="abce9102bf26100118bf60952741b39f2" name="abce9102bf26100118bf60952741b39f2"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>barTextureVie</b></td></tr>
+<tr class="separator:abce9102bf26100118bf60952741b39f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e8b5d1ddafd116cd421fb96f8bc81c"><td class="memItemLeft" align="right" valign="top"><a id="a32e8b5d1ddafd116cd421fb96f8bc81c" name="a32e8b5d1ddafd116cd421fb96f8bc81c"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>barTextureVieMax</b></td></tr>
+<tr class="separator:a32e8b5d1ddafd116cd421fb96f8bc81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b099d8e2f3d28905cfe8725cb8c60cb"><td class="memItemLeft" align="right" valign="top"><a id="a1b099d8e2f3d28905cfe8725cb8c60cb" name="a1b099d8e2f3d28905cfe8725cb8c60cb"></a>
+<a class="el" href="structbar__t.html">bar_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>healthBar</b></td></tr>
+<tr class="separator:a1b099d8e2f3d28905cfe8725cb8c60cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a147fae4048fc02d1b448257a0a6c2412"><td class="memItemLeft" align="right" valign="top"><a id="a147fae4048fc02d1b448257a0a6c2412" name="a147fae4048fc02d1b448257a0a6c2412"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>barTextureMana</b></td></tr>
+<tr class="separator:a147fae4048fc02d1b448257a0a6c2412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5363b35d155ae4f9a261a3b7dfb27129"><td class="memItemLeft" align="right" valign="top"><a id="a5363b35d155ae4f9a261a3b7dfb27129" name="a5363b35d155ae4f9a261a3b7dfb27129"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>barTextureManaMax</b></td></tr>
+<tr class="separator:a5363b35d155ae4f9a261a3b7dfb27129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e33661424887958b753531a7f65518c"><td class="memItemLeft" align="right" valign="top"><a id="a1e33661424887958b753531a7f65518c" name="a1e33661424887958b753531a7f65518c"></a>
+<a class="el" href="structbar__t.html">bar_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>manaBar</b></td></tr>
+<tr class="separator:a1e33661424887958b753531a7f65518c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5840b96d1ab63378600fd4b7579ed6c7"><td class="memItemLeft" align="right" valign="top"><a id="a5840b96d1ab63378600fd4b7579ed6c7" name="a5840b96d1ab63378600fd4b7579ed6c7"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>jouerButton</b></td></tr>
+<tr class="separator:a5840b96d1ab63378600fd4b7579ed6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad428407e6dfefb0d491ebce5f1b86985"><td class="memItemLeft" align="right" valign="top"><a id="ad428407e6dfefb0d491ebce5f1b86985" name="ad428407e6dfefb0d491ebce5f1b86985"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>difficulteButton</b></td></tr>
+<tr class="separator:ad428407e6dfefb0d491ebce5f1b86985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9018389e935320c3172d036c21011a65"><td class="memItemLeft" align="right" valign="top"><a id="a9018389e935320c3172d036c21011a65" name="a9018389e935320c3172d036c21011a65"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>facileButton</b></td></tr>
+<tr class="separator:a9018389e935320c3172d036c21011a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ad96b1f8e4283ec8dac66a7c7a558a"><td class="memItemLeft" align="right" valign="top"><a id="ad1ad96b1f8e4283ec8dac66a7c7a558a" name="ad1ad96b1f8e4283ec8dac66a7c7a558a"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>normalButton</b></td></tr>
+<tr class="separator:ad1ad96b1f8e4283ec8dac66a7c7a558a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3155b628aaac3a6598a4662ee78464da"><td class="memItemLeft" align="right" valign="top"><a id="a3155b628aaac3a6598a4662ee78464da" name="a3155b628aaac3a6598a4662ee78464da"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>difficileButton</b></td></tr>
+<tr class="separator:a3155b628aaac3a6598a4662ee78464da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab67ade419ec71f9406cfe90323c68507"><td class="memItemLeft" align="right" valign="top"><a id="ab67ade419ec71f9406cfe90323c68507" name="ab67ade419ec71f9406cfe90323c68507"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>accueilButton</b></td></tr>
+<tr class="separator:ab67ade419ec71f9406cfe90323c68507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccd0532cd23bf0483cbad6552929877"><td class="memItemLeft" align="right" valign="top"><a id="a1ccd0532cd23bf0483cbad6552929877" name="a1ccd0532cd23bf0483cbad6552929877"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>retryButton</b></td></tr>
+<tr class="separator:a1ccd0532cd23bf0483cbad6552929877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73476305409350957069f26a599334dc"><td class="memItemLeft" align="right" valign="top"><a id="a73476305409350957069f26a599334dc" name="a73476305409350957069f26a599334dc"></a>
+<a class="el" href="structButton.html">Button</a>&#160;</td><td class="memItemRight" valign="bottom"><b>reprendreButton</b></td></tr>
+<tr class="separator:a73476305409350957069f26a599334dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e797c66d7c7e0c82522b99b60f3a3a7"><td class="memItemLeft" align="right" valign="top"><a id="a3e797c66d7c7e0c82522b99b60f3a3a7" name="a3e797c66d7c7e0c82522b99b60f3a3a7"></a>
+TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><b>arial</b></td></tr>
+<tr class="separator:a3e797c66d7c7e0c82522b99b60f3a3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7fd33af7147156ac0d829857bfe6fd5"><td class="memItemLeft" align="right" valign="top"><a id="af7fd33af7147156ac0d829857bfe6fd5" name="af7fd33af7147156ac0d829857bfe6fd5"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>messageScore</b></td></tr>
+<tr class="separator:af7fd33af7147156ac0d829857bfe6fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8696725a4e790895ed105974be31f158"><td class="memItemLeft" align="right" valign="top"><a id="a8696725a4e790895ed105974be31f158" name="a8696725a4e790895ed105974be31f158"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vague</b></td></tr>
+<tr class="separator:a8696725a4e790895ed105974be31f158"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4edb7557c2b09a11c42c0f46d4a2ca7d"><td class="memItemLeft" align="right" valign="top"><a id="a4edb7557c2b09a11c42c0f46d4a2ca7d" name="a4edb7557c2b09a11c42c0f46d4a2ca7d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_ennemis</b></td></tr>
+<tr class="separator:a4edb7557c2b09a11c42c0f46d4a2ca7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5a1b999c72d8953a1d7f552ac1ff40"><td class="memItemLeft" align="right" valign="top"><a id="afd5a1b999c72d8953a1d7f552ac1ff40" name="afd5a1b999c72d8953a1d7f552ac1ff40"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_kill</b></td></tr>
+<tr class="separator:afd5a1b999c72d8953a1d7f552ac1ff40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a082eada0bfd06b2ec0eb14a62abab388"><td class="memItemLeft" align="right" valign="top"><a id="a082eada0bfd06b2ec0eb14a62abab388" name="a082eada0bfd06b2ec0eb14a62abab388"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ennemis_initialises</b></td></tr>
+<tr class="separator:a082eada0bfd06b2ec0eb14a62abab388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf52ae79935a94d7d84708dec73c0013"><td class="memItemLeft" align="right" valign="top"><a id="abf52ae79935a94d7d84708dec73c0013" name="abf52ae79935a94d7d84708dec73c0013"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>mx</b></td></tr>
+<tr class="separator:abf52ae79935a94d7d84708dec73c0013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f48f9eea25d2d619a31ae255278a2b5"><td class="memItemLeft" align="right" valign="top"><a id="a2f48f9eea25d2d619a31ae255278a2b5" name="a2f48f9eea25d2d619a31ae255278a2b5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>my</b></td></tr>
+<tr class="separator:a2f48f9eea25d2d619a31ae255278a2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea28a734eaa79690aaa5a2b19a3c2f07"><td class="memItemLeft" align="right" valign="top"><a id="aea28a734eaa79690aaa5a2b19a3c2f07" name="aea28a734eaa79690aaa5a2b19a3c2f07"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>texte</b> [52]</td></tr>
+<tr class="separator:aea28a734eaa79690aaa5a2b19a3c2f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac11a5c7193755f3a005977bb9d0e74d1"><td class="memItemLeft" align="right" valign="top"><a id="ac11a5c7193755f3a005977bb9d0e74d1" name="ac11a5c7193755f3a005977bb9d0e74d1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>projNbEnnemi</b></td></tr>
+<tr class="separator:ac11a5c7193755f3a005977bb9d0e74d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e5cdb7f94bf46cc2a2c24b1fc941b8c"><td class="memItemLeft" align="right" valign="top"><a id="a2e5cdb7f94bf46cc2a2c24b1fc941b8c" name="a2e5cdb7f94bf46cc2a2c24b1fc941b8c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>projNbJoueur</b></td></tr>
+<tr class="separator:a2e5cdb7f94bf46cc2a2c24b1fc941b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ba696eaeb5eef403599f4bb8b376e7"><td class="memItemLeft" align="right" valign="top"><a id="a32ba696eaeb5eef403599f4bb8b376e7" name="a32ba696eaeb5eef403599f4bb8b376e7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></tr>
+<tr class="separator:a32ba696eaeb5eef403599f4bb8b376e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad30f972f2e6e3e5ecab0dee38ae6cdb8"><td class="memItemLeft" align="right" valign="top"><a id="ad30f972f2e6e3e5ecab0dee38ae6cdb8" name="ad30f972f2e6e3e5ecab0dee38ae6cdb8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
+<tr class="separator:ad30f972f2e6e3e5ecab0dee38ae6cdb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19742bc79e972584e4cac6b2ae628104"><td class="memItemLeft" align="right" valign="top"><a id="a19742bc79e972584e4cac6b2ae628104" name="a19742bc79e972584e4cac6b2ae628104"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>delta_temps</b></td></tr>
+<tr class="separator:a19742bc79e972584e4cac6b2ae628104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa06b1f288a318e7b4ac28c110662945b"><td class="memItemLeft" align="right" valign="top"><a id="aa06b1f288a318e7b4ac28c110662945b" name="aa06b1f288a318e7b4ac28c110662945b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>duree_vague</b></td></tr>
+<tr class="separator:aa06b1f288a318e7b4ac28c110662945b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b05ddb13e3c0e0e292e3dbb8becf87d"><td class="memItemLeft" align="right" valign="top"><a id="a1b05ddb13e3c0e0e292e3dbb8becf87d" name="a1b05ddb13e3c0e0e292e3dbb8becf87d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>duree_partie</b></td></tr>
+<tr class="separator:a1b05ddb13e3c0e0e292e3dbb8becf87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fichier contenant les variables qui vont être utilisées dans le <a class="el" href="main_8c.html" title="Fichier principal du jeu contenant la boucle principale.">main.c</a>. </p>
+<p>Ce fichier initialise les variables qui vont être utilisées dans le <a class="el" href="main_8c.html" title="Fichier principal du jeu contenant la boucle principale.">main.c</a>. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

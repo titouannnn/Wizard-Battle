@@ -1,0 +1,280 @@
+\doxysection{Référence du fichier src/menu.h}
+\hypertarget{menu_8h}{}\label{menu_8h}\index{src/menu.h@{src/menu.h}}
+
+
+Gestion des menus du jeu au compte de 5.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include \"{}./fonctions.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structButton}{Button}}
+\begin{DoxyCompactList}\small\item\em Structure pour représenter un bouton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{menu_8h_ae98035e5bee7146fab48f941818a2bc7}\label{menu_8h_ae98035e5bee7146fab48f941818a2bc7} 
+\#define {\bfseries BUTTON\+\_\+\+WIDTH}~200
+\item 
+\Hypertarget{menu_8h_a94be6e055d514b19c7cb5f56f492f016}\label{menu_8h_a94be6e055d514b19c7cb5f56f492f016} 
+\#define {\bfseries BUTTON\+\_\+\+HEIGHT}~75
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structButton}{Button}} \mbox{\hyperlink{menu_8h_a12c95db5328bab947a0436fa987d6270}{create\+Button}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}text, int x, int y, int width, int height, \mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}} couleur)
+\begin{DoxyCompactList}\small\item\em Crée un bouton. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_ae75bed1b041c1087e691bf41cbcac9cf}{draw\+Button}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, \mbox{\hyperlink{structButton}{Button}} button)
+\begin{DoxyCompactList}\small\item\em Affiche un bouton. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a1a2c1105431d5f5e38692c09d9efc52d}{click\+Button}} (SDL\+\_\+\+Event event, \mbox{\hyperlink{structButton}{Button}} button)
+\begin{DoxyCompactList}\small\item\em Vérifie si un bouton est cliqué. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_aa73f27f22f6e6c1c006c206c0c87000a}{mouse\+On\+Button}} (\mbox{\hyperlink{structButton}{Button}} button)
+\begin{DoxyCompactList}\small\item\em Vérifie si la souris est sur un bouton. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_abaa039e41762a515a0fb51623f740d43}{init\+Boutons}} (TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}jouer\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}difficulte\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}facile\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}normal\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}difficile\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}accueil\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}retry\+Button, \mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}reprendre\+Button, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Initialise les boutons. \end{DoxyCompactList}\item 
+\Hypertarget{menu_8h_aa37d509797ee498c580f50e512e96e05}\label{menu_8h_aa37d509797ee498c580f50e512e96e05} 
+void {\bfseries menu\+Fonc} (int menu, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structButton}{Button}} jouer\+Button, \mbox{\hyperlink{structButton}{Button}} difficulte\+Button, \mbox{\hyperlink{structButton}{Button}} difficile\+Button, \mbox{\hyperlink{structButton}{Button}} accueil\+Button, \mbox{\hyperlink{structButton}{Button}} gameover\+Button, \mbox{\hyperlink{structButton}{Button}} retry\+Button, \mbox{\hyperlink{structButton}{Button}} facile\+Button, \mbox{\hyperlink{structButton}{Button}} normal\+Button)
+\item 
+void \mbox{\hyperlink{menu_8h_abf35b062b8e15bb9521fd9c4aa79d4ee}{menu\+Principal}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, \mbox{\hyperlink{structButton}{Button}} jouer\+Button, \mbox{\hyperlink{structButton}{Button}} difficulte\+Button)
+\begin{DoxyCompactList}\small\item\em Gère le menu principal. \end{DoxyCompactList}\item 
+\Hypertarget{menu_8h_afb4670526594773b6d6b95a5b9be1069}\label{menu_8h_afb4670526594773b6d6b95a5b9be1069} 
+void {\bfseries Menu\+Pause} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structButton}{Button}} reprendre\+Button, \mbox{\hyperlink{structButton}{Button}} retry\+Button, \mbox{\hyperlink{structButton}{Button}} accueil\+Button)
+\item 
+void \mbox{\hyperlink{menu_8h_a8784aa2d7dd4ed911a07832d7a5f8a06}{menu\+Difficulte}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structButton}{Button}} facile\+Button, \mbox{\hyperlink{structButton}{Button}} normal\+Button, \mbox{\hyperlink{structButton}{Button}} difficile\+Button, \mbox{\hyperlink{structButton}{Button}} accueil\+Button, char \texorpdfstring{$\ast$}{*}difficulte, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font)
+\begin{DoxyCompactList}\small\item\em Gère le menu difficulte. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a9aafd62aeafd9508838087910838c0f6}{menu\+Game\+Over}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, \mbox{\hyperlink{structButton}{Button}} retry\+Button, \mbox{\hyperlink{structButton}{Button}} accueil\+Button, int vague, int duree\+\_\+partie, int nb\+\_\+kill)
+\begin{DoxyCompactList}\small\item\em Gère le menu game over. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a1454b27beb7a290c8e6586c8e048fc70}{afficher\+Message}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, char \texorpdfstring{$\ast$}{*}texte, int x, int y, int taille)
+\begin{DoxyCompactList}\small\item\em Crée un bouton avec du texte. \end{DoxyCompactList}\item 
+\Hypertarget{menu_8h_ab0143e59a6acb2be37a3f7c1b7264eed}\label{menu_8h_ab0143e59a6acb2be37a3f7c1b7264eed} 
+void {\bfseries destruction\+Boutons} (\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}bouton,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des menus du jeu au compte de 5. 
+
+Gestion des prototypes des fonctions pour le menu.
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{menu_8h_a1454b27beb7a290c8e6586c8e048fc70}\label{menu_8h_a1454b27beb7a290c8e6586c8e048fc70} 
+\index{menu.h@{menu.h}!afficherMessage@{afficherMessage}}
+\index{afficherMessage@{afficherMessage}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{afficherMessage()}{afficherMessage()}}
+{\footnotesize\ttfamily void afficher\+Message (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{char \texorpdfstring{$\ast$}{*}}]{texte,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{taille }\end{DoxyParamCaption})}
+
+
+
+Crée un bouton avec du texte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Rendu SDL. \\
+\hline
+{\em text} & Texte à afficher sur le bouton. \\
+\hline
+{\em x} & Position horizontale du bouton. \\
+\hline
+{\em y} & Position verticale du bouton. \\
+\hline
+{\em width} & Largeur du bouton. \\
+\hline
+{\em height} & Hauteur du bouton. \\
+\hline
+{\em couleur} & Couleur du texte du bouton. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\doxylink{structButton}{Button} Structure représentant le bouton créé. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a1a2c1105431d5f5e38692c09d9efc52d}\label{menu_8h_a1a2c1105431d5f5e38692c09d9efc52d} 
+\index{menu.h@{menu.h}!clickButton@{clickButton}}
+\index{clickButton@{clickButton}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{clickButton()}{clickButton()}}
+{\footnotesize\ttfamily int click\+Button (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Event}]{event,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un bouton est cliqué. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement SDL. \\
+\hline
+{\em button} & Bouton à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si le bouton est cliqué, 0 sinon. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a12c95db5328bab947a0436fa987d6270}\label{menu_8h_a12c95db5328bab947a0436fa987d6270} 
+\index{menu.h@{menu.h}!createButton@{createButton}}
+\index{createButton@{createButton}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{createButton()}{createButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structButton}{Button}} create\+Button (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{text,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}}}]{couleur }\end{DoxyParamCaption})}
+
+
+
+Crée un bouton. 
+
+Cette fonction crée un bouton.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em text} & Texte du bouton. \\
+\hline
+{\em x} & Position horizontale du bouton. \\
+\hline
+{\em y} & Position verticale du bouton. \\
+\hline
+{\em width} & Largeur du bouton. \\
+\hline
+{\em height} & Hauteur du bouton. \\
+\hline
+{\em couleur} & Couleur du bouton. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le bouton créé. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_ae75bed1b041c1087e691bf41cbcac9cf}\label{menu_8h_ae75bed1b041c1087e691bf41cbcac9cf} 
+\index{menu.h@{menu.h}!drawButton@{drawButton}}
+\index{drawButton@{drawButton}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{drawButton()}{drawButton()}}
+{\footnotesize\ttfamily void draw\+Button (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Affiche un bouton. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Rendu SDL. \\
+\hline
+{\em button} & Bouton à afficher. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_abaa039e41762a515a0fb51623f740d43}\label{menu_8h_abaa039e41762a515a0fb51623f740d43} 
+\index{menu.h@{menu.h}!initBoutons@{initBoutons}}
+\index{initBoutons@{initBoutons}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{initBoutons()}{initBoutons()}}
+{\footnotesize\ttfamily void init\+Boutons (\begin{DoxyParamCaption}\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{jouer\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{difficulte\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{facile\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{normal\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{difficile\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{accueil\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{retry\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}} \texorpdfstring{$\ast$}{*}}]{reprendre\+Button,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Initialise les boutons. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jouer\+Button} & Bouton pour jouer. \\
+\hline
+{\em difficulte\+Button} & Bouton pour choisir la difficulté. \\
+\hline
+{\em facile\+Button} & Bouton pour choisir la difficulté facile. \\
+\hline
+{\em normal\+Button} & Bouton pour choisir la difficulté normale. \\
+\hline
+{\em difficile\+Button} & Bouton pour choisir la difficulté difficile. \\
+\hline
+{\em accueil\+Button} & Bouton pour revenir à l\textquotesingle{}accueil. \\
+\hline
+{\em gameover\+Button} & Bouton pour afficher le game over. \\
+\hline
+{\em retry\+Button} & Bouton pour recommencer. \\
+\hline
+{\em rendu} & Rendu SDL. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a8784aa2d7dd4ed911a07832d7a5f8a06}\label{menu_8h_a8784aa2d7dd4ed911a07832d7a5f8a06} 
+\index{menu.h@{menu.h}!menuDifficulte@{menuDifficulte}}
+\index{menuDifficulte@{menuDifficulte}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menuDifficulte()}{menuDifficulte()}}
+{\footnotesize\ttfamily void menu\+Difficulte (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{facile\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{normal\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{difficile\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{accueil\+Button,  }\item[{char \texorpdfstring{$\ast$}{*}}]{difficulte,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font }\end{DoxyParamCaption})}
+
+
+
+Gère le menu difficulte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Renderer. \\
+\hline
+{\em facile\+Button} & Bouton facile. \\
+\hline
+{\em normal\+Button} & Bouton normal. \\
+\hline
+{\em difficile\+Button} & Bouton difficile. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a9aafd62aeafd9508838087910838c0f6}\label{menu_8h_a9aafd62aeafd9508838087910838c0f6} 
+\index{menu.h@{menu.h}!menuGameOver@{menuGameOver}}
+\index{menuGameOver@{menuGameOver}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menuGameOver()}{menuGameOver()}}
+{\footnotesize\ttfamily int menu\+Game\+Over (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{retry\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{accueil\+Button,  }\item[{int}]{vague,  }\item[{int}]{duree\+\_\+partie,  }\item[{int}]{nb\+\_\+kill }\end{DoxyParamCaption})}
+
+
+
+Gère le menu game over. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Renderer. \\
+\hline
+{\em gameover\+Button} & Bouton game over. \\
+\hline
+{\em retry\+Button} & Bouton retry. \\
+\hline
+{\em vague} & Vague actuelle. \\
+\hline
+{\em duree\+\_\+partie} & Durée de la partie. \\
+\hline
+{\em nb\+\_\+kill} & Nombre de kills. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_abf35b062b8e15bb9521fd9c4aa79d4ee}\label{menu_8h_abf35b062b8e15bb9521fd9c4aa79d4ee} 
+\index{menu.h@{menu.h}!menuPrincipal@{menuPrincipal}}
+\index{menuPrincipal@{menuPrincipal}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menuPrincipal()}{menuPrincipal()}}
+{\footnotesize\ttfamily void menu\+Principal (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{jouer\+Button,  }\item[{\mbox{\hyperlink{structButton}{Button}}}]{difficulte\+Button }\end{DoxyParamCaption})}
+
+
+
+Gère le menu principal. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Rendu SDL. \\
+\hline
+{\em jouer\+Button} & Bouton pour jouer. \\
+\hline
+{\em difficulte\+Button} & Bouton pour choisir la difficulté. \\
+\hline
+{\em difficile\+Button} & Bouton pour choisir la difficulté difficile. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_aa73f27f22f6e6c1c006c206c0c87000a}\label{menu_8h_aa73f27f22f6e6c1c006c206c0c87000a} 
+\index{menu.h@{menu.h}!mouseOnButton@{mouseOnButton}}
+\index{mouseOnButton@{mouseOnButton}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{mouseOnButton()}{mouseOnButton()}}
+{\footnotesize\ttfamily int mouse\+On\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structButton}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la souris est sur un bouton. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em button} & Bouton à vérifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si la souris est sur le bouton, 0 sinon. 
+\end{DoxyReturn}

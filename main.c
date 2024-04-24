@@ -148,7 +148,7 @@ int main() {
         else if (menu == 0)
         /* On entre dans le jeu */
         {   
-            SDL_SetRelativeMouseMode(SDL_FALSE);
+            SDL_SetRelativeMouseMode(SDL_TRUE);
             /* Recalcule le temps et effectue la regeneration du mana */
             calculTemps(&temps_actuel, &delta_temps, &temps_ancien, &gain_mana, &joueur.mana, &joueur.manaMax, &frame);
             /* On efface le rendu précédent*/
@@ -235,6 +235,12 @@ int main() {
         }
     }
     /* Libération de la mémoire */
+    
+    /* Libération de la mémoire */
+    free(cameraRect);
+    free(healthBarRect);
+    free(manaBarRect);
+
     return fin(fenetre, rendu, arial);
 }
 

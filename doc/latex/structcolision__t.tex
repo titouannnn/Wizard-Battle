@@ -1,24 +1,66 @@
 \doxysection{Référence de la structure colision\+\_\+t}
 \hypertarget{structcolision__t}{}\label{structcolision__t}\index{colision\_t@{colision\_t}}
+
+
+Structure représentant les collisions du joueur.  
+
+
+
+
+{\ttfamily \#include $<$carte.\+h$>$}
+
 \doxysubsubsection*{Attributs publics}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{structcolision__t_a41b827de6420fe208fe17bf4856748fd}\label{structcolision__t_a41b827de6420fe208fe17bf4856748fd} 
-int {\bfseries haut}
+int \mbox{\hyperlink{structcolision__t_a41b827de6420fe208fe17bf4856748fd}{haut}}
 \item 
-\Hypertarget{structcolision__t_a1a43317ace9423214879d6936ff81b26}\label{structcolision__t_a1a43317ace9423214879d6936ff81b26} 
-int {\bfseries bas}
+int \mbox{\hyperlink{structcolision__t_a1a43317ace9423214879d6936ff81b26}{bas}}
 \item 
-\Hypertarget{structcolision__t_a549af1c9022d165e4bb570f78c4eacad}\label{structcolision__t_a549af1c9022d165e4bb570f78c4eacad} 
-int {\bfseries gauche}
+int \mbox{\hyperlink{structcolision__t_a549af1c9022d165e4bb570f78c4eacad}{gauche}}
 \item 
-\Hypertarget{structcolision__t_a1689a0445147c0505751d700e57cb69c}\label{structcolision__t_a1689a0445147c0505751d700e57cb69c} 
-int {\bfseries droite}
+int \mbox{\hyperlink{structcolision__t_a1689a0445147c0505751d700e57cb69c}{droite}}
 \item 
-\Hypertarget{structcolision__t_a7cf4788fcf9793e6aa4d4c75846526d6}\label{structcolision__t_a7cf4788fcf9793e6aa4d4c75846526d6} 
-\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries position}
+\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcolision__t_a7cf4788fcf9793e6aa4d4c75846526d6}{position}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Description détaillée}
+Structure représentant les collisions du joueur. 
+
+Cette structure contient les informations de collision pour chaque direction (haut, bas, gauche, droite) et un pointeur vers la position du joueur. 
+
+\doxysubsection{Documentation des données membres}
+\Hypertarget{structcolision__t_a1a43317ace9423214879d6936ff81b26}\label{structcolision__t_a1a43317ace9423214879d6936ff81b26} 
+\index{colision\_t@{colision\_t}!bas@{bas}}
+\index{bas@{bas}!colision\_t@{colision\_t}}
+\doxysubsubsection{\texorpdfstring{bas}{bas}}
+{\footnotesize\ttfamily int colision\+\_\+t\+::bas}
+
+Collision en bas. \Hypertarget{structcolision__t_a1689a0445147c0505751d700e57cb69c}\label{structcolision__t_a1689a0445147c0505751d700e57cb69c} 
+\index{colision\_t@{colision\_t}!droite@{droite}}
+\index{droite@{droite}!colision\_t@{colision\_t}}
+\doxysubsubsection{\texorpdfstring{droite}{droite}}
+{\footnotesize\ttfamily int colision\+\_\+t\+::droite}
+
+Collision à droite. \Hypertarget{structcolision__t_a549af1c9022d165e4bb570f78c4eacad}\label{structcolision__t_a549af1c9022d165e4bb570f78c4eacad} 
+\index{colision\_t@{colision\_t}!gauche@{gauche}}
+\index{gauche@{gauche}!colision\_t@{colision\_t}}
+\doxysubsubsection{\texorpdfstring{gauche}{gauche}}
+{\footnotesize\ttfamily int colision\+\_\+t\+::gauche}
+
+Collision à gauche. \Hypertarget{structcolision__t_a41b827de6420fe208fe17bf4856748fd}\label{structcolision__t_a41b827de6420fe208fe17bf4856748fd} 
+\index{colision\_t@{colision\_t}!haut@{haut}}
+\index{haut@{haut}!colision\_t@{colision\_t}}
+\doxysubsubsection{\texorpdfstring{haut}{haut}}
+{\footnotesize\ttfamily int colision\+\_\+t\+::haut}
+
+Collision en haut. \Hypertarget{structcolision__t_a7cf4788fcf9793e6aa4d4c75846526d6}\label{structcolision__t_a7cf4788fcf9793e6aa4d4c75846526d6} 
+\index{colision\_t@{colision\_t}!position@{position}}
+\index{position@{position}!colision\_t@{colision\_t}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}}\texorpdfstring{$\ast$}{*} colision\+\_\+t\+::position}
+
+Pointeur vers la position du joueur. 
 
 La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
 \item 

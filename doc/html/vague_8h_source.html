@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RogueLike:  Fichier source de src/vague.h</title>
+<title>Wizard Battle:  Fichier source de src/vague.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RogueLike
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -76,25 +76,37 @@ $(function() {
   <div class="headertitle"><div class="title">vague.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef VAGUE_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define VAGUE_H</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<a href="vague_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifndef VAGUE_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define VAGUE_H</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;fonctions.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keywordtype">void</span> afficherTemps(SDL_Renderer *rendu, <span class="keywordtype">int</span> temps);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keywordtype">void</span> afficherVague(SDL_Renderer *rendu, <span class="keywordtype">int</span> vague, <span class="keywordtype">int</span> duree_vague);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keywordtype">void</span> afficherNbKill(SDL_Renderer *rendu, <span class="keywordtype">int</span> nbKill, <span class="keywordtype">int</span> nbEnnemis);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> nextVague(<span class="keywordtype">int</span> *vague, <span class="keywordtype">int</span> *nb_ennemis, <span class="keywordtype">int</span> *nb_kill, <span class="keywordtype">int</span> *ennemis_initialises);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">void</span> afficherScore(SDL_Renderer *rendu, <span class="keywordtype">int</span> vague, <span class="keywordtype">int</span> temps, <span class="keywordtype">int</span> nbKills);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="fonctions_8h.html">fonctions.h</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#a0ab7108c45a83cf7ec062016e452abd5">afficherTemps</a>(SDL_Renderer *rendu, TTF_Font *font, <span class="keywordtype">int</span> temps);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#a40195142f7b407d57c810796f74b760e">afficherVague</a>(SDL_Renderer *rendu, TTF_Font *font, <span class="keywordtype">int</span> vague, <span class="keywordtype">int</span> duree_vague);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#a0865b40542e34a04d3ed88dbbe999176">afficherNbKill</a>(SDL_Renderer *rendu, TTF_Font *font, <span class="keywordtype">int</span> nbKill, <span class="keywordtype">int</span> nbEnnemis);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#a8c5062209dba52a17e70906ead951d97">nextVague</a>(<span class="keywordtype">int</span> *vague, <span class="keywordtype">int</span> *nb_ennemis, <span class="keywordtype">int</span> *nb_kill, <span class="keywordtype">int</span> *ennemis_initialises);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keywordtype">void</span> afficherScore(SDL_Renderer *rendu, <span class="keywordtype">int</span> vague, <span class="keywordtype">int</span> temps, <span class="keywordtype">int</span> nbKills);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#a34e16068586f832ae13687440a95ef6f">renitialiserStats</a>(<span class="keywordtype">int</span> *joueurPv, <span class="keywordtype">int</span> *joueurMana, <span class="keywordtype">int</span> *joueurX, <span class="keywordtype">int</span> *joueurY, <span class="keywordtype">int</span> *vague, <span class="keywordtype">int</span> *ennemis_initialises, <span class="keywordtype">int</span> *nb_ennemis, <span class="keywordtype">int</span> *nb_kill, <span class="keywordtype">int</span> *projNbJoueur, <span class="keywordtype">int</span> *projNbEnnemi, <span class="keywordtype">int</span> *frame, <span class="keywordtype">int</span> *delta_temps, <span class="keywordtype">float</span> *coefDifficulte, Uint32 *gain_mana, <span class="keywordtype">int</span> *duree_parti);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#aecff7291e4136388c672c2cb04ad2fe6">gameOver</a>(<span class="keywordtype">int</span> *joueurPv, <span class="keywordtype">int</span> *menu, <span class="keywordtype">int</span> *duree_partie);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> <a class="code hl_function" href="vague_8h.html#aefa2449ed5270a9bc30c8c775db05290">calculTemps</a>(Uint32 *temps_actuel, <span class="keywordtype">int</span> *delta_temps, Uint32 *temps_ancien, Uint32 *gain_mana, <span class="keywordtype">int</span> *joueurMana, <span class="keywordtype">int</span> *joueurManaMax, <span class="keywordtype">int</span> *frame);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="afonctions_8h_html"><div class="ttname"><a href="fonctions_8h.html">fonctions.h</a></div><div class="ttdoc">Ce fichier contient les définitions des variables nécéssaires pour le jeu.</div></div>
+<div class="ttc" id="avague_8h_html_a0865b40542e34a04d3ed88dbbe999176"><div class="ttname"><a href="vague_8h.html#a0865b40542e34a04d3ed88dbbe999176">afficherNbKill</a></div><div class="ttdeci">void afficherNbKill(SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnemis)</div><div class="ttdoc">Fonction pour afficher le nombre d'ennemis tués à l'écran.</div><div class="ttdef"><b>Definition</b> vague.c:79</div></div>
+<div class="ttc" id="avague_8h_html_a0ab7108c45a83cf7ec062016e452abd5"><div class="ttname"><a href="vague_8h.html#a0ab7108c45a83cf7ec062016e452abd5">afficherTemps</a></div><div class="ttdeci">void afficherTemps(SDL_Renderer *rendu, TTF_Font *font, int temps)</div><div class="ttdoc">Fonction pour afficher le temps écoulé à l'écran.</div><div class="ttdef"><b>Definition</b> vague.c:119</div></div>
+<div class="ttc" id="avague_8h_html_a34e16068586f832ae13687440a95ef6f"><div class="ttname"><a href="vague_8h.html#a34e16068586f832ae13687440a95ef6f">renitialiserStats</a></div><div class="ttdeci">void renitialiserStats(int *joueurPv, int *joueurMana, int *joueurX, int *joueurY, int *vague, int *ennemis_initialises, int *nb_ennemis, int *nb_kill, int *projNbJoueur, int *projNbEnnemi, int *frame, int *delta_temps, float *coefDifficulte, Uint32 *gain_mana, int *duree_parti)</div><div class="ttdoc">Fonction pour renitialiser les stats du joueur et de la partie.</div><div class="ttdef"><b>Definition</b> vague.c:174</div></div>
+<div class="ttc" id="avague_8h_html_a40195142f7b407d57c810796f74b760e"><div class="ttname"><a href="vague_8h.html#a40195142f7b407d57c810796f74b760e">afficherVague</a></div><div class="ttdeci">void afficherVague(SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vague)</div><div class="ttdoc">Fonction pour afficher la vague actuelle à l'écran.</div><div class="ttdef"><b>Definition</b> vague.c:36</div></div>
+<div class="ttc" id="avague_8h_html_a8c5062209dba52a17e70906ead951d97"><div class="ttname"><a href="vague_8h.html#a8c5062209dba52a17e70906ead951d97">nextVague</a></div><div class="ttdeci">void nextVague(int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialises)</div><div class="ttdoc">Fonction pour passer à la vague suivante.</div><div class="ttdef"><b>Definition</b> vague.c:18</div></div>
+<div class="ttc" id="avague_8h_html_aecff7291e4136388c672c2cb04ad2fe6"><div class="ttname"><a href="vague_8h.html#aecff7291e4136388c672c2cb04ad2fe6">gameOver</a></div><div class="ttdeci">void gameOver(int *joueurPv, int *menu, int *duree_partie)</div><div class="ttdoc">Fonction pour gérer la fin de la partie.</div><div class="ttdef"><b>Definition</b> vague.c:210</div></div>
+<div class="ttc" id="avague_8h_html_aefa2449ed5270a9bc30c8c775db05290"><div class="ttname"><a href="vague_8h.html#aefa2449ed5270a9bc30c8c775db05290">calculTemps</a></div><div class="ttdeci">void calculTemps(Uint32 *temps_actuel, int *delta_temps, Uint32 *temps_ancien, Uint32 *gain_mana, int *joueurMana, int *joueurManaMax, int *frame)</div><div class="ttdoc">Fonction pour calculer le temps écoulé et le gain de mana.</div><div class="ttdef"><b>Definition</b> vague.c:230</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier src/entite.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier entite.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce fichier contient les fonctions liées à la gestion des entités.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="entite_8h_source.html">entite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="projectile_8h_source.html">projectile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="global_8h_source.html">global.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a38f3c791a3c5413497ad2e0263db43a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a38f3c791a3c5413497ad2e0263db43a3">chargerTexturesEnnemi</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a38f3c791a3c5413497ad2e0263db43a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les textures des ennemis.  <br /></td></tr>
+<tr class="separator:a38f3c791a3c5413497ad2e0263db43a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ed1c046254a38357afcccfbeb54c31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a71ed1c046254a38357afcccfbeb54c31">initTabEnnemi</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> tabEnnemi[NB_ENNEMI])</td></tr>
+<tr class="memdesc:a71ed1c046254a38357afcccfbeb54c31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la structure de l'ennemi.  <br /></td></tr>
+<tr class="separator:a71ed1c046254a38357afcccfbeb54c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38072332663eb3bc58d4fd829a18eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ab38072332663eb3bc58d4fd829a18eee">initEnnemisVague</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> tabEnnemi[NB_ENNEMI], int nb_ennemis, int *ennemi_initialises, int *joueurMana, int *joueurManaMax, int *joueurPv, int *joueurPvMax, int *duree_vague)</td></tr>
+<tr class="memdesc:ab38072332663eb3bc58d4fd829a18eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les données d'une nouvelle vague.  <br /></td></tr>
+<tr class="separator:ab38072332663eb3bc58d4fd829a18eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa0bc936f08f1d55a4be04ec74c28101"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aaa0bc936f08f1d55a4be04ec74c28101">initEnnemis</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> projJoueur[MAX_PROJ], <a class="el" href="structprojectiles__s.html">projectiles_t</a> projEnnemi[MAX_PROJ], <a class="el" href="structjoueur__s.html">joueur_t</a> *joueur, <a class="el" href="structennemi__s.html">ennemi_t</a> ennemi[NB_ENNEMI], SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:aaa0bc936f08f1d55a4be04ec74c28101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les ennemis.  <br /></td></tr>
+<tr class="separator:aaa0bc936f08f1d55a4be04ec74c28101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5038ee890921dc6c45b50a0c7efa76a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5038ee890921dc6c45b50a0c7efa76a0">actualisationSpriteEnnemi</a> (int nb_sprite, int frame, int largeur, int hauteur, int direction, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *src, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *dst, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a5038ee890921dc6c45b50a0c7efa76a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise les ennemis.  <br /></td></tr>
+<tr class="separator:a5038ee890921dc6c45b50a0c7efa76a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580a1fedae6b61a8a9f65fc89c42f60d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a580a1fedae6b61a8a9f65fc89c42f60d">DessinerLigneEnnemiVu</a> (<a class="el" href="structpoint__s.html">point_t</a> A, <a class="el" href="structpoint__s.html">point_t</a> B, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a580a1fedae6b61a8a9f65fc89c42f60d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine une ligne entre deux points.  <br /></td></tr>
+<tr class="separator:a580a1fedae6b61a8a9f65fc89c42f60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae1c739455a978b5888152fc26c57e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5ae1c739455a978b5888152fc26c57e4">dessinerBarreDeVie</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a5ae1c739455a978b5888152fc26c57e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine une barre de vie pour chaque ennemi.  <br /></td></tr>
+<tr class="separator:a5ae1c739455a978b5888152fc26c57e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e4aad1268595c50ab0f91d9588c65cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a2e4aad1268595c50ab0f91d9588c65cc">ennemi_creer</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi)</td></tr>
+<tr class="memdesc:a2e4aad1268595c50ab0f91d9588c65cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un ennemi.  <br /></td></tr>
+<tr class="separator:a2e4aad1268595c50ab0f91d9588c65cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fb690a3d18c35fd47cb4de44c4ed03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ab8fb690a3d18c35fd47cb4de44c4ed03">initialiserJoueur</a> (<a class="el" href="structjoueur__s.html">joueur_t</a> *joueur)</td></tr>
+<tr class="memdesc:ab8fb690a3d18c35fd47cb4de44c4ed03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le joueur.  <br /></td></tr>
+<tr class="separator:ab8fb690a3d18c35fd47cb4de44c4ed03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee26780d50ab83dae0e488ab7fd09dc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aee26780d50ab83dae0e488ab7fd09dc3">initEnnemi</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, float x, float y, int id, int pvMax, int attaque)</td></tr>
+<tr class="memdesc:aee26780d50ab83dae0e488ab7fd09dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un ennemi.  <br /></td></tr>
+<tr class="separator:aee26780d50ab83dae0e488ab7fd09dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7b7dbc08470efca62f81512ab16273"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#afc7b7dbc08470efca62f81512ab16273">updateEnnemi</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *playerRect, int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], <a class="el" href="structprojectiles__s.html">projectiles_t</a> projEnnemi[MAX_PROJ], int *projNbEnnemi, int temp_vivant)</td></tr>
+<tr class="memdesc:afc7b7dbc08470efca62f81512ab16273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise un ennemi.  <br /></td></tr>
+<tr class="separator:afc7b7dbc08470efca62f81512ab16273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf2241a7886ac828a5ca692d985d9f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aaf2241a7886ac828a5ca692d985d9f4a">renderEnnemi</a> (SDL_Renderer *rendu, <a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, int frame)</td></tr>
+<tr class="memdesc:aaf2241a7886ac828a5ca692d985d9f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un ennemi.  <br /></td></tr>
+<tr class="separator:aaf2241a7886ac828a5ca692d985d9f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd83077a45c68c66cd6f2c455d571f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5fd83077a45c68c66cd6f2c455d571f3">renderVecteur</a> (SDL_Renderer *rendu, <a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *playerRect)</td></tr>
+<tr class="memdesc:a5fd83077a45c68c66cd6f2c455d571f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le vecteur de déplacement de l'ennemi.  <br /></td></tr>
+<tr class="separator:a5fd83077a45c68c66cd6f2c455d571f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88ba1102c61253c782a35cfb08c85331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a88ba1102c61253c782a35cfb08c85331">renderEnemies</a> (<a class="el" href="structennemi__s.html">ennemi_t</a> *ennemi, SDL_Renderer *rendu, int frame)</td></tr>
+<tr class="memdesc:a88ba1102c61253c782a35cfb08c85331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les ennemis.  <br /></td></tr>
+<tr class="separator:a88ba1102c61253c782a35cfb08c85331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6a74bd8408667c73febadd9775c557d5"><td class="memItemLeft" align="right" valign="top"><a id="a6a74bd8408667c73febadd9775c557d5" name="a6a74bd8408667c73febadd9775c557d5"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>ennemi_temp_surface</b></td></tr>
+<tr class="separator:a6a74bd8408667c73febadd9775c557d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a7fbb784f9cb7dc53cf6f303439f60"><td class="memItemLeft" align="right" valign="top"><a id="a11a7fbb784f9cb7dc53cf6f303439f60" name="a11a7fbb784f9cb7dc53cf6f303439f60"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>ennemi_run_right_tex</b></td></tr>
+<tr class="separator:a11a7fbb784f9cb7dc53cf6f303439f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ab32e1075b3a5b72efbc4cafe899e1"><td class="memItemLeft" align="right" valign="top"><a id="ab8ab32e1075b3a5b72efbc4cafe899e1" name="ab8ab32e1075b3a5b72efbc4cafe899e1"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>ennemi_run_left_tex</b></td></tr>
+<tr class="separator:ab8ab32e1075b3a5b72efbc4cafe899e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce fichier contient les fonctions liées à la gestion des entités. </p>
+<p>Ce fichier contient les définitions des fonctions permettant de gérer les entités, de les afficher et de vérifier les collisions. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a5038ee890921dc6c45b50a0c7efa76a0" name="a5038ee890921dc6c45b50a0c7efa76a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5038ee890921dc6c45b50a0c7efa76a0">&#9670;&#160;</a></span>actualisationSpriteEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actualisationSpriteEnnemi </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>largeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hauteur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise les ennemis. </p>
+<p>Cette fonction actualise le sprite des ennemis en fonction de leur direction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nb_sprite</td><td>Nombre de sprites. </td></tr>
+    <tr><td class="paramname">frame</td><td>Frame. </td></tr>
+    <tr><td class="paramname">largeur</td><td>Largeur de l'image. </td></tr>
+    <tr><td class="paramname">hauteur</td><td>Hauteur de l'image. </td></tr>
+    <tr><td class="paramname">direction</td><td>Direction de l'ennemi (droite ou gauche). </td></tr>
+    <tr><td class="paramname">src</td><td>Rectangle source (rectangle du sprite). </td></tr>
+    <tr><td class="paramname">dst</td><td>Rectangle destination (rectangle de la hitbox). </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a38f3c791a3c5413497ad2e0263db43a3" name="a38f3c791a3c5413497ad2e0263db43a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f3c791a3c5413497ad2e0263db43a3">&#9670;&#160;</a></span>chargerTexturesEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargerTexturesEnnemi </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les textures des ennemis. </p>
+<p>Cette fonction charge les textures des ennemis.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ae1c739455a978b5888152fc26c57e4" name="a5ae1c739455a978b5888152fc26c57e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae1c739455a978b5888152fc26c57e4">&#9670;&#160;</a></span>dessinerBarreDeVie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessinerBarreDeVie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dessine une barre de vie pour chaque ennemi. </p>
+<p>Cette fonction dessine une barre de vie rouge pour chaque ennemi, la barre de vie se place au dessus de l'ennemi.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>L'ennemi. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a580a1fedae6b61a8a9f65fc89c42f60d" name="a580a1fedae6b61a8a9f65fc89c42f60d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a580a1fedae6b61a8a9f65fc89c42f60d">&#9670;&#160;</a></span>DessinerLigneEnnemiVu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DessinerLigneEnnemiVu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpoint__s.html">point_t</a>&#160;</td>
+          <td class="paramname"><em>A</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpoint__s.html">point_t</a>&#160;</td>
+          <td class="paramname"><em>B</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dessine une ligne entre deux points. </p>
+<p>Cette fonction dessine une ligne entre deux points à l'aide de l'algorithme de Bresenham.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">A</td><td>Point A. </td></tr>
+    <tr><td class="paramname">B</td><td>Point B. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2e4aad1268595c50ab0f91d9588c65cc" name="a2e4aad1268595c50ab0f91d9588c65cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e4aad1268595c50ab0f91d9588c65cc">&#9670;&#160;</a></span>ennemi_creer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ennemi_creer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un ennemi. </p>
+<p>Cette fonction crée un ennemi en associant les pointeurs sur fonction aux fonctions.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>L'ennemi à créer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee26780d50ab83dae0e488ab7fd09dc3" name="aee26780d50ab83dae0e488ab7fd09dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee26780d50ab83dae0e488ab7fd09dc3">&#9670;&#160;</a></span>initEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initEnnemi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pvMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attaque</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un ennemi. </p>
+<p>Cette fonction initialise un ennemi en lui attribuant des points de vie, une attaque, une position, un identifiant, une vitesse et un état de mort.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>L'ennemi à initialiser. </td></tr>
+    <tr><td class="paramname">x</td><td>Position horizontale de l'ennemi. </td></tr>
+    <tr><td class="paramname">y</td><td>Position verticale de l'ennemi. </td></tr>
+    <tr><td class="paramname">id</td><td>Identifiant de l'ennemi (Pour différencier plusieurs types d'ennemis). </td></tr>
+    <tr><td class="paramname">pvMax</td><td>Points de vie maximum de l'ennemi. </td></tr>
+    <tr><td class="paramname">attaque</td><td>Attaque de l'ennemi. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaa0bc936f08f1d55a4be04ec74c28101" name="aaa0bc936f08f1d55a4be04ec74c28101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa0bc936f08f1d55a4be04ec74c28101">&#9670;&#160;</a></span>initEnnemis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initEnnemis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td>
+          <td class="paramname"><em>projJoueur</em>[MAX_PROJ], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td>
+          <td class="paramname"><em>projEnnemi</em>[MAX_PROJ], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__s.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a>&#160;</td>
+          <td class="paramname"><em>ennemi</em>[NB_ENNEMI], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les ennemis. </p>
+<p>Cette fonction initialise les ennemis en fonction des projectiles, du joueur et des ennemis.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projJoueur</td><td>Tableau des projectiles du joueur. </td></tr>
+    <tr><td class="paramname">projEnnemi</td><td>Tableau des projectiles des ennemis. </td></tr>
+    <tr><td class="paramname">joueur</td><td>Le joueur. </td></tr>
+    <tr><td class="paramname">ennemi</td><td>Tableau des ennemis. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab38072332663eb3bc58d4fd829a18eee" name="ab38072332663eb3bc58d4fd829a18eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab38072332663eb3bc58d4fd829a18eee">&#9670;&#160;</a></span>initEnnemisVague()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initEnnemisVague </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a>&#160;</td>
+          <td class="paramname"><em>tabEnnemi</em>[NB_ENNEMI], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_ennemis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ennemi_initialises</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurMana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurManaMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurPv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurPvMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>duree_vague</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les données d'une nouvelle vague. </p>
+<p>Cette fonction initialise les ennemis de la vague en fonction du nombre d'ennemis et de la difficulté. Elle initialise également les données du joueur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tabEnnemi</td><td>Tableau des ennemis. </td></tr>
+    <tr><td class="paramname">nb_ennemis</td><td>Nombre d'ennemis. </td></tr>
+    <tr><td class="paramname">ennemi_initialises</td><td>Booléen permettant de savoir si les ennemis ont déjà été initialisés. </td></tr>
+    <tr><td class="paramname">joueurMana</td><td>Pointeur sur le mana du joueur. </td></tr>
+    <tr><td class="paramname">joueurManaMax</td><td>Pointeur sur le mana maximum du joueur. </td></tr>
+    <tr><td class="paramname">joueurPv</td><td>Pointeur sur les points de vie du joueur. </td></tr>
+    <tr><td class="paramname">joueurPvMax</td><td>Pointeur sur les points de vie maximum du joueur. </td></tr>
+    <tr><td class="paramname">duree_vague</td><td>Pointeur sur la durée de la vague. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8fb690a3d18c35fd47cb4de44c4ed03" name="ab8fb690a3d18c35fd47cb4de44c4ed03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fb690a3d18c35fd47cb4de44c4ed03">&#9670;&#160;</a></span>initialiserJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialiserJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__s.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le joueur. </p>
+<p>Cette fonction initialise le joueur en lui attribuant des points de vie, des points de mana, une attaque et une vitesse.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Le joueur à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71ed1c046254a38357afcccfbeb54c31" name="a71ed1c046254a38357afcccfbeb54c31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71ed1c046254a38357afcccfbeb54c31">&#9670;&#160;</a></span>initTabEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initTabEnnemi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a>&#160;</td>
+          <td class="paramname"><em>tabEnnemi</em>[NB_ENNEMI]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la structure de l'ennemi. </p>
+<p>Cette fonction initialise la structure de l'ennemi en créant chaque ennemi un par un.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>L'ennemi à initialiser. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a88ba1102c61253c782a35cfb08c85331" name="a88ba1102c61253c782a35cfb08c85331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ba1102c61253c782a35cfb08c85331">&#9670;&#160;</a></span>renderEnemies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renderEnemies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les ennemis. </p>
+<p>Cette fonction affiche les ennemis.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>Tableau des ennemis. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">frame</td><td>Frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaf2241a7886ac828a5ca692d985d9f4a" name="aaf2241a7886ac828a5ca692d985d9f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2241a7886ac828a5ca692d985d9f4a">&#9670;&#160;</a></span>renderEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renderEnnemi </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche un ennemi. </p>
+<p>Cette fonction affiche un ennemi en fonction de sa direction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">ennemi</td><td>L'ennemi à afficher. </td></tr>
+    <tr><td class="paramname">frame</td><td>Frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5fd83077a45c68c66cd6f2c455d571f3" name="a5fd83077a45c68c66cd6f2c455d571f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fd83077a45c68c66cd6f2c455d571f3">&#9670;&#160;</a></span>renderVecteur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renderVecteur </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>playerRect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le vecteur de déplacement de l'ennemi. </p>
+<p>Cette fonction affiche le vecteur de déplacement de l'ennemi.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">ennemi</td><td>L'ennemi. </td></tr>
+    <tr><td class="paramname">playerRect</td><td>Rectangle du joueur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afc7b7dbc08470efca62f81512ab16273" name="afc7b7dbc08470efca62f81512ab16273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc7b7dbc08470efca62f81512ab16273">&#9670;&#160;</a></span>updateEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateEnnemi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structennemi__s.html">ennemi_t</a> *&#160;</td>
+          <td class="paramname"><em>ennemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>cameraRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>playerRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabColision</em>[NB_TILE_WIDTH][NB_TILE_HEIGHT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td>
+          <td class="paramname"><em>projEnnemi</em>[MAX_PROJ], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>projNbEnnemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>temp_vivant</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise un ennemi. </p>
+<p>Cette fonction actualise un ennemi en fonction de la position du joueur, de la caméra, des collisions, des projectiles et de la durée de vie. L'ennemi est attirée par le joueur et lance des projectiles vers le joueur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ennemi</td><td>L'ennemi à actualiser. </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>Rectangle de la caméra. </td></tr>
+    <tr><td class="paramname">playerRect</td><td>Rectangle du joueur. </td></tr>
+    <tr><td class="paramname">tabColision</td><td>Tableau des collisions. </td></tr>
+    <tr><td class="paramname">projEnnemi</td><td>Tableau des projectiles des ennemis. </td></tr>
+    <tr><td class="paramname">projNbEnnemi</td><td>Nombre de projectiles des ennemis. </td></tr>
+    <tr><td class="paramname">temp_vivant</td><td>Durée de vie de l'ennemi. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

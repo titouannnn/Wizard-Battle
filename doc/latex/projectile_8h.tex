@@ -1,0 +1,249 @@
+\doxysection{Référence du fichier src/projectile.h}
+\hypertarget{projectile_8h}{}\label{projectile_8h}\index{src/projectile.h@{src/projectile.h}}
+
+
+Gestion des projectiles.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \"{}fonctions.\+h\"{}}\newline
+{\ttfamily \#include \"{}carte.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un projectile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{projectile_8h_a4e40965ac717bac779f38d17f668a165}\label{projectile_8h_a4e40965ac717bac779f38d17f668a165} 
+\#define {\bfseries PROJ\+\_\+\+ENNEMI}~1
+\item 
+\Hypertarget{projectile_8h_a175d1be837142d6db4d2e6a6e4a2a012}\label{projectile_8h_a175d1be837142d6db4d2e6a6e4a2a012} 
+\#define {\bfseries PROJ\+\_\+\+JOUEUR}~2
+\item 
+\Hypertarget{projectile_8h_a43e22deb2a5c0899c3e5602ad1e90682}\label{projectile_8h_a43e22deb2a5c0899c3e5602ad1e90682} 
+\#define {\bfseries MAX\+\_\+\+PROJ}~512
+\item 
+\Hypertarget{projectile_8h_ae71449b1cc6e6250b91f539153a7a0d3}\label{projectile_8h_ae71449b1cc6e6250b91f539153a7a0d3} 
+\#define {\bfseries M\+\_\+\+PI}~3.\+14159265358979323846
+\item 
+\Hypertarget{projectile_8h_a64a868321e41ca64424c9e0e5042211e}\label{projectile_8h_a64a868321e41ca64424c9e0e5042211e} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+LANCER\+\_\+X}~48
+\item 
+\Hypertarget{projectile_8h_a8c9a93fddcf587f64c8c4323877d16ac}\label{projectile_8h_a8c9a93fddcf587f64c8c4323877d16ac} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+LANCER\+\_\+Y}~48
+\item 
+\Hypertarget{projectile_8h_a6413f83deb4708d82ad711ac8f3a194e}\label{projectile_8h_a6413f83deb4708d82ad711ac8f3a194e} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+IMPACT\+\_\+X}~48
+\item 
+\Hypertarget{projectile_8h_ae004f28e3f22affa460be42e9aa8a52c}\label{projectile_8h_ae004f28e3f22affa460be42e9aa8a52c} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+IMPACT\+\_\+Y}~48
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{projectile_8h_a0210b18bd499d29284537e9c525fcc19}\label{projectile_8h_a0210b18bd499d29284537e9c525fcc19} 
+typedef struct \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+s}} {\bfseries projectiles\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{projectile_8h_a98371cea84422e898a02f397fd637603}{init\+Tab\+Proj}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} proj\mbox{[}MAX\+\_\+\+PROJ\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise la structure de projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a378bd032509f1148447a3678d9b58c58}{charger\+Textures\+Proj}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Initialise les texture du projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a05badaaf5416273e10aa4c6f53b58c33}{projectile\+\_\+creer}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile)
+\begin{DoxyCompactList}\small\item\em Initialise la structure de projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a27ead4dae5f210168e1d3aa9fe56a3b2}{init\+Proj}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, float px, float py, float mx, float my, int id, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect)
+\begin{DoxyCompactList}\small\item\em Initialise un projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_ac343521e2a9bbcf9befd46c23f26b314}{verif\+Collision\+Proj}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, int tab\+Tiles\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]})
+\begin{DoxyCompactList}\small\item\em Vérifie la collision du projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a96c11a69caaa22715d64b39740550eac}{update\+Proj}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect, int tab\+Tiles\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]})
+\begin{DoxyCompactList}\small\item\em Actualise le projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a1b67b5da3805945a6236ce2ff47d4a71}{actualisation\+Sprite\+Proj}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, int nb\+\_\+sprite, int frame, int largeur, int hauteur, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}src, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}dst, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Actualise le sprite du projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectile_8h_a1abdc5cb36020a95c4b87f8638ad8822}{render\+Proj}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, int frame)
+\begin{DoxyCompactList}\small\item\em Affiche le projectile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des projectiles. 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{projectile_8h_a1b67b5da3805945a6236ce2ff47d4a71}\label{projectile_8h_a1b67b5da3805945a6236ce2ff47d4a71} 
+\index{projectile.h@{projectile.h}!actualisationSpriteProj@{actualisationSpriteProj}}
+\index{actualisationSpriteProj@{actualisationSpriteProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{actualisationSpriteProj()}{actualisationSpriteProj()}}
+{\footnotesize\ttfamily void actualisation\+Sprite\+Proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{int}]{nb\+\_\+sprite,  }\item[{int}]{frame,  }\item[{int}]{largeur,  }\item[{int}]{hauteur,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{src,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{dst,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Actualise le sprite du projectile. 
+
+Cette fonction actualise le sprite du projectile en fonction de son état.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+{\em nb\+\_\+sprite} & Nombre de sprites. \\
+\hline
+{\em frame} & Frame actuelle. \\
+\hline
+{\em largeur} & Largeur du sprite. \\
+\hline
+{\em hauteur} & Hauteur du sprite. \\
+\hline
+{\em src} & Rectangle source. \\
+\hline
+{\em dst} & Rectangle destination. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a378bd032509f1148447a3678d9b58c58}\label{projectile_8h_a378bd032509f1148447a3678d9b58c58} 
+\index{projectile.h@{projectile.h}!chargerTexturesProj@{chargerTexturesProj}}
+\index{chargerTexturesProj@{chargerTexturesProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{chargerTexturesProj()}{chargerTexturesProj()}}
+{\footnotesize\ttfamily void charger\+Textures\+Proj (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Initialise les texture du projectile. 
+
+Cette fonction initialise les textures des projectiles.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a27ead4dae5f210168e1d3aa9fe56a3b2}\label{projectile_8h_a27ead4dae5f210168e1d3aa9fe56a3b2} 
+\index{projectile.h@{projectile.h}!initProj@{initProj}}
+\index{initProj@{initProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{initProj()}{initProj()}}
+{\footnotesize\ttfamily void init\+Proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{float}]{px,  }\item[{float}]{py,  }\item[{float}]{mx,  }\item[{float}]{my,  }\item[{int}]{id,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect }\end{DoxyParamCaption})}
+
+
+
+Initialise un projectile. 
+
+Cette fonction initialise un projectile.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+{\em px} & Coordonnée x du point de départ. \\
+\hline
+{\em py} & Coordonnée y du point de départ. \\
+\hline
+{\em mx} & Coordonnée x de la destination. \\
+\hline
+{\em my} & Coordonnée y de la destination. \\
+\hline
+{\em id} & Identifiant du projectile (JOUEUR ou ENNEMI). \\
+\hline
+{\em camera\+Rect} & Rectangle de la caméra. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a98371cea84422e898a02f397fd637603}\label{projectile_8h_a98371cea84422e898a02f397fd637603} 
+\index{projectile.h@{projectile.h}!initTabProj@{initTabProj}}
+\index{initTabProj@{initTabProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{initTabProj()}{initTabProj()}}
+{\footnotesize\ttfamily void init\+Tab\+Proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}}}]{proj\mbox{[}\+MAX\+\_\+\+PROJ\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise la structure de projectile. 
+
+Cette fonction initialise le tableau de projectiles.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em proj} & Tableau de projectiles. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a05badaaf5416273e10aa4c6f53b58c33}\label{projectile_8h_a05badaaf5416273e10aa4c6f53b58c33} 
+\index{projectile.h@{projectile.h}!projectile\_creer@{projectile\_creer}}
+\index{projectile\_creer@{projectile\_creer}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{projectile\_creer()}{projectile\_creer()}}
+{\footnotesize\ttfamily void projectile\+\_\+creer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Initialise la structure de projectile. 
+
+Cette fonction initialise les fonctions associées au projectile.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a1abdc5cb36020a95c4b87f8638ad8822}\label{projectile_8h_a1abdc5cb36020a95c4b87f8638ad8822} 
+\index{projectile.h@{projectile.h}!renderProj@{renderProj}}
+\index{renderProj@{renderProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{renderProj()}{renderProj()}}
+{\footnotesize\ttfamily void render\+Proj (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{int}]{frame }\end{DoxyParamCaption})}
+
+
+
+Affiche le projectile. 
+
+Cette fonction affiche le projectile.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+{\em frame} & Frame actuelle. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_a96c11a69caaa22715d64b39740550eac}\label{projectile_8h_a96c11a69caaa22715d64b39740550eac} 
+\index{projectile.h@{projectile.h}!updateProj@{updateProj}}
+\index{updateProj@{updateProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{updateProj()}{updateProj()}}
+{\footnotesize\ttfamily void update\+Proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{int}]{tab\+Tiles\+Colision\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Actualise le projectile. 
+
+Cette fonction actualise le projectile.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+{\em camera\+Rect} & Rectangle de la caméra. \\
+\hline
+{\em tab\+Tiles\+Colision} & Tableau des collisions. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{projectile_8h_ac343521e2a9bbcf9befd46c23f26b314}\label{projectile_8h_ac343521e2a9bbcf9befd46c23f26b314} 
+\index{projectile.h@{projectile.h}!verifCollisionProj@{verifCollisionProj}}
+\index{verifCollisionProj@{verifCollisionProj}!projectile.h@{projectile.h}}
+\doxysubsubsection{\texorpdfstring{verifCollisionProj()}{verifCollisionProj()}}
+{\footnotesize\ttfamily void verif\+Collision\+Proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{int}]{tab\+Tiles\+Colision\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Vérifie la collision du projectile. 
+
+Cette fonction vérifie si le projectile est en collision avec un mur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur vers la structure de projectile. \\
+\hline
+{\em tab\+Tiles\+Colision} & Tableau des collisions. \\
+\hline
+\end{DoxyParams}

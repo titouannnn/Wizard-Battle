@@ -1,0 +1,212 @@
+\doxysection{Référence du fichier src/vague.h}
+\hypertarget{vague_8h}{}\label{vague_8h}\index{src/vague.h@{src/vague.h}}
+
+
+Fichier contenant les protoypes des fonctions pour le système de vague.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \"{}fonctions.\+h\"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{vague_8h_a0ab7108c45a83cf7ec062016e452abd5}{afficher\+Temps}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int temps)
+\begin{DoxyCompactList}\small\item\em Fonction pour afficher le temps écoulé à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vague_8h_a40195142f7b407d57c810796f74b760e}{afficher\+Vague}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int vague, int duree\+\_\+vague)
+\begin{DoxyCompactList}\small\item\em Fonction pour afficher la vague actuelle à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vague_8h_a0865b40542e34a04d3ed88dbbe999176}{afficher\+Nb\+Kill}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int nb\+Kill, int nb\+Ennemis)
+\begin{DoxyCompactList}\small\item\em Fonction pour afficher le nombre d\textquotesingle{}ennemis tués à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vague_8h_a8c5062209dba52a17e70906ead951d97}{next\+Vague}} (int \texorpdfstring{$\ast$}{*}vague, int \texorpdfstring{$\ast$}{*}nb\+\_\+ennemis, int \texorpdfstring{$\ast$}{*}nb\+\_\+kill, int \texorpdfstring{$\ast$}{*}ennemis\+\_\+initialises)
+\begin{DoxyCompactList}\small\item\em Fonction pour passer à la vague suivante. \end{DoxyCompactList}\item 
+\Hypertarget{vague_8h_a38591feb0b6dc573c0e5508609b31bfa}\label{vague_8h_a38591feb0b6dc573c0e5508609b31bfa} 
+void {\bfseries afficher\+Score} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, int vague, int temps, int nb\+Kills)
+\item 
+void \mbox{\hyperlink{vague_8h_a34e16068586f832ae13687440a95ef6f}{renitialiser\+Stats}} (int \texorpdfstring{$\ast$}{*}joueur\+Pv, int \texorpdfstring{$\ast$}{*}joueur\+Mana, int \texorpdfstring{$\ast$}{*}joueurX, int \texorpdfstring{$\ast$}{*}joueurY, int \texorpdfstring{$\ast$}{*}vague, int \texorpdfstring{$\ast$}{*}ennemis\+\_\+initialises, int \texorpdfstring{$\ast$}{*}nb\+\_\+ennemis, int \texorpdfstring{$\ast$}{*}nb\+\_\+kill, int \texorpdfstring{$\ast$}{*}proj\+Nb\+Joueur, int \texorpdfstring{$\ast$}{*}proj\+Nb\+Ennemi, int \texorpdfstring{$\ast$}{*}frame, int \texorpdfstring{$\ast$}{*}delta\+\_\+temps, float \texorpdfstring{$\ast$}{*}coef\+Difficulte, Uint32 \texorpdfstring{$\ast$}{*}gain\+\_\+mana, int \texorpdfstring{$\ast$}{*}duree\+\_\+parti)
+\begin{DoxyCompactList}\small\item\em Fonction pour renitialiser les stats du joueur et de la partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vague_8h_aecff7291e4136388c672c2cb04ad2fe6}{game\+Over}} (int \texorpdfstring{$\ast$}{*}joueur\+Pv, int \texorpdfstring{$\ast$}{*}menu, int \texorpdfstring{$\ast$}{*}duree\+\_\+partie)
+\begin{DoxyCompactList}\small\item\em Fonction pour gérer la fin de la partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{vague_8h_aefa2449ed5270a9bc30c8c775db05290}{calcul\+Temps}} (Uint32 \texorpdfstring{$\ast$}{*}temps\+\_\+actuel, int \texorpdfstring{$\ast$}{*}delta\+\_\+temps, Uint32 \texorpdfstring{$\ast$}{*}temps\+\_\+ancien, Uint32 \texorpdfstring{$\ast$}{*}gain\+\_\+mana, int \texorpdfstring{$\ast$}{*}joueur\+Mana, int \texorpdfstring{$\ast$}{*}joueur\+Mana\+Max, int \texorpdfstring{$\ast$}{*}frame)
+\begin{DoxyCompactList}\small\item\em Fonction pour calculer le temps écoulé et le gain de mana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les protoypes des fonctions pour le système de vague. 
+
+Ce fichier contient les prototypes des fonctions pour gérer le système de vague. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{vague_8h_a0865b40542e34a04d3ed88dbbe999176}\label{vague_8h_a0865b40542e34a04d3ed88dbbe999176} 
+\index{vague.h@{vague.h}!afficherNbKill@{afficherNbKill}}
+\index{afficherNbKill@{afficherNbKill}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{afficherNbKill()}{afficherNbKill()}}
+{\footnotesize\ttfamily void afficher\+Nb\+Kill (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{int}]{nb\+Kill,  }\item[{int}]{nb\+Ennemis }\end{DoxyParamCaption})}
+
+
+
+Fonction pour afficher le nombre d\textquotesingle{}ennemis tués à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur sur le rendu. \\
+\hline
+{\em font} & Pointeur sur la police d\textquotesingle{}écriture. \\
+\hline
+{\em nb\+Kill} & Nombre d\textquotesingle{}ennemis tués. \\
+\hline
+{\em nb\+Ennemis} & Nombre d\textquotesingle{}ennemis à tuer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_a0ab7108c45a83cf7ec062016e452abd5}\label{vague_8h_a0ab7108c45a83cf7ec062016e452abd5} 
+\index{vague.h@{vague.h}!afficherTemps@{afficherTemps}}
+\index{afficherTemps@{afficherTemps}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{afficherTemps()}{afficherTemps()}}
+{\footnotesize\ttfamily void afficher\+Temps (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{int}]{temps }\end{DoxyParamCaption})}
+
+
+
+Fonction pour afficher le temps écoulé à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur sur le rendu. \\
+\hline
+{\em font} & Pointeur sur la police d\textquotesingle{}écriture. \\
+\hline
+{\em temps} & Temps écoulé. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_a40195142f7b407d57c810796f74b760e}\label{vague_8h_a40195142f7b407d57c810796f74b760e} 
+\index{vague.h@{vague.h}!afficherVague@{afficherVague}}
+\index{afficherVague@{afficherVague}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{afficherVague()}{afficherVague()}}
+{\footnotesize\ttfamily void afficher\+Vague (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{int}]{vague,  }\item[{int}]{duree\+\_\+vague }\end{DoxyParamCaption})}
+
+
+
+Fonction pour afficher la vague actuelle à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur sur le rendu. \\
+\hline
+{\em font} & Pointeur sur la police d\textquotesingle{}écriture. \\
+\hline
+{\em vague} & Numéro de la vague actuelle. \\
+\hline
+{\em duree\+\_\+vague} & Durée de la vague actuelle \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_aefa2449ed5270a9bc30c8c775db05290}\label{vague_8h_aefa2449ed5270a9bc30c8c775db05290} 
+\index{vague.h@{vague.h}!calculTemps@{calculTemps}}
+\index{calculTemps@{calculTemps}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{calculTemps()}{calculTemps()}}
+{\footnotesize\ttfamily void calcul\+Temps (\begin{DoxyParamCaption}\item[{Uint32 \texorpdfstring{$\ast$}{*}}]{temps\+\_\+actuel,  }\item[{int \texorpdfstring{$\ast$}{*}}]{delta\+\_\+temps,  }\item[{Uint32 \texorpdfstring{$\ast$}{*}}]{temps\+\_\+ancien,  }\item[{Uint32 \texorpdfstring{$\ast$}{*}}]{gain\+\_\+mana,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Mana,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Mana\+Max,  }\item[{int \texorpdfstring{$\ast$}{*}}]{frame }\end{DoxyParamCaption})}
+
+
+
+Fonction pour calculer le temps écoulé et le gain de mana. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps\+\_\+actuel} & Pointeur sur le temps actuel. \\
+\hline
+{\em delta\+\_\+temps} & Pointeur sur le temps écoulé entre les images du sprite. \\
+\hline
+{\em temps\+\_\+ancien} & Pointeur sur le temps précédent. \\
+\hline
+{\em gain\+\_\+mana} & Pointeur sur le moment où le joueur gagne du mana. \\
+\hline
+{\em joueur\+Mana} & Pointeur sur le mana du joueur. \\
+\hline
+{\em joueur\+Mana\+Max} & Pointeur sur le mana maximum du joueur. \\
+\hline
+{\em frame} & Pointeur sur le numéro de l\textquotesingle{}image du sprite. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_aecff7291e4136388c672c2cb04ad2fe6}\label{vague_8h_aecff7291e4136388c672c2cb04ad2fe6} 
+\index{vague.h@{vague.h}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily void game\+Over (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Pv,  }\item[{int \texorpdfstring{$\ast$}{*}}]{menu,  }\item[{int \texorpdfstring{$\ast$}{*}}]{duree\+\_\+partie }\end{DoxyParamCaption})}
+
+
+
+Fonction pour gérer la fin de la partie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur\+Pv} & Pointeur sur les points de vie du joueur. \\
+\hline
+{\em menu} & Pointeur sur le menu actuel. \\
+\hline
+{\em duree\+\_\+partie} & Pointeur sur la durée de la partie. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_a8c5062209dba52a17e70906ead951d97}\label{vague_8h_a8c5062209dba52a17e70906ead951d97} 
+\index{vague.h@{vague.h}!nextVague@{nextVague}}
+\index{nextVague@{nextVague}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{nextVague()}{nextVague()}}
+{\footnotesize\ttfamily void next\+Vague (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{vague,  }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+ennemis,  }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+kill,  }\item[{int \texorpdfstring{$\ast$}{*}}]{ennemis\+\_\+initialises }\end{DoxyParamCaption})}
+
+
+
+Fonction pour passer à la vague suivante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em vague} & Pointeur sur le numéro de la vague actuelle. \\
+\hline
+{\em nb\+\_\+ennemis} & Pointeur sur le nombre d\textquotesingle{}ennemis à initialiser. \\
+\hline
+{\em nb\+\_\+kill} & Pointeur sur le nombre d\textquotesingle{}ennemis tués. \\
+\hline
+{\em ennemis\+\_\+initialises} & Pointeur sur le nombre d\textquotesingle{}ennemis initialisés. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{vague_8h_a34e16068586f832ae13687440a95ef6f}\label{vague_8h_a34e16068586f832ae13687440a95ef6f} 
+\index{vague.h@{vague.h}!renitialiserStats@{renitialiserStats}}
+\index{renitialiserStats@{renitialiserStats}!vague.h@{vague.h}}
+\doxysubsubsection{\texorpdfstring{renitialiserStats()}{renitialiserStats()}}
+{\footnotesize\ttfamily void renitialiser\+Stats (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Pv,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Mana,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueurX,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueurY,  }\item[{int \texorpdfstring{$\ast$}{*}}]{vague,  }\item[{int \texorpdfstring{$\ast$}{*}}]{ennemis\+\_\+initialises,  }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+ennemis,  }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+\_\+kill,  }\item[{int \texorpdfstring{$\ast$}{*}}]{proj\+Nb\+Joueur,  }\item[{int \texorpdfstring{$\ast$}{*}}]{proj\+Nb\+Ennemi,  }\item[{int \texorpdfstring{$\ast$}{*}}]{frame,  }\item[{int \texorpdfstring{$\ast$}{*}}]{delta\+\_\+temps,  }\item[{float \texorpdfstring{$\ast$}{*}}]{coef\+Difficulte,  }\item[{Uint32 \texorpdfstring{$\ast$}{*}}]{gain\+\_\+mana,  }\item[{int \texorpdfstring{$\ast$}{*}}]{duree\+\_\+parti }\end{DoxyParamCaption})}
+
+
+
+Fonction pour renitialiser les stats du joueur et de la partie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur\+Pv} & Pointeur sur les points de vie du joueur. \\
+\hline
+{\em joueur\+Mana} & Pointeur sur le mana du joueur. \\
+\hline
+{\em joueurX} & Pointeur sur la position en x du joueur. \\
+\hline
+{\em joueurY} & Pointeur sur la position en y du joueur. \\
+\hline
+{\em vague} & Pointeur sur le numéro de la vague actuelle. \\
+\hline
+{\em ennemis\+\_\+initialises} & Pointeur sur le nombre d\textquotesingle{}ennemis initialisés. \\
+\hline
+{\em nb\+\_\+ennemis} & Pointeur sur le nombre d\textquotesingle{}ennemis à initialiser. \\
+\hline
+{\em nb\+\_\+kill} & Pointeur sur le nombre d\textquotesingle{}ennemis tués. \\
+\hline
+{\em proj\+Nb\+Joueur} & Pointeur sur le nombre de projectiles du joueur. \\
+\hline
+{\em proj\+Nb\+Ennemi} & Pointeur sur le nombre de projectiles des ennemis. \\
+\hline
+{\em frame} & Pointeur sur le numéro de l\textquotesingle{}image du sprite. \\
+\hline
+{\em delta\+\_\+temps} & Pointeur sur le temps écoulé entre les images du sprite. \\
+\hline
+{\em coef\+Difficulte} & Pointeur sur le coefficient de difficulté. \\
+\hline
+{\em gain\+\_\+mana} & Pointeur sur le moment où le joueur gagne du mana. \\
+\hline
+{\em duree\+\_\+parti} & Pointeur sur la durée de la partie. \\
+\hline
+\end{DoxyParams}

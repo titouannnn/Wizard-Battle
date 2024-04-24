@@ -1,0 +1,164 @@
+\doxysection{Référence du fichier game.\+h}
+\hypertarget{game_8h}{}\label{game_8h}\index{game.h@{game.h}}
+
+
+Fichier contenant les variables qui vont être utilisées dans le \doxylink{main_8c}{main.\+c}.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \"{}src/projectile.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/entite.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/fonctions.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/carte.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/menu.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/barre.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/vague.\+h\"{}}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{game_8h_a5b163fafde24bef5e6b019af29b92072}\label{game_8h_a5b163fafde24bef5e6b019af29b92072} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries rendu}
+\item 
+\Hypertarget{game_8h_a83273a719e3c35f920b32f1e64e2e22a}\label{game_8h_a83273a719e3c35f920b32f1e64e2e22a} 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} {\bfseries fenetre}
+\item 
+\Hypertarget{game_8h_ad0e9733e9492ec1ffa59bd654b3efa54}\label{game_8h_ad0e9733e9492ec1ffa59bd654b3efa54} 
+\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} {\bfseries pers\+\_\+source}
+\item 
+\Hypertarget{game_8h_a6fffa438d8134c6f0251143d55017c2f}\label{game_8h_a6fffa438d8134c6f0251143d55017c2f} 
+\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} {\bfseries pers\+\_\+destination}
+\item 
+\Hypertarget{game_8h_a286f5b4a4a3a7cdbb853441a8cd9e1bc}\label{game_8h_a286f5b4a4a3a7cdbb853441a8cd9e1bc} 
+\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*} {\bfseries camera\+Rect}
+\item 
+\Hypertarget{game_8h_a9fdf1f7944ea405700678608c49bf571}\label{game_8h_a9fdf1f7944ea405700678608c49bf571} 
+\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} {\bfseries position}
+\item 
+\Hypertarget{game_8h_a5516f4437fa9bffc0c3ed78018d60abe}\label{game_8h_a5516f4437fa9bffc0c3ed78018d60abe} 
+\mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries colision}
+\item 
+\Hypertarget{game_8h_a64ffde23209d41bbc397ce8c91d8df25}\label{game_8h_a64ffde23209d41bbc397ce8c91d8df25} 
+\mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} {\bfseries joueur}
+\item 
+\Hypertarget{game_8h_ae3bfcfd149b296b8a56981e43de22190}\label{game_8h_ae3bfcfd149b296b8a56981e43de22190} 
+\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} {\bfseries ennemi} \mbox{[}NB\+\_\+\+ENNEMI\mbox{]}
+\item 
+\Hypertarget{game_8h_a7adbebc7c11ea48f073b88fba641c87f}\label{game_8h_a7adbebc7c11ea48f073b88fba641c87f} 
+\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} {\bfseries proj\+Joueur} \mbox{[}MAX\+\_\+\+PROJ\mbox{]}
+\item 
+\Hypertarget{game_8h_a15c60616acc2a7eefb50fb6232b24001}\label{game_8h_a15c60616acc2a7eefb50fb6232b24001} 
+\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} {\bfseries proj\+Ennemi} \mbox{[}MAX\+\_\+\+PROJ\mbox{]}
+\item 
+\Hypertarget{game_8h_a6b57f01d3c576db5368dd0efc2f435a4}\label{game_8h_a6b57f01d3c576db5368dd0efc2f435a4} 
+SDL\+\_\+\+Event {\bfseries event}
+\item 
+\Hypertarget{game_8h_a2d422b9b4a7e64d189a3d800fa892634}\label{game_8h_a2d422b9b4a7e64d189a3d800fa892634} 
+Uint32 {\bfseries temps\+\_\+ancien}
+\item 
+\Hypertarget{game_8h_ab4bc5fd2b968d2d39daada4d4cad9d62}\label{game_8h_ab4bc5fd2b968d2d39daada4d4cad9d62} 
+Uint32 {\bfseries temps\+\_\+actuel}
+\item 
+\Hypertarget{game_8h_aebc5ebb9226f9fa28652d2b61d6a8259}\label{game_8h_aebc5ebb9226f9fa28652d2b61d6a8259} 
+Uint32 {\bfseries gain\+\_\+mana}
+\item 
+\Hypertarget{game_8h_abce9102bf26100118bf60952741b39f2}\label{game_8h_abce9102bf26100118bf60952741b39f2} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries bar\+Texture\+Vie}
+\item 
+\Hypertarget{game_8h_a32e8b5d1ddafd116cd421fb96f8bc81c}\label{game_8h_a32e8b5d1ddafd116cd421fb96f8bc81c} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries bar\+Texture\+Vie\+Max}
+\item 
+\Hypertarget{game_8h_a1b099d8e2f3d28905cfe8725cb8c60cb}\label{game_8h_a1b099d8e2f3d28905cfe8725cb8c60cb} 
+\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} {\bfseries health\+Bar}
+\item 
+\Hypertarget{game_8h_a147fae4048fc02d1b448257a0a6c2412}\label{game_8h_a147fae4048fc02d1b448257a0a6c2412} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries bar\+Texture\+Mana}
+\item 
+\Hypertarget{game_8h_a5363b35d155ae4f9a261a3b7dfb27129}\label{game_8h_a5363b35d155ae4f9a261a3b7dfb27129} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries bar\+Texture\+Mana\+Max}
+\item 
+\Hypertarget{game_8h_a1e33661424887958b753531a7f65518c}\label{game_8h_a1e33661424887958b753531a7f65518c} 
+\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} {\bfseries mana\+Bar}
+\item 
+\Hypertarget{game_8h_a5840b96d1ab63378600fd4b7579ed6c7}\label{game_8h_a5840b96d1ab63378600fd4b7579ed6c7} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries jouer\+Button}
+\item 
+\Hypertarget{game_8h_ad428407e6dfefb0d491ebce5f1b86985}\label{game_8h_ad428407e6dfefb0d491ebce5f1b86985} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries difficulte\+Button}
+\item 
+\Hypertarget{game_8h_a9018389e935320c3172d036c21011a65}\label{game_8h_a9018389e935320c3172d036c21011a65} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries facile\+Button}
+\item 
+\Hypertarget{game_8h_ad1ad96b1f8e4283ec8dac66a7c7a558a}\label{game_8h_ad1ad96b1f8e4283ec8dac66a7c7a558a} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries normal\+Button}
+\item 
+\Hypertarget{game_8h_a3155b628aaac3a6598a4662ee78464da}\label{game_8h_a3155b628aaac3a6598a4662ee78464da} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries difficile\+Button}
+\item 
+\Hypertarget{game_8h_ab67ade419ec71f9406cfe90323c68507}\label{game_8h_ab67ade419ec71f9406cfe90323c68507} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries accueil\+Button}
+\item 
+\Hypertarget{game_8h_a1ccd0532cd23bf0483cbad6552929877}\label{game_8h_a1ccd0532cd23bf0483cbad6552929877} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries retry\+Button}
+\item 
+\Hypertarget{game_8h_a73476305409350957069f26a599334dc}\label{game_8h_a73476305409350957069f26a599334dc} 
+\mbox{\hyperlink{structButton}{Button}} {\bfseries reprendre\+Button}
+\item 
+\Hypertarget{game_8h_a3e797c66d7c7e0c82522b99b60f3a3a7}\label{game_8h_a3e797c66d7c7e0c82522b99b60f3a3a7} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} {\bfseries arial}
+\item 
+\Hypertarget{game_8h_af7fd33af7147156ac0d829857bfe6fd5}\label{game_8h_af7fd33af7147156ac0d829857bfe6fd5} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries message\+Score}
+\item 
+\Hypertarget{game_8h_a8696725a4e790895ed105974be31f158}\label{game_8h_a8696725a4e790895ed105974be31f158} 
+int {\bfseries vague}
+\item 
+\Hypertarget{game_8h_a4edb7557c2b09a11c42c0f46d4a2ca7d}\label{game_8h_a4edb7557c2b09a11c42c0f46d4a2ca7d} 
+int {\bfseries nb\+\_\+ennemis}
+\item 
+\Hypertarget{game_8h_afd5a1b999c72d8953a1d7f552ac1ff40}\label{game_8h_afd5a1b999c72d8953a1d7f552ac1ff40} 
+int {\bfseries nb\+\_\+kill}
+\item 
+\Hypertarget{game_8h_a082eada0bfd06b2ec0eb14a62abab388}\label{game_8h_a082eada0bfd06b2ec0eb14a62abab388} 
+int {\bfseries ennemis\+\_\+initialises}
+\item 
+\Hypertarget{game_8h_abf52ae79935a94d7d84708dec73c0013}\label{game_8h_abf52ae79935a94d7d84708dec73c0013} 
+int {\bfseries mx}
+\item 
+\Hypertarget{game_8h_a2f48f9eea25d2d619a31ae255278a2b5}\label{game_8h_a2f48f9eea25d2d619a31ae255278a2b5} 
+int {\bfseries my}
+\item 
+\Hypertarget{game_8h_aea28a734eaa79690aaa5a2b19a3c2f07}\label{game_8h_aea28a734eaa79690aaa5a2b19a3c2f07} 
+char {\bfseries texte} \mbox{[}52\mbox{]}
+\item 
+\Hypertarget{game_8h_ac11a5c7193755f3a005977bb9d0e74d1}\label{game_8h_ac11a5c7193755f3a005977bb9d0e74d1} 
+int {\bfseries proj\+Nb\+Ennemi}
+\item 
+\Hypertarget{game_8h_a2e5cdb7f94bf46cc2a2c24b1fc941b8c}\label{game_8h_a2e5cdb7f94bf46cc2a2c24b1fc941b8c} 
+int {\bfseries proj\+Nb\+Joueur}
+\item 
+\Hypertarget{game_8h_a32ba696eaeb5eef403599f4bb8b376e7}\label{game_8h_a32ba696eaeb5eef403599f4bb8b376e7} 
+int {\bfseries is\+Running}
+\item 
+\Hypertarget{game_8h_ad30f972f2e6e3e5ecab0dee38ae6cdb8}\label{game_8h_ad30f972f2e6e3e5ecab0dee38ae6cdb8} 
+int {\bfseries frame}
+\item 
+\Hypertarget{game_8h_a19742bc79e972584e4cac6b2ae628104}\label{game_8h_a19742bc79e972584e4cac6b2ae628104} 
+int {\bfseries delta\+\_\+temps}
+\item 
+\Hypertarget{game_8h_aa06b1f288a318e7b4ac28c110662945b}\label{game_8h_aa06b1f288a318e7b4ac28c110662945b} 
+int {\bfseries duree\+\_\+vague}
+\item 
+\Hypertarget{game_8h_a1b05ddb13e3c0e0e292e3dbb8becf87d}\label{game_8h_a1b05ddb13e3c0e0e292e3dbb8becf87d} 
+int {\bfseries duree\+\_\+partie}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier contenant les variables qui vont être utilisées dans le \doxylink{main_8c}{main.\+c}. 
+
+Ce fichier initialise les variables qui vont être utilisées dans le \doxylink{main_8c}{main.\+c}. 

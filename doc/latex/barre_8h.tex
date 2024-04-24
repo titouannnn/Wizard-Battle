@@ -1,0 +1,113 @@
+\doxysection{Référence du fichier src/barre.h}
+\hypertarget{barre_8h}{}\label{barre_8h}\index{src/barre.h@{src/barre.h}}
+
+
+Gestion des barres de vie et de mana.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbar__t}{bar\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure représentant une barre quelconque. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{barre_8h_aa67f5290e4cf518cd55c95c8b644d5f2}\label{barre_8h_aa67f5290e4cf518cd55c95c8b644d5f2} 
+\#define {\bfseries BAR\+\_\+\+WIDTH}~300
+\item 
+\Hypertarget{barre_8h_af6614c9d6fc4f2ec7e3a70230c05b3f7}\label{barre_8h_af6614c9d6fc4f2ec7e3a70230c05b3f7} 
+\#define {\bfseries BAR\+\_\+\+HEIGHT}~20
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{barre_8h_aca0533019a2bc085ee21131d2947b5a8}{creation\+Texture\+Bar}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}} couleur)
+\begin{DoxyCompactList}\small\item\em Crée une texture pour la barre de vie ou de mana. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{barre_8h_a08618ec97bd3979c8c6f6fd48a70d124}{init\+Bar}} (\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}bar, int x, int y, int max\+Width)
+\begin{DoxyCompactList}\small\item\em Initialise la barre de vie ou de mana. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{barre_8h_acf989a2b6385db1c273c4a6a2d556579}{update\+Bar}} (\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}bar, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}bar\+Rect, int current\+Value, int max\+Value)
+\begin{DoxyCompactList}\small\item\em Met à jour la barre passée en paramètre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des barres de vie et de mana. 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{barre_8h_aca0533019a2bc085ee21131d2947b5a8}\label{barre_8h_aca0533019a2bc085ee21131d2947b5a8} 
+\index{barre.h@{barre.h}!creationTextureBar@{creationTextureBar}}
+\index{creationTextureBar@{creationTextureBar}!barre.h@{barre.h}}
+\doxysubsubsection{\texorpdfstring{creationTextureBar()}{creationTextureBar()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} creation\+Texture\+Bar (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}}}]{couleur }\end{DoxyParamCaption})}
+
+
+
+Crée une texture pour la barre de vie ou de mana. 
+
+Cette fonction crée une texture pour la barre de vie ou de mana en fonction de la couleur passée en paramètre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em couleur} & La couleur de la barre.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La texture de la barre de vie ou de mana. 
+\end{DoxyReturn}
+\Hypertarget{barre_8h_a08618ec97bd3979c8c6f6fd48a70d124}\label{barre_8h_a08618ec97bd3979c8c6f6fd48a70d124} 
+\index{barre.h@{barre.h}!initBar@{initBar}}
+\index{initBar@{initBar}!barre.h@{barre.h}}
+\doxysubsubsection{\texorpdfstring{initBar()}{initBar()}}
+{\footnotesize\ttfamily void init\+Bar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{bar,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{max\+Width }\end{DoxyParamCaption})}
+
+
+
+Initialise la barre de vie ou de mana. 
+
+Cette fonction initialise la barre de vie ou de mana en fonction des paramètres passés.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em bar} & La barre de vie ou de mana à initialiser. \\
+\hline
+{\em x} & La position en x de la barre. \\
+\hline
+{\em y} & La position en y de la barre. \\
+\hline
+{\em max\+Width} & La largeur maximale de la barre. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{barre_8h_acf989a2b6385db1c273c4a6a2d556579}\label{barre_8h_acf989a2b6385db1c273c4a6a2d556579} 
+\index{barre.h@{barre.h}!updateBar@{updateBar}}
+\index{updateBar@{updateBar}!barre.h@{barre.h}}
+\doxysubsubsection{\texorpdfstring{updateBar()}{updateBar()}}
+{\footnotesize\ttfamily void update\+Bar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{bar,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{bar\+Rect,  }\item[{int}]{current\+Value,  }\item[{int}]{max\+Value }\end{DoxyParamCaption})}
+
+
+
+Met à jour la barre passée en paramètre. 
+
+Cette fonction met à jour la barre de vie ou de mana en fonction des paramètres passés.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em bar} & La barre de vie ou de mana à mettre à jour. \\
+\hline
+{\em bar\+Rect} & Le rectangle de la barre de vie ou de mana. \\
+\hline
+{\em current\+Value} & La valeur actuelle de la barre. \\
+\hline
+{\em max\+Value} & La valeur maximale de la barre. \\
+\hline
+\end{DoxyParams}

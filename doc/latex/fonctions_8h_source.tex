@@ -1,91 +1,104 @@
 \doxysection{fonctions.\+h}
 \hypertarget{fonctions_8h_source}{}\label{fonctions_8h_source}\index{src/fonctions.h@{src/fonctions.h}}
-
+\mbox{\hyperlink{fonctions_8h}{Aller à la documentation de ce fichier.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FONCTIONS\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FONCTIONS\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}carte.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}barre.h"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ WINDOWS\_WIDTH\ 1080}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ WINDOWS\_HEIGHT\ 720}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_PLAYER\_X\ 128}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_PLAYER\_Y\ 224}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ FPS\ 60}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DELAI\ 1000\ /\ FPS}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ VITESSE\_JOUEUR\_X\ 6}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ VITESSE\_JOUEUR\_Y\ 4}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ FONCTIONS\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ FONCTIONS\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}carte.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{barre_8h}{barre.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ WINDOWS\_WIDTH\ 1080\ \ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ WINDOWS\_HEIGHT\ 720}}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ HAUT\ 0}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ BAS\ 1}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ DROITE\ 2}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ GAUCHE\ 3}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LARGEUR\_FOND\ NB\_TILE\_WIDTH*TILE\_WIDTH}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ HAUTEUR\_FOND\ NB\_TILE\_HEIGHT*TILE\_HEIGHT}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ CAMERA\_WIDTH\ 1080}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ CAMERA\_HEIGHT\ 720}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ JAUNE\ ((Couleur\_t)\{255,\ 255,\ 0\})}}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ ROUGE\ ((Couleur\_t)\{255,\ 0,\ 0\})}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_PLAYER\_X\ 128}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ DIM\_SPRITE\_PLAYER\_Y\ 224}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ FPS\ 60}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ DELAI\ 1000\ /\ FPS}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ VITESSE\_JOUEUR\_X\ 6}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ VITESSE\_JOUEUR\_Y\ 4}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ HAUT\ 0}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ BAS\ 1}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DROITE\ 2}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ GAUCHE\ 3}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ LARGEUR\_FOND\ NB\_TILE\_WIDTH*TILE\_WIDTH}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ HAUTEUR\_FOND\ NB\_TILE\_HEIGHT*TILE\_HEIGHT}}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ VERT\ ((Couleur\_t)\{0,\ 204,\ 0\})}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ VERT\_FONCE\ ((Couleur\_t)\{0,\ 51,\ 0\})}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ CAMERA\_WIDTH\ 1080}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ CAMERA\_HEIGHT\ 720}}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ BLEU\ ((Couleur\_t)\{0,\ 102,\ 204\})}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ BLEU\_FONCE\ ((Couleur\_t)\{0,\ 25,\ 51\})}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ NOIR\ ((Couleur\_t)\{0,\ 0,\ 0\})}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ BLANC\ ((Couleur\_t)\{255,\ 255,\ 255\})}}
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ ORANGE\ ((Couleur\_t)\{255,\ 165,\ 0\})}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ JAUNE\ ((Couleur\_t)\{255,\ 255,\ 0\})}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ ROUGE\ ((Couleur\_t)\{255,\ 0,\ 0\})}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ VERT\ ((Couleur\_t)\{0,\ 204,\ 0\})}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ VERT\_FONCE\ ((Couleur\_t)\{0,\ 51,\ 0\})}}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
-\DoxyCodeLine{00051\ \}\ \mbox{\hyperlink{structCamera__t}{Camera\_t}};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ SDL\_Rect\ *\ initCamera();}
-\DoxyCodeLine{00054\ SDL\_Rect\ *\ initJoueur(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
-\DoxyCodeLine{00055\ \textcolor{keywordtype}{int}\ initialisation(SDL\_Window\ **fenetre,\ SDL\_Renderer\ **rendu);}
-\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ chargerTextures(SDL\_Renderer\ *rendu);}
-\DoxyCodeLine{00057\ \textcolor{keywordtype}{int}\ fin(SDL\_Window\ *fenetre,\ SDL\_Renderer\ *rendu);}
-\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ actualisationSprite(\textcolor{keywordtype}{int}\ nb\_sprite,\ \textcolor{keywordtype}{int}\ hauteur,\ \textcolor{keywordtype}{int}\ *direction,\ SDL\_Rect\ *src,\ SDL\_Rect\ *dst,\ SDL\_Renderer\ *rendu);}
-\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ action(\textcolor{keyword}{const}\ Uint8\ *clavier,\ SDL\_Rect\ *pers\_destination,\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision,\ \textcolor{keywordtype}{int}\ *direction);}
-\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ renduFond(SDL\_Renderer\ *rendu,\ SDL\_Rect\ *cameraRect);}
-\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ updateCamera(SDL\_Rect\ *pers\_destination,\ SDL\_Renderer\ *rendu,\ SDL\_Rect\ *cameraRect,\ \textcolor{keywordtype}{int}\ tab[2][NB\_TILE\_HEIGHT][NB\_TILE\_WIDTH],\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision,\ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_HEIGHT][NB\_TILE\_WIDTH],\ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position);}
-\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ initialiser\_position\_joueur(\mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *positionJoueur,\ SDL\_Rect\ *cameraRect,\ SDL\_Rect\ *pers\_destination);}
-\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ renduFond(SDL\_Renderer\ *rendu,\ SDL\_Rect\ *cameraRect);}
-\DoxyCodeLine{00064\ \textcolor{keywordtype}{int}\ getMousePositionDirection(SDL\_Rect\ *pers\_destination);}
-\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ affichageMenuImage(SDL\_Renderer\ *rendu);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ initFonctions(}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ tilemap[2][NB\_TILE\_WIDTH][NB\_TILE\_WIDTH],}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],}
-\DoxyCodeLine{00070\ \ \ \ \ SDL\_Window\ **fenetre,}
-\DoxyCodeLine{00071\ \ \ \ \ SDL\_Renderer\ **rendu,}
-\DoxyCodeLine{00072\ \ \ \ \ SDL\_Rect\ **cameraRect,}
-\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *position,}
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ **colision,}
-\DoxyCodeLine{00075\ \ \ \ \ SDL\_Rect\ *pers\_destination,}
-\DoxyCodeLine{00076\ \ \ \ \ Uint32\ *temps\_ancien,}
-\DoxyCodeLine{00077\ \ \ \ \ SDL\_Texture\ **barTextureVieMax,}
-\DoxyCodeLine{00078\ \ \ \ \ SDL\_Texture\ **barTextureVie,}
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{structbar__t}{bar\_t}}\ *healthBar,}
-\DoxyCodeLine{00080\ \ \ \ \ SDL\_Texture\ **barTextureManaMax,}
-\DoxyCodeLine{00081\ \ \ \ \ SDL\_Texture\ **barTextureMana,}
-\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{structbar__t}{bar\_t}}\ *manaBar}
-\DoxyCodeLine{00083\ );}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ BLEU\ ((Couleur\_t)\{0,\ 102,\ 204\})}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ BLEU\_FONCE\ ((Couleur\_t)\{0,\ 25,\ 51\})}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ NOIR\ ((Couleur\_t)\{0,\ 0,\ 0\})}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ BLANC\ ((Couleur\_t)\{255,\ 255,\ 255\})}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ ORANGE\ ((Couleur\_t)\{255,\ 165,\ 0\})}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *\ \mbox{\hyperlink{fonctions_8h_a3243cbf17a24df002d54a92e9c6a2e2d}{initCamera}}();}
+\DoxyCodeLine{00057\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *\ \mbox{\hyperlink{fonctions_8h_a552dfde78010181ce3461638dd6ad4f3}{initJoueur}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fonctions_8h_a023375a71579eecbb69f87eac081d638}{initialisation}}(SDL\_Window\ **fenetre,\ SDL\_Renderer\ **rendu);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_ae624aa0dc8f8ac669ee18d90c0bee2e8}{chargerTextures}}(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fonctions_8h_abac10a603815def79c4f1a4eb193095b}{fin}}(SDL\_Window\ *fenetre,\ SDL\_Renderer\ *rendu,\ TTF\_Font\ *arial);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a3ca63716af3b8a54610d5bd7a72d9b04}{actualisationSprite}}(\textcolor{keywordtype}{int}\ nb\_sprite,\ \textcolor{keywordtype}{int}\ hauteur,\ \textcolor{keywordtype}{int}\ *direction,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *src,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *dst,\ SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_ac61f52c77eacfbd0260a72ebed2900f2}{action}}(\textcolor{keyword}{const}\ Uint8\ *clavier,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *pers\_destination,\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision,\ \textcolor{keywordtype}{int}\ *direction);}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ renduFond(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *cameraRect);}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_abb4cb2e7eff3e12a89bfa22d93c19da7}{updateCamera}}(\mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *pers\_destination,\ SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *cameraRect,\ \textcolor{keywordtype}{int}\ tab[2][NB\_TILE\_HEIGHT][NB\_TILE\_WIDTH],\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision,\ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_HEIGHT][NB\_TILE\_WIDTH],\ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position);}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a28a36bc3b279d4a4a4091fe150003803}{initialiser\_position\_joueur}}(\mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *positionJoueur,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *cameraRect,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *pers\_destination);}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ renduFond(SDL\_Renderer\ *rendu,\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *cameraRect);}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fonctions_8h_a9d687ac613c37f883043a4cba34a5427}{getMousePositionDirection}}(\mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *pers\_destination);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{/*\ Affichage\ des\ images\ des\ différents\ menu\ */}}
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a9219dfe0d2e348b8169d7ff90a17f47b}{affichageAccueilImage}}(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a9becdc08427bc30ccfd24d03c1818f6a}{affichageGameOverImage}}(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a6e15309811616656782bf5292bcf12e5}{affichagePauseImage}}(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a3c92c2263578fa8a5e009e5b0e0511f1}{affichageDifficulteImage}}(SDL\_Renderer\ *rendu);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_abef32bb80779174ed7195cf6bc4d274a}{afficherAim}}(SDL\_Renderer\ *rendu,\ \textcolor{keywordtype}{int}\ mx,\ \textcolor{keywordtype}{int}\ my);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a259c8e55522662473d3f5f38fc9110e0}{initFonctions}}(}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ tilemap[2][NB\_TILE\_WIDTH][NB\_TILE\_WIDTH],}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ tabColision[NB\_TILE\_WIDTH][NB\_TILE\_HEIGHT],}
+\DoxyCodeLine{00080\ \ \ \ \ SDL\_Window\ **fenetre,}
+\DoxyCodeLine{00081\ \ \ \ \ SDL\_Renderer\ **rendu,}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ **cameraRect,}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ *position,}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ **colision,}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *pers\_destination,}
+\DoxyCodeLine{00086\ \ \ \ \ Uint32\ *temps\_ancien,}
+\DoxyCodeLine{00087\ \ \ \ \ SDL\_Texture\ **barTextureVieMax,}
+\DoxyCodeLine{00088\ \ \ \ \ SDL\_Texture\ **barTextureVie,}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{structbar__t}{bar\_t}}\ *healthBar,}
+\DoxyCodeLine{00090\ \ \ \ \ SDL\_Texture\ **barTextureManaMax,}
+\DoxyCodeLine{00091\ \ \ \ \ SDL\_Texture\ **barTextureMana,}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{structbar__t}{bar\_t}}\ *manaBar}
+\DoxyCodeLine{00093\ );}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{/*\ FONCTIONS\ DE\ DESTRUCTION\ */}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a54fd8d09863d0099063a0e21a984b772}{destructionTextureBarres}}(SDL\_Texture\ *texture,\ ...)\ ;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fonctions_8h_a9a71fd0e72d82e10964747a3285353cc}{destructionPolice}}(TTF\_Font\ *police,\ ...)\ ;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

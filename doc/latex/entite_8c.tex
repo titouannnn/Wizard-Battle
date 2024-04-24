@@ -1,0 +1,375 @@
+\doxysection{Référence du fichier src/entite.c}
+\hypertarget{entite_8c}{}\label{entite_8c}\index{src/entite.c@{src/entite.c}}
+
+
+Ce fichier contient les fonctions liées à la gestion des entités.  
+
+
+{\ttfamily \#include \"{}entite.\+h\"{}}\newline
+{\ttfamily \#include \"{}projectile.\+h\"{}}\newline
+{\ttfamily \#include \"{}global.\+h\"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{entite_8c_a38f3c791a3c5413497ad2e0263db43a3}{charger\+Textures\+Ennemi}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Charge les textures des ennemis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a71ed1c046254a38357afcccfbeb54c31}{init\+Tab\+Ennemi}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} tab\+Ennemi\mbox{[}NB\+\_\+\+ENNEMI\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise la structure de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_ab38072332663eb3bc58d4fd829a18eee}{init\+Ennemis\+Vague}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} tab\+Ennemi\mbox{[}NB\+\_\+\+ENNEMI\mbox{]}, int nb\+\_\+ennemis, int \texorpdfstring{$\ast$}{*}ennemi\+\_\+initialises, int \texorpdfstring{$\ast$}{*}joueur\+Mana, int \texorpdfstring{$\ast$}{*}joueur\+Mana\+Max, int \texorpdfstring{$\ast$}{*}joueur\+Pv, int \texorpdfstring{$\ast$}{*}joueur\+Pv\+Max, int \texorpdfstring{$\ast$}{*}duree\+\_\+vague)
+\begin{DoxyCompactList}\small\item\em Initialise les données d\textquotesingle{}une nouvelle vague. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_aaa0bc936f08f1d55a4be04ec74c28101}{init\+Ennemis}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} proj\+Joueur\mbox{[}MAX\+\_\+\+PROJ\mbox{]}, \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} proj\+Ennemi\mbox{[}MAX\+\_\+\+PROJ\mbox{]}, \mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} ennemi\mbox{[}NB\+\_\+\+ENNEMI\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Initialise les ennemis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a5038ee890921dc6c45b50a0c7efa76a0}{actualisation\+Sprite\+Ennemi}} (int nb\+\_\+sprite, int frame, int largeur, int hauteur, int direction, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}src, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}dst, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Actualise les ennemis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a580a1fedae6b61a8a9f65fc89c42f60d}{Dessiner\+Ligne\+Ennemi\+Vu}} (\mbox{\hyperlink{structpoint__s}{point\+\_\+t}} A, \mbox{\hyperlink{structpoint__s}{point\+\_\+t}} B, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Dessine une ligne entre deux points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a5ae1c739455a978b5888152fc26c57e4}{dessiner\+Barre\+De\+Vie}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Dessine une barre de vie pour chaque ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a2e4aad1268595c50ab0f91d9588c65cc}{ennemi\+\_\+creer}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi)
+\begin{DoxyCompactList}\small\item\em Crée un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_ab8fb690a3d18c35fd47cb4de44c4ed03}{initialiser\+Joueur}} (\mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Initialise le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_aee26780d50ab83dae0e488ab7fd09dc3}{init\+Ennemi}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, float x, float y, int id, int pv\+Max, int attaque)
+\begin{DoxyCompactList}\small\item\em Initialise un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_afc7b7dbc08470efca62f81512ab16273}{update\+Ennemi}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}player\+Rect, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, \mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} proj\+Ennemi\mbox{[}MAX\+\_\+\+PROJ\mbox{]}, int \texorpdfstring{$\ast$}{*}proj\+Nb\+Ennemi, int temp\+\_\+vivant)
+\begin{DoxyCompactList}\small\item\em Actualise un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_aaf2241a7886ac828a5ca692d985d9f4a}{render\+Ennemi}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, int frame)
+\begin{DoxyCompactList}\small\item\em Affiche un ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a5fd83077a45c68c66cd6f2c455d571f3}{render\+Vecteur}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}player\+Rect)
+\begin{DoxyCompactList}\small\item\em Affiche le vecteur de déplacement de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8c_a88ba1102c61253c782a35cfb08c85331}{render\+Enemies}} (\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, int frame)
+\begin{DoxyCompactList}\small\item\em Affiche les ennemis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{entite_8c_a6a74bd8408667c73febadd9775c557d5}\label{entite_8c_a6a74bd8408667c73febadd9775c557d5} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries ennemi\+\_\+temp\+\_\+surface}
+\item 
+\Hypertarget{entite_8c_a11a7fbb784f9cb7dc53cf6f303439f60}\label{entite_8c_a11a7fbb784f9cb7dc53cf6f303439f60} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries ennemi\+\_\+run\+\_\+right\+\_\+tex}
+\item 
+\Hypertarget{entite_8c_ab8ab32e1075b3a5b72efbc4cafe899e1}\label{entite_8c_ab8ab32e1075b3a5b72efbc4cafe899e1} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries ennemi\+\_\+run\+\_\+left\+\_\+tex}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce fichier contient les fonctions liées à la gestion des entités. 
+
+Ce fichier contient les définitions des fonctions permettant de gérer les entités, de les afficher et de vérifier les collisions. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{entite_8c_a5038ee890921dc6c45b50a0c7efa76a0}\label{entite_8c_a5038ee890921dc6c45b50a0c7efa76a0} 
+\index{entite.c@{entite.c}!actualisationSpriteEnnemi@{actualisationSpriteEnnemi}}
+\index{actualisationSpriteEnnemi@{actualisationSpriteEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{actualisationSpriteEnnemi()}{actualisationSpriteEnnemi()}}
+{\footnotesize\ttfamily void actualisation\+Sprite\+Ennemi (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+sprite,  }\item[{int}]{frame,  }\item[{int}]{largeur,  }\item[{int}]{hauteur,  }\item[{int}]{direction,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{src,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{dst,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Actualise les ennemis. 
+
+Cette fonction actualise le sprite des ennemis en fonction de leur direction.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+\_\+sprite} & Nombre de sprites. \\
+\hline
+{\em frame} & Frame. \\
+\hline
+{\em largeur} & Largeur de l\textquotesingle{}image. \\
+\hline
+{\em hauteur} & Hauteur de l\textquotesingle{}image. \\
+\hline
+{\em direction} & Direction de l\textquotesingle{}ennemi (droite ou gauche). \\
+\hline
+{\em src} & Rectangle source (rectangle du sprite). \\
+\hline
+{\em dst} & Rectangle destination (rectangle de la hitbox). \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a38f3c791a3c5413497ad2e0263db43a3}\label{entite_8c_a38f3c791a3c5413497ad2e0263db43a3} 
+\index{entite.c@{entite.c}!chargerTexturesEnnemi@{chargerTexturesEnnemi}}
+\index{chargerTexturesEnnemi@{chargerTexturesEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{chargerTexturesEnnemi()}{chargerTexturesEnnemi()}}
+{\footnotesize\ttfamily void charger\+Textures\+Ennemi (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Charge les textures des ennemis. 
+
+Cette fonction charge les textures des ennemis.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a5ae1c739455a978b5888152fc26c57e4}\label{entite_8c_a5ae1c739455a978b5888152fc26c57e4} 
+\index{entite.c@{entite.c}!dessinerBarreDeVie@{dessinerBarreDeVie}}
+\index{dessinerBarreDeVie@{dessinerBarreDeVie}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{dessinerBarreDeVie()}{dessinerBarreDeVie()}}
+{\footnotesize\ttfamily void dessiner\+Barre\+De\+Vie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Dessine une barre de vie pour chaque ennemi. 
+
+Cette fonction dessine une barre de vie rouge pour chaque ennemi, la barre de vie se place au dessus de l\textquotesingle{}ennemi.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & L\textquotesingle{}ennemi. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a580a1fedae6b61a8a9f65fc89c42f60d}\label{entite_8c_a580a1fedae6b61a8a9f65fc89c42f60d} 
+\index{entite.c@{entite.c}!DessinerLigneEnnemiVu@{DessinerLigneEnnemiVu}}
+\index{DessinerLigneEnnemiVu@{DessinerLigneEnnemiVu}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{DessinerLigneEnnemiVu()}{DessinerLigneEnnemiVu()}}
+{\footnotesize\ttfamily void Dessiner\+Ligne\+Ennemi\+Vu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpoint__s}{point\+\_\+t}}}]{A,  }\item[{\mbox{\hyperlink{structpoint__s}{point\+\_\+t}}}]{B,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Dessine une ligne entre deux points. 
+
+Cette fonction dessine une ligne entre deux points à l\textquotesingle{}aide de l\textquotesingle{}algorithme de Bresenham.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em A} & Point A. \\
+\hline
+{\em B} & Point B. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a2e4aad1268595c50ab0f91d9588c65cc}\label{entite_8c_a2e4aad1268595c50ab0f91d9588c65cc} 
+\index{entite.c@{entite.c}!ennemi\_creer@{ennemi\_creer}}
+\index{ennemi\_creer@{ennemi\_creer}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{ennemi\_creer()}{ennemi\_creer()}}
+{\footnotesize\ttfamily void ennemi\+\_\+creer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Crée un ennemi. 
+
+Cette fonction crée un ennemi en associant les pointeurs sur fonction aux fonctions.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & L\textquotesingle{}ennemi à créer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_aee26780d50ab83dae0e488ab7fd09dc3}\label{entite_8c_aee26780d50ab83dae0e488ab7fd09dc3} 
+\index{entite.c@{entite.c}!initEnnemi@{initEnnemi}}
+\index{initEnnemi@{initEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{initEnnemi()}{initEnnemi()}}
+{\footnotesize\ttfamily void init\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{id,  }\item[{int}]{pv\+Max,  }\item[{int}]{attaque }\end{DoxyParamCaption})}
+
+
+
+Initialise un ennemi. 
+
+Cette fonction initialise un ennemi en lui attribuant des points de vie, une attaque, une position, un identifiant, une vitesse et un état de mort.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & L\textquotesingle{}ennemi à initialiser. \\
+\hline
+{\em x} & Position horizontale de l\textquotesingle{}ennemi. \\
+\hline
+{\em y} & Position verticale de l\textquotesingle{}ennemi. \\
+\hline
+{\em id} & Identifiant de l\textquotesingle{}ennemi (Pour différencier plusieurs types d\textquotesingle{}ennemis). \\
+\hline
+{\em pv\+Max} & Points de vie maximum de l\textquotesingle{}ennemi. \\
+\hline
+{\em attaque} & Attaque de l\textquotesingle{}ennemi. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_aaa0bc936f08f1d55a4be04ec74c28101}\label{entite_8c_aaa0bc936f08f1d55a4be04ec74c28101} 
+\index{entite.c@{entite.c}!initEnnemis@{initEnnemis}}
+\index{initEnnemis@{initEnnemis}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{initEnnemis()}{initEnnemis()}}
+{\footnotesize\ttfamily void init\+Ennemis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}}}]{proj\+Joueur\mbox{[}\+MAX\+\_\+\+PROJ\mbox{]},  }\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}}}]{proj\+Ennemi\mbox{[}\+MAX\+\_\+\+PROJ\mbox{]},  }\item[{\mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur,  }\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}}}]{ennemi\mbox{[}\+NB\+\_\+\+ENNEMI\mbox{]},  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Initialise les ennemis. 
+
+Cette fonction initialise les ennemis en fonction des projectiles, du joueur et des ennemis.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em proj\+Joueur} & Tableau des projectiles du joueur. \\
+\hline
+{\em proj\+Ennemi} & Tableau des projectiles des ennemis. \\
+\hline
+{\em joueur} & Le joueur. \\
+\hline
+{\em ennemi} & Tableau des ennemis. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_ab38072332663eb3bc58d4fd829a18eee}\label{entite_8c_ab38072332663eb3bc58d4fd829a18eee} 
+\index{entite.c@{entite.c}!initEnnemisVague@{initEnnemisVague}}
+\index{initEnnemisVague@{initEnnemisVague}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{initEnnemisVague()}{initEnnemisVague()}}
+{\footnotesize\ttfamily void init\+Ennemis\+Vague (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}}}]{tab\+Ennemi\mbox{[}\+NB\+\_\+\+ENNEMI\mbox{]},  }\item[{int}]{nb\+\_\+ennemis,  }\item[{int \texorpdfstring{$\ast$}{*}}]{ennemi\+\_\+initialises,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Mana,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Mana\+Max,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Pv,  }\item[{int \texorpdfstring{$\ast$}{*}}]{joueur\+Pv\+Max,  }\item[{int \texorpdfstring{$\ast$}{*}}]{duree\+\_\+vague }\end{DoxyParamCaption})}
+
+
+
+Initialise les données d\textquotesingle{}une nouvelle vague. 
+
+Cette fonction initialise les ennemis de la vague en fonction du nombre d\textquotesingle{}ennemis et de la difficulté. Elle initialise également les données du joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab\+Ennemi} & Tableau des ennemis. \\
+\hline
+{\em nb\+\_\+ennemis} & Nombre d\textquotesingle{}ennemis. \\
+\hline
+{\em ennemi\+\_\+initialises} & Booléen permettant de savoir si les ennemis ont déjà été initialisés. \\
+\hline
+{\em joueur\+Mana} & Pointeur sur le mana du joueur. \\
+\hline
+{\em joueur\+Mana\+Max} & Pointeur sur le mana maximum du joueur. \\
+\hline
+{\em joueur\+Pv} & Pointeur sur les points de vie du joueur. \\
+\hline
+{\em joueur\+Pv\+Max} & Pointeur sur les points de vie maximum du joueur. \\
+\hline
+{\em duree\+\_\+vague} & Pointeur sur la durée de la vague. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_ab8fb690a3d18c35fd47cb4de44c4ed03}\label{entite_8c_ab8fb690a3d18c35fd47cb4de44c4ed03} 
+\index{entite.c@{entite.c}!initialiserJoueur@{initialiserJoueur}}
+\index{initialiserJoueur@{initialiserJoueur}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{initialiserJoueur()}{initialiserJoueur()}}
+{\footnotesize\ttfamily void initialiser\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Initialise le joueur. 
+
+Cette fonction initialise le joueur en lui attribuant des points de vie, des points de mana, une attaque et une vitesse.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Le joueur à initialiser. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a71ed1c046254a38357afcccfbeb54c31}\label{entite_8c_a71ed1c046254a38357afcccfbeb54c31} 
+\index{entite.c@{entite.c}!initTabEnnemi@{initTabEnnemi}}
+\index{initTabEnnemi@{initTabEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{initTabEnnemi()}{initTabEnnemi()}}
+{\footnotesize\ttfamily void init\+Tab\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}}}]{tab\+Ennemi\mbox{[}\+NB\+\_\+\+ENNEMI\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise la structure de l\textquotesingle{}ennemi. 
+
+Cette fonction initialise la structure de l\textquotesingle{}ennemi en créant chaque ennemi un par un.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & L\textquotesingle{}ennemi à initialiser. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a88ba1102c61253c782a35cfb08c85331}\label{entite_8c_a88ba1102c61253c782a35cfb08c85331} 
+\index{entite.c@{entite.c}!renderEnemies@{renderEnemies}}
+\index{renderEnemies@{renderEnemies}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{renderEnemies()}{renderEnemies()}}
+{\footnotesize\ttfamily void render\+Enemies (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{int}]{frame }\end{DoxyParamCaption})}
+
+
+
+Affiche les ennemis. 
+
+Cette fonction affiche les ennemis.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & Tableau des ennemis. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em frame} & Frame. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_aaf2241a7886ac828a5ca692d985d9f4a}\label{entite_8c_aaf2241a7886ac828a5ca692d985d9f4a} 
+\index{entite.c@{entite.c}!renderEnnemi@{renderEnnemi}}
+\index{renderEnnemi@{renderEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{renderEnnemi()}{renderEnnemi()}}
+{\footnotesize\ttfamily void render\+Ennemi (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{int}]{frame }\end{DoxyParamCaption})}
+
+
+
+Affiche un ennemi. 
+
+Cette fonction affiche un ennemi en fonction de sa direction.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em ennemi} & L\textquotesingle{}ennemi à afficher. \\
+\hline
+{\em frame} & Frame. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_a5fd83077a45c68c66cd6f2c455d571f3}\label{entite_8c_a5fd83077a45c68c66cd6f2c455d571f3} 
+\index{entite.c@{entite.c}!renderVecteur@{renderVecteur}}
+\index{renderVecteur@{renderVecteur}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{renderVecteur()}{renderVecteur()}}
+{\footnotesize\ttfamily void render\+Vecteur (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{player\+Rect }\end{DoxyParamCaption})}
+
+
+
+Affiche le vecteur de déplacement de l\textquotesingle{}ennemi. 
+
+Cette fonction affiche le vecteur de déplacement de l\textquotesingle{}ennemi.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em ennemi} & L\textquotesingle{}ennemi. \\
+\hline
+{\em player\+Rect} & Rectangle du joueur. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{entite_8c_afc7b7dbc08470efca62f81512ab16273}\label{entite_8c_afc7b7dbc08470efca62f81512ab16273} 
+\index{entite.c@{entite.c}!updateEnnemi@{updateEnnemi}}
+\index{updateEnnemi@{updateEnnemi}!entite.c@{entite.c}}
+\doxysubsubsection{\texorpdfstring{updateEnnemi()}{updateEnnemi()}}
+{\footnotesize\ttfamily void update\+Ennemi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{player\+Rect,  }\item[{int}]{tab\+Colision\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]},  }\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}}}]{proj\+Ennemi\mbox{[}\+MAX\+\_\+\+PROJ\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{proj\+Nb\+Ennemi,  }\item[{int}]{temp\+\_\+vivant }\end{DoxyParamCaption})}
+
+
+
+Actualise un ennemi. 
+
+Cette fonction actualise un ennemi en fonction de la position du joueur, de la caméra, des collisions, des projectiles et de la durée de vie. L\textquotesingle{}ennemi est attirée par le joueur et lance des projectiles vers le joueur.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ennemi} & L\textquotesingle{}ennemi à actualiser. \\
+\hline
+{\em camera\+Rect} & Rectangle de la caméra. \\
+\hline
+{\em player\+Rect} & Rectangle du joueur. \\
+\hline
+{\em tab\+Colision} & Tableau des collisions. \\
+\hline
+{\em proj\+Ennemi} & Tableau des projectiles des ennemis. \\
+\hline
+{\em proj\+Nb\+Ennemi} & Nombre de projectiles des ennemis. \\
+\hline
+{\em temp\+\_\+vivant} & Durée de vie de l\textquotesingle{}ennemi. \\
+\hline
+\end{DoxyParams}

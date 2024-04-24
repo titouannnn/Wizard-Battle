@@ -1,0 +1,484 @@
+\doxysection{Référence du fichier src/fonctions.h}
+\hypertarget{fonctions_8h}{}\label{fonctions_8h}\index{src/fonctions.h@{src/fonctions.h}}
+
+
+Ce fichier contient les définitions des variables nécéssaires pour le jeu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include \"{}carte.\+h\"{}}\newline
+{\ttfamily \#include \"{}barre.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{fonctions_8h_a2beea3dee2937ac69773a3591b58e884}\label{fonctions_8h_a2beea3dee2937ac69773a3591b58e884} 
+\#define {\bfseries WINDOWS\+\_\+\+WIDTH}~1080
+\item 
+\Hypertarget{fonctions_8h_ac2792af9d84f5421586a955baee972c4}\label{fonctions_8h_ac2792af9d84f5421586a955baee972c4} 
+\#define {\bfseries WINDOWS\+\_\+\+HEIGHT}~720
+\item 
+\Hypertarget{fonctions_8h_a8d355bc42bc52216813fa42fcf3cf8c3}\label{fonctions_8h_a8d355bc42bc52216813fa42fcf3cf8c3} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+PLAYER\+\_\+X}~128
+\item 
+\Hypertarget{fonctions_8h_a878972786766b938e24a7b301dfeaedc}\label{fonctions_8h_a878972786766b938e24a7b301dfeaedc} 
+\#define {\bfseries DIM\+\_\+\+SPRITE\+\_\+\+PLAYER\+\_\+Y}~224
+\item 
+\Hypertarget{fonctions_8h_ac92ca5ab87034a348decad7ee8d4bd1b}\label{fonctions_8h_ac92ca5ab87034a348decad7ee8d4bd1b} 
+\#define {\bfseries FPS}~60
+\item 
+\Hypertarget{fonctions_8h_a0f922e5657f0a4ca19607f0e3028eac2}\label{fonctions_8h_a0f922e5657f0a4ca19607f0e3028eac2} 
+\#define {\bfseries DELAI}~1000 / FPS
+\item 
+\Hypertarget{fonctions_8h_ac5e36a1ced1bf622af2ea764204b5897}\label{fonctions_8h_ac5e36a1ced1bf622af2ea764204b5897} 
+\#define {\bfseries VITESSE\+\_\+\+JOUEUR\+\_\+X}~6
+\item 
+\Hypertarget{fonctions_8h_a4b96ce30055c92cb9e82cd47155ee530}\label{fonctions_8h_a4b96ce30055c92cb9e82cd47155ee530} 
+\#define {\bfseries VITESSE\+\_\+\+JOUEUR\+\_\+Y}~4
+\item 
+\Hypertarget{fonctions_8h_acd0f9b88c35112b35f67d3cde4b2365c}\label{fonctions_8h_acd0f9b88c35112b35f67d3cde4b2365c} 
+\#define {\bfseries HAUT}~0
+\item 
+\Hypertarget{fonctions_8h_abd7bcdd3b14eec4414469f88f2bd8f12}\label{fonctions_8h_abd7bcdd3b14eec4414469f88f2bd8f12} 
+\#define {\bfseries BAS}~1
+\item 
+\Hypertarget{fonctions_8h_af625d3f3bc022848a558f2b18def5b15}\label{fonctions_8h_af625d3f3bc022848a558f2b18def5b15} 
+\#define {\bfseries DROITE}~2
+\item 
+\Hypertarget{fonctions_8h_af07f8bf974fdf76afd17f2b97ac15a22}\label{fonctions_8h_af07f8bf974fdf76afd17f2b97ac15a22} 
+\#define {\bfseries GAUCHE}~3
+\item 
+\Hypertarget{fonctions_8h_a2f1324e1caf5dcfbec68bca170fb746e}\label{fonctions_8h_a2f1324e1caf5dcfbec68bca170fb746e} 
+\#define {\bfseries LARGEUR\+\_\+\+FOND}~NB\+\_\+\+TILE\+\_\+\+WIDTH\texorpdfstring{$\ast$}{*}TILE\+\_\+\+WIDTH
+\item 
+\Hypertarget{fonctions_8h_a90d0828cf20538d95574383a37cac3e0}\label{fonctions_8h_a90d0828cf20538d95574383a37cac3e0} 
+\#define {\bfseries HAUTEUR\+\_\+\+FOND}~NB\+\_\+\+TILE\+\_\+\+HEIGHT\texorpdfstring{$\ast$}{*}TILE\+\_\+\+HEIGHT
+\item 
+\Hypertarget{fonctions_8h_a48447a9f1224dfc39abebc6a6d920d36}\label{fonctions_8h_a48447a9f1224dfc39abebc6a6d920d36} 
+\#define {\bfseries CAMERA\+\_\+\+WIDTH}~1080
+\item 
+\Hypertarget{fonctions_8h_a6ffdd1d90debad0734331c202651c0bc}\label{fonctions_8h_a6ffdd1d90debad0734331c202651c0bc} 
+\#define {\bfseries CAMERA\+\_\+\+HEIGHT}~720
+\item 
+\Hypertarget{fonctions_8h_a34c109ff6a0293c4706defe141ef7e0c}\label{fonctions_8h_a34c109ff6a0293c4706defe141ef7e0c} 
+\#define {\bfseries JAUNE}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{255, 255, 0\})
+\item 
+\Hypertarget{fonctions_8h_a358a59dd21062085dd34d5c228c5f136}\label{fonctions_8h_a358a59dd21062085dd34d5c228c5f136} 
+\#define {\bfseries ROUGE}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{255, 0, 0\})
+\item 
+\Hypertarget{fonctions_8h_a22c2b7cb14b1ffb516a9ed4a164b5cda}\label{fonctions_8h_a22c2b7cb14b1ffb516a9ed4a164b5cda} 
+\#define {\bfseries VERT}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{0, 204, 0\})
+\item 
+\Hypertarget{fonctions_8h_addb94dd4bc07b85c726c37ea6b5295a8}\label{fonctions_8h_addb94dd4bc07b85c726c37ea6b5295a8} 
+\#define {\bfseries VERT\+\_\+\+FONCE}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{0, 51, 0\})
+\item 
+\Hypertarget{fonctions_8h_ae22837728df88da892b4bb16bb98296d}\label{fonctions_8h_ae22837728df88da892b4bb16bb98296d} 
+\#define {\bfseries BLEU}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{0, 102, 204\})
+\item 
+\Hypertarget{fonctions_8h_a1d7e84358294ed9873a654833b420cf7}\label{fonctions_8h_a1d7e84358294ed9873a654833b420cf7} 
+\#define {\bfseries BLEU\+\_\+\+FONCE}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{0, 25, 51\})
+\item 
+\Hypertarget{fonctions_8h_a8a711bd77f878f23e61dfd98fc505a1c}\label{fonctions_8h_a8a711bd77f878f23e61dfd98fc505a1c} 
+\#define {\bfseries NOIR}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{0, 0, 0\})
+\item 
+\Hypertarget{fonctions_8h_a4371941fa5aa27c04b3e2b973c39f4b0}\label{fonctions_8h_a4371941fa5aa27c04b3e2b973c39f4b0} 
+\#define {\bfseries BLANC}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{255, 255, 255\})
+\item 
+\Hypertarget{fonctions_8h_ac5b6e19bf06822021f35602c59658de3}\label{fonctions_8h_ac5b6e19bf06822021f35602c59658de3} 
+\#define {\bfseries ORANGE}~((\mbox{\hyperlink{structCouleur__t}{Couleur\+\_\+t}})\{255, 165, 0\})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fonctions_8h_a3243cbf17a24df002d54a92e9c6a2e2d}{init\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the camera. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fonctions_8h_a552dfde78010181ce3461638dd6ad4f3}{init\+Joueur}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Initializes the player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonctions_8h_a023375a71579eecbb69f87eac081d638}{initialisation}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}fenetre, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Initialise la SDL, la SDL\+\_\+ttf, la fenêtre et le rendu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_ae624aa0dc8f8ac669ee18d90c0bee2e8}{charger\+Textures}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Charge les textures nécessaires pour le jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonctions_8h_abac10a603815def79c4f1a4eb193095b}{fin}} (SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}fenetre, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}arial)
+\begin{DoxyCompactList}\small\item\em Libère les ressources de la SDL et ferme la fenêtre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a3ca63716af3b8a54610d5bd7a72d9b04}{actualisation\+Sprite}} (int nb\+\_\+sprite, int hauteur, int \texorpdfstring{$\ast$}{*}direction, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}src, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}dst, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Actualise le sprite du personnage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_ac61f52c77eacfbd0260a72ebed2900f2}{action}} (const Uint8 \texorpdfstring{$\ast$}{*}clavier, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}pers\+\_\+destination, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}colision, int \texorpdfstring{$\ast$}{*}direction)
+\begin{DoxyCompactList}\small\item\em Gère les actions du joueur. \end{DoxyCompactList}\item 
+\Hypertarget{fonctions_8h_a56dfb9fd6b11daafcd57f8847d9f81cd}\label{fonctions_8h_a56dfb9fd6b11daafcd57f8847d9f81cd} 
+void {\bfseries rendu\+Fond} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect)
+\item 
+void \mbox{\hyperlink{fonctions_8h_abb4cb2e7eff3e12a89bfa22d93c19da7}{update\+Camera}} (\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}pers\+\_\+destination, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect, int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}colision, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}, \mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} position)
+\begin{DoxyCompactList}\small\item\em Rendu du fond. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a28a36bc3b279d4a4a4091fe150003803}{initialiser\+\_\+position\+\_\+joueur}} (\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}position\+Joueur, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}pers\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Initialise la position du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonctions_8h_a9d687ac613c37f883043a4cba34a5427}{get\+Mouse\+Position\+Direction}} (\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}pers\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Obtient la direction de la position de la souris par rapport à la position du personnage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a9219dfe0d2e348b8169d7ff90a17f47b}{affichage\+Accueil\+Image}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}image du menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a9becdc08427bc30ccfd24d03c1818f6a}{affichage\+Game\+Over\+Image}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}image du menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a6e15309811616656782bf5292bcf12e5}{affichage\+Pause\+Image}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}image du menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a3c92c2263578fa8a5e009e5b0e0511f1}{affichage\+Difficulte\+Image}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}image du menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_abef32bb80779174ed7195cf6bc4d274a}{afficher\+Aim}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, int mx, int my)
+\begin{DoxyCompactList}\small\item\em Affiche un viseur à la place du curseur de la souris. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a259c8e55522662473d3f5f38fc9110e0}{init\+Fonctions}} (int tilemap\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}fenetre, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}rendu, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}camera\+Rect, \mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}position, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}colision, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}pers\+\_\+destination, Uint32 \texorpdfstring{$\ast$}{*}temps\+\_\+ancien, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}bar\+Texture\+Vie\+Max, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}bar\+Texture\+Vie, \mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}health\+Bar, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}bar\+Texture\+Mana\+Max, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}bar\+Texture\+Mana, \mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}mana\+Bar)
+\begin{DoxyCompactList}\small\item\em Initializes various game functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a54fd8d09863d0099063a0e21a984b772}{destruction\+Texture\+Barres}} (SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}texture,...)
+\begin{DoxyCompactList}\small\item\em Détruit une texture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonctions_8h_a9a71fd0e72d82e10964747a3285353cc}{destruction\+Police}} (TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}police,...)
+\begin{DoxyCompactList}\small\item\em Détruit une police. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Ce fichier contient les définitions des variables nécéssaires pour le jeu. 
+
+
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{fonctions_8h_ac61f52c77eacfbd0260a72ebed2900f2}\label{fonctions_8h_ac61f52c77eacfbd0260a72ebed2900f2} 
+\index{fonctions.h@{fonctions.h}!action@{action}}
+\index{action@{action}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{action()}{action()}}
+{\footnotesize\ttfamily void action (\begin{DoxyParamCaption}\item[{const Uint8 \texorpdfstring{$\ast$}{*}}]{clavier,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{pers\+\_\+destination,  }\item[{\mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{colision,  }\item[{int \texorpdfstring{$\ast$}{*}}]{direction }\end{DoxyParamCaption})}
+
+
+
+Gère les actions du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em clavier} & Les touches du clavier. \\
+\hline
+{\em pers\+\_\+destination} & Le rectangle définissant la position du personnage. \\
+\hline
+{\em colision} & Les collisions du personnage. \\
+\hline
+{\em direction} & La direction du personnage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a3ca63716af3b8a54610d5bd7a72d9b04}\label{fonctions_8h_a3ca63716af3b8a54610d5bd7a72d9b04} 
+\index{fonctions.h@{fonctions.h}!actualisationSprite@{actualisationSprite}}
+\index{actualisationSprite@{actualisationSprite}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{actualisationSprite()}{actualisationSprite()}}
+{\footnotesize\ttfamily void actualisation\+Sprite (\begin{DoxyParamCaption}\item[{int}]{nb\+\_\+sprite,  }\item[{int}]{frame,  }\item[{int \texorpdfstring{$\ast$}{*}}]{direction,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{src,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{dst,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Actualise le sprite du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+\_\+sprite} & Le nombre de sprites. \\
+\hline
+{\em frame} & Le numéro du sprite. \\
+\hline
+{\em direction} & La direction du personnage. \\
+\hline
+{\em src} & Le rectangle source du sprite. \\
+\hline
+{\em dst} & Le rectangle de destination du sprite. \\
+\hline
+{\em rendu} & Le rendu utilisé pour afficher le sprite. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a9219dfe0d2e348b8169d7ff90a17f47b}\label{fonctions_8h_a9219dfe0d2e348b8169d7ff90a17f47b} 
+\index{fonctions.h@{fonctions.h}!affichageAccueilImage@{affichageAccueilImage}}
+\index{affichageAccueilImage@{affichageAccueilImage}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{affichageAccueilImage()}{affichageAccueilImage()}}
+{\footnotesize\ttfamily void affichage\+Accueil\+Image (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}image du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour afficher l\textquotesingle{}image. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a3c92c2263578fa8a5e009e5b0e0511f1}\label{fonctions_8h_a3c92c2263578fa8a5e009e5b0e0511f1} 
+\index{fonctions.h@{fonctions.h}!affichageDifficulteImage@{affichageDifficulteImage}}
+\index{affichageDifficulteImage@{affichageDifficulteImage}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{affichageDifficulteImage()}{affichageDifficulteImage()}}
+{\footnotesize\ttfamily void affichage\+Difficulte\+Image (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}image du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour afficher l\textquotesingle{}image. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a9becdc08427bc30ccfd24d03c1818f6a}\label{fonctions_8h_a9becdc08427bc30ccfd24d03c1818f6a} 
+\index{fonctions.h@{fonctions.h}!affichageGameOverImage@{affichageGameOverImage}}
+\index{affichageGameOverImage@{affichageGameOverImage}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{affichageGameOverImage()}{affichageGameOverImage()}}
+{\footnotesize\ttfamily void affichage\+Game\+Over\+Image (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}image du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour afficher l\textquotesingle{}image. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a6e15309811616656782bf5292bcf12e5}\label{fonctions_8h_a6e15309811616656782bf5292bcf12e5} 
+\index{fonctions.h@{fonctions.h}!affichagePauseImage@{affichagePauseImage}}
+\index{affichagePauseImage@{affichagePauseImage}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{affichagePauseImage()}{affichagePauseImage()}}
+{\footnotesize\ttfamily void affichage\+Pause\+Image (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}image du menu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour afficher l\textquotesingle{}image. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_abef32bb80779174ed7195cf6bc4d274a}\label{fonctions_8h_abef32bb80779174ed7195cf6bc4d274a} 
+\index{fonctions.h@{fonctions.h}!afficherAim@{afficherAim}}
+\index{afficherAim@{afficherAim}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{afficherAim()}{afficherAim()}}
+{\footnotesize\ttfamily void afficher\+Aim (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{int}]{mx,  }\item[{int}]{my }\end{DoxyParamCaption})}
+
+
+
+Affiche un viseur à la place du curseur de la souris. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour créer les textures. \\
+\hline
+{\em mx} & Coordonnée x de la souris. \\
+\hline
+{\em my} & Coordonnée y de la souris. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_ae624aa0dc8f8ac669ee18d90c0bee2e8}\label{fonctions_8h_ae624aa0dc8f8ac669ee18d90c0bee2e8} 
+\index{fonctions.h@{fonctions.h}!chargerTextures@{chargerTextures}}
+\index{chargerTextures@{chargerTextures}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{chargerTextures()}{chargerTextures()}}
+{\footnotesize\ttfamily void charger\+Textures (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Charge les textures nécessaires pour le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Pointeur vers le rendu utilisé pour créer les textures. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a9a71fd0e72d82e10964747a3285353cc}\label{fonctions_8h_a9a71fd0e72d82e10964747a3285353cc} 
+\index{fonctions.h@{fonctions.h}!destructionPolice@{destructionPolice}}
+\index{destructionPolice@{destructionPolice}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{destructionPolice()}{destructionPolice()}}
+{\footnotesize\ttfamily void destruction\+Police (\begin{DoxyParamCaption}\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{police,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Détruit une police. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em police} & Pointeur vers la police à détruire. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a54fd8d09863d0099063a0e21a984b772}\label{fonctions_8h_a54fd8d09863d0099063a0e21a984b772} 
+\index{fonctions.h@{fonctions.h}!destructionTextureBarres@{destructionTextureBarres}}
+\index{destructionTextureBarres@{destructionTextureBarres}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{destructionTextureBarres()}{destructionTextureBarres()}}
+{\footnotesize\ttfamily void destruction\+Texture\+Barres (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Détruit une texture. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em texture} & Pointeur vers la texture à détruire. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_abac10a603815def79c4f1a4eb193095b}\label{fonctions_8h_abac10a603815def79c4f1a4eb193095b} 
+\index{fonctions.h@{fonctions.h}!fin@{fin}}
+\index{fin@{fin}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{fin()}{fin()}}
+{\footnotesize\ttfamily int fin (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}}]{fenetre,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{arial }\end{DoxyParamCaption})}
+
+
+
+Libère les ressources de la SDL et ferme la fenêtre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fenetre} & Pointeur vers la fenêtre à détruire. \\
+\hline
+{\em rendu} & Pointeur vers le rendu à détruire. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 
+\end{DoxyReturn}
+\Hypertarget{fonctions_8h_a9d687ac613c37f883043a4cba34a5427}\label{fonctions_8h_a9d687ac613c37f883043a4cba34a5427} 
+\index{fonctions.h@{fonctions.h}!getMousePositionDirection@{getMousePositionDirection}}
+\index{getMousePositionDirection@{getMousePositionDirection}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{getMousePositionDirection()}{getMousePositionDirection()}}
+{\footnotesize\ttfamily int get\+Mouse\+Position\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{pers\+\_\+destination }\end{DoxyParamCaption})}
+
+
+
+Obtient la direction de la position de la souris par rapport à la position du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pers\+\_\+destination} & Pointeur vers le rectangle définissant la position du personnage. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+GAUCHE si la souris est à gauche du personnage, DROITE sinon. 
+\end{DoxyReturn}
+\Hypertarget{fonctions_8h_a3243cbf17a24df002d54a92e9c6a2e2d}\label{fonctions_8h_a3243cbf17a24df002d54a92e9c6a2e2d} 
+\index{fonctions.h@{fonctions.h}!initCamera@{initCamera}}
+\index{initCamera@{initCamera}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{initCamera()}{initCamera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*} init\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the camera. 
+
+\begin{DoxyReturn}{Renvoie}
+A pointer to the initialized \doxylink{structSDL__Rect}{SDL\+\_\+\+Rect} representing the camera. 
+\end{DoxyReturn}
+\Hypertarget{fonctions_8h_a259c8e55522662473d3f5f38fc9110e0}\label{fonctions_8h_a259c8e55522662473d3f5f38fc9110e0} 
+\index{fonctions.h@{fonctions.h}!initFonctions@{initFonctions}}
+\index{initFonctions@{initFonctions}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{initFonctions()}{initFonctions()}}
+{\footnotesize\ttfamily void init\+Fonctions (\begin{DoxyParamCaption}\item[{int}]{tilemap\mbox{[}2\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]},  }\item[{int}]{tab\+Colision\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]},  }\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{fenetre,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{position,  }\item[{\mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{colision,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{pers\+\_\+destination,  }\item[{Uint32 \texorpdfstring{$\ast$}{*}}]{temps\+\_\+ancien,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{bar\+Texture\+Vie\+Max,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{bar\+Texture\+Vie,  }\item[{\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{health\+Bar,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{bar\+Texture\+Mana\+Max,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{bar\+Texture\+Mana,  }\item[{\mbox{\hyperlink{structbar__t}{bar\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mana\+Bar }\end{DoxyParamCaption})}
+
+
+
+Initializes various game functions. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tilemap} & The tilemap of the game. \\
+\hline
+{\em tab\+Colision} & The collision table. \\
+\hline
+{\em fenetre} & The game window. \\
+\hline
+{\em rendu} & The game renderer. \\
+\hline
+{\em camera\+Rect} & The camera rectangle. \\
+\hline
+{\em position} & The position of the player. \\
+\hline
+{\em colision} & The collision object. \\
+\hline
+{\em pers\+\_\+destination} & The destination of the player. \\
+\hline
+{\em temps\+\_\+ancien} & The old time. \\
+\hline
+{\em bar\+Texture\+Vie\+Max} & The texture for the maximum life bar. \\
+\hline
+{\em bar\+Texture\+Vie} & The texture for the life bar. \\
+\hline
+{\em health\+Bar} & The health bar. \\
+\hline
+{\em bar\+Texture\+Mana\+Max} & The texture for the maximum mana bar. \\
+\hline
+{\em bar\+Texture\+Mana} & The texture for the mana bar. \\
+\hline
+{\em mana\+Bar} & The mana bar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a023375a71579eecbb69f87eac081d638}\label{fonctions_8h_a023375a71579eecbb69f87eac081d638} 
+\index{fonctions.h@{fonctions.h}!initialisation@{initialisation}}
+\index{initialisation@{initialisation}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{initialisation()}{initialisation()}}
+{\footnotesize\ttfamily int initialisation (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{fenetre,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{rendu }\end{DoxyParamCaption})}
+
+
+
+Initialise la SDL, la SDL\+\_\+ttf, la fenêtre et le rendu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em fenetre} & Pointeur vers la fenêtre à initialiser. \\
+\hline
+{\em rendu} & Pointeur vers le rendu à initialiser. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si l\textquotesingle{}initialisation de la SDL ou la création de la fenêtre échoue, 1 sinon. 
+\end{DoxyReturn}
+\Hypertarget{fonctions_8h_a28a36bc3b279d4a4a4091fe150003803}\label{fonctions_8h_a28a36bc3b279d4a4a4091fe150003803} 
+\index{fonctions.h@{fonctions.h}!initialiser\_position\_joueur@{initialiser\_position\_joueur}}
+\index{initialiser\_position\_joueur@{initialiser\_position\_joueur}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{initialiser\_position\_joueur()}{initialiser\_position\_joueur()}}
+{\footnotesize\ttfamily void initialiser\+\_\+position\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{position\+Joueur,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{pers\+\_\+destination }\end{DoxyParamCaption})}
+
+
+
+Initialise la position du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position\+Joueur} & Pointeur vers la structure représentant la position du joueur. \\
+\hline
+{\em camera\+Rect} & Pointeur vers le rectangle définissant la position de la caméra. \\
+\hline
+{\em pers\+\_\+destination} & Pointeur vers le rectangle définissant la position du personnage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fonctions_8h_a552dfde78010181ce3461638dd6ad4f3}\label{fonctions_8h_a552dfde78010181ce3461638dd6ad4f3} 
+\index{fonctions.h@{fonctions.h}!initJoueur@{initJoueur}}
+\index{initJoueur@{initJoueur}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{initJoueur()}{initJoueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*} init\+Joueur (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Initializes the player. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & The x-\/coordinate of the player. \\
+\hline
+{\em y} & The y-\/coordinate of the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+A pointer to the initialized \doxylink{structSDL__Rect}{SDL\+\_\+\+Rect} representing the player. 
+\end{DoxyReturn}
+\Hypertarget{fonctions_8h_abb4cb2e7eff3e12a89bfa22d93c19da7}\label{fonctions_8h_abb4cb2e7eff3e12a89bfa22d93c19da7} 
+\index{fonctions.h@{fonctions.h}!updateCamera@{updateCamera}}
+\index{updateCamera@{updateCamera}!fonctions.h@{fonctions.h}}
+\doxysubsubsection{\texorpdfstring{updateCamera()}{updateCamera()}}
+{\footnotesize\ttfamily void update\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{pers\+\_\+destination,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{int}]{tab\mbox{[}2\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]},  }\item[{\mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{colision,  }\item[{int}]{tab\+Colisions\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]},  }\item[{\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Rendu du fond. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rendu} & Le rendu utilisé pour afficher le fond. \\
+\hline
+{\em camera\+Rect} & Le rectangle définissant la position de la caméra. \\
+\hline
+\end{DoxyParams}

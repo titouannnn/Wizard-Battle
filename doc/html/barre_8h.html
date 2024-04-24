@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier src/barre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier barre.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des barres de vie et de mana.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+</div>
+<p><a href="barre_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbar__t.html">bar_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant une barre quelconque.  <a href="structbar__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCouleur__t.html">Couleur_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa67f5290e4cf518cd55c95c8b644d5f2"><td class="memItemLeft" align="right" valign="top"><a id="aa67f5290e4cf518cd55c95c8b644d5f2" name="aa67f5290e4cf518cd55c95c8b644d5f2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAR_WIDTH</b>&#160;&#160;&#160;300</td></tr>
+<tr class="separator:aa67f5290e4cf518cd55c95c8b644d5f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6614c9d6fc4f2ec7e3a70230c05b3f7"><td class="memItemLeft" align="right" valign="top"><a id="af6614c9d6fc4f2ec7e3a70230c05b3f7" name="af6614c9d6fc4f2ec7e3a70230c05b3f7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAR_HEIGHT</b>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:af6614c9d6fc4f2ec7e3a70230c05b3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aca0533019a2bc085ee21131d2947b5a8"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barre_8h.html#aca0533019a2bc085ee21131d2947b5a8">creationTextureBar</a> (SDL_Renderer *rendu, <a class="el" href="structCouleur__t.html">Couleur_t</a> couleur)</td></tr>
+<tr class="memdesc:aca0533019a2bc085ee21131d2947b5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée une texture pour la barre de vie ou de mana.  <br /></td></tr>
+<tr class="separator:aca0533019a2bc085ee21131d2947b5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08618ec97bd3979c8c6f6fd48a70d124"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barre_8h.html#a08618ec97bd3979c8c6f6fd48a70d124">initBar</a> (<a class="el" href="structbar__t.html">bar_t</a> *bar, int x, int y, int maxWidth)</td></tr>
+<tr class="memdesc:a08618ec97bd3979c8c6f6fd48a70d124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la barre de vie ou de mana.  <br /></td></tr>
+<tr class="separator:a08618ec97bd3979c8c6f6fd48a70d124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf989a2b6385db1c273c4a6a2d556579"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="barre_8h.html#acf989a2b6385db1c273c4a6a2d556579">updateBar</a> (<a class="el" href="structbar__t.html">bar_t</a> *bar, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *barRect, int currentValue, int maxValue)</td></tr>
+<tr class="memdesc:acf989a2b6385db1c273c4a6a2d556579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la barre passée en paramètre.  <br /></td></tr>
+<tr class="separator:acf989a2b6385db1c273c4a6a2d556579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des barres de vie et de mana. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aca0533019a2bc085ee21131d2947b5a8" name="aca0533019a2bc085ee21131d2947b5a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca0533019a2bc085ee21131d2947b5a8">&#9670;&#160;</a></span>creationTextureBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Texture * creationTextureBar </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCouleur__t.html">Couleur_t</a>&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée une texture pour la barre de vie ou de mana. </p>
+<p>Cette fonction crée une texture pour la barre de vie ou de mana en fonction de la couleur passée en paramètre.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">couleur</td><td>La couleur de la barre.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La texture de la barre de vie ou de mana. </dd></dl>
+
+</div>
+</div>
+<a id="a08618ec97bd3979c8c6f6fd48a70d124" name="a08618ec97bd3979c8c6f6fd48a70d124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08618ec97bd3979c8c6f6fd48a70d124">&#9670;&#160;</a></span>initBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initBar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbar__t.html">bar_t</a> *&#160;</td>
+          <td class="paramname"><em>bar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxWidth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la barre de vie ou de mana. </p>
+<p>Cette fonction initialise la barre de vie ou de mana en fonction des paramètres passés.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bar</td><td>La barre de vie ou de mana à initialiser. </td></tr>
+    <tr><td class="paramname">x</td><td>La position en x de la barre. </td></tr>
+    <tr><td class="paramname">y</td><td>La position en y de la barre. </td></tr>
+    <tr><td class="paramname">maxWidth</td><td>La largeur maximale de la barre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acf989a2b6385db1c273c4a6a2d556579" name="acf989a2b6385db1c273c4a6a2d556579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf989a2b6385db1c273c4a6a2d556579">&#9670;&#160;</a></span>updateBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateBar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structbar__t.html">bar_t</a> *&#160;</td>
+          <td class="paramname"><em>bar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>barRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>currentValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour la barre passée en paramètre. </p>
+<p>Cette fonction met à jour la barre de vie ou de mana en fonction des paramètres passés.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bar</td><td>La barre de vie ou de mana à mettre à jour. </td></tr>
+    <tr><td class="paramname">barRect</td><td>Le rectangle de la barre de vie ou de mana. </td></tr>
+    <tr><td class="paramname">currentValue</td><td>La valeur actuelle de la barre. </td></tr>
+    <tr><td class="paramname">maxValue</td><td>La valeur maximale de la barre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier src/projectile.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier projectile.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des projectiles.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="fonctions_8h_source.html">fonctions.h</a>&quot;</code><br />
+<code>#include &quot;carte.h&quot;</code><br />
+</div>
+<p><a href="projectile_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprojectiles__s.html">projectiles_s</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure représentant un projectile.  <a href="structprojectiles__s.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a4e40965ac717bac779f38d17f668a165"><td class="memItemLeft" align="right" valign="top"><a id="a4e40965ac717bac779f38d17f668a165" name="a4e40965ac717bac779f38d17f668a165"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROJ_ENNEMI</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a4e40965ac717bac779f38d17f668a165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175d1be837142d6db4d2e6a6e4a2a012"><td class="memItemLeft" align="right" valign="top"><a id="a175d1be837142d6db4d2e6a6e4a2a012" name="a175d1be837142d6db4d2e6a6e4a2a012"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PROJ_JOUEUR</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a175d1be837142d6db4d2e6a6e4a2a012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e22deb2a5c0899c3e5602ad1e90682"><td class="memItemLeft" align="right" valign="top"><a id="a43e22deb2a5c0899c3e5602ad1e90682" name="a43e22deb2a5c0899c3e5602ad1e90682"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_PROJ</b>&#160;&#160;&#160;512</td></tr>
+<tr class="separator:a43e22deb2a5c0899c3e5602ad1e90682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71449b1cc6e6250b91f539153a7a0d3"><td class="memItemLeft" align="right" valign="top"><a id="ae71449b1cc6e6250b91f539153a7a0d3" name="ae71449b1cc6e6250b91f539153a7a0d3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>M_PI</b>&#160;&#160;&#160;3.14159265358979323846</td></tr>
+<tr class="separator:ae71449b1cc6e6250b91f539153a7a0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a868321e41ca64424c9e0e5042211e"><td class="memItemLeft" align="right" valign="top"><a id="a64a868321e41ca64424c9e0e5042211e" name="a64a868321e41ca64424c9e0e5042211e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_LANCER_X</b>&#160;&#160;&#160;48</td></tr>
+<tr class="separator:a64a868321e41ca64424c9e0e5042211e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9a93fddcf587f64c8c4323877d16ac"><td class="memItemLeft" align="right" valign="top"><a id="a8c9a93fddcf587f64c8c4323877d16ac" name="a8c9a93fddcf587f64c8c4323877d16ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_LANCER_Y</b>&#160;&#160;&#160;48</td></tr>
+<tr class="separator:a8c9a93fddcf587f64c8c4323877d16ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6413f83deb4708d82ad711ac8f3a194e"><td class="memItemLeft" align="right" valign="top"><a id="a6413f83deb4708d82ad711ac8f3a194e" name="a6413f83deb4708d82ad711ac8f3a194e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_IMPACT_X</b>&#160;&#160;&#160;48</td></tr>
+<tr class="separator:a6413f83deb4708d82ad711ac8f3a194e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae004f28e3f22affa460be42e9aa8a52c"><td class="memItemLeft" align="right" valign="top"><a id="ae004f28e3f22affa460be42e9aa8a52c" name="ae004f28e3f22affa460be42e9aa8a52c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DIM_SPRITE_IMPACT_Y</b>&#160;&#160;&#160;48</td></tr>
+<tr class="separator:ae004f28e3f22affa460be42e9aa8a52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a0210b18bd499d29284537e9c525fcc19"><td class="memItemLeft" align="right" valign="top"><a id="a0210b18bd499d29284537e9c525fcc19" name="a0210b18bd499d29284537e9c525fcc19"></a>
+typedef struct <a class="el" href="structprojectiles__s.html">projectiles_s</a>&#160;</td><td class="memItemRight" valign="bottom"><b>projectiles_t</b></td></tr>
+<tr class="separator:a0210b18bd499d29284537e9c525fcc19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a98371cea84422e898a02f397fd637603"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a98371cea84422e898a02f397fd637603">initTabProj</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> proj[MAX_PROJ])</td></tr>
+<tr class="memdesc:a98371cea84422e898a02f397fd637603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la structure de projectile.  <br /></td></tr>
+<tr class="separator:a98371cea84422e898a02f397fd637603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a378bd032509f1148447a3678d9b58c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a378bd032509f1148447a3678d9b58c58">chargerTexturesProj</a> (SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a378bd032509f1148447a3678d9b58c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les texture du projectile.  <br /></td></tr>
+<tr class="separator:a378bd032509f1148447a3678d9b58c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05badaaf5416273e10aa4c6f53b58c33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a05badaaf5416273e10aa4c6f53b58c33">projectile_creer</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile)</td></tr>
+<tr class="memdesc:a05badaaf5416273e10aa4c6f53b58c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la structure de projectile.  <br /></td></tr>
+<tr class="separator:a05badaaf5416273e10aa4c6f53b58c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27ead4dae5f210168e1d3aa9fe56a3b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a27ead4dae5f210168e1d3aa9fe56a3b2">initProj</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile, float px, float py, float mx, float my, int id, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect)</td></tr>
+<tr class="memdesc:a27ead4dae5f210168e1d3aa9fe56a3b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un projectile.  <br /></td></tr>
+<tr class="separator:a27ead4dae5f210168e1d3aa9fe56a3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac343521e2a9bbcf9befd46c23f26b314"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#ac343521e2a9bbcf9befd46c23f26b314">verifCollisionProj</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT])</td></tr>
+<tr class="memdesc:ac343521e2a9bbcf9befd46c23f26b314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie la collision du projectile.  <br /></td></tr>
+<tr class="separator:ac343521e2a9bbcf9befd46c23f26b314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c11a69caaa22715d64b39740550eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a96c11a69caaa22715d64b39740550eac">updateProj</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *cameraRect, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT])</td></tr>
+<tr class="memdesc:a96c11a69caaa22715d64b39740550eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise le projectile.  <br /></td></tr>
+<tr class="separator:a96c11a69caaa22715d64b39740550eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b67b5da3805945a6236ce2ff47d4a71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a1b67b5da3805945a6236ce2ff47d4a71">actualisationSpriteProj</a> (<a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile, int nb_sprite, int frame, int largeur, int hauteur, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *src, <a class="el" href="structSDL__Rect.html">SDL_Rect</a> *dst, SDL_Renderer *rendu)</td></tr>
+<tr class="memdesc:a1b67b5da3805945a6236ce2ff47d4a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise le sprite du projectile.  <br /></td></tr>
+<tr class="separator:a1b67b5da3805945a6236ce2ff47d4a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abdc5cb36020a95c4b87f8638ad8822"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="projectile_8h.html#a1abdc5cb36020a95c4b87f8638ad8822">renderProj</a> (SDL_Renderer *rendu, <a class="el" href="structprojectiles__s.html">projectiles_t</a> *projectile, int frame)</td></tr>
+<tr class="memdesc:a1abdc5cb36020a95c4b87f8638ad8822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le projectile.  <br /></td></tr>
+<tr class="separator:a1abdc5cb36020a95c4b87f8638ad8822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des projectiles. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a1b67b5da3805945a6236ce2ff47d4a71" name="a1b67b5da3805945a6236ce2ff47d4a71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b67b5da3805945a6236ce2ff47d4a71">&#9670;&#160;</a></span>actualisationSpriteProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actualisationSpriteProj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>largeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hauteur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise le sprite du projectile. </p>
+<p>Cette fonction actualise le sprite du projectile en fonction de son état.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+    <tr><td class="paramname">nb_sprite</td><td>Nombre de sprites. </td></tr>
+    <tr><td class="paramname">frame</td><td>Frame actuelle. </td></tr>
+    <tr><td class="paramname">largeur</td><td>Largeur du sprite. </td></tr>
+    <tr><td class="paramname">hauteur</td><td>Hauteur du sprite. </td></tr>
+    <tr><td class="paramname">src</td><td>Rectangle source. </td></tr>
+    <tr><td class="paramname">dst</td><td>Rectangle destination. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a378bd032509f1148447a3678d9b58c58" name="a378bd032509f1148447a3678d9b58c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a378bd032509f1148447a3678d9b58c58">&#9670;&#160;</a></span>chargerTexturesProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargerTexturesProj </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les texture du projectile. </p>
+<p>Cette fonction initialise les textures des projectiles.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27ead4dae5f210168e1d3aa9fe56a3b2" name="a27ead4dae5f210168e1d3aa9fe56a3b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ead4dae5f210168e1d3aa9fe56a3b2">&#9670;&#160;</a></span>initProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initProj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>px</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>py</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>my</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>cameraRect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un projectile. </p>
+<p>Cette fonction initialise un projectile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+    <tr><td class="paramname">px</td><td>Coordonnée x du point de départ. </td></tr>
+    <tr><td class="paramname">py</td><td>Coordonnée y du point de départ. </td></tr>
+    <tr><td class="paramname">mx</td><td>Coordonnée x de la destination. </td></tr>
+    <tr><td class="paramname">my</td><td>Coordonnée y de la destination. </td></tr>
+    <tr><td class="paramname">id</td><td>Identifiant du projectile (JOUEUR ou ENNEMI). </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>Rectangle de la caméra. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a98371cea84422e898a02f397fd637603" name="a98371cea84422e898a02f397fd637603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98371cea84422e898a02f397fd637603">&#9670;&#160;</a></span>initTabProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initTabProj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a>&#160;</td>
+          <td class="paramname"><em>proj</em>[MAX_PROJ]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la structure de projectile. </p>
+<p>Cette fonction initialise le tableau de projectiles.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proj</td><td>Tableau de projectiles. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05badaaf5416273e10aa4c6f53b58c33" name="a05badaaf5416273e10aa4c6f53b58c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05badaaf5416273e10aa4c6f53b58c33">&#9670;&#160;</a></span>projectile_creer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void projectile_creer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la structure de projectile. </p>
+<p>Cette fonction initialise les fonctions associées au projectile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1abdc5cb36020a95c4b87f8638ad8822" name="a1abdc5cb36020a95c4b87f8638ad8822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1abdc5cb36020a95c4b87f8638ad8822">&#9670;&#160;</a></span>renderProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renderProj </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le projectile. </p>
+<p>Cette fonction affiche le projectile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+    <tr><td class="paramname">frame</td><td>Frame actuelle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96c11a69caaa22715d64b39740550eac" name="a96c11a69caaa22715d64b39740550eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c11a69caaa22715d64b39740550eac">&#9670;&#160;</a></span>updateProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateProj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structSDL__Rect.html">SDL_Rect</a> *&#160;</td>
+          <td class="paramname"><em>cameraRect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabTilesColision</em>[NB_TILE_WIDTH][NB_TILE_HEIGHT]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise le projectile. </p>
+<p>Cette fonction actualise le projectile.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+    <tr><td class="paramname">cameraRect</td><td>Rectangle de la caméra. </td></tr>
+    <tr><td class="paramname">tabTilesColision</td><td>Tableau des collisions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac343521e2a9bbcf9befd46c23f26b314" name="ac343521e2a9bbcf9befd46c23f26b314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac343521e2a9bbcf9befd46c23f26b314">&#9670;&#160;</a></span>verifCollisionProj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void verifCollisionProj </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprojectiles__s.html">projectiles_t</a> *&#160;</td>
+          <td class="paramname"><em>projectile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabTilesColision</em>[NB_TILE_WIDTH][NB_TILE_HEIGHT]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie la collision du projectile. </p>
+<p>Cette fonction vérifie si le projectile est en collision avec un mur.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectile</td><td>Pointeur vers la structure de projectile. </td></tr>
+    <tr><td class="paramname">tabTilesColision</td><td>Tableau des collisions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

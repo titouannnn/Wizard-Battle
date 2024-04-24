@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Wizard Battle: Référence du fichier src/vague.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier vague.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion du système de vague.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="vague_8h_source.html">vague.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8c5062209dba52a17e70906ead951d97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#a8c5062209dba52a17e70906ead951d97">nextVague</a> (int *vague, int *nb_ennemis, int *nb_kill, int *ennemis_initialises)</td></tr>
+<tr class="memdesc:a8c5062209dba52a17e70906ead951d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour passer à la vague suivante.  <br /></td></tr>
+<tr class="separator:a8c5062209dba52a17e70906ead951d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40195142f7b407d57c810796f74b760e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#a40195142f7b407d57c810796f74b760e">afficherVague</a> (SDL_Renderer *rendu, TTF_Font *font, int vague, int duree_vague)</td></tr>
+<tr class="memdesc:a40195142f7b407d57c810796f74b760e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher la vague actuelle à l'écran.  <br /></td></tr>
+<tr class="separator:a40195142f7b407d57c810796f74b760e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0865b40542e34a04d3ed88dbbe999176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#a0865b40542e34a04d3ed88dbbe999176">afficherNbKill</a> (SDL_Renderer *rendu, TTF_Font *font, int nbKill, int nbEnnemis)</td></tr>
+<tr class="memdesc:a0865b40542e34a04d3ed88dbbe999176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher le nombre d'ennemis tués à l'écran.  <br /></td></tr>
+<tr class="separator:a0865b40542e34a04d3ed88dbbe999176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab7108c45a83cf7ec062016e452abd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#a0ab7108c45a83cf7ec062016e452abd5">afficherTemps</a> (SDL_Renderer *rendu, TTF_Font *font, int temps)</td></tr>
+<tr class="memdesc:a0ab7108c45a83cf7ec062016e452abd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher le temps écoulé à l'écran.  <br /></td></tr>
+<tr class="separator:a0ab7108c45a83cf7ec062016e452abd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e16068586f832ae13687440a95ef6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#a34e16068586f832ae13687440a95ef6f">renitialiserStats</a> (int *joueurPv, int *joueurMana, int *joueurX, int *joueurY, int *vague, int *ennemis_initialises, int *nb_ennemis, int *nb_kill, int *projNbJoueur, int *projNbEnnemi, int *frame, int *delta_temps, float *coefDifficulte, Uint32 *gain_mana, int *duree_parti)</td></tr>
+<tr class="memdesc:a34e16068586f832ae13687440a95ef6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour renitialiser les stats du joueur et de la partie.  <br /></td></tr>
+<tr class="separator:a34e16068586f832ae13687440a95ef6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecff7291e4136388c672c2cb04ad2fe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#aecff7291e4136388c672c2cb04ad2fe6">gameOver</a> (int *joueurPv, int *menu, int *duree_partie)</td></tr>
+<tr class="memdesc:aecff7291e4136388c672c2cb04ad2fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour gérer la fin de la partie.  <br /></td></tr>
+<tr class="separator:aecff7291e4136388c672c2cb04ad2fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa2449ed5270a9bc30c8c775db05290"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vague_8c.html#aefa2449ed5270a9bc30c8c775db05290">calculTemps</a> (Uint32 *temps_actuel, int *delta_temps, Uint32 *temps_ancien, Uint32 *gain_mana, int *joueurMana, int *joueurManaMax, int *frame)</td></tr>
+<tr class="memdesc:aefa2449ed5270a9bc30c8c775db05290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour calculer le temps écoulé et le gain de mana.  <br /></td></tr>
+<tr class="separator:aefa2449ed5270a9bc30c8c775db05290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion du système de vague. </p>
+<p>Ce fichier contient les fonctions pour gérer le système de vague. </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a0865b40542e34a04d3ed88dbbe999176" name="a0865b40542e34a04d3ed88dbbe999176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0865b40542e34a04d3ed88dbbe999176">&#9670;&#160;</a></span>afficherNbKill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherNbKill </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbKill</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbEnnemis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher le nombre d'ennemis tués à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur sur le rendu. </td></tr>
+    <tr><td class="paramname">font</td><td>Pointeur sur la police d'écriture. </td></tr>
+    <tr><td class="paramname">nbKill</td><td>Nombre d'ennemis tués. </td></tr>
+    <tr><td class="paramname">nbEnnemis</td><td>Nombre d'ennemis à tuer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ab7108c45a83cf7ec062016e452abd5" name="a0ab7108c45a83cf7ec062016e452abd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab7108c45a83cf7ec062016e452abd5">&#9670;&#160;</a></span>afficherTemps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherTemps </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>temps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher le temps écoulé à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur sur le rendu. </td></tr>
+    <tr><td class="paramname">font</td><td>Pointeur sur la police d'écriture. </td></tr>
+    <tr><td class="paramname">temps</td><td>Temps écoulé. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a40195142f7b407d57c810796f74b760e" name="a40195142f7b407d57c810796f74b760e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40195142f7b407d57c810796f74b760e">&#9670;&#160;</a></span>afficherVague()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherVague </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vague</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duree_vague</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher la vague actuelle à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rendu</td><td>Pointeur sur le rendu. </td></tr>
+    <tr><td class="paramname">font</td><td>Pointeur sur la police d'écriture. </td></tr>
+    <tr><td class="paramname">vague</td><td>Numéro de la vague actuelle. </td></tr>
+    <tr><td class="paramname">duree_vague</td><td>Durée de la vague actuelle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aefa2449ed5270a9bc30c8c775db05290" name="aefa2449ed5270a9bc30c8c775db05290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefa2449ed5270a9bc30c8c775db05290">&#9670;&#160;</a></span>calculTemps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void calculTemps </td>
+          <td>(</td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>temps_actuel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>delta_temps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>temps_ancien</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>gain_mana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurMana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurManaMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>frame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour calculer le temps écoulé et le gain de mana. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps_actuel</td><td>Pointeur sur le temps actuel. </td></tr>
+    <tr><td class="paramname">delta_temps</td><td>Pointeur sur le temps écoulé entre les images du sprite. </td></tr>
+    <tr><td class="paramname">temps_ancien</td><td>Pointeur sur le temps précédent. </td></tr>
+    <tr><td class="paramname">gain_mana</td><td>Pointeur sur le moment où le joueur gagne du mana. </td></tr>
+    <tr><td class="paramname">joueurMana</td><td>Pointeur sur le mana du joueur. </td></tr>
+    <tr><td class="paramname">joueurManaMax</td><td>Pointeur sur le mana maximum du joueur. </td></tr>
+    <tr><td class="paramname">frame</td><td>Pointeur sur le numéro de l'image du sprite. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aecff7291e4136388c672c2cb04ad2fe6" name="aecff7291e4136388c672c2cb04ad2fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecff7291e4136388c672c2cb04ad2fe6">&#9670;&#160;</a></span>gameOver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gameOver </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurPv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>menu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>duree_partie</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour gérer la fin de la partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueurPv</td><td>Pointeur sur les points de vie du joueur. </td></tr>
+    <tr><td class="paramname">menu</td><td>Pointeur sur le menu actuel. </td></tr>
+    <tr><td class="paramname">duree_partie</td><td>Pointeur sur la durée de la partie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8c5062209dba52a17e70906ead951d97" name="a8c5062209dba52a17e70906ead951d97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c5062209dba52a17e70906ead951d97">&#9670;&#160;</a></span>nextVague()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nextVague </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>vague</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_ennemis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_kill</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ennemis_initialises</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour passer à la vague suivante. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vague</td><td>Pointeur sur le numéro de la vague actuelle. </td></tr>
+    <tr><td class="paramname">nb_ennemis</td><td>Pointeur sur le nombre d'ennemis à initialiser. </td></tr>
+    <tr><td class="paramname">nb_kill</td><td>Pointeur sur le nombre d'ennemis tués. </td></tr>
+    <tr><td class="paramname">ennemis_initialises</td><td>Pointeur sur le nombre d'ennemis initialisés. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a34e16068586f832ae13687440a95ef6f" name="a34e16068586f832ae13687440a95ef6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e16068586f832ae13687440a95ef6f">&#9670;&#160;</a></span>renitialiserStats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renitialiserStats </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurPv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurMana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>joueurY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>vague</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ennemis_initialises</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_ennemis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_kill</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>projNbJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>projNbEnnemi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>delta_temps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>coefDifficulte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32 *&#160;</td>
+          <td class="paramname"><em>gain_mana</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>duree_parti</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour renitialiser les stats du joueur et de la partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueurPv</td><td>Pointeur sur les points de vie du joueur. </td></tr>
+    <tr><td class="paramname">joueurMana</td><td>Pointeur sur le mana du joueur. </td></tr>
+    <tr><td class="paramname">joueurX</td><td>Pointeur sur la position en x du joueur. </td></tr>
+    <tr><td class="paramname">joueurY</td><td>Pointeur sur la position en y du joueur. </td></tr>
+    <tr><td class="paramname">vague</td><td>Pointeur sur le numéro de la vague actuelle. </td></tr>
+    <tr><td class="paramname">ennemis_initialises</td><td>Pointeur sur le nombre d'ennemis initialisés. </td></tr>
+    <tr><td class="paramname">nb_ennemis</td><td>Pointeur sur le nombre d'ennemis à initialiser. </td></tr>
+    <tr><td class="paramname">nb_kill</td><td>Pointeur sur le nombre d'ennemis tués. </td></tr>
+    <tr><td class="paramname">projNbJoueur</td><td>Pointeur sur le nombre de projectiles du joueur. </td></tr>
+    <tr><td class="paramname">projNbEnnemi</td><td>Pointeur sur le nombre de projectiles des ennemis. </td></tr>
+    <tr><td class="paramname">frame</td><td>Pointeur sur le numéro de l'image du sprite. </td></tr>
+    <tr><td class="paramname">delta_temps</td><td>Pointeur sur le temps écoulé entre les images du sprite. </td></tr>
+    <tr><td class="paramname">coefDifficulte</td><td>Pointeur sur le coefficient de difficulté. </td></tr>
+    <tr><td class="paramname">gain_mana</td><td>Pointeur sur le moment où le joueur gagne du mana. </td></tr>
+    <tr><td class="paramname">duree_parti</td><td>Pointeur sur la durée de la partie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

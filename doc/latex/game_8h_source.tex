@@ -1,57 +1,61 @@
 \doxysection{game.\+h}
-\hypertarget{game_8h_source}{}\label{game_8h_source}
+\hypertarget{game_8h_source}{}\label{game_8h_source}\mbox{\hyperlink{game_8h}{Aller à la documentation de ce fichier.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <time.h>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}src/projectile.h"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}src/entite.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}src/fonctions.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}src/carte.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}src/menu.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}src/barre.h"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}src/vague.h"{}}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ SDL\_Renderer\ *rendu;}
-\DoxyCodeLine{00016\ SDL\_Window\ *fenetre;}
-\DoxyCodeLine{00017\ SDL\_Rect\ pers\_source,\ pers\_destination;}
-\DoxyCodeLine{00018\ SDL\_Rect\ *\ cameraRect;}
-\DoxyCodeLine{00019\ positionJoueur\_t\ position;}
-\DoxyCodeLine{00020\ colision\_t\ *colision;}
-\DoxyCodeLine{00021\ joueur\_t\ joueur;}
-\DoxyCodeLine{00022\ ennemi\_t\ ennemi[NB\_ENNEMI];}
-\DoxyCodeLine{00023\ projectiles\_t\ projJoueur[MAX\_PROJ];}
-\DoxyCodeLine{00024\ projectiles\_t\ projEnnemi[MAX\_PROJ];}
-\DoxyCodeLine{00025\ SDL\_Event\ event;}
-\DoxyCodeLine{00026\ Uint32\ temps\_ancien;}
-\DoxyCodeLine{00027\ Uint32\ temps\_actuel;}
-\DoxyCodeLine{00028\ Uint32\ gain\_mana;}
-\DoxyCodeLine{00029\ SDL\_Texture\ *barTextureVie\ ;}
-\DoxyCodeLine{00030\ SDL\_Texture\ *barTextureVieMax\ ;}
-\DoxyCodeLine{00031\ bar\_t\ healthBar;}
-\DoxyCodeLine{00032\ SDL\_Texture\ *barTextureMana\ ;}
-\DoxyCodeLine{00033\ SDL\_Texture\ *barTextureManaMax\ ;}
-\DoxyCodeLine{00034\ bar\_t\ manaBar;}
-\DoxyCodeLine{00035\ Button\ jouerButton,\ difficulteButton,\ facileButton,\ normalButton,\ difficileButton,\ accueilButton,\ gameoverButton,\ retryButton;}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ SDL\_Texture*\ messageScore;}
-\DoxyCodeLine{00040\ \textcolor{keywordtype}{int}\ vague;}
-\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ nb\_ennemis;}
-\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ nb\_kill;}
-\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ ennemis\_initialises;}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{projectile_8h}{src/projectile.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entite_8h}{src/entite.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fonctions_8h}{src/fonctions.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}src/carte.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{src/menu.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{barre_8h}{src/barre.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vague_8h}{src/vague.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ SDL\_Renderer\ *rendu;}
+\DoxyCodeLine{00023\ SDL\_Window\ *fenetre;}
+\DoxyCodeLine{00024\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ pers\_source,\ pers\_destination;}
+\DoxyCodeLine{00025\ \mbox{\hyperlink{structSDL__Rect}{SDL\_Rect}}\ *\ cameraRect;}
+\DoxyCodeLine{00026\ \mbox{\hyperlink{structpositionJoueur__t}{positionJoueur\_t}}\ position;}
+\DoxyCodeLine{00027\ \mbox{\hyperlink{structcolision__t}{colision\_t}}\ *colision;}
+\DoxyCodeLine{00028\ \mbox{\hyperlink{structjoueur__s}{joueur\_t}}\ joueur;}
+\DoxyCodeLine{00029\ \mbox{\hyperlink{structennemi__s}{ennemi\_t}}\ ennemi[NB\_ENNEMI];}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projJoueur[MAX\_PROJ];}
+\DoxyCodeLine{00031\ \mbox{\hyperlink{structprojectiles__s}{projectiles\_t}}\ projEnnemi[MAX\_PROJ];}
+\DoxyCodeLine{00032\ SDL\_Event\ event;}
+\DoxyCodeLine{00033\ Uint32\ temps\_ancien;}
+\DoxyCodeLine{00034\ Uint32\ temps\_actuel;}
+\DoxyCodeLine{00035\ Uint32\ gain\_mana;}
+\DoxyCodeLine{00036\ SDL\_Texture\ *barTextureVie\ ;}
+\DoxyCodeLine{00037\ SDL\_Texture\ *barTextureVieMax\ ;}
+\DoxyCodeLine{00038\ \mbox{\hyperlink{structbar__t}{bar\_t}}\ healthBar;}
+\DoxyCodeLine{00039\ SDL\_Texture\ *barTextureMana\ ;}
+\DoxyCodeLine{00040\ SDL\_Texture\ *barTextureManaMax\ ;}
+\DoxyCodeLine{00041\ \mbox{\hyperlink{structbar__t}{bar\_t}}\ manaBar;}
+\DoxyCodeLine{00042\ \mbox{\hyperlink{structButton}{Button}}\ jouerButton,\ difficulteButton,\ facileButton,\ normalButton,\ difficileButton,\ accueilButton,\ retryButton,\ reprendreButton;}
+\DoxyCodeLine{00043\ }
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \textcolor{keywordtype}{int}\ projNbEnnemi;\ }
-\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ projNbJoueur;}
-\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ isRunning;\ }
-\DoxyCodeLine{00048\ \textcolor{keywordtype}{int}\ frame;\ }
-\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ delta\_temps;}
-\DoxyCodeLine{00050\ \textcolor{keywordtype}{int}\ duree\_vague;}
-\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ duree\_partie;}
-\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00045\ TTF\_Font\ *arial;}
+\DoxyCodeLine{00046\ SDL\_Texture*\ messageScore;}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ vague;}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{int}\ nb\_ennemis;}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ nb\_kill;}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{int}\ ennemis\_initialises;}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ mx,\ my;}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{char}\ texte[52];}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{int}\ projNbEnnemi;\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{int}\ projNbJoueur;}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{int}\ isRunning;\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{int}\ frame;\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{int}\ delta\_temps;}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ duree\_vague;}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{int}\ duree\_partie;}
+\DoxyCodeLine{00061\ }
 
 \end{DoxyCode}

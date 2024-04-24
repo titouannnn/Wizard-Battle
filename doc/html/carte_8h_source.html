@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RogueLike:  Fichier source de src/carte.h</title>
+<title>Wizard Battle:  Fichier source de src/carte.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RogueLike
+   <div id="projectname">Wizard Battle<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -80,7 +80,7 @@ $(function() {
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CARTE_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SDL2/SDL_image.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;fonctions.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="fonctions_8h.html">fonctions.h</a>&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TILE_WIDTH 160</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define TILE_HEIGHT 160</span></div>
@@ -90,57 +90,64 @@ $(function() {
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define TILE_VERTE 0</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structtile__t.html">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">int</span> num;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    SDL_Texture *tex;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    SDL_Rect tile;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}<a class="code hl_struct" href="structtile__t.html">tile_t</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">/*Représentation de la position du joueur*/</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structcase__t.html">   23</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">int</span> casx;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> casy;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <a class="code hl_struct" href="structcase__t.html">case_t</a>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html">   29</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> case_hg;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> case_hd;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> case_bg;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> case_bd;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structcolision__t.html">   37</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span> haut;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">int</span> bas;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> gauche;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">int</span> droite;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> *position;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}<a class="code hl_struct" href="structcolision__t.html">colision_t</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> * initPositionJoueur();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><a class="code hl_struct" href="structcolision__t.html">colision_t</a> * initColision();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">void</span> chargerCarte(<span class="keywordtype">char</span> * fichier, <span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> nb);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">int</span> afficherCarte(<span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SDL_Renderer * rendu,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SDL_Rect * camera,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_struct" href="structcolision__t.html">colision_t</a> *colision,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SDL_Texture *tilemap, </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> nb);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> chargerColisions(<span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> nb);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> colisions(<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position, <a class="code hl_struct" href="structcolision__t.html">colision_t</a> * colision, <span class="keywordtype">int</span> tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordtype">int</span> peutDash(<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position,<span class="keywordtype">int</span> tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> direction);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructcase__t_html"><div class="ttname"><a href="structcase__t.html">case_t</a></div><div class="ttdef"><b>Definition</b> carte.h:23</div></div>
-<div class="ttc" id="astructcolision__t_html"><div class="ttname"><a href="structcolision__t.html">colision_t</a></div><div class="ttdef"><b>Definition</b> carte.h:37</div></div>
-<div class="ttc" id="astructpositionJoueur__t_html"><div class="ttname"><a href="structpositionJoueur__t.html">positionJoueur_t</a></div><div class="ttdef"><b>Definition</b> carte.h:29</div></div>
-<div class="ttc" id="astructtile__t_html"><div class="ttname"><a href="structtile__t.html">tile_t</a></div><div class="ttdef"><b>Definition</b> carte.h:15</div></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/*Représentation de la position du joueur*/</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structcase__t.html">   26</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structcase__t.html#afdb94066e264386bad29dea528de3c07">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcase__t.html#afdb94066e264386bad29dea528de3c07">casx</a>; </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structcase__t.html#af27bc56b5d560d1855c57ccc31611381">   28</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcase__t.html#af27bc56b5d560d1855c57ccc31611381">casy</a>; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>} <a class="code hl_struct" href="structcase__t.html">case_t</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html">   37</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html#a14e0b2504dc81328b4bf293ff34c0d12">   38</a></span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> <a class="code hl_variable" href="structpositionJoueur__t.html#a14e0b2504dc81328b4bf293ff34c0d12">case_hg</a>; </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html#a043b093b9de222cb2f57b551511868b7">   39</a></span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> <a class="code hl_variable" href="structpositionJoueur__t.html#a043b093b9de222cb2f57b551511868b7">case_hd</a>; </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html#a06858d0ca204e969768c5d9ef51a3e3e">   40</a></span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> <a class="code hl_variable" href="structpositionJoueur__t.html#a06858d0ca204e969768c5d9ef51a3e3e">case_bg</a>; </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structpositionJoueur__t.html#ab45a7fe89e0409a65296e96c3b96c609">   41</a></span>    <a class="code hl_struct" href="structcase__t.html">case_t</a> <a class="code hl_variable" href="structpositionJoueur__t.html#ab45a7fe89e0409a65296e96c3b96c609">case_bd</a>; </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structcolision__t.html">   51</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structcolision__t.html#a41b827de6420fe208fe17bf4856748fd">   52</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcolision__t.html#a41b827de6420fe208fe17bf4856748fd">haut</a>; </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structcolision__t.html#a1a43317ace9423214879d6936ff81b26">   53</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcolision__t.html#a1a43317ace9423214879d6936ff81b26">bas</a>; </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structcolision__t.html#a549af1c9022d165e4bb570f78c4eacad">   54</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcolision__t.html#a549af1c9022d165e4bb570f78c4eacad">gauche</a>; </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structcolision__t.html#a1689a0445147c0505751d700e57cb69c">   55</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structcolision__t.html#a1689a0445147c0505751d700e57cb69c">droite</a>; </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structcolision__t.html#a7cf4788fcf9793e6aa4d4c75846526d6">   56</a></span>    <a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> *<a class="code hl_variable" href="structcolision__t.html#a7cf4788fcf9793e6aa4d4c75846526d6">position</a>; </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}<a class="code hl_struct" href="structcolision__t.html">colision_t</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> * initPositionJoueur();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><a class="code hl_struct" href="structcolision__t.html">colision_t</a> * initColision();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keywordtype">void</span> chargerCarte(<span class="keywordtype">char</span> * fichier, <span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> nb);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">int</span> afficherCarte(<span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    SDL_Renderer * rendu,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_struct" href="structSDL__Rect.html">SDL_Rect</a> * camera,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_struct" href="structcolision__t.html">colision_t</a> *colision,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    SDL_Texture *tilemap, </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">int</span> nb);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> chargerColisions(<span class="keywordtype">int</span> tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> nb);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keywordtype">void</span> colisions(<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position, <a class="code hl_struct" href="structcolision__t.html">colision_t</a> * colision, <span class="keywordtype">int</span> tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT]);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keywordtype">int</span> peutDash(<a class="code hl_struct" href="structpositionJoueur__t.html">positionJoueur_t</a> position,<span class="keywordtype">int</span> tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], <span class="keywordtype">int</span> direction);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="afonctions_8h_html"><div class="ttname"><a href="fonctions_8h.html">fonctions.h</a></div><div class="ttdoc">Ce fichier contient les définitions des variables nécéssaires pour le jeu.</div></div>
+<div class="ttc" id="astructSDL__Rect_html"><div class="ttname"><a href="structSDL__Rect.html">SDL_Rect</a></div><div class="ttdef"><b>Definition</b> test_deplacements.c:5</div></div>
+<div class="ttc" id="astructcase__t_html"><div class="ttname"><a href="structcase__t.html">case_t</a></div><div class="ttdoc">Structure représentant une case sur la carte.</div><div class="ttdef"><b>Definition</b> carte.h:26</div></div>
+<div class="ttc" id="astructcase__t_html_af27bc56b5d560d1855c57ccc31611381"><div class="ttname"><a href="structcase__t.html#af27bc56b5d560d1855c57ccc31611381">case_t::casy</a></div><div class="ttdeci">int casy</div><div class="ttdef"><b>Definition</b> carte.h:28</div></div>
+<div class="ttc" id="astructcase__t_html_afdb94066e264386bad29dea528de3c07"><div class="ttname"><a href="structcase__t.html#afdb94066e264386bad29dea528de3c07">case_t::casx</a></div><div class="ttdeci">int casx</div><div class="ttdef"><b>Definition</b> carte.h:27</div></div>
+<div class="ttc" id="astructcolision__t_html"><div class="ttname"><a href="structcolision__t.html">colision_t</a></div><div class="ttdoc">Structure représentant les collisions du joueur.</div><div class="ttdef"><b>Definition</b> carte.h:51</div></div>
+<div class="ttc" id="astructcolision__t_html_a1689a0445147c0505751d700e57cb69c"><div class="ttname"><a href="structcolision__t.html#a1689a0445147c0505751d700e57cb69c">colision_t::droite</a></div><div class="ttdeci">int droite</div><div class="ttdef"><b>Definition</b> carte.h:55</div></div>
+<div class="ttc" id="astructcolision__t_html_a1a43317ace9423214879d6936ff81b26"><div class="ttname"><a href="structcolision__t.html#a1a43317ace9423214879d6936ff81b26">colision_t::bas</a></div><div class="ttdeci">int bas</div><div class="ttdef"><b>Definition</b> carte.h:53</div></div>
+<div class="ttc" id="astructcolision__t_html_a41b827de6420fe208fe17bf4856748fd"><div class="ttname"><a href="structcolision__t.html#a41b827de6420fe208fe17bf4856748fd">colision_t::haut</a></div><div class="ttdeci">int haut</div><div class="ttdef"><b>Definition</b> carte.h:52</div></div>
+<div class="ttc" id="astructcolision__t_html_a549af1c9022d165e4bb570f78c4eacad"><div class="ttname"><a href="structcolision__t.html#a549af1c9022d165e4bb570f78c4eacad">colision_t::gauche</a></div><div class="ttdeci">int gauche</div><div class="ttdef"><b>Definition</b> carte.h:54</div></div>
+<div class="ttc" id="astructcolision__t_html_a7cf4788fcf9793e6aa4d4c75846526d6"><div class="ttname"><a href="structcolision__t.html#a7cf4788fcf9793e6aa4d4c75846526d6">colision_t::position</a></div><div class="ttdeci">positionJoueur_t * position</div><div class="ttdef"><b>Definition</b> carte.h:56</div></div>
+<div class="ttc" id="astructpositionJoueur__t_html"><div class="ttname"><a href="structpositionJoueur__t.html">positionJoueur_t</a></div><div class="ttdoc">Structure représentant la position du joueur sur la carte.</div><div class="ttdef"><b>Definition</b> carte.h:37</div></div>
+<div class="ttc" id="astructpositionJoueur__t_html_a043b093b9de222cb2f57b551511868b7"><div class="ttname"><a href="structpositionJoueur__t.html#a043b093b9de222cb2f57b551511868b7">positionJoueur_t::case_hd</a></div><div class="ttdeci">case_t case_hd</div><div class="ttdef"><b>Definition</b> carte.h:39</div></div>
+<div class="ttc" id="astructpositionJoueur__t_html_a06858d0ca204e969768c5d9ef51a3e3e"><div class="ttname"><a href="structpositionJoueur__t.html#a06858d0ca204e969768c5d9ef51a3e3e">positionJoueur_t::case_bg</a></div><div class="ttdeci">case_t case_bg</div><div class="ttdef"><b>Definition</b> carte.h:40</div></div>
+<div class="ttc" id="astructpositionJoueur__t_html_a14e0b2504dc81328b4bf293ff34c0d12"><div class="ttname"><a href="structpositionJoueur__t.html#a14e0b2504dc81328b4bf293ff34c0d12">positionJoueur_t::case_hg</a></div><div class="ttdeci">case_t case_hg</div><div class="ttdef"><b>Definition</b> carte.h:38</div></div>
+<div class="ttc" id="astructpositionJoueur__t_html_ab45a7fe89e0409a65296e96c3b96c609"><div class="ttname"><a href="structpositionJoueur__t.html#ab45a7fe89e0409a65296e96c3b96c609">positionJoueur_t::case_bd</a></div><div class="ttdeci">case_t case_bd</div><div class="ttdef"><b>Definition</b> carte.h:41</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

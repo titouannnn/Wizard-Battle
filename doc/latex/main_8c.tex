@@ -1,0 +1,48 @@
+\doxysection{Référence du fichier main.\+c}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+
+
+Fichier principal du jeu contenant la boucle principale.  
+
+
+{\ttfamily \#include \"{}game.\+h\"{}}\newline
+{\ttfamily \#include \"{}src/global.\+h\"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a88b714c93043d1acaaf7b87354e055a0}{collision\+Proj\+Entite}} (\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}projectile, \mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}ennemi, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}player\+Rect, \mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}camera\+Rect, \mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence. \end{DoxyCompactList}\item 
+\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier principal du jeu contenant la boucle principale. 
+
+Ce fichier contient la boucle principale du jeu. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{main_8c_a88b714c93043d1acaaf7b87354e055a0}\label{main_8c_a88b714c93043d1acaaf7b87354e055a0} 
+\index{main.c@{main.c}!collisionProjEntite@{collisionProjEntite}}
+\index{collisionProjEntite@{collisionProjEntite}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{collisionProjEntite()}{collisionProjEntite()}}
+{\footnotesize\ttfamily void collision\+Proj\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structprojectiles__s}{projectiles\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{\mbox{\hyperlink{structennemi__s}{ennemi\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ennemi,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{player\+Rect,  }\item[{\mbox{\hyperlink{structSDL__Rect}{SDL\+\_\+\+Rect}} \texorpdfstring{$\ast$}{*}}]{camera\+Rect,  }\item[{\mbox{\hyperlink{structjoueur__s}{joueur\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Fonction qui calcule si le projectile passé en parametre est rentré en collision avec soit le joueur soit un ennemi et enleve des points de vie en conséquence. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em projectile} & Pointeur sur le projectile \\
+\hline
+{\em ennemi} & Pointeur sur l\textquotesingle{}ennemi \\
+\hline
+{\em player\+Rect} & Pointeur sur le rectangle du joueur \\
+\hline
+{\em camera\+Rect} & Pointeur sur le rectangle de la camera \\
+\hline
+{\em joueur} & Pointeur sur le joueur \\
+\hline
+\end{DoxyParams}
