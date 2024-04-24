@@ -513,7 +513,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     positionJoueur->case_bd.casx = ((pers_destination->x + 2*marge_joueur) / unite_x); 
     positionJoueur->case_bd.casy = ((cameraRect->y + (5*marge_joueur)) / unite_y);
 
-    
+    /*
     printf("case hg : %d %d\n",positionJoueur->case_hg.casx,positionJoueur->case_hg.casy);
     printf("case hd : %d %d\n",positionJoueur->case_hd.casx,positionJoueur->case_hd.casy);
     printf("case bg : %d %d\n",positionJoueur->case_bg.casx,positionJoueur->case_bg.casy);
@@ -522,6 +522,7 @@ void initialiser_position_joueur(positionJoueur_t *positionJoueur, SDL_Rect *cam
     printf("ratio x : %f\n",(float)cameraRect->x / (float)pers_destination->x);
     printf("pers : %d %d\n",pers_destination->x,pers_destination->y);
     printf("camera : %d %d\n\n",cameraRect->x,cameraRect->y); 
+    */
 }
 
 /* FONCTION DE DESTRUCTION */
